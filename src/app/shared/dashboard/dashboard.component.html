@@ -1,0 +1,134 @@
+<ng-container>
+  <!-- <section class="container-fbx-total" [ngClass]="{'dashboard-visible': _dashboardService.dashboardStatus}"> -->
+<section class="container-fbx-total dashboard-visible" [ngClass]="{'dashboard-no-visible': !_dashboardService.dashboardStatus}">
+  <div class="dashboard-sidenav-web">
+      <div class="dashboard-sidenav-web-logo">
+          <img src="assets/img/logofirbidwhite.svg" alt="">
+      </div>
+      <ul class="dashboard-sidenav-web-lista">
+          <li><a [routerLink]="'subasta'">
+              <p routerLinkActive="active">
+                  <mat-icon svgIcon="icon-fbx-subastas" class="icon-fbx-subastas mat-icon-rtl-mirror"></mat-icon>
+                  Mis Subastas
+              </p>
+          </a></li>
+          <li><a [routerLink]="'operaciones'">
+              <p routerLinkActive="active">
+                  <mat-icon svgIcon="icon-fbx-operaciones" class="mat-icon-rtl-mirror"></mat-icon>
+                  Mis operaciones
+              </p>
+          </a></li>
+          <li><a [routerLink]="'cuentas'">
+              <p routerLinkActive="active">
+                  <mat-icon svgIcon="icon-fbx-cuentas-de-banco" class="mat-icon-rtl-mirror"></mat-icon>
+                  Mis cuentas de banco
+              </p>
+          </a></li>
+          <li><a [routerLink]="'fideicomiso'">
+              <p routerLinkActive="active">
+                  <mat-icon svgIcon="icon-fbx-fideicomiso" class="mat-icon-rtl-mirror"></mat-icon>
+                  Fideicomiso
+              </p>
+          </a></li>
+      </ul>
+      <div class="dashboard-sidenav-web-logo-footer">
+          <p>
+              © <b>Firbex 2019</b>
+              <br>
+              <a href="">Sección de Ayuda</a> |
+              <a href="">Legal</a> | 
+              <a href="">Privacidad</a>
+          </p>
+      </div>
+  </div>
+  <div class="dashboard-sidenav-content-web">
+      <div class="dashboard-header-web">
+      <div>
+          <h1 class="title">{{_dashboardService.dashboardTitle}}</h1> 
+      </div>
+          <div class="menu-title"  [ngClass]="{'active': menuSubBlock}">
+              <p class="sub-name" (click)="dropdownShow()">{{acronimo}}</p>
+              <div  class="arrow" >
+                  <img (click)="dropdownShow()" src="assets/img/flechaavatar.svg" alt="">
+              </div>
+              
+              <div class="menu-sub" [ngClass]="{'menu-sub-block': menuSubBlock}">
+                  <h1>{{nameUser}}</h1>
+                  
+                  <div [routerLink]="profileUrl" class="sub-menu-item sub-menu-item-1">
+                      <p>
+                          <mat-icon svgIcon="icon-fbx-person" class="mat-icon-rtl-mirror icon-person"></mat-icon>
+                          Perfil
+                      </p>
+                  </div>
+                  <div [routerLink]="'ajustes'" class="sub-menu-item sub-menu-item-2">
+                      <p>
+                          <mat-icon svgIcon="icon-fbx-ajustes" class="mat-icon-rtl-mirror icon-person"></mat-icon>
+                          Ajustes
+                      </p>
+                  </div>
+                  <div (click)="logout(false)" class="sub-menu-item sub-menu-item-2">
+                      <p>
+                          <mat-icon svgIcon="icon-fbx-cerrarsesion" class="mat-icon-rtl-mirror icon-person"></mat-icon>
+                          Cerrar sesión
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="dashboard-body-web">
+              <router-outlet></router-outlet>
+      </div>
+      
+      <div class="dashboard-mobile">
+          <div class="circle"></div>
+          <div class="favicon-menu-responsive" href="">
+              <a [routerLink]="'/main/subasta/configurar'">
+                  <img src="assets/img/responsive/favicon.svg" alt="">
+              </a>
+          </div>
+          <ul>
+              <li routerLinkActive="active">
+                  <a [routerLink]="'operaciones'">
+                      <mat-icon  svgIcon="icon-fbx-res-operacion" class="icon-fbx-subastas mat-icon-rtl-mirror"></mat-icon>
+                      <p>
+                          Operaciones
+                      </p>
+                  </a>
+              </li>
+              <li routerLinkActive="active">
+                  <a [routerLink]="'cuentas'">
+                      <mat-icon  svgIcon="icon-fbx-res-mis-cuentas" class="icon-fbx-bancos mat-icon-rtl-mirror"></mat-icon>
+                      <p>
+                          Bancos
+                      </p>
+                  </a>
+              </li>
+              <li routerLinkActive="active" class="mid-menu-responsive">
+                  <a [routerLink]="'subasta'">
+                      <p>
+                          Iniciar subasta
+                      </p>
+                  </a>
+              </li>
+              <li routerLinkActive="active">
+                  <a [routerLink]="'fideicomiso'">
+                      <mat-icon  svgIcon="icon-fbx-res-fideicomiso" class="icon-fbx-res-fideicomiso mat-icon-rtl-mirror"></mat-icon>
+                      <p>
+                          Fideicomiso
+                      </p>
+                  </a>
+              </li>
+              <li routerLinkActive="active">
+                  <a [routerLink]="'perfil'">
+                      <mat-icon  svgIcon="icon-fbx-res-perfil" class="icon-fbx-res-perfil mat-icon-rtl-mirror"></mat-icon>
+                      <p>
+                          Perfil
+                      </p>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</section>
+</ng-container>

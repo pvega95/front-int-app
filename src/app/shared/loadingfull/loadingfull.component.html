@@ -1,0 +1,11 @@
+<section *ngIf="active">
+  <div  class="fondo-loadingfull">
+  </div>
+  <div class="content-loadingfull">
+    <mat-progress-spinner
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+      [value]="50">
+    </mat-progress-spinner>
+  </div>
+</section>

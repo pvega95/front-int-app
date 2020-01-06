@@ -1,0 +1,370 @@
+@import '_default-theme.scss';
+.container-fbx-total{
+    // position: fixed;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    &.dashboard-visible{
+        // display: flex;
+        background-color: white;
+        @media(min-width: 768px){
+            background-color: $fbx-background-cliente;
+        }
+        
+        .dashboard-sidenav-web{
+            // position: fixed;
+            height: 100vh;
+            min-width: 250px;
+            background: #163164;
+            z-index: 10;
+            @media(min-width:320px){
+                display: none;
+            }
+            @media(min-width:768px){
+                display: block;
+            }
+            .dashboard-sidenav-web-logo{
+                padding-top: 29px;
+                padding-left: 58px;
+                padding-bottom: 20px;
+                img{
+                    height: 29px;
+                }
+            }
+            .dashboard-sidenav-web-lista{
+                li{
+                    a{
+                        p{
+                            color: white;
+                            padding-top: 14px;
+                            padding-bottom: 14px;
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding-left: 58px;
+                            font-size: 12px;
+                            font-family: 'Roboto';
+                            transition: 0.5s;
+                            .mat-icon{
+                                margin-right: 7.7px;
+                                fill: white;
+                                stroke: white;
+                                transition: 0.5s;
+                            }
+                            &.active{
+                                background-color: $fbx-primary-dark  ;
+                            }
+                            &:hover,
+                            &.active{
+                                color: $fbx-secondary;
+                                .mat-icon{
+                                    margin-right: 7.7px;
+                                    fill: $fbx-secondary;
+                                    stroke: $fbx-secondary;
+                                    &.icon-fbx-subastas{
+                                        // content: url('../../../assets/img/missubastashover.svg');
+                                    }
+                                    &.icon-fbx-fideicomiso{
+                                        // content: url('../../../assets/img/fideicomisohover.svg');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .dashboard-sidenav-web-logo-footer{
+                width:95px;
+                position: fixed;
+                bottom: 65px;
+                left: 62px;
+                p{
+                    color:white;
+                    font-size: 12px;
+                    a{
+                        font-size: 11px;
+                        color:white;
+                    }
+                }
+            }
+        }
+        .dashboard-sidenav-content-web{
+            // flex: 1;
+            width: 100%;
+            .dashboard-header-web{
+                @media(min-width:320px){
+                    display: none;
+                }
+                @media(min-width:768px){
+                    height: 80px;
+                    padding: 20px 60px;
+                    background: white;
+                    border-bottom: 1px solid #EBEBEB;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    // display: block;
+                    // position: fixed;
+                    // height: 80px;
+                    // width: 100%;
+                    // padding: 20px 120px;
+                    // background: white;
+                    // border-bottom: 1px solid #EBEBEB;
+                    // display: flex;
+                    // align-items: center;
+                    // justify-content: flex-end;
+                }
+                .title{
+                    color: $fbx-primary;
+                    font-size: 23px;
+                }
+                .menu-title{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    cursor: pointer;
+                    .sub-name{
+                        border: 1px solid transparent;
+                        transition: 0.5s;
+                    }
+                    &.active{
+                        .sub-name{
+                            border: 1px solid $fbx-secondary;
+                            color: $fbx-secondary;
+                        }
+                        .arrow{
+                            img{
+                                opacity:0;
+                            }
+                        }
+                    }
+                    @media(min-width:992px){
+                        &:hover, &.active{
+                            .sub-name{
+                                border: 1px solid $fbx-secondary;
+                                color: $fbx-secondary;
+                            }
+                            .arrow{
+                                img{
+                                    opacity:0;
+                                }
+                                
+                            }
+                        }    
+                    }
+                    
+                    p{
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background-color: #F2F4F7;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .arrow{
+                        width: 12.09px;
+                        height: 7.36px;
+                        margin-left: 10px;
+                        display: flex;
+                        // background-image: url('../../../assets/img/perfilon.svg');
+                        img{
+                            opacity:1;
+                            height: 7.36px;
+                            transition: 0.5s;
+                        }
+                    }
+                    .menu-sub{
+                        display: none;
+                        z-index: 9999;
+                        position: absolute;
+                        top: 30px;
+                        right: 0;
+                        // background-image: url('../../../assets/img/bgperfil.png');
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        width: 238px;
+                        padding-top: 42px;
+                        padding-bottom: 41px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        &.menu-sub-block{
+                            display: block;
+                        }
+                        h1{
+                            color: #163164;
+                            font-size: 16px;
+                            font-family: 'Roboto';
+                            font-weight: 400;
+                            padding-top: 13px;
+                            padding-bottom: 13px;
+                            padding-left: 30px;
+                            padding-right: 30px;
+                        }
+                        .sub-menu-item{
+                            .mat-icon {
+                                height: 13.49px;
+                                width: 14px;
+                                margin-right: 13.52px;
+                            }
+                            p{
+                                width: auto;
+                                height: auto;
+                                border-radius: 0%;
+                                padding-left: 33px;
+                                padding-right: 33px;
+                                display: block;
+                                background-color: white;
+                                color: #99ABBF;
+                                font-family: Roboto;
+                                font-weight: 400;
+                                padding-top: 7px;
+                                padding-bottom: 4px;
+                                transition: 0.5s;
+                            }
+                            &:hover{
+                                p{
+                                    color: $fbx-primary;
+                                    background-color: rgb(235, 235, 235);
+                                }
+                            }
+                            &.sub-menu-item-1{
+                                border-bottom: 1px solid #F1F1F1;
+                                margin-bottom: 13px;
+                            }
+                            &.sub-menu-item-2{
+                                &:hover{
+                                    p{
+                                        stroke: $fbx-primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .dashboard-body-web{
+                overflow: auto;
+                max-height: calc(100vh - 80px);
+            }
+            .dashboard-mobile{
+                position: relative;
+                height: 90px;
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-top: 1px solid #EEEEEE;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                background: $fbx-background-white;
+                @media(min-width:320px){
+                    display: flex;
+                }
+                @media(min-width:768px){
+                    display: none;
+                }
+                ul{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    width: 100%;
+                    li{
+                        flex: 1;
+                        justify-content: center;
+                        display: flex;
+                        flex-wrap: wrap;
+                        a{
+                            justify-content: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                            color: $fbx-primary-dark;
+                        }
+                        &:hover,:focus, &.active{
+                            a{
+                                color: $fbx-secondary;
+                                .mat-icon{
+                                    color: $fbx-secondary;
+                                    fill: $fbx-secondary;
+                                    stroke: $fbx-secondary;
+                                    &.icon-fbx-res-fideicomiso{
+                                        // content: url('../../../assets/img/responsive/fideicomisohover.svg');
+                                    }
+                                    &.icon-fbx-res-perfil{
+                                        // content: url('../../../assets/img/responsive/perfilhover.svg');
+                                    }
+                                }
+                                p{
+                                    color: $fbx-secondary
+                                }
+                            }
+                        }
+                        p{
+                            color: $fbx-primary-dark;
+                            font-size: 11px;
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
+                .favicon-menu-responsive{
+                    img{
+                        height: 52px;
+                        width: 52px;
+                        position: absolute;
+                        top: -26px;
+                        left: calc(50% - 26px);
+                        transition: 0.5s;
+                        &:hover{
+                            transform: rotate(30deg);
+                        }
+                    }
+                }
+                .circle{
+                    position: absolute;
+                    top: -36px;
+                    left: calc(50% - 36px);
+                    height: 36px;
+                    width: 72px;
+                    border-top-left-radius: 72px;
+                    border-top-right-radius: 72px;
+                    border-top: 1px solid #EEEEEE;
+                    border-left: 1px solid #EEEEEE;
+                    border-right: 1px solid #EEEEEE;
+                    border-bottom: 1px solid transparent;
+                    background-color: white;
+                    .mat-icon{
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    &.dashboard-no-visible{
+        background: white;
+        .dashboard-sidenav-web{
+            display: none;
+        }
+        .dashboard-sidenav-content-web{
+            .dashboard-header-web{
+                display: none;
+            }
+            .dashboard-body-web{
+                max-height: 100vh;
+                // overflow: unset;
+            }
+            .dashboard-mobile{
+                display: none;
+            }
+        }
+    }
+
+}
+

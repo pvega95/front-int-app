@@ -1,0 +1,452 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+/******** codigo personalizado de firbix ************/
+@import '_default-theme.scss';
+@import 'font.scss';
+@import 'loading.scss';
+
+$mat-fbx-warm: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #ed435d,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+$mat-fbx-primary: (
+  50: #e8eaf6,
+  100: #c5cae9,
+  200: #9fa8da,
+  300: #7986cb,
+  400: #5c6bc0,
+  500: $fbx-primary,
+  600: #3949ab,
+  700: #303f9f,
+  800: #283593,
+  900: #1a237e,
+  A100: #8c9eff,
+  A200: #536dfe,
+  A400: #3d5afe,
+  A700: #304ffe,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+$mat-fbx-secondary: (
+  50: #e1f5fe,
+  100: #b3e5fc,
+  200: #81d4fa,
+  300: #4fc3f7,
+  400: #29b6f6,
+  500: $fbx-secondary, // #03a9f4,
+  600: #039be5,
+  700: #0288d1,
+  800: #0277bd,
+  900: #01579b,
+  A100: #80d8ff,
+  A200: #40c4ff,
+  A400: #00b0ff,
+  A700: #0091ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  )
+);
+/******** /codigo personalizado de firbix ************/
+
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$front-cliente-primary: mat-palette($mat-fbx-primary);
+$front-cliente-accent: mat-palette($mat-fbx-secondary);
+// The warn palette is optional (defaults to red).
+$front-cliente-warn: mat-palette($mat-fbx-warm);
+// Create the theme object (a Sass map containing all of the palettes).
+$front-cliente-theme: mat-light-theme($front-cliente-primary, $front-cliente-accent, $front-cliente-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($front-cliente-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@import 'firbex-angular-material';
+
+
+/*********** NAVIGATION FIRBIX REGISTER ***************/
+$ancho-nav: 350px;
+.container-navigation{
+    .content-navigation{
+        display: flex;
+        justify-content: space-between;
+        @include respondto(minxs) {}
+        @include respondto(maxxs) {}
+        @include respondto(sm) {
+            border-bottom: 1px solid rgba($fbx-gris-light, 0.3);
+        }
+        @include respondto(md) {
+            border-bottom: 1px solid rgba($fbx-gris-light, 0.3);
+        }
+        @include respondto(lg) {
+            border-bottom: 1px solid rgba($fbx-gris-light, 0.3);
+        }
+        .fbx-logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                max-width: 100%;
+                @include respondto(minxs) {
+                    width: 75px;
+                    // margin-left: 23px;
+                    opacity: 0;
+                }
+                @include respondto(maxxs) {
+                    width: 75px;
+                    // margin-left: 23px;
+                    opacity: 0;
+                }
+                @include respondto(sm) {
+                    width: 85px;
+                    margin-left: 45px;
+                }
+                @include respondto(md) {
+                    width: 85px;
+                    margin-left: 45px;
+                }
+                @include respondto(lg) {
+                    width: 85px;
+                    margin-left: 65px;
+                }
+            }
+        }
+        .fbx-container-nav{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .fbx-content-nav{
+                display: flex;
+                justify-content: center;
+                padding: 10px 0 30px 0;
+                max-width: 90%;
+                .fbx-nav{
+                    position: relative;
+                    display: flex;
+                    height: 1px;
+                    border-radius: 1px;
+                    @include respondto(minxs) {
+                        width: 25px;
+                        background: rgba($fbx-gris, 0);
+                    }
+                    @include respondto(maxxs) {
+                        width: 25px;
+                        background: rgba($fbx-gris, 0);
+                    }
+                    @include respondto(sm) {
+                        background: rgba($fbx-gris, .9);
+                        width: $ancho-nav;
+                        max-width: 100%;
+                    }
+                    @include respondto(md) {
+                        background: rgba($fbx-gris, .9);
+                        width: $ancho-nav;
+                        max-width: 100%;
+                    }
+                    @include respondto(lg) {
+                        background: rgba($fbx-gris, .9);
+                        width: $ancho-nav;
+                        max-width: 100%;
+                    }
+                    .fbx-circle{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        // width: 0%;
+                        height: 1px;
+                        background: $fbx-primary;
+                        transition: all 350ms ease;
+                        @include respondto(minxs) {
+                          display: none;
+                        }
+                        @include respondto(maxxs) {
+                          display: none;
+                        }
+                        @include respondto(sm) {}
+                        @include respondto(md) {}
+                        @include respondto(lg) {}
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            top: -3px;
+                            right: -3.5px;
+                            height: 7px;
+                            width: 7px;
+                            border-radius: 100%;
+                            background: $fbx-primary;
+                        }
+                    }
+                    .label-nav{
+                        position: absolute;
+                        top: 10px;
+                        transform: translateX(-50%);
+                        &.active-nav{
+                            a{
+                                .label-text{
+                                  color: $fbx-primary;
+                                }
+                                .label-circle{
+                                  height: 14px;
+                                  width: 14px;
+                                  background: $fbx-primary;
+                                }
+                            }
+                        }
+                        &.label-pos-0{
+                            left: 0;
+                        }
+                        &.label-pos-50{
+                            left: 50%;
+                        }
+                        &.label-pos-100{
+                            left: 100%;
+                        }
+                        a{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 14px;
+                            width: 14px;
+                            .label-text{
+                              font-family: $font-Roboto;
+                              font-weight: 400;
+                              font-size: 16px;
+                              color: $fbx-gristwo;
+                              white-space: nowrap;
+                              text-overflow: ellipsis;
+                              user-select: none;
+                              @include respondto(minxs) {
+                                display: none;
+                              }
+                              @include respondto(maxxs) {
+                                display: none;
+                              }
+                              @include respondto(sm) {}
+                              @include respondto(md) {}
+                              @include respondto(lg) {}
+                            }
+                            .label-circle{
+                              height: 10px;
+                              width: 10px;
+                              border-radius: 100%;
+                              background: #ccc;
+                              transition: all 350ms ease;
+                              @include respondto(minxs) {}
+                              @include respondto(maxxs) {}
+                              @include respondto(sm) {
+                                display: none;
+                              }
+                              @include respondto(md) {
+                                display: none;
+                              }
+                              @include respondto(lg) {
+                                display: none;
+                              }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .fbx-button-close{
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                @include respondto(minxs) {
+                    padding-top: 15px;
+                    height: 75px;
+                    width: 75px;
+                }
+                @include respondto(maxxs) {
+                    height: 75px;
+                    width: 75px;
+                }
+                @include respondto(sm) {
+                    // background: $fbx-primary;
+                    height: 75px;
+                    width: 75px;
+                }
+                @include respondto(md) {
+                    // background: $fbx-primary;
+                    height: 75px;
+                    width: 75px;
+                }
+                @include respondto(lg) {
+                    // background: $fbx-primary;
+                    height: 75px;
+                    width: 75px;
+                }
+                .mat-icon{
+                    height: auto;
+                    width: auto;
+                    font-weight: 700;
+                    color: $fbx-secondary;
+                    @include respondto(minxs) {
+                        // color: $fbx-primary;
+                        font-size: 25px;
+                    }
+                    @include respondto(maxxs) {
+                        // color: $fbx-primary;
+                        font-size: 25px;
+                    }
+                    @include respondto(sm) {
+                        // color: $llight-icon-active;
+                        font-size: 32px;
+                    }
+                    @include respondto(md) {
+                        // color: $llight-icon-active;
+                        font-size: 32px;
+                    }
+                    @include respondto(lg) {
+                        // color: $llight-icon-active;
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
+/*********** /NAVIGATION FIRBIX REGISTER ***************/
+
+/*********** PASOS LOAD DE LA SUBASTA ***************/
+.fbx-load{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    z-index: 0;
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        border: 2px solid $fbx-gristwo-light;
+        border-top: 2px solid $fbx-secondary;
+        transform: rotate(45deg);
+        background: $fbx-background-white;
+    }
+    span{
+        font-family: $font-Roboto;
+        font-size: 10px;
+        font-weight: 400;
+        color: $fbx-primary;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        z-index: 1;
+    }
+}
+.icon-flag-money{
+    .flag-icon{
+        background-size: 100% 100% !important;
+        background-position: 0 0 !important;
+    }
+}
+/*********** /PASOS LOAD DE LA SUBASTA ***************/
+
+.die-visually{
+    display: none;
+}
+
+
+.container-plugin{
+    .odometer{
+        &.odometer-theme-train-station {
+            .odometer-digit{
+                background-image: linear-gradient(to bottom, 
+                                    $fbx-gristwo-light 0%, 
+                                    $fbx-gristwo-light 35%, 
+                                    $fbx-gristwo-light 55%, 
+                                    $fbx-gristwo-light 55%, 
+                                    $fbx-gristwo-light 100%);
+                background-color: $fbx-gristwo-light;
+                color: $fbx-primary;
+            }
+            .odometer-formatting-mark{
+                color: $fbx-primary;
+                &.odometer-radix-mark{
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
+
+.fbx-mat-tab{
+    .mat-ink-bar{
+        background-color: $fbx-secondary;
+    }
+}

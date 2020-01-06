@@ -1,0 +1,106 @@
+// @import '~sass/sass';
+@import '_default-theme.scss';
+@import 'font.scss';
+
+.spincube-loading {
+    top: 0;
+    opacity: 1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #ffffff;
+    padding-top: 25vh;
+    text-align: center;
+    z-index: 9999999999;
+}
+
+.spincube-loading p {
+    font-family: "raleway", sans-serif;
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    padding: 0 10px 0 10px;
+    margin-bottom: 50px;
+}
+
+.spincube-loading img {
+    max-height: 200px;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+app-root:not(:empty)+.spincube-loading {
+    opacity: 0;
+    z-index: -1000;
+    transition: all .8s ease-out;
+    transition-delay: 1.5s;
+}
+
+app-root:empty+.spincube-loading {
+    opacity: 1;
+    z-index: 9999999999;
+}
+
+
+/********************* Inicio Loading easymaq ********************/
+/*
+ *  Usage:
+ *
+      <div class="sk-wandering-cubes">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+      </div>
+ *
+ */
+
+$spinkit-spinner-margin: 80px auto !default;
+$spinkit-size: 80px !default;
+$spinkit-spinner-color: $fbx-accent !default;
+$spinkit-spinner2-color: $fbx-accent !default;
+$spinkit-cube-size: 20px;
+$cubeDistance: 60px;
+.sk-wandering-cubes {
+    $animationDuration: 1.8s;
+    margin: $spinkit-spinner-margin;
+    width: $spinkit-size;
+    height: $spinkit-size;
+    position: relative;
+    .sk-cube {
+        background-color:red;
+        // height: 10px;
+        width: $spinkit-cube-size;
+        height: $spinkit-cube-size;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: sk-wanderingCube $animationDuration ease-in-out #{-$animationDuration} infinite both;
+    }
+    .sk-cube2 {
+        background-color: red;
+        animation-delay: -$animationDuration / 2;
+    }
+}
+
+@keyframes sk-wanderingCube {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: translateX($cubeDistance) rotate(-90deg) scale(0.5);
+    }
+    50% {
+        /* Hack to make FF rotate in the right direction */
+        transform: translateX($cubeDistance) translateY($cubeDistance) rotate(-179deg);
+    }
+    50.1% {
+        transform: translateX($cubeDistance) translateY($cubeDistance) rotate(-180deg);
+    }
+    75% {
+        transform: translateX(0) translateY($cubeDistance) rotate(-270deg) scale(0.5);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+/********************* Fin Loading easymaq ********************/

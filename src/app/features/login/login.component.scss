@@ -1,0 +1,269 @@
+@import '_default-theme.scss';
+
+
+.container-login{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    .container-left{
+        position: relative;
+        width: 60%;
+        min-height: 100vh;
+        @include respondto(minxs) {
+            display: none;
+        }
+        @include respondto(maxxs) {
+            display: none;
+        }
+        @include respondto(sm) {}
+        @include respondto(md) {}
+        @include respondto(lg) {}
+        .img-left{
+            // position: fixed;
+            width: 100%;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            background-image: url('../../../assets/img/bn_guia.jpg');
+            // background-repeat: no-repeat;
+            // background-position: top right;
+            // background-size: cover;
+
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    .container-right{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        @include respondto(minxs) {
+            width: 100%;
+        }
+        @include respondto(maxxs) {
+            width: 100%;
+        }
+        @include respondto(sm) {
+            width: 50%;
+        }
+        @include respondto(md) {
+            width: 50%;
+        }
+        @include respondto(lg) {
+            width: 40%;
+        }
+        .content-top{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px 30px 33px 30px;
+            img{
+                // max-width: 90px;
+                margin: 0 0 45px 0;
+                @include respondto(minxs) {
+                    position: absolute;
+                    top: 30px;
+                    left: 30px;
+                }
+                @include respondto(maxxs) {
+                    position: absolute;
+                    top: 30px;
+                    left: 30px;
+                }
+                @include respondto(sm) {}
+                @include respondto(md) {}
+                @include respondto(lg) {}
+            }
+            h1{
+                font-family: $font-Roboto;
+                font-weight: 700;
+                @include fontsizeheight(22px,1.3,22px,1.3,22px,1.3);
+                color: $llight-primary-text;
+                text-align: center;
+                @include respondto(minxs) {
+                    width: 246px;
+                    padding-top: 0px;
+                }
+                @include respondto(maxxs) {
+                    width: 246px;
+                }
+                @include respondto(sm) {
+                    padding-top: 40px;
+                }
+                @include respondto(md) {}
+                @include respondto(lg) {}
+            }
+        }
+        .content-center{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 600px;
+            max-width: 100%;
+            margin-bottom: 0px;
+            @include respondto(minxs) {
+                padding: 0px 11px 30px 11px;
+            }
+            @include respondto(sm) {
+                padding: 50px 11px 50px 11px;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                max-width: 100%;
+                .input-group{
+                    width: 350px;
+                    max-width: 100%;
+                    .fbx-input{
+                        width: 100%;
+                        input{
+                        }
+                    }
+                    .icon-pass{
+                    }
+                    mat-error{
+                    }
+                }
+                .link-recover{
+                    display: flex;
+                    width: 350px;
+                    max-width: 95%;
+                    padding: 15px 0 0 0;
+                    margin-bottom: 20px;
+                    
+                    p{
+                        text-align: left;
+                        font-family: $font-Roboto;
+                        font-weight: 400;
+                        font-size: 16px;
+                        letter-spacing: 0;
+                        color: $llight-primary-text;
+                        a{
+                            font-family: $font-Roboto;
+                            font-weight: 400;
+                            font-size: 16px;
+                            color: $fbx-red;
+                            &:hover,
+                            &:active{
+                                color: $fbx-red-dark;
+                            }
+                        }
+                    }
+                    
+                }
+                .btn-enter{
+                    width: 350px;
+                    max-width: 95%;
+                    margin-bottom: 30px;
+                    button{
+                        height: 47px;
+                        width: 100%;
+                        font-size: 18px;
+                        font-family: $font-Roboto;
+                        background-color: $fbx-red-light ;
+                        &:hover{
+                            background-color: $fbx-red;
+                        }
+                        &:focus{
+                            background-color: $fbx-red-dark;
+                        }
+                    }
+                }
+            }
+            .content-register{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                max-width: 100%;
+                padding-top: 88px;
+                .aux-register{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 350px;
+                    max-width: 95%;
+                    p{
+                        font-family: $font-Roboto;
+                        font-weight: 400;
+                        font-size: 16px;
+                        text-align: center;
+                        color: $llight-primary-text;
+                    }
+                    a{
+                        font-family: $font-Roboto;
+                        font-weight: 400;
+                        font-size: 16px;
+                        color: $fbx-red;
+                        padding-left: 8px;
+                        &:hover,
+                        &:active{
+                            color: $fbx-red-dark;
+                        }
+                    }
+                }
+            }
+        }
+        .fbx-button-close{
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // background: $fbx-primary;
+                overflow: hidden;
+                @include respondto(minxs) {
+                    height: 40px;
+                    width: 45px;
+                }
+                @include respondto(maxxs) {
+                    height: 40px;
+                    width: 45px;
+                }
+                @include respondto(sm) {
+                    height: 40px;
+                    width: 45px;
+                }
+                @include respondto(md) {
+                    height: 45px;
+                    width: 50px;
+                }
+                @include respondto(lg) {
+                    height: 45px;
+                    width: 50px;
+                }
+                .mat-icon{
+                    height: auto;
+                    width: auto;
+                    color: $llight-primary-text;
+                    font-weight: 700;
+                    @include respondto(minxs) {
+                        font-size: 25px;
+                    }
+                    @include respondto(maxxs) {
+                        font-size: 25px;
+                    }
+                    @include respondto(sm) {
+                        font-size: 25px;
+                    }
+                    @include respondto(md) {
+                        font-size: 25px;
+                    }
+                    @include respondto(lg) {
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+}

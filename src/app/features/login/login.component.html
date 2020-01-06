@@ -1,0 +1,86 @@
+<section class="container-login">
+  <div class="container-left">
+      <div class="img-left"></div>
+  </div>
+  <div class="container-right">
+      <div class="content-center">
+          <div class="content-top">
+              <img src="assets/img/logo-banco-nacion.png" alt="Logo de BN">
+              <h1>Bienvenido a IntApp</h1>
+          </div>
+          <div class="content-body">
+              <form [formGroup]="loginform" (ngSubmit)="onSubmitLogin(loginform)"
+              >
+                  <div class="input-group">
+                      <mat-form-field class="fbx-input">
+                          <input matInput 
+                              placeholder="Correo" 
+                              formControlName="emailForm" 
+                              name="email"
+                              [formControl]="loginform.controls['emailForm']"
+                              [type]="'text'" required>
+                          <mat-error *ngIf="loginform.controls['emailForm'].hasError('pattern')">
+                              Por favor, introduce un email válido.
+                          </mat-error>
+                          <mat-icon matSuffix svgIcon="icon-fbx-mailinput" class="mat-icon-rtl-mirror"></mat-icon>
+                          <mat-error *ngIf="loginform.controls['emailForm'].hasError('required')">
+                              El email es 
+                              <strong>requerido.</strong>
+                          </mat-error>
+                      </mat-form-field>
+                  </div>
+                  <div class="input-group">
+                      <mat-form-field class="fbx-input">
+                          <input
+                              matInput
+                              placeholder="Contraseña"
+                              name="password"
+                              formControlName="passForm"
+                              [formControl]="loginform.controls['passForm']"
+                              [type]="passHide ? 'password' : 'text'"
+                              required>
+                          <div class="content-icon-pass">
+                              <img 
+                                  class="icon-pass"
+                                  [ngClass]="{'visibility': passHide}"
+                                  (click)="passHide = !passHide"
+                                  [src]="passHide ? 'assets/img/eye-visibility_off.png' : 'assets/img/eye-visibility.png'"
+                                  alt="icono para habilitar contraseña">
+                          </div>
+                          <mat-error *ngIf="loginform.controls['passForm'].hasError('required')">
+                              La contraseña es
+                              <strong>requerida.</strong>
+                          </mat-error>
+                          <mat-error *ngIf="loginform.controls['passForm'].hasError('minlength')">
+                              Use mínimo 6 carácteres.
+                          </mat-error>
+                      </mat-form-field>
+                  </div>
+                  <div class="link-recover">
+                      <p>
+                          ¿Olvidaste tu contraseña? <a [routerLink]="['/recuperar-contraseña']">Recuperar</a>
+                      </p>
+                      
+                  </div>
+                  <div class="btn-enter">
+                      <button mat-flat-button color="accent" type="submit" class="fbx-button animation">Ingresar</button>
+                  </div>
+              </form>
+              <div class="content-register">
+                  <div class="aux-register">
+                      <p>¿No tienes cuenta Firbix?</p>
+                      <a [routerLink]="['/registro']">Regístrate aquí</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="fbx-button-close">
+          <a href="#">
+              <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
+          </a>
+         
+      </div>
+  </div>
+</section>
+
+<app-loadingfull [active]="activeloadingfull"></app-loadingfull>
