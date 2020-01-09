@@ -15,7 +15,7 @@
             // position: fixed;
             height: 100vh;
             min-width: 250px;
-            background: #163164;
+            background: #9a0007;
             z-index: 10;
             @media(min-width:320px){
                 display: none;
@@ -99,7 +99,7 @@
                 @media(min-width:768px){
                     height: 80px;
                     padding: 20px 60px;
-                    background: white;
+                    background: #d32f2f;
                     border-bottom: 1px solid #EBEBEB;
                     display: flex;
                     align-items: center;
@@ -182,7 +182,7 @@
                         position: absolute;
                         top: 30px;
                         right: 0;
-                        // background-image: url('../../../assets/img/bgperfil.png');
+                        background-image: url('../../../assets/img/bgperfil.png');
                         background-size: contain;
                         background-position: center;
                         background-repeat: no-repeat;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '@core/services/resources/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  menuSubBlock = false;
+  constructor(
+    public _dashboardService: DashboardService,
+  ) {
+    this._dashboardService.setDashboardStatus(true);
+   }
 
   ngOnInit() {
+  }
+
+  dropdownShow() {
+    console.log(this.menuSubBlock);
+    this.menuSubBlock = !this.menuSubBlock;
   }
 
 }

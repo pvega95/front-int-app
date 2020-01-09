@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 // https://github.com/lipis/flag-icon-css
 // -> npm install ngx-flag-icon-css flag-icon-css
 // <flag-icon country="pe" squared></flag-icon>
-// import { NgxFlagIconCssModule } from 'ngx-flag-icon-css'
+import { NgxFlagIconCssModule } from 'ngx-flag-icon-css'
 
 /****** Material Angular ******/
 import { MyMaterialModule } from '@shared/material/material.module';
@@ -40,7 +40,7 @@ const MODULES = [
   ScrollingModule,
   DragDropModule,
   MyMaterialModule,
-  // NgxFlagIconCssModule,
+  NgxFlagIconCssModule,
   // CloudinaryModule,
   // FileUploadModule,
 ];
