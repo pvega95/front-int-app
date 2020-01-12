@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //SERVICIO PARA IMPORTAR SVG
 import { SvgRegisterService } from './material/svg-register.service';
+import { AuthService } from './services/auth/auth.service';
 
 // import { AppErrorHandler } from './error-handler/app-error-handler.service';
 
@@ -23,7 +24,8 @@ import { SvgRegisterService } from './material/svg-register.service';
 // Normales
 
 const SERVICES = [
-  SvgRegisterService
+  SvgRegisterService,
+  AuthService
 ];
 
 const COMPONENTS = [];

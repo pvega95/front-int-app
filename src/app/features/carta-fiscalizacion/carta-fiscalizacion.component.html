@@ -1,0 +1,42 @@
+<h1>Carta de Fiscalizacion</h1>
+<section class="container-login">
+  <div class="content-center">
+    <form [formGroup]="cartaForm" (ngSubmit)="onSubmitCarta(cartaForm)">
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="N° Registro" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Proceso" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="input-group recepcion">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker color="#163164"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="N° Hoja Envio" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Doc a remitir" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Tipo de documento" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="btn-enter">
+        <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+      </div>
+    </form>
+  </div>
+</section>

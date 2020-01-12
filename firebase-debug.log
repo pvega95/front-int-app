@@ -1,0 +1,21 @@
+[debug] [2020-01-11T04:41:21.523Z] ----------------------------------------------------------------------
+[debug] [2020-01-11T04:41:21.525Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PAUL\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-01-11T04:41:21.525Z] CLI Version:   7.11.0
+[debug] [2020-01-11T04:41:21.525Z] Platform:      win32
+[debug] [2020-01-11T04:41:21.525Z] Node Version:  v10.15.3
+[debug] [2020-01-11T04:41:21.526Z] Time:          Fri Jan 10 2020 23:41:21 GMT-0500 (GMT-05:00)
+[debug] [2020-01-11T04:41:21.526Z] ----------------------------------------------------------------------
+[debug] [2020-01-11T04:41:21.526Z] 
+[debug] [2020-01-11T04:41:21.533Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-11T04:41:21.534Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\PAUL\Desktop\banco_nacion\intApp
+

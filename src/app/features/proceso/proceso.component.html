@@ -1,139 +1,84 @@
 <section class="container-login">
-  <div class="content-center">
-    <form [formGroup]="registerPersonForm" (ngSubmit)="onSubmitPerson(registerPersonForm)">
-        <div class="input-group">
-          <mat-form-field class="fbx-input">
-              <input matInput 
-              placeholder="Contratista"
-                  [type]="'text'" required>
-          </mat-form-field>
-      </div>
-      <div class="input-group select-pdocForm">
-        <mat-form-field
-            class="fbx-select"
-            [hideRequiredMarker]="true"
-            [floatLabel]="'auto'">
-            <mat-select 
-            placeholder="Tipo Contratista" 
-            >
-                <mat-option [value]="1">PERSONA</mat-option> 
-                <mat-option [value]="2">EMPRESA</mat-option>
-                <mat-option [value]="3">CONSORCIO</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="input-group input-pnumberForm">
-      <mat-form-field
-      class="fbx-select"
-      [hideRequiredMarker]="true"
-      [floatLabel]="'auto'">
-      <mat-select 
-      placeholder="Tipo Procedimiento" 
-      >
-          <mat-option [value]="1">Adjudicacion Simplificada</mat-option> 
-          <mat-option [value]="2">Concurso Publico</mat-option>
-          <mat-option [value]="3">Licitacion Publica</mat-option>
-          <mat-option [value]="4">Concurso de meritos</mat-option>
-          <mat-option [value]="5">Adjudicacion de menor cuantia</mat-option>
-      </mat-select>
-  </mat-form-field>
-    </div>
-    
-        <!-- <div class="input-group select-pdocForm">
-            <mat-form-field
-                class="fbx-select"
-                [hideRequiredMarker]="true"
-                [floatLabel]="'auto'">
-                <mat-select 
-                formControlName="pdocForm"
-                placeholder="Tipo" 
-                (selectionChange)="onPdocFormChange($event)"
-                required>
-                    <mat-option [value]="1">{{ minLength[1].name}}</mat-option> 
-                    <mat-option [value]="2">{{ minLength[2].name}}</mat-option>
-                    <mat-option [value]="3">{{ minLength[3].name}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="registerPersonForm.controls['pdocForm'].hasError('required')">
-                    Completar el <strong>campo.</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="input-group input-pnumberForm">
-            <mat-form-field class="fbx-input">
-                <input
-                    matInput
-                    placeholder="Número de documento"
-                    formControlName="pnumberForm"
-                    name="document"
-                    [formControl]="registerPersonForm.controls['pnumberForm']"
-                    [type]="minLength[selectMinLength].type"
-                    required>
-                <mat-error *ngIf="registerPersonForm.controls['pnumberForm'].hasError('required')">
-                    Completar el <strong>campo.</strong>
-                </mat-error>
-                <mat-error *ngIf="registerPersonForm.controls['pnumberForm'].hasError('minlength')">
-                    Debe tener {{ minLength[selectMinLength].length }} carácteres.
-                </mat-error>
-                <mat-error *ngIf="registerPersonForm.controls['pnumberForm'].hasError('maxlength')">
-                    Debe tener {{ minLength[selectMinLength].length }} carácteres.
-                </mat-error>
-            </mat-form-field>
-        </div> -->
-        <div class="input-group">
-            <mat-form-field class="fbx-input">
-                <input matInput 
-                    placeholder="N° Procedimiento" 
-                    [type]="'text'" required>
-            </mat-form-field>
-        </div>
+    <div class="content-center">
+        <form [formGroup]="registerPersonForm" (ngSubmit)="onSubmitPerson(registerPersonForm)">
+            <div class="input-group contratista">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Contratista" [type]="'text'" required>
+                </mat-form-field>
+            </div>
+            <div class="input-group select-pdocForm">
+                <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+                    <mat-select placeholder="Tipo Contratista">
+                        <mat-option [value]="1">PERSONA</mat-option>
+                        <mat-option [value]="2">EMPRESA</mat-option>
+                        <mat-option [value]="3">CONSORCIO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="input-group tipo-procedimiento">
+                <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+                    <mat-select placeholder="Tipo Procedimiento">
+                        <mat-option [value]="1">Adjudicacion Simplificada</mat-option>
+                        <mat-option [value]="2">Concurso Publico</mat-option>
+                        <mat-option [value]="3">Licitacion Publica</mat-option>
+                        <mat-option [value]="4">Concurso de meritos</mat-option>
+                        <mat-option [value]="5">Adjudicacion de menor cuantia</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
 
-        <div class="input-group">
-          <mat-form-field class="fbx-input">
-              <input matInput 
-                  placeholder="Año de Proceso" 
-                  [type]="'text'" required>
-          </mat-form-field>
-      </div>
+            <div class="input-group num-procedimiento">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="N° Procedimiento" [type]="'number'" required>
+                </mat-form-field>
+            </div>
 
-      <div class="input-group">
-        <mat-form-field class="fbx-input">
-            <input matInput 
-                placeholder="Descripcion Proceso" 
-                [type]="'text'" required>
-        </mat-form-field>
-    </div>
+            <div class="input-group año-proceso">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Año de Proceso" [type]="'text'" required>
+                </mat-form-field>
+            </div>
 
-    <div class="input-group">
-      <mat-form-field class="fbx-input">
+            <div class="input-group">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Descripcion Proceso" [type]="'text'" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input-group recepcion">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Fecha Recepción" name="dateBorn" [matDatepicker]="picker" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="#163164"></mat-datepicker>
+                </mat-form-field>
+                <!-- <mat-form-field class="fbx-input ">
           <input matInput 
               placeholder="Fecha Recepción" 
               [type]="'text'" required>
-      </mat-form-field>
-  </div>
+      </mat-form-field> -->
+            </div>
 
-  <div class="input-group">
-    <mat-form-field class="fbx-input">
-        <input matInput 
-            placeholder="Items Fiscalizados" 
-            [type]="'text'" required>
-    </mat-form-field>
-</div>
+            <div class="input-group items-fiscalizados">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Items Fiscalizados" [type]="'text'" required>
+                </mat-form-field>
+            </div>
 
 
-        <div class="input-group input-valid-phone">
-            <button (click)="pvalidatePhone()" class="fbx-button" mat-flat-button color="accent" type="button">Validar</button>
-        </div>
-        <!-- <div class="input-group input-ptermForm">
+            <div class="input-group input-valid-phone">
+                <button (click)="pvalidatePhone()" class="fbx-button" mat-flat-button color="accent"
+                    type="button">Validar</button>
+            </div>
+            <!-- <div class="input-group input-ptermForm">
             <span>Al registrarte aceptas los </span>
             <a href="#">términos de uso</a>
             <span> y nuestra </span>
             <a href="#"> política de privacidad.</a>
         </div> -->
 
-        <div class="btn-enter">
-            <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
-        </div>
-    </form>
-  </div>
+            <div class="btn-enter">
+                <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
 </section>
-

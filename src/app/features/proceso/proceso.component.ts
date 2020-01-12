@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '@core/services/resources/dashboard.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { SvgRegisterService } from '@core/material/svg-register.service';
@@ -73,9 +73,9 @@ listCountry = [];
       pcodeForm: new FormControl('12345', [
         Validators.required
       ]),
-      ptermForm: new FormControl(true, [
-        Validators.requiredTrue
-      ])
+      // ptermForm: new FormControl(true, [
+      //   Validators.requiredTrue
+      // ])
     });
 
     // Inicializamos el valor del pais selecionado
@@ -97,6 +97,11 @@ listCountry = [];
     ]);
     // vuelve a cargar la validacion del campo del formulario
     this.registerPersonForm.controls['pnumberForm'].updateValueAndValidity();
+  }
+
+  onSubmitPerson(miForm : NgForm){
+    miForm = this.registerPersonForm.value
+    console.log('miForm',miForm)
   }
 
 }
