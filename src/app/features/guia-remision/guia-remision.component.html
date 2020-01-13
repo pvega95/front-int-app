@@ -1,1 +1,50 @@
-<p>guia-remision works!</p>
+<h1>Guia de Remision</h1>
+<section class="container-login">
+  <div class="content-center">
+    <form [formGroup]="guiaForm" (ngSubmit)="onSubmitGuia(guiaForm)">
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Descripcion Proceso" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="N° De Carta" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Empresa a consultar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Descripcion de Documento" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Persona a consultar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Cargo" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Direccion" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+</section>

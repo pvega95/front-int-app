@@ -2,41 +2,78 @@
 <section class="container-login">
   <div class="content-center">
     <form [formGroup]="cartaForm" (ngSubmit)="onSubmitCarta(cartaForm)">
-      <div class="input-group contratista">
+      <div class="input-group descripcion">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="N° Registro" [type]="'text'" required>
+          <input matInput placeholder="Descripcion Proceso" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+
+      <div class="input-group item">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Item" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+    
+      <div class="input-group proceso">
         <mat-form-field class="fbx-input">
           <input matInput placeholder="Proceso" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group recepcion">
+  
+      <div class="input-group fecha-fiscalizacion">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker color="#163164"></mat-datepicker>
+          <input matInput placeholder="Fecha Fiscalizacion" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+  
+      <div class="input-group analista">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="N° Hoja Envio" [type]="'text'" required>
+          <input matInput placeholder="N. Analista Responsable" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+  
+      <div class="input-group empresa-consultar">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Doc a remitir" [type]="'text'" required>
+          <input matInput placeholder="Empresa a consultar" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+  
+      <div class="input-group direccion">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Tipo de documento" [type]="'text'" required>
+          <input matInput placeholder="Direccion" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="btn-enter">
-        <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+  
+      <div class="input-group persona-consultar">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Persona a consultar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="input-group cargo-persona">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Cargo de la persona" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="input-group descripcion-doc">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Descripcion del Doc a fiscalizar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="input-group tipo-doc">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Tipo Doc" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="input-group ovservaciones">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Observaciones" [type]="'text'" required>
+        </mat-form-field>
       </div>
     </form>
   </div>
+
 </section>

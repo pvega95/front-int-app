@@ -18,115 +18,12 @@
           margin: 30px auto 0px auto;
           .input-group{
               width: 100%;
-              &.contratista{
-                  width: calc(70%);
-                  margin-right: 5px;
-              }
               // form persona
-              &.select-pdocForm{
-                  width: calc(30% - 5px);
-                //   margin-right: 5px;
-                //   width: calc((100% - 5px)/2);
-              }
-              &.tipo-procedimiento{
-                width: calc((100% - 10px)/3);
-                margin-right: 5px;
-              }
-              &.num-procedimiento{
-                width: calc((100% - 10px)/3);
-                margin-right: 5px;
-                // width: calc((70% - 5px));
-                input[type=number]::-webkit-inner-spin-button, 
-                input[type=number]::-webkit-outer-spin-button { 
-                -webkit-appearance: none; 
-                // margin: 0; 
-                }
-
-                input[type=number] { -moz-appearance:textfield; }
-              }
-              &.año-proceso{
-                width: calc((100% - 10px)/3);
-              }
-              &.recepcion{
-                width: calc((100% - 5px)/2);
-                margin-right: 5px;
-              }
-              &.items-fiscalizados{
-                width: calc((100% - 5px)/2);
+              &.contratista{
+                // width: calc(70%);
+                // margin-right: 5px;
             }
-              &.input-pnumberForm{
-                width: calc((100% - 5px)/2);
-                  input[type=number]::-webkit-inner-spin-button, 
-                  input[type=number]::-webkit-outer-spin-button { 
-                  -webkit-appearance: none; 
-                  margin: 0; 
-                  }
 
-                  input[type=number] { -moz-appearance:textfield; }
-              }
-              &.select-pcountryForm{
-                  margin-right: 5px;
-                  width: 90px;
-                  .mat-select-arrow-wrapper{
-                      display: none !important;
-                  }
-                  .fbx-select{
-                      color: red;
-                      .mat-form-field-wrapper{
-                          color: red;
-                      }
-                      .mat-select-value-text{
-                          padding: 0;
-                          display: flex;
-                          justify-content: center;
-                      }
-                  }
-              }
-              &.surname{
-                  margin-right: 5px;
-                  width: calc((100% - 5px)/2);
-              }
-              &.lastname{
-                  width: calc((100% - 5px)/2);
-              }
-              &.input-pphoneForm{
-                  width: calc(100% - 95px);
-                  input[type=number]::-webkit-inner-spin-button, 
-                  input[type=number]::-webkit-outer-spin-button { 
-                  -webkit-appearance: none; 
-                  margin: 0; 
-                  }
-
-                  input[type=number] { -moz-appearance:textfield; }
-                  
-              }
-              &.input-valid-phone{
-                  display: none;
-              }
-              &.input-pcodeForm{
-                  display: none;
-              }
-              &.input-ptermForm{
-                  margin-bottom: 10px;
-              }
-
-              // form empresa
-              &.input-cnumberForm{
-                  width: 100%;
-              }
-              &.select-ccountryForm{
-                  margin-right: 5px;
-                  width: 90px;
-              }
-              &.input-cphoneForm{
-                  width: calc(100% - 95px);
-              }
-              &.input-ccodeForm{
-                  display: none;
-              }
-              &.input-ctermForm{
-                  margin-bottom: 10px;
-              }
 
               .fbx-select{
                   width: 100%;

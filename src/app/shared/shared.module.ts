@@ -21,14 +21,15 @@ import { LoadingfullComponent } from './loadingfull/loadingfull.component';
 
 /****** Cloudinary ******/
 // import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-4.x';
-// import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-5.x';
-// import * as  Cloudinary from 'cloudinary-core';
+import { CloudinaryModule, CloudinaryConfiguration, provideCloudinary } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 // import { environment } from '@env/environment';
-// import { FileUploadModule } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 import { DashboardComponent } from './dashboard/dashboard.component';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import localeEspE from '@angular/common/locales/es-PE';
+import { environment } from '@env/environment';
 
 registerLocaleData(localeEspE, 'es-PE');
 
@@ -41,8 +42,8 @@ const MODULES = [
   DragDropModule,
   MyMaterialModule,
   NgxFlagIconCssModule,
-  // CloudinaryModule,
-  // FileUploadModule,
+  CloudinaryModule,
+  FileUploadModule,
 ];
 
 const COMPONENTS = [
@@ -52,10 +53,10 @@ const COMPONENTS = [
 @NgModule({
   imports: [...MODULES],
   exports: [...MODULES, ...COMPONENTS],
-  // providers: [
-  //   provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
-  //   { provide: LOCALE_ID, useValue: 'es-PE' }
-  // ],
+  providers: [
+    provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
+    { provide: LOCALE_ID, useValue: 'es-PE' }
+  ],
   declarations: [...COMPONENTS]
 })
 export class SharedModule {}

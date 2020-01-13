@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '@core/services/resources/dashboard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ export class DashboardComponent implements OnInit {
   menuSubBlock = false;
   constructor(
     public _dashboardService: DashboardService,
+    private router : Router
   ) {
     this._dashboardService.setDashboardStatus(true);
    }
@@ -20,6 +22,10 @@ export class DashboardComponent implements OnInit {
   dropdownShow() {
     console.log(this.menuSubBlock);
     this.menuSubBlock = !this.menuSubBlock;
+  }
+
+  logout(){
+    this.router.navigate['/login'];
   }
 
 }

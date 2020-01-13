@@ -69,16 +69,38 @@
                 <button (click)="pvalidatePhone()" class="fbx-button" mat-flat-button color="accent"
                     type="button">Validar</button>
             </div>
-            <!-- <div class="input-group input-ptermForm">
-            <span>Al registrarte aceptas los </span>
-            <a href="#">términos de uso</a>
-            <span> y nuestra </span>
-            <a href="#"> política de privacidad.</a>
-        </div> -->
 
             <div class="btn-enter">
                 <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
             </div>
         </form>
     </div>
+    
 </section>
+<!-- cloudinary -->
+<div class="confirm-copy">
+    <div class="confirm-copy-body">
+        <div class="copy-info-1">
+            <p *ngIf="!existImage" class="text-detail">Adjunta tu <span> Proceso </span> </p>
+            <p *ngIf="existImage" class="text-image">{{ imagen.nombre }}</p>
+        </div>
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+            (fileOver)="fileOverBase($event)" [uploader]="uploader" (click)="onImageClicked()"
+            class="copy-info-2">
+            <button type="button">
+                <img src="assets/img/clip.png" alt="">
+            </button>
+        </div>
+        <input type="file" #fbxFileInput ng2FileSelect [uploader]="uploader"
+        class="fbx-input-file" />
+    </div>
+    <!-- loader img -->
+    <div class="content-loading">
+        <div *ngIf="uploader?.queue?.length == 1" class="loading-image">
+            <div class="loading-empty">
+                <div class="loading-progress" [ngStyle]="{ 'width': uploader.progress + '%' }">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

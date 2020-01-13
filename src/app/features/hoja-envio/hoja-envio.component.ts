@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-hoja-envio',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hoja-envio.component.scss']
 })
 export class HojaEnvioComponent implements OnInit {
-
-  constructor() { }
+  hojaEnvioForm: FormGroup;
+  constructor(
+    public formB: FormBuilder,
+    public snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit() {
+    this.hojaEnvioForm = this.formB.group({
+      pnameForm: new FormControl('', [
+        Validators.required
+      ]),
+    });
   }
 
 }

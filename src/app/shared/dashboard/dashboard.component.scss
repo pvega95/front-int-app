@@ -53,11 +53,13 @@
                                 transition: 0.5s;
                             }
                             &.active{
-                                background-color: $fbx-primary-dark  ;
+                                background-color: white;
+                                // background-color: $fbx-primary-dark  ;
                             }
                             &:hover,
                             &.active{
-                                color: $fbx-secondary;
+                                color: #000000;
+                                // color: $fbx-secondary;
                                 .mat-icon{
                                     margin-right: 7.7px;
                                     fill: $fbx-secondary;

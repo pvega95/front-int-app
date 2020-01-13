@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  url_API:'http://test-enviroment.cfapps.io'
+  url_API:'http://test-enviroment.cfapps.io',
+  cloudinarySettings: {
+    cloud_name: 'dhfnfkwcs',
+    upload_preset: 'ml_default'
+  }
 };
 
 /*
