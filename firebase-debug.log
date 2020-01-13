@@ -1,0 +1,17 @@
+[debug] [2020-01-13T19:23:47.724Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T19:23:47.726Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PERSONAL\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-01-13T19:23:47.726Z] CLI Version:   7.9.0
+[debug] [2020-01-13T19:23:47.726Z] Platform:      win32
+[debug] [2020-01-13T19:23:47.726Z] Node Version:  v12.13.0
+[debug] [2020-01-13T19:23:47.727Z] Time:          Mon Jan 13 2020 14:23:47 GMT-0500 (GMT-05:00)
+[debug] [2020-01-13T19:23:47.727Z] ----------------------------------------------------------------------
+[debug] [2020-01-13T19:23:47.727Z] 
+[debug] [2020-01-13T19:23:47.736Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-13T19:23:47.737Z] > authorizing via signed-in user
+[debug] [2020-01-13T19:23:47.737Z] [iam] checking project intapp-16ecd for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-01-13T19:23:47.739Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-13T19:23:47.739Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-13T19:23:47.893Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-13T19:23:47.900Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/intapp-16ecd:testIamPermissions  
+
