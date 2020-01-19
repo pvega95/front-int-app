@@ -1,0 +1,113 @@
+<div class="btn-custom">
+    <button mat-flat-button color="accent" class="fbx-button animation" routerLink="/main/proceso">Regresar</button>
+</div>
+<section class="container-login">
+    <div class="content-center">
+        <form [formGroup]="registerPersonForm" (ngSubmit)="onSubmitPerson(registerPersonForm)">
+            <div class="input-group contratista">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Contratista" [type]="'text'" formControlName="contratistaForm"
+                        required>
+                </mat-form-field>
+            </div>
+            <div class="input-group select-pdocForm">
+                <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+                    <mat-select placeholder="Tipo Contratista" formControlName="tipoContratistaForm">
+                        <mat-option [value]="1">PERSONA</mat-option>
+                        <mat-option [value]="2">EMPRESA</mat-option>
+                        <mat-option [value]="3">CONSORCIO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="input-group tipo-procedimiento">
+                <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+                    <mat-select placeholder="Tipo Procedimiento" formControlName="tipoProcedimientoForm">
+                        <mat-option [value]="1">Adjudicacion Simplificada</mat-option>
+                        <mat-option [value]="2">Concurso Publico</mat-option>
+                        <mat-option [value]="3">Licitacion Publica</mat-option>
+                        <mat-option [value]="4">Concurso de meritos</mat-option>
+                        <mat-option [value]="5">Adjudicacion de menor cuantia</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="input-group num-procedimiento">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="N° Procedimiento" [type]="'number'"
+                        formControlName="numProcedimientoForm" required>
+                </mat-form-field>
+            </div>
+
+            <div class="input-group año-proceso">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Año de Proceso" [type]="'text'" formControlName="añoProcesoForm"
+                        required>
+                </mat-form-field>
+            </div>
+
+            <div class="input-group">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Descripcion Proceso" [type]="'text'" formControlName="descripcionForm"
+                        required>
+                </mat-form-field>
+            </div>
+
+            <div class="input-group recepcion">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Fecha Recepción" name="dateBorn" [matDatepicker]="picker"
+                        formControlName="fechaRecepcionForm" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker color="#163164"></mat-datepicker>
+                </mat-form-field>
+                <!-- <mat-form-field class="fbx-input ">
+        <input matInput 
+            placeholder="Fecha Recepción" 
+            [type]="'text'" required>
+    </mat-form-field> -->
+            </div>
+
+            <div class="input-group items-fiscalizados">
+                <mat-form-field class="fbx-input">
+                    <input matInput placeholder="Items Fiscalizados" [type]="'text'" formControlName="itemsForm"
+                        required>
+                </mat-form-field>
+            </div>
+
+
+            <!-- <div class="input-group input-valid-phone">
+              <button (click)="pvalidatePhone()" class="fbx-button" mat-flat-button color="accent"
+                  type="button">Validar</button>
+          </div> -->
+
+            <div class="btn-enter">
+                <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<!-- cloudinary -->
+<div class="confirm-copy">
+    <div class="confirm-copy-body">
+        <div class="copy-info-1">
+            <p *ngIf="!existImage" class="text-detail">Adjunta tu <span> Proceso </span> </p>
+            <p *ngIf="existImage" class="text-image">{{ imagen.nombre }}</p>
+        </div>
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+            [uploader]="uploader" (click)="onImageClicked()" class="copy-info-2">
+            <button type="button">
+                <img src="assets/img/clip.png" alt="">
+            </button>
+        </div>
+        <input type="file" #fbxFileInput ng2FileSelect [uploader]="uploader" class="fbx-input-file" />
+    </div>
+    <!-- loader img -->
+    <div class="content-loading">
+        <div *ngIf="uploader?.queue?.length == 1" class="loading-image">
+            <div class="loading-empty">
+                <div class="loading-progress" [ngStyle]="{ 'width': uploader.progress + '%' }">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

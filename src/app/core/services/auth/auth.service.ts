@@ -16,9 +16,10 @@ export class AuthService {
     // private _encrDecrService:EncrDecrService,
   ) { }
 
-  login(username,password): Observable<any>  {
-    const query = `${this.url}/user/validate?username=${username}&password=${password}`;
-    const data = ''
+  login(obj): Observable<any>  {
+    console.log('obj',obj)
+    const query = `${this.url}/api/users/signUp`;
+    const data = obj
     return this._http.post(query, data);
 
     // ASI DEBERIA SER
@@ -26,6 +27,13 @@ export class AuthService {
     //   body: this._encrDecrService.set(obj)
     // });
     // return this._http.post(query, data);
+  }
+
+  signIn(obj): Observable<any>  {
+    console.log('obj',obj)
+    const query = `${this.url}/api/users/signIn`;
+    const data = obj
+    return this._http.post(query, data);
   }
 
 }

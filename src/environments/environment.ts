@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url_API:'https://test-enviroment.cfapps.io',
+  // url_API : 'https://int-app-bn.herokuapp.com',
+  url_API : 'http://localhost:3000',
   cloudinarySettings: {
     cloud_name: 'dhfnfkwcs',
     upload_preset: 'ml_default'

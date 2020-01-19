@@ -42,13 +42,33 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(miForm : NgForm){
     console.log('miForm',miForm.value)
     // this._router.navigate(['/main/proceso']);
-    this._authService.login(miForm.value.emailForm,miForm.value.passForm).pipe(take(1))
+    let data = {
+      email : miForm.value.emailForm,
+      password : miForm.value.passForm
+    }
+    this._authService.signIn(data).pipe(take(1))
       .subscribe(val =>{
         console.log('val',val)
+        this._router.navigate(['/main/proceso']);
       },
       (err:HttpErrorResponse)=>{
         console.log('err',err)
       })
+  }
+
+  signUp(miForm : NgForm){
+      console.log('miForm',miForm.value)   
+      let data = {
+        email : miForm.value.emailForm,
+        password : miForm.value.passForm
+      }
+      this._authService.login(data).pipe(take(1))
+        .subscribe(val =>{
+          console.log('val',val)
+        },
+        (err:HttpErrorResponse)=>{
+          console.log('err',err)
+        })
   }
 
 }

@@ -76,7 +76,7 @@
               <div class="menu-sub" [ngClass]="{'menu-sub-block': menuSubBlock}">
                   <h1>Banco Nacion</h1>
                   
-                  <div [routerLink]="profileUrl" class="sub-menu-item sub-menu-item-1">
+                  <div [routerLink]="'profileUrl'" class="sub-menu-item sub-menu-item-1">
                       <p>
                           <!-- <mat-icon svgIcon="icon-fbx-person" class="mat-icon-rtl-mirror icon-person"></mat-icon> -->
                           Perfil
@@ -88,7 +88,7 @@
                           Ajustes
                       </p>
                   </div>
-                  <div (click)="logout(false)" class="sub-menu-item sub-menu-item-2">
+                  <div (click)="logout()" class="sub-menu-item sub-menu-item-2">
                       <p>
                           <!-- <mat-icon svgIcon="icon-fbx-cerrarsesion" class="mat-icon-rtl-mirror icon-person"></mat-icon> -->
                           Cerrar sesión
