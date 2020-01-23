@@ -32,4 +32,8 @@ export class HttpClienteService {
   patch(url: string, data: any): Observable<any> {
     return this.http.patch(url, data);
   }
+
+  getPDF(url:string): Observable<any> {
+    return this.http.get(`${url}`, { responseType: 'arraybuffer' });
+  }
 }
