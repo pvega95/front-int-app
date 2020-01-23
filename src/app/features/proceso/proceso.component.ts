@@ -48,6 +48,20 @@ export class ProcesoComponent implements OnInit {
       )
   }
 
-
+  generar(){
+    console.log('generate pdf running')
+    this._processService.getPDF().pipe(take(1))
+      .subscribe(
+        val =>{
+          console.log('val',val)
+          var fileURL = URL.createObjectURL(val);
+          window.open(fileURL)
+          
+        },
+        (err : HttpErrorResponse)=>{
+          console.log('err',err)
+        }
+      )
+  }
 
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
 
 //VALIDA QUE SEA UN CORREO SI O SI
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     public formB: FormBuilder,
     private _svgRegisterService: SvgRegisterService,
     private _router : Router,
-    private _authService : AuthService
+    private _authService : AuthService,
+    private _snackBar: MatSnackBar
   ) {
     this._svgRegisterService.init()
    }
@@ -49,26 +51,34 @@ export class LoginComponent implements OnInit {
     this._authService.signIn(data).pipe(take(1))
       .subscribe(val =>{
         console.log('val',val)
+        this.openSnackBar('Bienvenido: ' + val.userInfo.email , 'Gracias 😊')
         this._router.navigate(['/main/proceso']);
       },
       (err:HttpErrorResponse)=>{
         console.log('err',err)
+        this.openSnackBar(err.error,'Intentar de nuevo 🥺')
       })
   }
 
-  signUp(miForm : NgForm){
-      console.log('miForm',miForm.value)   
-      let data = {
-        email : miForm.value.emailForm,
-        password : miForm.value.passForm
-      }
-      this._authService.login(data).pipe(take(1))
-        .subscribe(val =>{
-          console.log('val',val)
-        },
-        (err:HttpErrorResponse)=>{
-          console.log('err',err)
-        })
+  // signUp(miForm : NgForm){
+  //     console.log('miForm',miForm.value)   
+  //     let data = {
+  //       email : miForm.value.emailForm,
+  //       password : miForm.value.passForm
+  //     }
+  //     this._authService.login(data).pipe(take(1))
+  //       .subscribe(val =>{
+  //         console.log('val',val)
+  //       },
+  //       (err:HttpErrorResponse)=>{
+  //         console.log('err',err)
+  //       })
+  // }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
 }

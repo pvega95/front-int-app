@@ -17,6 +17,10 @@ export class SvgRegisterService {
         'icon-fbx-mailinput',
         this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/correoregistro.svg')
       )
+      .addSvgIcon(
+        'icon-fbx-arrow',
+        this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/arrow.svg')
+      )
   }
 
 }

@@ -1,0 +1,65 @@
+<section class="container-login">
+  <div class="container-left">
+    <div class="img-left">
+    </div>
+  </div>
+  <div class="container-right">
+    <div class="content-top">
+      <h1>
+        <a [routerLink]="['/login']">
+          <mat-icon class="mat-icon-rtl-mirror" svgIcon="icon-fbx-arrow"></mat-icon>
+        </a>
+        <span class="text-1">Indica tus datos personales</span>
+      </h1>
+      <h1 class="text-2">
+        Indica tus datos personales
+      </h1>
+    </div>
+    <div class="content-center">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmitLogin(registerForm)">
+        <div class="input-group">
+          <mat-form-field class="fbx-input">
+            <input matInput placeholder="Correo" formControlName="emailForm" name="email"
+              [formControl]="registerForm.controls['emailForm']" [type]="'text'" required>
+            <mat-error *ngIf="registerForm.controls['emailForm'].hasError('pattern')">
+              Por favor, introduce un email válido.
+            </mat-error>
+            <mat-icon matSuffix svgIcon="icon-fbx-mailinput" class="mat-icon-rtl-mirror"></mat-icon>
+            <mat-error *ngIf="registerForm.controls['emailForm'].hasError('required')">
+              El email es
+              <strong>requerido.</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <mat-form-field class="fbx-input">
+            <input 
+            matInput 
+            placeholder="Contraseña" 
+            formControlName="passForm" 
+            name="contraseña"
+            [formControl]="registerForm.controls['passForm']" 
+            [type]="passHide ? 'password' : 'text'"
+            required
+            >
+            <div class="content-icon-pass">
+              <img 
+                  class="icon-pass"
+                  [ngClass]="{'visibility': passHide}"
+                  (click)="passHide = !passHide"
+                  [src]="passHide ? 'assets/img/eye-visibility_off.png' : 'assets/img/eye-visibility.png'"
+                  alt="icono para habilitar contraseña">
+            </div>
+            <mat-error *ngIf="registerForm.controls['passForm'].hasError('required')">
+              Por favor, introduce un email válido.
+            </mat-error>
+            <!-- <mat-icon matSuffix svgIcon="icon-fbx-mailinput" class="mat-icon-rtl-mirror"></mat-icon> -->
+          </mat-form-field>
+        </div>
+        <div class="btn-enter">
+          <button class="fbx-button animation" mat-flat-button color="accent" type="submit">Registrarme</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

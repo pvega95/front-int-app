@@ -27,8 +27,21 @@
       </div>
   
       <div class="input-group analista">
-        <mat-form-field class="fbx-input">
+        <!-- <mat-form-field class="fbx-input">
           <input matInput placeholder="N. Analista Responsable" [type]="'text'" required>
+        </mat-form-field> -->
+        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+          <mat-select placeholder="N. Analista Responsable">
+              <mat-option [value]="1">ALIS LAGUNA</mat-option>
+              <mat-option [value]="2">MARLENE YUPANQUI</mat-option>
+              <mat-option [value]="3">CARLOS PALOMINO</mat-option>
+          </mat-select>
+      </mat-form-field>
+      </div>
+
+      <div class="input-group empresa-consultar">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="N° Carta" [type]="'text'" required>
         </mat-form-field>
       </div>
   
@@ -71,6 +84,44 @@
       <div class="input-group ovservaciones">
         <mat-form-field class="fbx-input">
           <input matInput placeholder="Observaciones" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group ovservaciones">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Documento Respuesta" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group ovservaciones">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Fecha Respuesta" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group ovservaciones">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Doc. de Remision" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group ovservaciones">
+        <!-- <mat-form-field class="fbx-input">
+          <input matInput placeholder="Conclusion" [type]="'text'" required>
+        </mat-form-field> -->
+        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+          <mat-select placeholder="Conclusion">
+              <mat-option [value]="1">POSITIVO</mat-option>
+              <mat-option [value]="2">NEGATIVO</mat-option>
+              <mat-option [value]="3">DEVUELTO</mat-option>
+              <mat-option [value]="4">PLAZO EXTENDIDO</mat-option>
+              <mat-option [value]="5">OTROS</mat-option>
+          </mat-select>
+      </mat-form-field>
+      </div>
+      <div class="input-group ovservaciones">
+        <mat-form-field class="fbx-input">
+          <input matInput placeholder="Dias Pasados" [type]="'text'" required>
         </mat-form-field>
       </div>
     </form>

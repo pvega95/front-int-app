@@ -3,6 +3,7 @@ import { environment } from '@env/environment';
 import { Router } from '@angular/router';
 import { HttpClienteService } from '../http-cliente.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,11 @@ export class ProcesosService {
     return this._http.get(query);
   }
   
+  getPDF() {
+    return this._http.getPDF(`${this.url}/api/process/get-pdf`)
+      .pipe(map(data => { 
+        console.log('databuffer',data)
+        return new Blob([data], { type: 'application/pdf'  }) 
+      }))
+  }
 }
