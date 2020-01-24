@@ -26,7 +26,7 @@ export class GenerateService {
     return this._http.getPDF(`${this.url}/api/generate/get-pdf`)
       .pipe(map(data => { 
         console.log('databuffer',data)
-        return new Blob([data], { type: 'application/pdf'  }) 
+        return new Blob([data], { type: 'application/pdf'  })
       }))
   }
 
