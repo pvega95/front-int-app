@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ModalCartaComponent } from './modal-carta/modal-carta.component';
 
 @Component({
   selector: 'app-carta-fiscalizacion',
@@ -15,7 +16,8 @@ export class CartaFiscalizacionComponent implements OnInit {
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
-    private _cartaService : CartaService
+    private _cartaService : CartaService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -93,6 +95,27 @@ export class CartaFiscalizacionComponent implements OnInit {
           console.log('err',err)
         }
       )
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalCartaComponent, {
+      // width: '250px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result',result);
+      this.setForm(result);
+    });
+  }
+
+  setForm(result){
+    this.cartaForm.controls['descProcForm'].setValue(result.description);
+    this.cartaForm.controls['itemForm'].setValue(result.items);
+    let proceso = result.type +'N°' + result.number + result.year
+    this.cartaForm.controls['procesoForm'].setValue(proceso);
+    this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
     
   }
+
 }
