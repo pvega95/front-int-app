@@ -1,144 +1,62 @@
-<h1>Carta de Fiscalizacion</h1>
-<div class="btn-enter">
-  <button class="fbx-button" mat-flat-button color="accent" (click)="openDialog()">Añadir</button>
-</div>
-<section class="container-login">
-  <div class="content-center">
-    <form [formGroup]="cartaForm" (ngSubmit)="onSubmitCarta(cartaForm)">
-      <div class="input-group descripcion">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="descProcForm" placeholder="Descripcion Proceso" [type]="'text'" required>
-        </mat-form-field>
-      </div>
+<section class="table-material">
 
-      <div class="input-group item">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="itemForm" placeholder="Item" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group proceso">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="procesoForm" placeholder="Proceso" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group fecha-fiscalizacion">
-        <!-- <mat-form-field class="fbx-input">
-          <input matInput formControlName="fechaFiscForm" placeholder="Fecha Fiscalizacion" [type]="'text'" required>
-        </mat-form-field> -->
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Fecha Fiscalizacion" name="dateReception" [matDatepicker]="picker"
-            formControlName="fechaFiscForm" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker color="#163164"></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group analista">
-        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
-          <mat-select formControlName="analistaForm" placeholder="N. Analista Responsable">
-            <mat-option [value]="1">ALIS LAGUNA</mat-option>
-            <mat-option [value]="2">MARLENE YUPANQUI</mat-option>
-            <mat-option [value]="3">CARLOS PALOMINO</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group empresa-consultar">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="cartaForm" placeholder="N° Carta" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group empresa-consultar">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="empresaForm" placeholder="Empresa a consultar" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group direccion">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="direccionForm" placeholder="Direccion" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group persona-consultar">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="personaConsForm" placeholder="Persona a consultar" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group cargo-persona">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="cargoForm" placeholder="Cargo de la persona" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group descripcion-doc">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="docForm" placeholder="Descripcion del Doc a fiscalizar" [type]="'text'"
-            required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group tipo-doc">
-        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
-          <mat-select placeholder="Tipo Documento" formControlName="tipoForm">
-            <mat-option [value]="1">DNI</mat-option>
-            <mat-option [value]="2">PASAPORTE</mat-option>
-            <mat-option [value]="3">OTROS</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group ovservaciones">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="observacionesForm" placeholder="Observaciones" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group ovservaciones">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="docResForm" placeholder="Documento Respuesta" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group ovservaciones">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="fechaResForm" placeholder="Fecha Respuesta" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group ovservaciones">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="docRemisionForm" placeholder="Doc. de Remision" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group ovservaciones">
-        <!-- <mat-form-field class="fbx-input">
-          <input matInput placeholder="Conclusion" [type]="'text'" required>
-        </mat-form-field> -->
-        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
-          <mat-select placeholder="Conclusion" formControlName="conclusionForm">
-            <mat-option [value]="1">POSITIVO</mat-option>
-            <mat-option [value]="2">NEGATIVO</mat-option>
-            <mat-option [value]="3">DEVUELTO</mat-option>
-            <mat-option [value]="4">PLAZO EXTENDIDO</mat-option>
-            <mat-option [value]="5">OTROS</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="input-group ovservaciones">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="diasPasadosForm" placeholder="Dias Pasados" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-      <div class="btn-enter">
-        <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
-      </div>
-    </form>
+  <div class="btn-enter">
+      <button mat-flat-button color="accent" class="fbx-button animation" routerLink="create">Agregar Nuevo</button>
   </div>
 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id. </th>
+          <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripcion Proceso </th>
+          <td mat-cell *matCellDef="let element"> {{element.procesoDepend.description}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="proceso">
+          <th mat-header-cell *matHeaderCellDef> Proceso </th>
+          <td mat-cell *matCellDef="let element"> {{element.procesoDepend.type}} N° {{element.procesoDepend.number}}-{{element.procesoDepend.year}}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha Fiscalizacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaFiscForm | date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="analista">
+      <th mat-header-cell *matHeaderCellDef> Analista Responsable </th>
+      <td mat-cell *matCellDef="let element"> {{element.analistaForm}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="empresa">
+    <th mat-header-cell *matHeaderCellDef> Empresa a consultar </th>
+    <td mat-cell *matCellDef="let element"> {{element.empresaForm}} </td>
+</ng-container>
+
+<ng-container matColumnDef="generar">
+  <th mat-header-cell *matHeaderCellDef> </th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="generate(element)">
+      <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- <div class="btn-enter">
+      <button mat-flat-button color="accent" class="fbx-button animation" (click)="generar()">GENERAR</button>
+  </div> -->
 </section>

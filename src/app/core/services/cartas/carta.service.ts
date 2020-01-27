@@ -3,6 +3,7 @@ import { HttpClienteService } from '../http-cliente.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,18 @@ export class CartaService {
     const data = obj
     return this._http.post(query, data);
   }
+
+  getCart(): Observable<any>{
+    const query = `${this.url}/api/letter-fiscal/getCarta`;
+    return this._http.get(query);
+  }
+
+  getPDF(id:number) {
+    return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf/${id}`)
+      .pipe(map(data => { 
+        console.log('databuffer',data)
+        return new Blob([data], { type: 'application/pdf'  }) 
+      }))
+  }
+
 }

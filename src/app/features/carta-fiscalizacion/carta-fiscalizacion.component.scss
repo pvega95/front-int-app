@@ -1,95 +1,18 @@
 @import '_default-theme.scss';
-.container-login{
-    display: flex;
-    width: 100%;
-    .content-center{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 800px;
-      max-width: 90%;
-      margin: 20px auto;
-      background: white;
-      form{
-          display: flex;
-          flex-wrap: wrap;
-          width: 700px;
-          max-width: 95%;
-          margin: 30px auto 0px auto;
-          .input-group{
-              width: 100%;
-              // form persona
-              &.contratista{
-                // width: calc(70%);
-                // margin-right: 5px;
+.table-material{
+    width: 80%;
+    margin: 30px auto;
+    .btn-enter{
+        margin: 25px 0px;
+        float: right;
+        button{
+            background-color: #d32f2f;
+            font-size: 15px;
+            &:focus{
             }
-
-
-              .fbx-select{
-                  width: 100%;
-              }
-              .fbx-input{
-                  width: 100%;
-              }
-              &.input-ptermForm{
-                  padding: 23.3px 12px;
-                  a{
-                      color: $fbx-secondary;
-                  }
-              }
-              .fbx-checkbox{
-                  .mat-checkbox-label{
-                      white-space: normal;
-                      text-align: justify; 
-                      line-height: 18px;
-                  }
-              }
-          }
-          .btn-enter{
-              width: 100%;
-              margin: 30px 0px;
-              button{
-                  width: 100%;
-                  background-color: #d32f2f;
-                  height: 47px;
-                  font-size: 18px;
-                  &:focus{
-                  }
-              }
-          }
-      }
-      .content-login{
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              max-width: 100%;
-              margin-bottom: 50px;
-              .aux-login{
-                  display: flex;
-                  flex-direction: row;
-                  flex-wrap: wrap;
-                  width: 350px;
-                  max-width: 95%;
-                  p{
-                      font-family: $font-Roboto;
-                      font-weight: 400;
-                      font-size: 14px;
-                      color: $fbx-primary-text;
-                  }
-                  a{
-                      font-family: $font-Roboto;
-                      font-weight: 400;
-                      font-size: 14px;
-                      color: $fbx-secondary;
-                      padding-left: 8px;
-                      &:hover,
-                      &:active{
-                          color: $fbx-secondary-dark;
-                      }
-                  }
-              }
-      }
-      
-  }
+        }
+    }
+    table{
+        width: 100%;
+    }
 }

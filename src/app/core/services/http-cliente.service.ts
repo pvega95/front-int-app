@@ -36,4 +36,5 @@ export class HttpClienteService {
   getPDF(url:string): Observable<any> {
     return this.http.get(`${url}`, { responseType: 'arraybuffer' });
   }
+
 }
