@@ -77,7 +77,7 @@ export class AddComponent implements OnInit {
       diasPasadosForm: new FormControl('', [
         Validators.required
       ]),
-      procesoDepend: new FormControl('5e2485201238f72bf8c0e140', [
+      procesoDepend: new FormControl('', [
         Validators.required
       ]),
     });
@@ -86,7 +86,7 @@ export class AddComponent implements OnInit {
   onSubmitCarta(miForm : NgForm){
     console.log('miForm',miForm.value)
     let data = miForm.value
-    console.log('data a enviar')
+    console.log('data a enviar',data);
     this._cartaService.setCart(data).pipe(take(1))
       .subscribe(
         val=>{
@@ -116,6 +116,7 @@ export class AddComponent implements OnInit {
     let proceso = result.type +'N°' + result.number + result.year
     this.cartaForm.controls['procesoForm'].setValue(proceso);
     this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
+    this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
 }
