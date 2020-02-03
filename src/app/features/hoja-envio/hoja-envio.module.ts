@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { HojaRoutingModule } from './hoja-envio.routing';
 import { HojaEnvioComponent } from './hoja-envio.component';
+import { ModalCartaComponent } from '../carta-fiscalizacion/modal-carta/modal-carta.component';
 
 
 
@@ -12,6 +13,7 @@ import { HojaEnvioComponent } from './hoja-envio.component';
     CommonModule,
     SharedModule,
     HojaRoutingModule
-  ]
+  ],
+  entryComponents: [ModalCartaComponent]
 })
 export class HojaEnvioModule { }

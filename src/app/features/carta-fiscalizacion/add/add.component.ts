@@ -113,7 +113,7 @@ export class AddComponent implements OnInit {
   setForm(result){
     this.cartaForm.controls['descProcForm'].setValue(result.description);
     this.cartaForm.controls['itemForm'].setValue(result.items);
-    let proceso = result.type +'N°' + result.number + result.year
+    let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
     this.cartaForm.controls['procesoForm'].setValue(proceso);
     this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
     this.cartaForm.controls['procesoDepend'].setValue(result._id);

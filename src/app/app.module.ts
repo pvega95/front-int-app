@@ -15,12 +15,14 @@ import { HojaEnvioComponent } from './features/hoja-envio/hoja-envio.component';
 import { GuiaRemisionComponent } from './features/guia-remision/guia-remision.component';
 import { ReporteComponent } from './features/reporte/reporte.component';
 import { RegisterComponent } from './features/register/register.component';
+import { ModelOneComponent } from './features/pdf-model/model-one/model-one.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ModelOneComponent,
     // DashboardComponent,
     // LoadingfullComponent,
   ],

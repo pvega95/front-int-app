@@ -28,13 +28,11 @@ export class ProcesosService {
     return this._http.get(query);
   }
   
-  // getPDF() {
-  //   return this._http.getPDF(`${this.url}/api/process/get-pdf`)
-  //     .pipe(map(data => { 
-  //       console.log('databuffer',data)
-  //       return new Blob([data], { type: 'application/pdf'  }) 
-  //     }))
-  // }
+  getTypeProcedure(): Observable<any>{
+    const query = `${this.url}/api/type-procedure/get`
+    return this._http.get(query);
+  }
+
   getPDF() {
     return this._http.getPDF(`${this.url}/api/process/get-new-pdf`)
       .pipe(map(data => { 

@@ -1,37 +1,48 @@
 <h1>Hoja de envio</h1>
+<div class="btn-enter">
+  <button class="fbx-button" mat-flat-button color="accent" (click)="openDialog()">Añadir</button>
+</div>
 <section class="container-login">
   <div class="content-center">
-    <form [formGroup]="hojaEnvioForm" (ngSubmit)="onSubmitCarta(hojaEnvioForm)">
-      <div class="input-group contratista">
+    <form [formGroup]="hojaEnvioForm" (ngSubmit)="onSubmitHoja(hojaEnvioForm)">
+      <div class="input-group registro">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="N° Registro" [type]="'text'" required>
+          <input matInput formControlName="numRegForm" placeholder="N° Registro" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+      <div class="input-group proceso">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Proceso" [type]="'text'" required>
+          <input matInput formControlName="procesoForm" placeholder="Proceso" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group recepcion">
+      <div class="input-group fecha">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
+          <input matInput formControlName="fechaForm" placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker color="#163164"></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+      <div class="input-group hoja">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="N° Hoja Envio" [type]="'text'" required>
+          <input matInput formControlName="numHojaForm" placeholder="N° Hoja Envio" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+      <div class="input-group doc">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Doc a remitir" [type]="'text'" required>
+          <input matInput formControlName="docRemForm" placeholder="Doc a remitir" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <div class="input-group contratista">
+      <!-- <div class="input-group contratista">
         <mat-form-field class="fbx-input">
-          <input matInput placeholder="Tipo de documento" [type]="'text'" required>
+          <input matInput formControlName="tipDocForm" placeholder="Tipo de documento" [type]="'text'" required>
+        </mat-form-field>
+      </div> -->
+      <div class="input-group tipo-doc">
+        <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+          <mat-select formControlName="tipDocForm" placeholder="Tipo Documento">
+            <mat-option [value]="1">CARGO</mat-option>
+            <mat-option [value]="2">RESPUESTA</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="btn-enter">

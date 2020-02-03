@@ -26,12 +26,13 @@
             <div class="input-group tipo-procedimiento">
                 <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
                     <mat-select placeholder="Tipo Procedimiento" formControlName="tipoProcedimientoForm">
-                        <mat-option [value]="1">Adjudicacion Simplificada</mat-option>
+                        <mat-option [value]="procedure._id" *ngFor="let procedure of procedureList">{{procedure.name}}</mat-option>
+                        <!-- <mat-option [value]="1">Adjudicacion Simplificada</mat-option>
                         <mat-option [value]="2">Concurso Publico</mat-option>
                         <mat-option [value]="3">Licitacion Publica</mat-option>
                         <mat-option [value]="4">Concurso de meritos</mat-option>
                         <mat-option [value]="5">Adjudicacion de menor cuantia</mat-option>
-                        <mat-option [value]="6">Otros</mat-option>
+                        <mat-option [value]="6">Otros</mat-option> -->
                     </mat-select>
                 </mat-form-field>
             </div>

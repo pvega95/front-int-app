@@ -18,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./create-process.component.scss']
 })
 export class CreateProcessComponent implements OnInit {
-
+  procedureList : any;
   registerPersonForm: FormGroup;
   // campo numberForm de los formularios registerPersonForm y registerCompanyForm
   public minLength: object = (new TypeDocument).documents;
@@ -54,6 +54,7 @@ public uploader: FileUploader;
   ) { }
 
   ngOnInit() {
+    this.cargarlistas();
 
     this.registerPersonForm = this.formB.group({
       contratistaForm: new FormControl('', [
@@ -195,7 +196,7 @@ public uploader: FileUploader;
     let data = {
       contract: miForm.value.contratistaForm,
       type_contract: miForm.value.tipoContratistaForm,
-      type: miForm.value.tipoProcedimientoForm,
+      typeProcedure: miForm.value.tipoProcedimientoForm,
       number: miForm.value.numProcedimientoForm,
       year: miForm.value.añoProcesoForm,
       description: miForm.value.descripcionForm,
@@ -242,6 +243,19 @@ public uploader: FileUploader;
       tokenDeleteCloud: tokenDelete
     };
     console.log("DATA: ", data);
+  }
+
+  cargarlistas(){
+    this._processService.getTypeProcedure().pipe(take(1))
+      .subscribe(
+        val=>{
+          this.procedureList = val;
+          console.log('procedureList',this.procedureList);
+        },
+        (err:HttpErrorResponse)=>{
+          console.log('err',err)
+        }
+      )
   }
 
 }
