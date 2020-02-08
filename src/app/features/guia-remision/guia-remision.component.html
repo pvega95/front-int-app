@@ -1,50 +1,69 @@
 <h1>Guia de Remision</h1>
-<section class="container-login">
-  <div class="content-center">
-    <form [formGroup]="guiaForm" (ngSubmit)="onSubmitGuia(guiaForm)">
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Descripcion Proceso" [type]="'text'" required>
-        </mat-form-field>
-      </div>
+<section class="table-material">
 
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="N° De Carta" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Empresa a consultar" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Descripcion de Documento" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Persona a consultar" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Cargo" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-      <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput placeholder="Direccion" [type]="'text'" required>
-        </mat-form-field>
-      </div>
-
-    </form>
+  <div class="btn-enter">
+      <button mat-flat-button color="accent" class="fbx-button animation" routerLink="nueva-guia">Agregar Nuevo</button>
   </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id. </th>
+          <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="proceso">
+          <th mat-header-cell *matHeaderCellDef> Proceso </th>
+          <td mat-cell *matCellDef="let element"> {{element.process}}  </td>
+      </ng-container>
+
+      <ng-container matColumnDef="num-carta">
+        <th mat-header-cell *matHeaderCellDef> N° de carta </th>
+        <td mat-cell *matCellDef="let element"> {{element.numCarta  }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="empresa">
+      <th mat-header-cell *matHeaderCellDef> Empresa a consultar </th>
+      <td mat-cell *matCellDef="let element"> {{element.toConsult}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="documento">
+    <th mat-header-cell *matHeaderCellDef> Descripcion de documento </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+</ng-container>
+
+<ng-container matColumnDef="persona">
+  <th mat-header-cell *matHeaderCellDef> Persona a consultar </th>
+  <td mat-cell *matCellDef="let element"> {{element.person}} </td>
+</ng-container>
+
+<ng-container matColumnDef="cargo">
+  <th mat-header-cell *matHeaderCellDef> Cargo </th>
+  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+</ng-container>
+
+<ng-container matColumnDef="direccion">
+  <th mat-header-cell *matHeaderCellDef> Direccion </th>
+  <td mat-cell *matCellDef="let element"> {{element.adress}} </td>
+</ng-container>
+
+<ng-container matColumnDef="generar">
+  <th mat-header-cell *matHeaderCellDef> </th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="generate(element)">
+      <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+  </td>
+</ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
 </section>

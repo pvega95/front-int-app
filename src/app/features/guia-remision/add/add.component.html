@@ -1,0 +1,55 @@
+<h1> Agregar Guia de Remision</h1>
+<div class="btn-enter">
+  <button class="fbx-button" mat-flat-button color="accent" (click)="goback()">Retroceder</button>
+</div>
+<section class="container-login">
+  <div class="content-center">
+    <form [formGroup]="guiaForm" (ngSubmit)="onSubmitGuia(guiaForm)">
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="descProForm" placeholder="Descripcion Proceso" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="numCartaForm" placeholder="N° De Carta" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="empConsForm" placeholder="Empresa a consultar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="descDocForm" placeholder="Descripcion de Documento" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="personaForm" placeholder="Persona a consultar" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="cargoForm" placeholder="Cargo" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+
+      <div class="input-group contratista">
+        <mat-form-field class="fbx-input">
+          <input matInput formControlName="direccionForm" placeholder="Direccion" [type]="'text'" required>
+        </mat-form-field>
+      </div>
+      <div class="btn-enter">
+        <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+      </div>
+    </form>
+  </div>
+
+</section>
