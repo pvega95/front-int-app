@@ -14,15 +14,35 @@
       <p>San Borja, 09 de octubre del 2019</p>
       <p>Carta Nº 1 - 2019 - BN / 2604</p>
       <p>Señor(a):</p>
-      <mat-form-field class="example-full-width">
-        <mat-label>Persona Consultar</mat-label>
-        <input matInput placeholder="Persona Consultar" formControlName="personaConsForm">
-      </mat-form-field>
-      <p>ELAR FREDDY CUEVA SALAZAR </p>
-      <p>Subdirector de Registros Administrativos y de Formacion Profesional y Capacitacion Laboral
+      <div class="persona">
+        <mat-form-field class="example-full-width ">
+          <mat-label>Persona Consultar</mat-label>
+          <input matInput  formControlName="personaConsForm">
+        </mat-form-field>
+      </div>
+      <div class="cargo">
+        <mat-form-field class="example-full-width ">
+          <mat-label>Cargo</mat-label>
+          <input matInput formControlName="cargoForm">
+        </mat-form-field>
+      </div>
+      <!-- <p>ELAR FREDDY CUEVA SALAZAR </p> -->
+      <!-- <p>Subdirector de Registros Administrativos y de Formacion Profesional y Capacitacion Laboral
         <br> MINISTERIO DE TRABAJO Y PROMOCION DEL EMPLEO
-      </p>
-      <p> Av. Salaverry N° 655 Jesus Maria</p>
+      </p> -->
+      <div class="empresa">
+        <mat-form-field class="example-full-width">
+          <mat-label>Empresa consultar</mat-label>
+          <input matInput formControlName="empresaForm">
+        </mat-form-field>
+      </div>
+      <div class="direccion">
+        <mat-form-field class="example-full-width">
+          <mat-label>Direccion</mat-label>
+          <input matInput formControlName="direccionForm">
+        </mat-form-field>
+      </div>
+      <!-- <p> Av. Salaverry N° 655 Jesus Maria</p> -->
     </section>
     <section class="section-two">
       <p>Presente.-</p>
@@ -39,8 +59,24 @@
             <th>Descripcion</th>
           </tr>
           <tr>
-            <td>ACREDITACION</td>
-            <td>ACREDITACION  REMYPE </td>
+            <td>
+              <div class="tipo-doc">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Tipo Doc</mat-label>
+                  <input matInput formControlName="tipoForm">
+                </mat-form-field>
+              </div>
+              <!-- ACREDITACION -->
+            </td>
+            <td>
+              <div class="desc-doc">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Desc Docucmento</mat-label>
+                  <input matInput formControlName="docForm">
+                </mat-form-field>
+              </div>
+              <!-- ACREDITACION  REMYPE  -->
+            </td>
           </tr>
 
         </table>
@@ -48,9 +84,19 @@
     </section>
     <section class="section-three">
       <p>Al respecto, la empresa DICOMTECH S.A.C. ha presentado copia de dichos documentos en el
-        procedimiento de selección Adjudicación Simplificada <span>N° 34 -2019 -BN “ADQUISICION DE SOFTWARE BASADO EN PLATAFORMA
+        procedimiento de selección Adjudicación Simplificada <span>
+          <!-- N° 34 -2019 -BN “ADQUISICION DE SOFTWARE BASADO EN PLATAFORMA
           WEB PARA AUDITORIA DE DIRECTORIO
-          ACTIVO Ms EXCHANGE Y SERVIDORES WINDOWS” 1 . </span> </p>
+          ACTIVO Ms EXCHANGE Y SERVIDORES WINDOWS” 1 .  -->
+          <div  class="desc-proceso">
+            <mat-form-field class="example-full-width">
+              <mat-label>Descripcion Proceso</mat-label>
+              <textarea matInput formControlName="descriptionForm"></textarea>
+            </mat-form-field>
+          </div>
+          
+
+        </span> </p>
     </section>
     <section class="section-four">
       <p>En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento
@@ -72,9 +118,17 @@
       </p>
       <p>E-mail: mramirezu@bn.com.pe</p>
       <p> mleon@bn.com.pe</p>
+      <p>rbiasca@bn.com.pe</p>
     </footer>
   </div>
-
+  <div class="pdf-button">
+    <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="goback()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="generate()">
+      <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+  </div>
 
 </section>
 

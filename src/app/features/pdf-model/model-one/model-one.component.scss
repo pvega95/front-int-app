@@ -7,15 +7,19 @@
 // }
 
 .container {
-  width: 60%;
-  margin: auto;
-
+  // width: 60%;
+  // margin: auto;
+  display: flex;
+  justify-content: space-around;
   .pdf-body {
     padding: 15px 80px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: -2px 0px 82px #00000029;
-
+    width: 60%;
     /* Style the header */
+    .mat-form-field{
+      width: 100%;
+    }
     header {
       // background-color: #666;
       margin-bottom: 30px;
@@ -53,6 +57,15 @@
         p:nth-child(4) {
           font-weight: bolder;
         }
+        .mat-form-field{
+          // display: flex;
+          &.persona{
+            width: 50%;
+          }
+          .mat-form-field-wrapper{
+            width: 100%;
+          }
+        }
       }
 
       &.section-two {
@@ -78,7 +91,6 @@
       &.section-three {
         p:nth-child(1) {
           margin-bottom: 10px;
-
           span {
             font-weight: bolder;
           }

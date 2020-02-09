@@ -26,6 +26,13 @@ export class CartaService {
     return this._http.post(query, data);
   }
 
+  setCartTwo(obj): Observable<any>  {
+    console.log('obj',obj)
+    const query = `${this.url}/api/letter-fiscal/createtwo`;
+    const data = obj
+    return this._http.post(query, data);
+  }
+
   getCart(): Observable<any>{
     const query = `${this.url}/api/letter-fiscal/getCarta`;
     return this._http.get(query);
@@ -38,6 +45,15 @@ export class CartaService {
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }
+
+  getPDFTwo(id:number) {
+    return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf-two/${id}`)
+      .pipe(map(data => { 
+        console.log('databuffer',data)
+        return new Blob([data], { type: 'application/pdf'  }) 
+      }))
+  }
+
 
   changeMessage(message: any) {
     this.messageSource.next(message)

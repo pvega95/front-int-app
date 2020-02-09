@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Location } from '@angular/common';
+import { take } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-model-one',
@@ -17,6 +20,7 @@ export class ModelOneComponent implements OnInit {
     private route: ActivatedRoute,
     private _cartaService : CartaService,
     public formB: FormBuilder,
+    private _location:Location,
   ) { }
 
   ngOnInit() {
@@ -78,18 +82,62 @@ export class ModelOneComponent implements OnInit {
       procesoDepend: new FormControl('', [
         Validators.required
       ]),
+      descriptionForm : new FormControl('', [
+        Validators.required
+      ])
     });
 
     this.messageService = this._cartaService.currentMessage.subscribe(message => 
       {
         this.message = message;
         this.setForm(this.message);
-        console.log('this.message',this.message)
+        // console.log('this.message',this.message)
       })
   }
   setForm(data){
     console.log('data',data)
     this.modelOneForm.controls['personaConsForm'].setValue(data.personaConsForm);
+    this.modelOneForm.controls['cargoForm'].setValue(data.cargoForm);
+    this.modelOneForm.controls['empresaForm'].setValue(data.empresaForm);
+    this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
+    this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
+    this.modelOneForm.controls['docForm'].setValue(data.docForm);
+    this.modelOneForm.controls['descriptionForm'].setValue(data.procesoDepend.description);  
+  }
+
+  goback(){
+    this._location.back();
+  }
+
+  generate(){
+    // console.log('modelOneForm',this.modelOneForm.value)
+    let data = this.modelOneForm.value
+    console.log('data a enviar',data);
+    this._cartaService.setCartTwo(data).pipe(take(1))
+      .subscribe(
+        val=>{
+          console.log('val',val)
+          this.generatePDF(val.postId)
+        },
+        (err : HttpErrorResponse)=>{
+          console.log('err',err)
+        }
+      )
+  }
+
+  generatePDF(id){
+    console.log('generando pdf con ID',id)
+    this._cartaService.getPDFTwo(id).pipe(take(1))
+      .subscribe(
+        val=>{
+          console.log('val',val)
+          var fileURL = URL.createObjectURL(val);
+          window.open(fileURL)
+        },
+        (err : HttpErrorResponse)=>{
+          console.log('err',err)
+        }
+      )
   }
 
   ngOnDestroy(): void {
@@ -97,5 +145,6 @@ export class ModelOneComponent implements OnInit {
     //Add 'implements OnDestroy' to the class.
     this.messageService.unsubscribe();
   }
+  
 
 }
