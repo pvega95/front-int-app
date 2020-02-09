@@ -1,5 +1,5 @@
 <section class="container">
-  <div class="pdf-body">
+  <div class="pdf-body" [formGroup]="modelOneForm">
     <header>
       <div class="header-one">
         <img src="assets/img/logo-banco-nacion.png" alt="Logo de BN">
@@ -14,6 +14,10 @@
       <p>San Borja, 09 de octubre del 2019</p>
       <p>Carta Nº 1 - 2019 - BN / 2604</p>
       <p>Señor(a):</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Persona Consultar</mat-label>
+        <input matInput placeholder="Persona Consultar" formControlName="personaConsForm">
+      </mat-form-field>
       <p>ELAR FREDDY CUEVA SALAZAR </p>
       <p>Subdirector de Registros Administrativos y de Formacion Profesional y Capacitacion Laboral
         <br> MINISTERIO DE TRABAJO Y PROMOCION DEL EMPLEO

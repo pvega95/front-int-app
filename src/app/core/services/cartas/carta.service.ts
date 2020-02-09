@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClienteService } from '../http-cliente.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class CartaService {
   private url = environment.url_API;
+
+  private messageSource = new BehaviorSubject({});
+  currentMessage = this.messageSource.asObservable();
   
   constructor(
     public router: Router,
@@ -34,6 +37,10 @@ export class CartaService {
         console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
+  }
+
+  changeMessage(message: any) {
+    this.messageSource.next(message)
   }
 
 }
