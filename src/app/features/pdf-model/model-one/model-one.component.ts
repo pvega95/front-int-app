@@ -145,6 +145,5 @@ export class ModelOneComponent implements OnInit {
     //Add 'implements OnDestroy' to the class.
     this.messageService.unsubscribe();
   }
-  
 
 }
