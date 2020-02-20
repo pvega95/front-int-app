@@ -16,6 +16,7 @@ import { GuiaRemisionComponent } from './features/guia-remision/guia-remision.co
 import { ReporteComponent } from './features/reporte/reporte.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ModelOneComponent } from './features/pdf-model/model-one/model-one.component';
+import { ModelTwoComponent } from './features/pdf-model/model-two/model-two.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ModelOneComponent } from './features/pdf-model/model-one/model-one.comp
     LoginComponent,
     RegisterComponent,
     ModelOneComponent,
+    ModelTwoComponent,
     // DashboardComponent,
     // LoadingfullComponent,
   ],

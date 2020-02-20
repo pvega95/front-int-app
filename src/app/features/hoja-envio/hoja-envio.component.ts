@@ -5,6 +5,7 @@ import { DashboardService } from '@core/services/resources/dashboard.service';
 import { HojaEnvioService } from '@core/services/hoja-envio/hoja-envio.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hoja-envio',
@@ -19,7 +20,8 @@ export class HojaEnvioComponent implements OnInit {
     public _dashboardService: DashboardService,
     public snackBar: MatSnackBar,
     private _hojaEnvioService : HojaEnvioService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -35,8 +37,9 @@ export class HojaEnvioComponent implements OnInit {
       )
   }
 
-  generate(){
-    
+  generate(element){
+    console.log('element',element);
+    this.router.navigate(['model-two']);
   }
 
 
