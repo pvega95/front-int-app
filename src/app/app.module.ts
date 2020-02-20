@@ -17,6 +17,7 @@ import { ReporteComponent } from './features/reporte/reporte.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ModelOneComponent } from './features/pdf-model/model-one/model-one.component';
 import { ModelTwoComponent } from './features/pdf-model/model-two/model-two.component';
+import { ModelThreeComponent } from './features/pdf-model/model-three/model-three.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModelTwoComponent } from './features/pdf-model/model-two/model-two.comp
     RegisterComponent,
     ModelOneComponent,
     ModelTwoComponent,
+    ModelThreeComponent,
     // DashboardComponent,
     // LoadingfullComponent,
   ],
