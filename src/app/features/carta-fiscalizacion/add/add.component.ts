@@ -5,6 +5,7 @@ import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -18,7 +19,8 @@ export class AddComponent implements OnInit {
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
     private _cartaService : CartaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -91,6 +93,7 @@ export class AddComponent implements OnInit {
       .subscribe(
         val=>{
           console.log('val',val)
+          this.router.navigate(['/main/carta-fiscalizacion']);
         },
         (err : HttpErrorResponse)=>{
           console.log('err',err)

@@ -83,7 +83,7 @@ export class AddComponent implements OnInit {
       .subscribe(
         val=>{
           console.log('val',val)
-          this.router.navigate(['/main/hoja-envio'])
+          this.router.navigate(['/main/hoja-envio']) 
         },
         (err:HttpErrorResponse)=>{
           console.log('err',err)

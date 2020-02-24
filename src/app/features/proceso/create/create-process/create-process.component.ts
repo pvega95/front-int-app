@@ -50,7 +50,7 @@ public uploader: FileUploader;
     private _svgRegisterService:SvgRegisterService,
     private cloudinary: Cloudinary,
     private renderer: Renderer,
-    private _processService : ProcesosService
+    private _processService : ProcesosService,
   ) { }
 
   ngOnInit() {
@@ -204,9 +204,11 @@ public uploader: FileUploader;
       items: miForm.value.itemsForm
   }
   console.log('data a enviar',data)
+  
     this._processService.setProcess(data).pipe(take(1))
       .subscribe(res=>{
         console.log('res',res)
+        this.router.navigate(['/main/proceso']);
       },(err : HttpErrorResponse)=>{
         console.log('err',err)
       })
