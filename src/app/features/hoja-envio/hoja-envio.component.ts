@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class HojaEnvioComponent implements OnInit {
   
-  displayedColumns: string[] = ['id' , 'proceso','fecha','num-hoja','documento','tipo-documento','num-carta','generar'];
+  displayedColumns: string[] = ['id' , 'proceso','fecha','num-hoja','documento','tipo-documento','generar'];
   dataSource = new MatTableDataSource;
   constructor(
     public _dashboardService: DashboardService,
