@@ -4,6 +4,7 @@ import { MatSnackBar, MatTableDataSource } from '@angular/material';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-guia-remision',
@@ -15,7 +16,8 @@ export class GuiaRemisionComponent implements OnInit {
   displayedColumns: string[] = ['id' , 'proceso','num-carta','empresa','documento','persona','cargo','direccion','generar'];
   dataSource = new MatTableDataSource;
   constructor(
-    private _remisionService : GuiaRemisionService
+    private _remisionService : GuiaRemisionService,
+    private router : Router
   ) { }
 
   ngOnInit() {
@@ -31,8 +33,9 @@ export class GuiaRemisionComponent implements OnInit {
     )
   }
 
-  generate(){
-    
+  generate(element){
+    console.log('element',element);
+    this.router.navigate(['model-three']);
   }
 
 }

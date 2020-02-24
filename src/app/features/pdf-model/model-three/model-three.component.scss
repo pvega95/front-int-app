@@ -1,0 +1,148 @@
+// * {
+//   box-sizing: border-box;
+// }
+
+// body {
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+
+.container {
+  // width: 60%;
+  // margin: auto;
+  display: flex;
+  justify-content: space-around;
+  .pdf-body {
+    padding: 15px 80px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: -2px 0px 82px #00000029;
+    width: 60%;
+    height: 100vh;
+    /* Style the header */
+    .mat-form-field{
+      width: 100%;
+    }
+    header {
+      // background-color: #666;
+      margin-bottom: 30px;
+      text-align: center;
+      .header-one {
+        display: flex;
+        justify-content: space-between;
+        img {
+          margin: 15px 0px;
+        }
+        p {
+          font-size: 10px;
+          align-self: flex-end;
+          font-style: oblique;
+        }
+      }
+      .sub-header {
+        font-size: 10px;
+        width: 70%;
+        margin: auto;
+        color: #808080;
+      }
+    }
+
+    section {
+      &.section-one {
+        h1{
+          text-align: center;
+          text-decoration: underline;
+        }
+
+      }
+
+      &.section-two {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+          .section-two-1{
+            
+          }
+          .section-two-2{
+
+          }
+      }
+
+      &.section-three {
+       
+      }
+
+      &.section-four {
+        text-align: end;
+        margin-top: 80px;
+      }
+
+      &.section-five {
+        
+      }
+
+      .table-container {
+        width: 100%;
+        margin: 20px 0px;
+
+        table {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    nav {
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      background: #ccc;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    article {
+      -webkit-flex: 3;
+      -ms-flex: 3;
+      flex: 3;
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+
+    footer {
+      // background-color: #777;
+      padding: 10px;
+      text-align: end;
+
+      p {
+        font-style: oblique;
+        color: #808080;
+        font-size: 10px;
+      }
+
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+      tr:first-child{
+        background: #BFBFBF;
+      }
+    }
+
+    /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+    @media (max-width: 600px) {
+      section {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+  }
+
+
+}

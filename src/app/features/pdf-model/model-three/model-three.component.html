@@ -1,1 +1,91 @@
-<p>model-three works!</p>
+
+<section class="container">
+  <div class="pdf-body" [formGroup]="modelOneForm">
+    <header>
+      <div class="header-one">
+        <img src="assets/img/logo-banco-nacion.png" alt="Logo de BN">
+        <p>Gerencia de Logistica</p>
+      </div>
+      <hr>
+      <p class="sub-header">“Decenio de la Igualdad de Oportunidades para Mujeres y Hombres.”
+        “Año de la Lucha contra la Corrupción e Impunidad.”
+      </p>
+    </header>
+    <section class="section-one">
+      <h1>GUIA DE REMISION</h1>
+     
+    </section>
+    <section class="section-two">
+      <div class="section-two-1">
+        <p>Área: <span>Logística</span></p>
+        <p>Remitente: <span>Sección Programación y Evaluación</span></p>
+        <p>Sr: <span>Marco León Aranguren</span></p>
+      </div>
+      <div class="section-two-2">
+        <p>Lugar y fecha: <span>San Borja,  21 de febrero del 2020</span></p>
+        <p>Agencia de Transporte: <span></span></p>
+        <p>Guía N°: <span></span></p>
+      </div>
+
+      
+    </section>
+    <section class="section-three">
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>CANTIDAD</th>
+            <th>DETALLE</th>
+          </tr>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              CARTA N° 284-2019-BN/2604
+              CONTRATO DE CONSORCIO FALCON, DALY & OTERO - ESTUDIO RODRIGUEZ ANGOBALDO S.A.C.
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <p>Atención: MADINA RAGGIO FERNANDO MARIO  </p>
+              <p>Notario -  NOTARIA MEDINA RAGGIO</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              
+            </td>
+            <td>
+              <p>Dirección:   Calle Chinchon N° 812 San Isidro   </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+     
+    </section>
+    <section class="section-four">
+      <p>.............................................</p>
+    </section>
+
+  </div>
+  <div class="pdf-button">
+    <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="goback()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="Example icon-button with a heart icon" (click)="generate()">
+      <mat-icon>picture_as_pdf</mat-icon>
+    </button>
+  </div>
+
+</section>
+
+
