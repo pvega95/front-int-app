@@ -41,8 +41,20 @@
               1
             </td>
             <td>
-              CARTA N° 284-2019-BN/2604
-              CONTRATO DE CONSORCIO FALCON, DALY & OTERO - ESTUDIO RODRIGUEZ ANGOBALDO S.A.C.
+              <!-- CARTA N° 284-2019-BN/2604
+              CONTRATO DE CONSORCIO FALCON, DALY & OTERO - ESTUDIO RODRIGUEZ ANGOBALDO S.A.C. -->
+              <div class="carta">
+                <mat-form-field class="example-full-width ">
+                  <mat-label>Carta</mat-label>
+                  <input matInput  formControlName="cartaForm">
+                </mat-form-field>
+              </div>
+              <div class="contrato">
+                <mat-form-field class="example-full-width ">
+                  <mat-label>Posición</mat-label>
+                  <input matInput formControlName="contratoForm">
+                </mat-form-field>
+              </div>
             </td>
           </tr>
           <tr>
@@ -56,8 +68,29 @@
               
             </td>
             <td>
-              <p>Atención: MADINA RAGGIO FERNANDO MARIO  </p>
-              <p>Notario -  NOTARIA MEDINA RAGGIO</p>
+              <p>Atención: MADINA RAGGIO FERNANDO MARIO
+                <span>
+                  <mat-form-field class="example-full-width ">
+                    <mat-label>Empleado</mat-label>
+                    <input matInput formControlName="empleadoForm">
+                  </mat-form-field>
+                </span>
+              </p>
+              <p>Notario - 
+                NOTARIA MEDINA RAGGIO
+                <span>
+                  <mat-form-field class="example-full-width ">
+                    <mat-label>Cargo</mat-label>
+                    <input matInput formControlName="cargoForm2">
+                  </mat-form-field>
+                </span>
+              </p>
+              <!-- <div class="cargo">
+                <mat-form-field class="example-full-width ">
+                  <mat-label>Cargo</mat-label>
+                  <input matInput formControlName="cargoForm2">
+                </mat-form-field>
+              </div> -->
             </td>
           </tr>
           <tr>
@@ -65,7 +98,14 @@
               
             </td>
             <td>
-              <p>Dirección:   Calle Chinchon N° 812 San Isidro   </p>
+              <p>Dirección:
+                <span>
+                  <mat-form-field class="example-full-width ">
+                    <mat-label>Cargo</mat-label>
+                    <input matInput formControlName="direccionForm">
+                  </mat-form-field>
+                </span>
+              </p>
             </td>
           </tr>
         </table>

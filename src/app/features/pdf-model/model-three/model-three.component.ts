@@ -16,18 +16,37 @@ export class ModelThreeComponent implements OnInit {
 
   ngOnInit() {
     this.modelOneForm = this.formB.group({
-      descProcForm: new FormControl('', [
+      // descProcForm: new FormControl('', [
+      //   Validators.required
+      // ]),
+      // itemForm: new FormControl('', [
+      //   Validators.required
+      // ]),
+
+
+      cartaForm: new FormControl('', [
         Validators.required
       ]),
-      itemForm: new FormControl('', [
+      contratoForm: new FormControl('', [
         Validators.required
       ]),
-      procesoForm: new FormControl('', [
+      empleadoForm: new FormControl('', [
         Validators.required
       ]),
-      fechaFiscForm: new FormControl(new Date(), [
+      cargoForm2: new FormControl('', [
         Validators.required
-      ])
+      ]),
+      direccionForm: new FormControl('', [
+        Validators.required
+      ]),
+
+
+      // procesoForm: new FormControl('', [
+      //   Validators.required
+      // ]),
+      // fechaFiscForm: new FormControl(new Date(), [
+      //   Validators.required
+      // ]),
     });
   }
 
