@@ -79,7 +79,7 @@ export class ModelTwoComponent implements OnInit {
     });
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 

@@ -108,8 +108,11 @@ export class AddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result',result);
-      this.setForm(result);
+      if (result){
+        console.log('result',result);
+        this.setForm(result);
+      }
+
     });
   }
 

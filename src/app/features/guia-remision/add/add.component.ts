@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ModalGuiaComponent } from '../modal-guia/modal-guia.component';
 
 @Component({
   selector: 'app-add',
@@ -19,7 +20,8 @@ export class AddComponent implements OnInit {
     public snackBar: MatSnackBar,
     private _location:Location,
     private _remisionService : GuiaRemisionService,
-    private router : Router
+    private router : Router,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -46,6 +48,36 @@ export class AddComponent implements OnInit {
         Validators.required
       ])
     });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalGuiaComponent, {
+      // width: '250px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        console.log('result',result);
+        this.setForm(result);
+      }
+    });
+  }
+
+  setForm(result){
+    this.guiaForm.controls['descProForm'].setValue(result.descProcForm);
+    this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
+    this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
+    this.guiaForm.controls['descDocForm'].setValue(result.docForm);
+    this.guiaForm.controls['personaForm'].setValue(result.personaConsForm);
+    this.guiaForm.controls['cargoForm'].setValue(result.cargoForm);
+    this.guiaForm.controls['direccionForm'].setValue(result.direccionForm);
+    // this.cartaForm.controls['descProcForm'].setValue(result.description);
+    // this.cartaForm.controls['itemForm'].setValue(result.items);
+    // let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
+    // this.cartaForm.controls['procesoForm'].setValue(proceso);
+    // this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
+    // this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
   onSubmitGuia(miForm : NgForm){

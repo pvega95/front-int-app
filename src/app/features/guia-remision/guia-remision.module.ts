@@ -4,6 +4,7 @@ import { SharedModule } from '@shared/shared.module';
 import { GuiaRemisionComponent } from './guia-remision.component';
 import { GuiaRoutingModule } from './guia-remision.routing';
 import { AddComponent } from './add/add.component';
+import { ModalGuiaComponent } from './modal-guia/modal-guia.component';
 
 
 
@@ -13,6 +14,7 @@ import { AddComponent } from './add/add.component';
     CommonModule,
     SharedModule,
     GuiaRoutingModule
-  ]
+  ],
+  entryComponents: [ModalGuiaComponent]
 })
 export class GuiaRemisionModule { }

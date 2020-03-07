@@ -31,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import localeEspE from '@angular/common/locales/es-PE';
 import { environment } from '@env/environment';
 import { ModalCartaComponent } from '../features/carta-fiscalizacion/modal-carta/modal-carta.component';
+import { ModalGuiaComponent } from '../features/guia-remision/modal-guia/modal-guia.component';
 
 registerLocaleData(localeEspE, 'es-PE');
 
@@ -49,7 +50,8 @@ const MODULES = [
 
 const COMPONENTS = [
   LoadingfullComponent,
-  ModalCartaComponent
+  ModalCartaComponent,
+  ModalGuiaComponent
 ];
 
 @NgModule({
