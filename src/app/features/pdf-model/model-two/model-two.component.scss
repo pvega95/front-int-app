@@ -16,7 +16,8 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: -2px 0px 82px #00000029;
     width: 60%;
-    height: 100vh;
+    // height: 100vh;
+    min-height: 100vh;
     /* Style the header */
     .mat-form-field{
       width: 100%;

@@ -21,6 +21,7 @@ export class HojaEnvioComponent implements OnInit {
     public snackBar: MatSnackBar,
     private _hojaEnvioService : HojaEnvioService,
     public dialog: MatDialog,
+    // private _cartaService : CartaService,
     private router : Router
   ) { }
 
@@ -39,7 +40,12 @@ export class HojaEnvioComponent implements OnInit {
 
   generate(element){
     console.log('element',element);
+    this.newMessage(element);
     this.router.navigate(['model-two']);
+  }
+
+  newMessage(e) {
+    this._hojaEnvioService.changeMessage(e)
   }
 
 

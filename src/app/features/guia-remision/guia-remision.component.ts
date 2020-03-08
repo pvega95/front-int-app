@@ -35,7 +35,12 @@ export class GuiaRemisionComponent implements OnInit {
 
   generate(element){
     console.log('element',element);
+    this.newMessage(element);
     this.router.navigate(['model-three']);
+  }
+
+  newMessage(e) {
+    this._remisionService.changeMessage(e)
   }
 
 }

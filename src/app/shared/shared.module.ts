@@ -1,5 +1,5 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData, DatePipe } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,7 +59,8 @@ const COMPONENTS = [
   exports: [...MODULES, ...COMPONENTS],
   providers: [
     provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
-    { provide: LOCALE_ID, useValue: 'es-PE' }
+    { provide: LOCALE_ID, useValue: 'es-PE' },
+    DatePipe
   ],
   declarations: [...COMPONENTS]
 })
