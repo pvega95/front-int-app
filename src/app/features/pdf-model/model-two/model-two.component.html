@@ -23,8 +23,20 @@
           <p>A :</p>
         </div>
         <div class="two-1-2">
-          <h1>ALCIDES MALDONADO CORTEZ</h1>
-          <h1>JEFE DE SEC.  EJECUCIÓN Y SEGUIMIENTO DE CONTRATOS</h1>
+          <!-- <h1>ALCIDES MALDONADO CORTEZ</h1> -->
+          <div class="persona">
+            <mat-form-field class="example-full-width ">
+              <mat-label>Persona Consultar</mat-label>
+              <input matInput  formControlName="personaConsForm">
+            </mat-form-field>
+          </div>
+          <!-- <h1>JEFE DE SEC.  EJECUCIÓN Y SEGUIMIENTO DE CONTRATOS</h1> -->
+          <div class="cargo">
+            <mat-form-field class="example-full-width ">
+              <mat-label>Cargo</mat-label>
+              <input matInput formControlName="cargoForm">
+            </mat-form-field>
+          </div>
         </div>
       </div>
       <div class="section-two-2">
@@ -32,8 +44,20 @@
           <p>De :</p>
         </div>
         <div class="two-1-2">
-          <h1>MARCO ANTONIO LEÓN ARANGUREN</h1>
-          <h1>JEFE DE SEC. PROGRAMACIÓN Y EVALUACIÓN</h1>
+          <!-- <h1>MARCO ANTONIO LEÓN ARANGUREN</h1> -->
+          <div class="persona">
+            <mat-form-field class="example-full-width ">
+              <mat-label>Persona Consultar</mat-label>
+              <input matInput  formControlName="personaConsForm2">
+            </mat-form-field>
+          </div>
+          <!-- <h1>JEFE DE SEC. PROGRAMACIÓN Y EVALUACIÓN</h1> -->
+          <div class="cargo">
+            <mat-form-field class="example-full-width ">
+              <mat-label>Cargo</mat-label>
+              <input matInput formControlName="cargoForm2">
+            </mat-form-field>
+          </div>
         </div>
       </div>
       <div class="section-two-3">
@@ -41,7 +65,13 @@
           <p>Referencia :</p>
         </div>
         <div class="two-1-2">
-          <h1>CARTA S/N DE FECHA 147/02/2020 - EULEN DEL PERU DE SERVICIOS COMPLEMENTARIOS S.A.</h1>
+          <!-- <h1>CARTA S/N DE FECHA 147/02/2020 - EULEN DEL PERU DE SERVICIOS COMPLEMENTARIOS S.A.</h1> -->
+          <div class="referencia">
+            <mat-form-field class="example-full-width ">
+              <mat-label>Carta</mat-label>
+              <input matInput formControlName="referenciaForm">
+            </mat-form-field>
+          </div>
         </div>
       </div>
     </section>
@@ -57,13 +87,14 @@
           </tr> -->
           <tr>
             <td>
-              X
+              <!-- X -->
+              <mat-checkbox class="example-margin" color="primary" formControlName="check1">  </mat-checkbox>
             </td>
             <td class="td-noborder-left">
               TRAMITE
             </td>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check2">  </mat-checkbox>
             </td>
             <td class="td-noborder-right">
               OPINION
@@ -71,13 +102,13 @@
           </tr>
           <tr>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check3">  </mat-checkbox>
             </td>
             <td class="td-noborder-left">
               ESTUDIO E INFORME
             </td>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check4">  </mat-checkbox>
             </td>
             <td class="td-noborder-right">
               ANALISIS
@@ -85,13 +116,13 @@
           </tr>
           <tr>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check5">  </mat-checkbox>
             </td>
             <td class="td-noborder-left">
               RESOLUCION
             </td>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check6">  </mat-checkbox>
             </td>
             <td class="td-noborder-right">
               SEGUIR INSTRUCCIONES
@@ -99,13 +130,13 @@
           </tr>
           <tr>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check7">  </mat-checkbox>
             </td>
             <td class="td-noborder-left">
               RESPUESTA
             </td>
             <td>
-              X
+              <mat-checkbox class="example-margin" color="primary" formControlName="check8">  </mat-checkbox>
             </td>
             <td class="td-noborder-right">
               APROBACION
