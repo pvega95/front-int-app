@@ -33,6 +33,22 @@ export class ProcesosService {
     return this._http.get(query);
   }
 
+  getByID(id:string): Observable<any>{
+    const query = `${this.url}/api/process/get/${id}`
+    return this._http.get(query);
+  }
+
+  setUpdateProcess(obj: any,id:string): Observable<any> {
+    const query: string = `${this.url}/api/process/update/${id}`;
+    const data = obj
+    return this._http.put(query, data);
+  }
+
+  setDeleteById(id:string){
+    const query = `${this.url}/api/process/${id}`
+    return this._http.delete(query);
+  }
+
   getPDF() {
     return this._http.getPDF(`${this.url}/api/process/get-new-pdf`)
       .pipe(map(data => { 
@@ -40,4 +56,5 @@ export class ProcesosService {
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }
+
 }

@@ -1,0 +1,49 @@
+@import '_default-theme.scss';
+.container-modal{
+    width: 307px;
+    .text-modal{
+        padding: 50px 30px;
+        p{
+            font-family: "DM Sans", sans-serif;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bolder;
+            letter-spacing: 1.22px;
+            color: $fbx-primary;
+        }
+    }
+    .fbx-button{
+        font-family: "DM Sans", sans-serif;
+        &.close{
+            background: $fbx-gristwo;
+            color: $fbx-background-white;
+            width: 50%;
+            height: 47px;
+            border-radius: 0;
+            font-size: 16px;
+            font-weight: 100;
+            &:hover{
+                background: $fbx-gristwo-dark;
+            }
+            &.active, &:focus{
+                background: $fbx-gristwo-dark;
+            }
+        }
+        &.accept{
+            width: 50%;
+            height: 47px;
+            border-radius: 0;
+            margin-left: 0px;
+            font-size: 16px;
+            background-color: $fbx-secondary;
+            font-weight: 100;
+            &:hover{
+                background-color: $fbx-secondary-dark;
+            }
+            &.active, &:focus{
+                background-color: $fbx-secondary-dark;
+            }
+        }
+        
+    }
+}

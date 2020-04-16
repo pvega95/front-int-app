@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'main', loadChildren: () => import('./shared/dashboard/dashboard.module').then(m => m.DashboardModule) 
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'login'}
+  // { path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];
 
 @NgModule({
