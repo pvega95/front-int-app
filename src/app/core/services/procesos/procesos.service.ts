@@ -23,8 +23,9 @@ export class ProcesosService {
     return this._http.post(query, data);
   }
 
-  getProcess(): Observable<any>{
-    const query = `${this.url}/api/process/get-all`
+  getProcess(postPerPage: number, currentPage: number): Observable<any>{
+    const queryParams = `?pagesize=${postPerPage}&page=${currentPage}`
+    const query = `${this.url}/api/process/get-all` + queryParams
     return this._http.get(query);
   }
   

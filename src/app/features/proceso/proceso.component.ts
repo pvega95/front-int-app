@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/cor
 import { DashboardService } from '@core/services/resources/dashboard.service';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog } from '@angular/material';
+import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog, PageEvent } from '@angular/material';
 import { SvgRegisterService } from '@core/material/svg-register.service';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 
@@ -23,6 +23,10 @@ export class ProcesoComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name','type','edit','delete'];
   dataSource = new MatTableDataSource;
+  totalPosts = 10;
+  postsPerPage = 5;
+  currentPage = 1;
+  pageSizeOptions = [1,2,5,10];
   constructor(
     public _dashboardService: DashboardService,
     private router: Router,
@@ -42,11 +46,12 @@ export class ProcesoComponent implements OnInit {
   }
 
   getProcess(){
-    this._processService.getProcess().pipe(take(1))
+    this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
         console.log('val',val)
-        this.dataSource = val;
+        this.dataSource = val.posts;
+        this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{
         console.log('err',err)
@@ -80,12 +85,32 @@ export class ProcesoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
-        if (data == true) {
-          // this.getAllBanks();
+        if (data) {
+          console.log("Dialog output:", data)
+          this.deleteProcess(id);
         }
-        console.log("Dialog output:", data)
+        
       }
     );
   }
 
+  deleteProcess(id:string){
+    this._processService.setDeleteById(id).pipe(take(1))
+    .subscribe((res: any) => {
+      if (res) {
+        this.getProcess();
+      }
+    }, (err: HttpErrorResponse) => {
+      console.log(err)
+    });
+  }
+
+  onChangedPage(pageData: PageEvent){
+    // console.log(pageData)
+    // this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    // this.postsService.getPosts(this.postsPerPage,this.currentPage);
+    this.getProcess();
+  }
 }

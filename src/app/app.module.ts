@@ -18,6 +18,7 @@ import { RegisterComponent } from './features/register/register.component';
 import { ModelOneComponent } from './features/pdf-model/model-one/model-one.component';
 import { ModelTwoComponent } from './features/pdf-model/model-two/model-two.component';
 import { ModelThreeComponent } from './features/pdf-model/model-three/model-three.component';
+import { ModalsModule } from '@shared/modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ModelThreeComponent } from './features/pdf-model/model-three/model-thre
     BrowserAnimationsModule,
     //CORE MODULE Y SHARED
     CoreModule,
-    SharedModule
+    SharedModule,
+    ModalsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

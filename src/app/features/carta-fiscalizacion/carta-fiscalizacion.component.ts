@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatSnackBar, MatDialog, MatTableDataSource } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogConfig } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalCartaComponent } from './modal-carta/modal-carta.component';
 import { DashboardService } from '@core/services/resources/dashboard.service';
 import { Router } from '@angular/router';
+import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
 
 @Component({
   selector: 'app-carta-fiscalizacion',
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class CartaFiscalizacionComponent implements OnInit {
   cartaForm: FormGroup;
-  displayedColumns: string[] = ['id', 'descripcion','proceso','fecha','analista','empresa','generar'];
+  displayedColumns: string[] = ['id', 'descripcion','proceso','fecha','analista','empresa','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   message:{};
 
@@ -56,6 +57,25 @@ export class CartaFiscalizacionComponent implements OnInit {
 
   newMessage(e) {
     this._cartaService.changeMessage(e)
+  }
+
+  delete(id:string){
+    // console.log('id',id);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = id;
+    const dialogRef = this.dialog.open(ProcesoModalComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data: boolean) => {
+        if (data) {
+          console.log("Dialog output:", data)
+          // this.deleteProcess(id);
+        }
+        
+      }
+    );
   }
 
 }

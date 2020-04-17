@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
 import { Router } from '@angular/router';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -21,6 +21,7 @@ export class AddComponent implements OnInit {
     private _cartaService : CartaService,
     public dialog: MatDialog,
     private router: Router,
+    private _location: Location,
   ) { }
 
   ngOnInit() {
@@ -125,4 +126,7 @@ export class AddComponent implements OnInit {
     this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
+  goback(){
+    this._location.back();
+  }
 }

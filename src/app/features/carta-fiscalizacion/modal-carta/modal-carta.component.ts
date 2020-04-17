@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatTableDataSource } from '@angular/material';
+import { MatDialogRef, MatTableDataSource, PageEvent } from '@angular/material';
 import { ProcesosService } from '@core/services/procesos/procesos.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -35,6 +35,10 @@ export class ModalCartaComponent implements OnInit {
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
   dataSource : any;
 
+  totalPosts = 10;
+  postsPerPage = 5;
+  currentPage = 1;
+  pageSizeOptions = [1,2,5,10];
   constructor(
     public dialogRef: MatDialogRef<any>,
     private _processService : ProcesosService
@@ -45,11 +49,16 @@ export class ModalCartaComponent implements OnInit {
   }
   //cargar la data inicial
   initForm(){
-    this._processService.getProcess().pipe(take(1))
+    this.getProcess();
+  }
+
+  getProcess(){
+    this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
         console.log('val',val)
-        this.dataSource = new MatTableDataSource(val);
+        this.dataSource = val.posts;
+        this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{
         console.log('err',err)
@@ -68,6 +77,15 @@ export class ModalCartaComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onChangedPage(pageData: PageEvent){
+    // console.log(pageData)
+    // this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    // this.postsService.getPosts(this.postsPerPage,this.currentPage);
+    this.getProcess();
   }
 
 }

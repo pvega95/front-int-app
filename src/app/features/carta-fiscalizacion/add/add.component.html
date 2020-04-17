@@ -1,9 +1,13 @@
 <section class="form-header">
   <h1>Carta de Fiscalizacion</h1>
   <div class="btn-enter">
+    <button class="fbx-button" mat-flat-button color="accent" (click)="goback()">Retroceder</button>
+    </div>
+  <div class="btn-enter">
     <button class="fbx-button" mat-flat-button color="accent" (click)="openDialog()">Añadir</button>
   </div>
 </section>
+
 <section class="container-login">
   <div class="content-center">
     <form [formGroup]="cartaForm" (ngSubmit)="onSubmitCarta(cartaForm)">

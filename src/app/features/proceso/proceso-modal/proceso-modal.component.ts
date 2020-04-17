@@ -29,16 +29,17 @@ export class ProcesoModalComponent implements OnInit {
 
   save() {
     let id = this.dataRecieved
-    this._processService.setDeleteById(id).pipe(take(1))
-      .subscribe((res: any) => {
-        if (res) {
-          // this.status = res.status;
-          // console.log('status',this.status)
-          this.dialogRef.close(res);
-        }
-      }, (err: HttpErrorResponse) => {
-        console.log(err)
-      });
+    this.dialogRef.close(true);
+    // this._processService.setDeleteById(id).pipe(take(1))
+    //   .subscribe((res: any) => {
+    //     if (res) {
+    //       // this.status = res.status;
+    //       // console.log('status',this.status)
+    //       this.dialogRef.close(res);
+    //     }
+    //   }, (err: HttpErrorResponse) => {
+    //     console.log(err)
+    //   });
 
   }
 

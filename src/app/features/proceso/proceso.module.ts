@@ -8,14 +8,15 @@ import { ProcesoRoutingModule } from './proceso-routing.module';
 import { CreateProcessComponent } from './create/create-process/create-process.component';
 import { EditProcessComponent } from './create/edit-process/edit-process.component';
 import { ProcesoModalComponent } from './proceso-modal/proceso-modal.component';
+import { ModalsModule } from '@shared/modals/modals.module';
 
 @NgModule({
-  declarations: [ProcesoComponent, CreateProcessComponent, EditProcessComponent, ProcesoModalComponent],
+  declarations: [ProcesoComponent, CreateProcessComponent, EditProcessComponent],
   imports: [
     CommonModule,
     SharedModule,
     ProcesoRoutingModule
   ],
-  entryComponents: [ProcesoModalComponent]
+  // entryComponents: [ProcesoModalComponent]
 })
 export class ProcesoModule { }
