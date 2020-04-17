@@ -38,6 +38,11 @@ export class CartaService {
     return this._http.get(query);
   }
 
+  setDeleteById(id:string){
+    const query = `${this.url}/api/letter-fiscal/${id}`
+    return this._http.delete(query);
+  }
+
   getPDF(id:number) {
     return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf/${id}`)
       .pipe(map(data => { 

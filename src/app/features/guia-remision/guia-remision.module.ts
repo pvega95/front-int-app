@@ -5,11 +5,12 @@ import { GuiaRemisionComponent } from './guia-remision.component';
 import { GuiaRoutingModule } from './guia-remision.routing';
 import { AddComponent } from './add/add.component';
 import { ModalGuiaComponent } from './modal-guia/modal-guia.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
 @NgModule({
-  declarations: [GuiaRemisionComponent, AddComponent],
+  declarations: [GuiaRemisionComponent, AddComponent, EditComponent],
   imports: [
     CommonModule,
     SharedModule,

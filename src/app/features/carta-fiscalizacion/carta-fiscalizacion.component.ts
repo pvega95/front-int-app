@@ -37,16 +37,20 @@ export class CartaFiscalizacionComponent implements OnInit {
         // console.log('this.message',this.message)
       });
 
+    this.getCarts();
+  }
+
+  getCarts(){
     this._cartaService.getCart().pipe(take(1))  
-      .subscribe(
-        val=>{
-          console.log('val',val);
-          this.dataSource = val;
-        },
-        (err:HttpErrorResponse)=>{
-          console.log('err',err)
-        }
-      )
+    .subscribe(
+      val=>{
+        console.log('val',val);
+        this.dataSource = val;
+      },
+      (err:HttpErrorResponse)=>{
+        console.log('err',err)
+      }
+    );
   }
 
   generate(element){
@@ -71,11 +75,22 @@ export class CartaFiscalizacionComponent implements OnInit {
       (data: boolean) => {
         if (data) {
           console.log("Dialog output:", data)
-          // this.deleteProcess(id);
+          this.deleteCarta(id);
         }
         
       }
     );
+  }
+
+  deleteCarta(id:string){
+    this._cartaService.setDeleteById(id).pipe(take(1))
+    .subscribe((res: any) => {
+      if (res) {
+        this.getCarts();
+      }
+    }, (err: HttpErrorResponse) => {
+      console.log(err)
+    });
   }
 
 }

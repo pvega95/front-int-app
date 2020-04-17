@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatSnackBar, MatTableDataSource } from '@angular/material';
+import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog } from '@angular/material';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
 
 @Component({
   selector: 'app-guia-remision',
@@ -13,11 +14,12 @@ import { Router } from '@angular/router';
 })
 
 export class GuiaRemisionComponent implements OnInit {
-  displayedColumns: string[] = ['id' , 'proceso','num-carta','empresa','documento','persona','cargo','direccion','generar'];
+  displayedColumns: string[] = ['id' , 'proceso','num-carta','empresa','documento','persona','cargo','direccion','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   constructor(
     private _remisionService : GuiaRemisionService,
-    private router : Router
+    private router : Router,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,25 @@ export class GuiaRemisionComponent implements OnInit {
 
   newMessage(e) {
     this._remisionService.changeMessage(e)
+  }
+
+  delete(id:string){
+    // console.log('id',id);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = id;
+    const dialogRef = this.dialog.open(ProcesoModalComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data: boolean) => {
+        if (data) {
+          console.log("Dialog output:", data)
+          // this.deleteProcess(id);
+        }
+        
+      }
+    );
   }
 
 }

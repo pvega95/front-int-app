@@ -5,9 +5,10 @@ import { HojaRoutingModule } from './hoja-envio.routing';
 import { HojaEnvioComponent } from './hoja-envio.component';
 import { ModalCartaComponent } from '../carta-fiscalizacion/modal-carta/modal-carta.component';
 import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
-  declarations: [HojaEnvioComponent, AddComponent],
+  declarations: [HojaEnvioComponent, AddComponent, EditComponent],
   imports: [
     CommonModule,
     SharedModule,
