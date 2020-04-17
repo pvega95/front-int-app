@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
+import { CartaService } from '@core/services/cartas/carta.service';
+import { take } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit',
@@ -18,6 +21,7 @@ export class EditComponent implements OnInit {
     public formB: FormBuilder,
     public dialog: MatDialog,
     private _location: Location,
+    private _cartaService : CartaService
   ) { }
 
   ngOnInit() {
@@ -25,6 +29,7 @@ export class EditComponent implements OnInit {
       console.log(params);
       if (params) {
         this.idProcess = params.id;
+        this.getCartaFis(this.idProcess);
       }
     });
 
@@ -98,13 +103,13 @@ export class EditComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         console.log('result',result);
-        this.setForm(result);
+        this.setFormModal(result);
       }
 
     });
   }
 
-  setForm(result){
+  setFormModal(result){
     this.cartaForm.controls['descProcForm'].setValue(result.description);
     this.cartaForm.controls['itemForm'].setValue(result.items);
     let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
@@ -115,6 +120,40 @@ export class EditComponent implements OnInit {
 
   goback(){
     this._location.back();
+  }
+
+  getCartaFis(id: string) {
+    this._cartaService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+        console.log('val', val)
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+        console.log('err', err)
+      }
+    )
+  }
+
+  setForm(data){
+    this.cartaForm.controls['descProcForm'].setValue(data.descProcForm);
+    this.cartaForm.controls['itemForm'].setValue(data.itemForm);
+    this.cartaForm.controls['procesoForm'].setValue(data.procesoForm);
+    this.cartaForm.controls['fechaFiscForm'].setValue(data.fechaFiscForm);
+    this.cartaForm.controls['procesoDepend'].setValue(data.procesoDepend);
+    this.cartaForm.controls['analistaForm'].setValue(data.analistaForm);   
+    this.cartaForm.controls['cartaForm'].setValue(data.cartaForm);
+    this.cartaForm.controls['empresaForm'].setValue(data.empresaForm);
+    this.cartaForm.controls['direccionForm'].setValue(data.direccionForm);
+    this.cartaForm.controls['personaConsForm'].setValue(data.personaConsForm);
+    this.cartaForm.controls['cargoForm'].setValue(data.cargoForm);
+    this.cartaForm.controls['docForm'].setValue(data.docForm);
+    this.cartaForm.controls['tipoForm'].setValue(data.tipoForm);
+    this.cartaForm.controls['observacionesForm'].setValue(data.observacionesForm);
+    this.cartaForm.controls['docResForm'].setValue(data.docResForm);
+    this.cartaForm.controls['fechaResForm'].setValue(data.fechaResForm);
+    this.cartaForm.controls['docRemisionForm'].setValue(data.docRemisionForm);
+    this.cartaForm.controls['conclusionForm'].setValue(data.conclusionForm);
+    this.cartaForm.controls['diasPasadosForm'].setValue(data.diasPasadosForm);
   }
 
 }

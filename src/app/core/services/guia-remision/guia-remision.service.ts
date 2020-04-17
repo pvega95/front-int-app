@@ -30,6 +30,11 @@ export class GuiaRemisionService {
     return this._http.get(query);
   }
 
+  getByID(id:string): Observable<any>{
+    const query = `${this.url}/api/guia-remision/get/${id}`
+    return this._http.get(query);
+  }
+
   setDeleteById(id:string){
     const query = `${this.url}/api/guia-remision/${id}`
     return this._http.delete(query);

@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { HojaEnvioService } from '@core/services/hoja-envio/hoja-envio.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalCartaComponent } from '../../carta-fiscalizacion/modal-carta/modal-carta.component';
 import { Location } from '@angular/common';
+import { take } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit',
@@ -13,16 +15,26 @@ import { Location } from '@angular/common';
 })
 export class EditComponent implements OnInit {
   hojaEnvioForm: FormGroup;
+  idProcess: string;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
     private _hojaEnvioService : HojaEnvioService,
     private _location: Location,
-    private router : Router
+    private router : Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      if (params) {
+        this.idProcess = params.id;
+        this.getHojaEnvio(this.idProcess);
+      }
+    });
+
     this.hojaEnvioForm = this.formB.group({
       numRegForm: new FormControl('', [
         Validators.required
@@ -52,12 +64,12 @@ export class EditComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         console.log('result',result);
-        this.setForm(result);
+        this.setFormModal(result);
       }
     });
   }
 
-  setForm(result) {
+  setFormModal(result) {
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
     let proceso = result.typeProcedure.name + 'N°' + result.number + result.year
     this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
@@ -65,6 +77,27 @@ export class EditComponent implements OnInit {
 
   goback(){
     this._location.back();
+  }
+
+  getHojaEnvio(id: string){
+    this._hojaEnvioService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+        console.log('val', val)
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+        console.log('err', err)
+      }
+    )
+  }
+
+  setForm(data){
+    this.hojaEnvioForm.controls['numRegForm'].setValue(data.NumRegister);
+    this.hojaEnvioForm.controls['procesoForm'].setValue(data.Process);
+    this.hojaEnvioForm.controls['fechaForm'].setValue(data.DateRemision);
+    this.hojaEnvioForm.controls['numHojaForm'].setValue(data.ShipNumber);
+    this.hojaEnvioForm.controls['docRemForm'].setValue(data.DocToRemit);
+    this.hojaEnvioForm.controls['tipDocForm'].setValue(data.TypeDocument);
   }
 
 }

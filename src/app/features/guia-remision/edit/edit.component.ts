@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ModalGuiaComponent } from '../modal-guia/modal-guia.component';
+import { take } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit',
@@ -12,17 +14,26 @@ import { ModalGuiaComponent } from '../modal-guia/modal-guia.component';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  guiaForm : FormGroup
+  guiaForm : FormGroup;
+  idProcess: string;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
     private _location:Location,
     private _remisionService : GuiaRemisionService,
     private router : Router,
+    private route: ActivatedRoute,
     public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      if (params) {
+        this.idProcess = params.id;
+        this.getGuiaRemision(this.idProcess);
+      }
+    });
 
     this.guiaForm = this.formB.group({
       descProForm: new FormControl('', [
@@ -58,12 +69,12 @@ export class EditComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result){
         console.log('result',result);
-        this.setForm(result);
+        this.setFormModal(result);
       }
     });
   }
 
-  setForm(result){
+  setFormModal(result){
     this.guiaForm.controls['descProForm'].setValue(result.descProcForm);
     this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
     this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
@@ -75,6 +86,28 @@ export class EditComponent implements OnInit {
 
   goback(){
     this._location.back();
+  }
+
+  getGuiaRemision(id:string){
+    this._remisionService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+        console.log('val', val)
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+        console.log('err', err)
+      }
+    )
+  }
+
+  setForm(data){
+    this.guiaForm.controls['descProForm'].setValue(data.process);
+    this.guiaForm.controls['numCartaForm'].setValue(data.numCarta);
+    this.guiaForm.controls['empConsForm'].setValue(data.toConsult);
+    this.guiaForm.controls['descDocForm'].setValue(data.description);
+    this.guiaForm.controls['personaForm'].setValue(data.person);
+    this.guiaForm.controls['cargoForm'].setValue(data.position);
+    this.guiaForm.controls['direccionForm'].setValue(data.adress);
   }
 
 }
