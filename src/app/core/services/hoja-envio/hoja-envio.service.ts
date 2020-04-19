@@ -36,6 +36,12 @@ export class HojaEnvioService {
     return this._http.get(query);
   }
 
+  setUpdateHoja(obj: any,id:string): Observable<any> {
+    const query: string = `${this.url}/api/hoja-envio/update/${id}`;
+    const data = obj
+    return this._http.put(query, data);
+  }
+
   setDeleteById(id:string){
     const query = `${this.url}/api/hoja-envio/${id}`
     return this._http.delete(query);

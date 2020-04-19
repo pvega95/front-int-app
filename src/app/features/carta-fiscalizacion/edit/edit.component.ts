@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
 import { MatDialog } from '@angular/material';
 import { Location } from '@angular/common';
@@ -156,4 +156,36 @@ export class EditComponent implements OnInit {
     this.cartaForm.controls['diasPasadosForm'].setValue(data.diasPasadosForm);
   }
 
+  onSubmitCarta(miForm: NgForm) {
+    // console.log('miForm', miForm.value)
+    let data = {
+      _id: this.idProcess,
+      descProcForm: miForm.value.descProcForm,
+      itemForm: miForm.value.itemForm,
+      procesoForm: miForm.value.procesoForm,
+      fechaFiscForm: miForm.value.fechaFiscForm,
+      analistaForm: miForm.value.analistaForm,
+      cartaForm: miForm.value.cartaForm,
+      empresaForm: miForm.value.empresaForm,
+      direccionForm: miForm.value.direccionForm,
+      personaConsForm: miForm.value.personaConsForm,
+      cargoForm: miForm.value.cargoForm,
+      docForm: miForm.value.docForm,
+      tipoForm: miForm.value.tipoForm,
+      observacionesForm: miForm.value.observacionesForm,
+      docResForm: miForm.value.docResForm,
+      fechaResForm: miForm.value.fechaResForm,
+      docRemisionForm: miForm.value.docRemisionForm,
+      conclusionForm: miForm.value.conclusionForm,
+      diasPasadosForm: miForm.value.diasPasadosForm,
+    }
+    console.log('data a enviar',data);
+    this._cartaService.setUpdateCarta(data,this.idProcess).pipe(take(1)).subscribe(
+      val=>{
+        console.log('val',val)
+      },(err:HttpErrorResponse)=>{
+        console.log('err',err)
+      }
+    )
+  }
 }

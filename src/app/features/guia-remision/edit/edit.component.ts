@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,14 +14,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  guiaForm : FormGroup;
+  guiaForm: FormGroup;
   idProcess: string;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
-    private _location:Location,
-    private _remisionService : GuiaRemisionService,
-    private router : Router,
+    private _location: Location,
+    private _remisionService: GuiaRemisionService,
+    private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
   ) { }
@@ -67,14 +67,14 @@ export class EditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        console.log('result',result);
+      if (result) {
+        console.log('result', result);
         this.setFormModal(result);
       }
     });
   }
 
-  setFormModal(result){
+  setFormModal(result) {
     this.guiaForm.controls['descProForm'].setValue(result.descProcForm);
     this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
     this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
@@ -84,11 +84,11 @@ export class EditComponent implements OnInit {
     this.guiaForm.controls['direccionForm'].setValue(result.direccionForm);
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 
-  getGuiaRemision(id:string){
+  getGuiaRemision(id: string) {
     this._remisionService.getByID(id).pipe(take(1)).subscribe(
       val => {
         console.log('val', val)
@@ -100,7 +100,7 @@ export class EditComponent implements OnInit {
     )
   }
 
-  setForm(data){
+  setForm(data) {
     this.guiaForm.controls['descProForm'].setValue(data.process);
     this.guiaForm.controls['numCartaForm'].setValue(data.numCarta);
     this.guiaForm.controls['empConsForm'].setValue(data.toConsult);
@@ -108,6 +108,28 @@ export class EditComponent implements OnInit {
     this.guiaForm.controls['personaForm'].setValue(data.person);
     this.guiaForm.controls['cargoForm'].setValue(data.position);
     this.guiaForm.controls['direccionForm'].setValue(data.adress);
+  }
+
+  onSubmitGuia(miForm: NgForm) {
+    // console.log('miForm', miForm.value)
+    let data = {
+      _id: this.idProcess,
+      process: miForm.value.descProForm,
+      numCarta: miForm.value.numCartaForm,
+      toConsult: miForm.value.empConsForm,
+      description: miForm.value.descDocForm,
+      person: miForm.value.personaForm,
+      position: miForm.value.cargoForm,
+      adress: miForm.value.direccionForm
+    }
+    console.log('data a enviar', data);
+    this._remisionService.setUpdateGuia(data,this.idProcess).pipe(take(1)).subscribe(
+      val=>{
+        console.log('val',val)
+      },(err:HttpErrorResponse)=>{
+        console.log('err',err)
+      }
+    )
   }
 
 }

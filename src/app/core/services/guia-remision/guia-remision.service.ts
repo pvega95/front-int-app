@@ -35,6 +35,12 @@ export class GuiaRemisionService {
     return this._http.get(query);
   }
 
+  setUpdateGuia(obj: any,id:string): Observable<any> {
+    const query: string = `${this.url}/api/guia-remision/update/${id}`;
+    const data = obj
+    return this._http.put(query, data);
+  }
+
   setDeleteById(id:string){
     const query = `${this.url}/api/guia-remision/${id}`
     return this._http.delete(query);

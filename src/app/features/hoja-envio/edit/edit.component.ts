@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { HojaEnvioService } from '@core/services/hoja-envio/hoja-envio.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,9 +20,9 @@ export class EditComponent implements OnInit {
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private _hojaEnvioService : HojaEnvioService,
+    private _hojaEnvioService: HojaEnvioService,
     private _location: Location,
-    private router : Router,
+    private router: Router,
     private route: ActivatedRoute,
   ) { }
 
@@ -62,8 +62,8 @@ export class EditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
-        console.log('result',result);
+      if (result) {
+        console.log('result', result);
         this.setFormModal(result);
       }
     });
@@ -75,11 +75,11 @@ export class EditComponent implements OnInit {
     this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 
-  getHojaEnvio(id: string){
+  getHojaEnvio(id: string) {
     this._hojaEnvioService.getByID(id).pipe(take(1)).subscribe(
       val => {
         console.log('val', val)
@@ -91,7 +91,7 @@ export class EditComponent implements OnInit {
     )
   }
 
-  setForm(data){
+  setForm(data) {
     this.hojaEnvioForm.controls['numRegForm'].setValue(data.NumRegister);
     this.hojaEnvioForm.controls['procesoForm'].setValue(data.Process);
     this.hojaEnvioForm.controls['fechaForm'].setValue(data.DateRemision);
@@ -100,4 +100,24 @@ export class EditComponent implements OnInit {
     this.hojaEnvioForm.controls['tipDocForm'].setValue(data.TypeDocument);
   }
 
+  onSubmitHoja(miForm: NgForm) {
+    // console.log('miForm', miForm.value)
+    let data = {
+      _id: this.idProcess,
+      NumRegister: miForm.value.numRegForm,
+      Process: miForm.value.procesoForm,
+      DateRemision: miForm.value.fechaForm,
+      ShipNumber: miForm.value.numHojaForm,
+      DocToRemit: miForm.value.docRemForm,
+      TypeDocument: miForm.value.tipDocForm,
+    }
+    console.log('data a enviar', data);
+    this._hojaEnvioService.setUpdateHoja(data,this.idProcess).pipe(take(1)).subscribe(
+      val=>{
+        console.log('val',val)
+      },(err:HttpErrorResponse)=>{
+        console.log('err',err)
+      }
+    )
+  }
 }

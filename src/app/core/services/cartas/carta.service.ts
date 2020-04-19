@@ -48,6 +48,12 @@ export class CartaService {
     return this._http.get(query);
   }
 
+  setUpdateCarta(obj: any,id:string): Observable<any> {
+    const query: string = `${this.url}/api/letter-fiscal/update/${id}`;
+    const data = obj
+    return this._http.put(query, data);
+  }
+
   getPDF(id:number) {
     return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf/${id}`)
       .pipe(map(data => { 
