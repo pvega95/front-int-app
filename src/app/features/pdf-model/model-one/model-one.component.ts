@@ -82,9 +82,9 @@ export class ModelOneComponent implements OnInit {
       procesoDepend: new FormControl('', [
         Validators.required
       ]),
-      descriptionForm : new FormControl('', [
-        Validators.required
-      ])
+      // descProcForm : new FormControl('', [
+      //   Validators.required
+      // ])
     });
 
     this.messageService = this._cartaService.currentMessage.subscribe(message => 
@@ -102,7 +102,8 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
-    this.modelOneForm.controls['descriptionForm'].setValue(data.procesoDepend.description);  
+    // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description);  
+    this.modelOneForm.controls['descProcForm'].setValue('N°' +data.procesoDepend.number + '-' + data.procesoDepend.year + ' ' + data.procesoDepend.description); 
   }
 
   goback(){
