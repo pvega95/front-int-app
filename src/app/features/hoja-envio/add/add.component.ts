@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-add',
@@ -23,8 +24,11 @@ export class AddComponent implements OnInit {
     public dialog: MatDialog,
     private _hojaEnvioService : HojaEnvioService,
     private _location: Location,
-    private router : Router
-  ) { }
+    private router : Router,
+    private _svgRegisterService:SvgRegisterService,
+  ) { 
+    this._svgRegisterService.init();
+  }
 
   ngOnInit() {
     this.hojaEnvioForm = this.formB.group({
@@ -63,7 +67,7 @@ export class AddComponent implements OnInit {
 
   setForm(result) {
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
-    let proceso = result.typeProcedure.name + 'N°' + result.number + result.year
+    let proceso = result.typeProcedure.name + ' N° ' + result.number + ' - ' + result.year
     this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 

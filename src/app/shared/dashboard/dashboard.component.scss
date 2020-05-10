@@ -44,7 +44,7 @@
                             align-items: center;
                             padding-left: 58px;
                             font-size: 12px;
-                            font-family: 'Roboto';
+                            font-family: $font-DMSans;
                             transition: 0.5s;
                             .mat-icon{
                                 margin-right: 7.7px;
@@ -199,7 +199,7 @@
                         h1{
                             color: #163164;
                             font-size: 16px;
-                            font-family: 'Roboto';
+                            font-family: $font-DMSans;
                             font-weight: 400;
                             padding-top: 13px;
                             padding-bottom: 13px;
@@ -221,7 +221,7 @@
                                 display: block;
                                 background-color: white;
                                 color: #99ABBF;
-                                font-family: Roboto;
+                                font-family: $font-DMSans;
                                 font-weight: 400;
                                 padding-top: 7px;
                                 padding-bottom: 4px;

@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ModalGuiaComponent } from '../modal-guia/modal-guia.component';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-add',
@@ -22,7 +23,10 @@ export class AddComponent implements OnInit {
     private _remisionService : GuiaRemisionService,
     private router : Router,
     public dialog: MatDialog,
-  ) { }
+    private _svgRegisterService:SvgRegisterService,
+  ) {
+    this._svgRegisterService.init();
+   }
 
   ngOnInit() {
     this.guiaForm = this.formB.group({
@@ -65,7 +69,7 @@ export class AddComponent implements OnInit {
   }
 
   setForm(result){
-    this.guiaForm.controls['descProForm'].setValue(result.descProcForm);
+    this.guiaForm.controls['descProForm'].setValue(result.procesoForm);
     this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
     this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
     this.guiaForm.controls['descDocForm'].setValue(result.docForm);

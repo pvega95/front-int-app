@@ -21,6 +21,10 @@ export class SvgRegisterService {
         'icon-fbx-arrow',
         this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/arrow.svg')
       )
+      .addSvgIcon(
+        'icon-fbx-arrow-p',
+        this.domSanitizer.bypassSecurityTrustResourceUrl('assets/img/arrow_p.svg')
+      )
   }
 
 }

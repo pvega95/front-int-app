@@ -1,3 +1,709 @@
+// @import '_default-theme.scss';
+// @import 'font.scss';
+
+
+// // Input de Firbex
+// $color-gris-border: #EEEEEE;
+// $color-gris-input: #A7A9AC;
+// $label-float: 14px;
+// $label-normal: 16px;
+// $padding-label-input: 12px 10px 2px 20px;
+// $padding-placeholder-input: 14px 10px 2px 20px;
+// $height-input: 64px;
+
+// //Ocultando el asterisco
+// .mat-placeholder-required{
+//     display: none !important;
+// }
+
+
+
+// .fbx-input {
+//     height: 84px;
+//     &.mat-form-field-appearance-legacy {
+//         .mat-form-field-underline {
+//             height: $height-input !important;
+//             background-color: transparent;
+//             border-radius: 7px;
+//             border: 1px solid $color-gris-border;
+//         }
+//         &.mat-form-field-invalid {
+//             &:not(.mat-focused) {
+//                 .mat-form-field-ripple {
+//                     height: $height-input !important;
+//                     background-color: transparent !important;
+//                     border-radius: 7px;
+//                     border: 1px solid $fbx-warm;
+//                 }
+//                 .mat-form-field-underline {
+//                     transition: all .3s cubic-bezier(.55,0,.55,.2);
+//                     border: 1px solid transparent;
+//                 }
+//                 .mat-form-field-label {
+//                     color: $fbx-warm;
+//                 }
+//             }
+//         }
+//         .mat-form-field-ripple {
+//             height: $height-input !important;
+//             background-color: transparent !important;
+//             border-radius: 7px;
+//             border: 1px solid $fbx-warm;
+//             margin: -1px 0px 0 -1px;
+//             width: calc(100% + 2px);
+//         }
+//         .mat-form-field-subscript-wrapper {
+//             margin-top: 0.3em;
+//         }
+//         &.mat-form-field-can-float {
+//             &.mat-form-field-should-float {
+//                 &.mat-form-field-invalid {
+//                     &:not(.mat-focused) {
+//                         .mat-form-field-label {
+//                             color: $fbx-warm;
+//                         }
+//                     }
+//                     .mat-form-field-label {
+//                         color: $fbx-warm;
+//                     }
+//                 }
+//                 &:not(.mat-focused) {
+//                     .mat-form-field-label {
+//                         color: $color-gris-input;
+//                     }
+//                 }
+//                 .mat-form-field-label {
+//                     padding: 1px 0 0 20px;
+//                     transform: translateY(-1.25em) scale(1) perspective(100px) translateZ(0.001px) !important;
+//                     z-index: 2;
+//                     color: $fbx-accent;
+//                     span {
+//                         font-family: $font-Roboto;
+//                         font-weight: 400;
+//                         font-size: $label-float;
+//                         line-height: 27px;
+//                         background-color: rgba(255, 255, 255, 1);
+//                         padding: 0 5px 0 5px;
+//                         color: $color-gris-input;
+//                         position: relative;
+//                         &:before{
+//                             content: '';
+//                             position: absolute;
+//                             top: 9px;
+//                             height: 5px;
+//                             width: 100%;
+//                             background: white;
+//                             left: 0;
+//                             z-index: -1;
+//                         }
+//                         &.mat-placeholder-required {
+//                             padding: 0 3px 0 0;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         .mat-form-field-label {
+//             padding: $padding-placeholder-input;
+//             top: 1.5em;
+//             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//             span {
+//                 font-family: $font-Roboto;
+//                 font-weight: 400;
+//                 font-size: $label-normal;
+//                 color:$color-gris-input;
+//                 background-color: rgba(255, 255, 255, 0);
+//                 transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//             }
+//         }
+//     }
+//     &.mat-form-field {
+//         &.mat-focused {
+//             .mat-form-field-ripple {
+//                 background-color: transparent;
+//                 border: 1px solid $llight-primary-text;
+//                 // border: 1px solid $fbx-secondary;
+//             }
+//             .mat-form-field-label{
+//                 span{
+//                     color: $llight-primary-text !important;
+//                     // color: $fbx-secondary !important;
+//                 }
+//             }
+//             .mat-form-field-underline {
+//                 transition: all .3s cubic-bezier(.55,0,.55,.2);
+//                 border: 1px solid transparent;
+//             }
+//         }
+//         &.mat-form-field-invalid {
+//             .mat-form-field-label{
+//                 span{
+//                     color: $fbx-warm !important;
+//                 }
+//             }
+//             .mat-form-field-ripple {
+//                 background-color: transparent;
+//                 border: 1px solid $fbx-warm;
+//             }
+//         }
+//     }
+//     .mat-form-field-wrapper{
+//         padding-bottom: 22.5px;
+//         .mat-form-field-flex{
+//             .mat-form-field-infix{
+//                 padding: 0.810937em 0 1.348437em 0;;
+//                 .mat-input-element{
+//                     font-size: $label-normal;
+//                     padding: $padding-label-input;
+//                     color: $llight-primary-text;
+//                     // color: $fbx-primary-text;
+//                 }
+//                 .mat-form-field-label-wrapper{
+//                     top: -0.74375em;
+//                     .mat-form-field-label{
+//                         color: $color-gris-input;
+//                         span{}
+//                     }
+//                 }
+//                 .content-icon-pass{
+//                     position: absolute;
+//                     top: 28px;
+//                     right: 20px;
+//                     height: 16px;
+//                     width: 20px;
+//                     display: flex;
+//                     justify-content: center;
+//                     align-items: center;
+//                     .icon-pass{
+//                         max-width: 100%;
+//                         cursor: pointer;
+//                         color: $llight-primary-text;
+//                         filter: invert(0%) sepia(96%) saturate(9%) hue-rotate(184deg) brightness(90%) contrast(101%);
+//                         width: 18px;
+//                         &.visibility{
+//                             color: $llight-primary-text;
+//                             filter: invert(0%) sepia(96%) saturate(9%) hue-rotate(184deg) brightness(90%) contrast(101%);
+//                             // height: 16px;
+//                             width: 18px;
+//                         }
+//                     }
+//                 }
+//             }
+//             .mat-form-field-suffix{
+//                 top: 2px;
+//                 right: 20px;
+//                 .mat-icon{
+//                     top: 0px;
+//                     height: 15px;
+//                     cursor: pointer;
+//                     color: $fbx-secondary;
+//                     &.visibility{
+//                         color: $color-gris-border;
+//                     }
+//                 }
+//             }
+//         }
+//         .mat-form-field-underline{}
+//         .mat-form-field-subscript-wrapper{
+//             margin-top: 0.2em;
+//         }
+//     }
+//     mat-error {
+//         font-family: $font-Roboto;
+//         font-weight: 400;
+//         @include fontsizeheight(10.5px, 1.1, 10.5px, 1.1, 10.5px, 1.1);
+//         color: $fbx-warm;
+//         padding-left: 15px;
+//     }
+// }
+
+// // Button de Firbex
+// .fbx-button{
+//     &.mat-accent{
+//         color: $fbx-btn-text;
+//         &:hover,
+//         &:active{
+//             transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//             background-color: $fbx-secondary-dark;
+//         }
+//         .mat-flat-button{
+//             color: $fbx-btn-text;
+//         }
+//     }
+//     &.mat-flat-button[disabled][disabled]{
+//         background-color: $fbx-btn-disable;
+//         color: $fbx-background-white;
+//     }
+// }
+
+// // Tabs de Firbex
+// .fbx-mat-tab{
+//     &.mat-tab-group{
+//         .mat-tab-header{
+//             border-bottom: 0;
+//             .mat-tab-label-container{
+
+//                 @media(min-width: 440px){
+                    
+//                 }
+//                 .mat-tab-list{   
+//                     .mat-tab-labels{
+//                         .mat-tab-label{
+//                             //width: 50%;
+//                             opacity: 1;
+//                             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+//                             &.mat-tab-label-active{        
+//                                 .mat-tab-label-content{
+//                                     color: $fbx-primary;
+//                                     font-weight: 600;
+//                                 }
+//                             }
+//                             .mat-tab-label-content{
+//                                 font-family: $font-Roboto;
+//                                 font-weight: 400;
+//                                 font-size: 14px;
+//                                 color: $fbx-input-text;
+//                             }
+//                         }
+//                     }
+//                     .mat-ink-bar{
+//                         // height: 100%;
+//                         background-color: $fbx-secondary;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// // Select de Firbex
+// .fbx-select{
+//     height: 84px;
+//     &.mat-form-field-type-mat-select{
+//         &.fbx-not-arrow{
+//             .mat-form-field-wrapper{
+//                 .mat-form-field-flex{
+//                     .mat-form-field-infix{
+//                         .mat-select{
+//                             .mat-select-trigger{
+//                                 .mat-select-value-text{
+//                                     display: flex;
+//                                     justify-content: center;
+//                                     padding: 0 !important;
+//                                 }
+//                                 .mat-select-arrow-wrapper{
+//                                     .mat-select-arrow{
+//                                         opacity: 0;
+//                                         margin: 0 0 0 0;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         &.mat-form-field-can-float {
+//             .mat-form-field-label-wrapper{
+//                 .mat-form-field-label-wrapper{
+//                     .mat-form-field-label{
+//                         top: 0.9em;
+//                     }
+//                 }
+//             }
+//             &.mat-form-field-should-float {
+//                 &.mat-form-field-invalid {
+//                     &:not(.mat-focused) {
+//                         .mat-form-field-label {
+//                             color: $fbx-warm !important;
+//                         }
+//                     }
+//                     .mat-form-field-label {
+//                         color: $fbx-warm !important;
+//                     }
+//                 }
+//                 &:not(.mat-focused) {
+//                     .mat-form-field-label {
+//                         color: $fbx-warm;
+//                         top: 1.1em !important;
+//                         span{}
+//                     }
+//                 }
+//                 .mat-form-field-label {
+//                     top: 0.9em !important;
+//                     padding: 0 0 0 20px;
+//                     transform: translateY(-1.25em) scale(1) perspective(100px) translateZ(0.001px);
+//                     z-index: 2;
+//                     color: $fbx-accent;
+//                     span {
+//                         font-family: $font-Roboto;
+//                         font-weight: 400;
+//                         font-size: $label-float !important;
+//                         background-color: transparent !important;
+//                         color: $color-gris-input !important;
+//                         padding: 0 2px 0 5px;
+//                         position: relative;
+//                         &:before{
+//                             content: '';
+//                             position: absolute;
+//                             top: 5px;
+//                             height: 7px;
+//                             width: 100%;
+//                             background: white;
+//                             left: 0;
+//                             z-index: -1;
+//                         }
+//                         &.mat-placeholder-required {
+//                             padding: 0 3px 0 0;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         &.mat-form-field {
+//             &.mat-focused {
+//                 .mat-form-field-underline {
+//                     height: $height-input !important;
+//                     transition: all .3s cubic-bezier(.55,0,.55,.2);
+//                     border: 1px solid transparent;
+//                     .mat-form-field-ripple {
+//                         background-color: transparent;
+//                         border: 1px solid $fbx-secondary !important;
+//                     }
+//                 }
+//                 .mat-select-arrow-wrapper{
+//                     .mat-select-arrow{
+//                         color: $fbx-secondary;
+//                     }
+//                 }
+
+//                 .mat-form-field-label{
+//                     padding: 0 10px 0 20px;
+//                     top: 1.6em;
+//                     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//                     span {
+//                         font-family: $font-Roboto;
+//                         font-weight: 400;
+//                         font-size: $label-normal;
+//                         color:$fbx-secondary !important;
+//                         background-color: rgba(255, 255, 255, 0);
+//                         transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//                     }
+//                 }
+//             }
+//             &.mat-form-field-invalid {
+//                 .mat-form-field-ripple {
+//                     background-color: transparent;
+//                     border: 1px solid $fbx-warm;
+//                 }
+//                 .mat-select-arrow-wrapper{
+//                     .mat-select-arrow{
+//                         color: $fbx-secondary;
+//                     }
+//                 }
+//                 &:not(.mat-focused) {
+//                     .mat-form-field-ripple {
+//                         background-color: transparent;
+//                         border-radius: 7px;
+//                         border: 1px solid $fbx-warm;
+//                     }
+//                     .mat-form-field-underline {
+//                         transition: all .3s cubic-bezier(.55,0,.55,.2);
+//                         border: 1px solid transparent;
+//                     }
+//                     .mat-form-field-label {
+//                         color: $fbx-warm;
+//                     }
+//                     .mat-select-arrow{
+//                         color: $fbx-secondary;
+//                     }
+//                 }
+//             }
+//         }
+//         .mat-form-field-wrapper{
+//             padding-bottom: 22.5px;
+//             .mat-form-field-flex{
+//                 .mat-form-field-infix{
+//                     padding: 0.810937em 0 1.348437em 0;
+//                     .mat-select{
+//                         display: flex;
+//                         flex-wrap: wrap;
+//                         flex-direction: column;
+//                         justify-content: flex-end;
+//                         height: 31px;
+//                         .mat-select-trigger{
+//                             .mat-select-value{
+//                                 .mat-select-placeholder{}
+//                                 .mat-select-value-text{
+//                                     padding: 0 10px 0 20px;
+//                                     >span{
+//                                         font-family: $font-Roboto;
+//                                         font-weight: 400;
+//                                         color: $fbx-primary;
+//                                         font-size: 14px;
+//                                     }
+//                                     mat-select-trigger{
+//                                         flag-icon{
+//                                             .flag-icon{}
+//                                         }
+//                                         .content-img{
+//                                             display: inline-block;
+//                                             position: relative;
+//                                             height: 10px;
+//                                             width: 32px;
+//                                             img{
+//                                                 max-width: 32px;
+//                                                 max-height: 32px;
+//                                                 position: absolute;
+//                                                 bottom: -10px;
+//                                             }
+//                                         }
+//                                         >span{
+//                                             font-family: $font-Roboto;
+//                                             font-weight: 400;
+//                                             font-size: 14px;
+//                                             padding-left: 5px;
+//                                         }
+//                                     }
+//                                 }
+//                             }
+//                             .mat-select-arrow-wrapper{
+//                                 .mat-select-arrow{
+//                                     margin: 0 30px 0 0;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                     .mat-form-field-label-wrapper{
+//                         top:-0.94375em;
+//                         .mat-form-field-label{
+//                             padding: 14px 10px 0 20px;
+//                             top: 1.6em;
+//                             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//                             span {
+//                                 font-family: $font-Roboto;
+//                                 font-weight: 400;
+//                                 font-size: $label-normal;
+//                                 color:$color-gris-input;
+//                                 background-color: rgba(255, 255, 255, 0);
+//                                 transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//             .mat-form-field-underline{
+//                 height: $height-input !important;
+//                 background-color: transparent;
+//                 border-radius: 7px;
+//                 border: 1px solid $color-gris-border;
+//                 .mat-form-field-ripple{
+//                     height: $height-input !important;
+//                     background-color: transparent !important;
+//                     border-radius: 7px;
+//                     border: 1px solid $fbx-warm;
+//                     margin: -1px 0px 0 -1px;
+//                     width: calc(100% + 2px);
+//                 }
+//             }
+//             .mat-form-field-subscript-wrapper{
+//                 margin-top: 0.2em;
+//                 .ng-trigger{
+//                     .mat-error{
+//                         font-family: $font-Roboto;
+//                         font-weight: 400;
+//                         @include fontsizeheight(10.5px, 1.1, 10.5px, 1.1, 10.5px, 1.1);
+//                         color: $fbx-warm;
+//                         padding-left: 15px;
+//                         strong{}
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     &.fbx-overflow-visible{
+//         .mat-form-field-wrapper{
+//             .mat-form-field-flex{
+//                 .mat-form-field-infix{
+//                     .mat-select{
+//                         .mat-select-trigger{
+//                             .mat-select-value{
+//                                 overflow: visible;
+//                                 .mat-select-placeholder{}
+//                                 .mat-select-value-text{
+//                                     padding: 0 10px 0 20px;
+//                                     >span{
+//                                         font-family: $font-Roboto;
+//                                         font-weight: 400;
+//                                         color: $fbx-primary;
+//                                         font-size: 14px;
+//                                     }
+//                                     mat-select-trigger{
+//                                         flag-icon{
+//                                             .flag-icon{}
+//                                         }
+//                                         .content-img{
+//                                             display: inline-block;
+//                                             position: relative;
+//                                             height: 10px;
+//                                             width: 32px;
+//                                             img{
+//                                                 max-width: 32px;
+//                                                 max-height: 32px;
+//                                                 position: absolute;
+//                                                 bottom: -10px;
+//                                             }
+//                                         }
+//                                         >span{
+//                                             font-family: $font-Roboto;
+//                                             font-weight: 400;
+//                                             font-size: 16px;
+//                                             padding-left: 5px;
+//                                             color: $fbx-primary;
+//                                         }
+//                                     }
+//                                 }
+//                             }
+//                             .mat-select-arrow-wrapper{
+//                                 .mat-select-arrow{
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .mat-select-panel-wrap{
+//     .mat-option{
+//         &.mat-selected{
+//             .fbx-select-item{
+//                 flag-icon{
+//                     .flag-icon{}
+//                 }
+//                 >span{}
+//             }
+//             .fbx-select-bank-item{
+//                 .content-img{
+//                     img{}
+//                 }
+//                 >span{
+//                     color: $fbx-title-text;
+//                 }
+//             }
+//         }
+//         .fbx-select-item{
+//             flag-icon{
+//                 .flag-icon{}
+//             }
+//             >span{
+//                 padding: 0 0 0 5px;
+//             }
+//         }
+//         .fbx-select-bank-item{
+//             display: flex;
+//             align-items: center;
+//             .content-img{
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 width: 32px;
+//                 height: 32px;
+//                 img{
+//                     max-width: 100%;
+//                     max-height: 100%;
+//                 }
+//             }
+//             >span{
+//                 font-family: $font-Roboto;
+//                 font-weight: 400;
+//                 font-size: 16px;
+//                 color: $fbx-primary;
+//                 padding: 0 0 0 10px;
+//                 text-transform: capitalize;
+//             }
+//         }
+//     }
+// }
+
+// // Check de Firbex
+//  .fbx-checkbox{
+//     &.mat-checkbox{
+
+//         .mat-checkbox-layout{
+//             white-space: normal !important;
+//             text-align: justify;
+//             .mat-checkbox-label{
+//                 line-height: 16px;
+//                 span{
+//                     font-family: $font-Roboto;
+//                     font-weight: 400;
+//                     font-size: 16px;
+//                     color: $fbx-subtitle-text;
+//                 }
+//                 a{
+//                     font-family: $font-Roboto;
+//                     font-weight: 400;
+//                     font-size: 16px;
+//                     color: $fbx-accent;
+//                 }
+//             }
+//         }
+//          &.mat-checkbox-checked{
+//              .mat-checkbox-layout{
+//                 white-space: normal !important;
+//                 text-align: justify;
+//                 .mat-checkbox-inner-container{
+//                     .mat-checkbox-frame{
+//                         border-color: $fbx-secondary;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// //Data picker desplegable
+// .mat-datepicker-content .mat-calendar{
+//     border: 2px solid $fbx-secondary;
+// }
+// .mat-calendar-body-selected{
+//     background-color: $fbx-secondary;
+// }
+// .mat-calendar-body-today.mat-calendar-body-selected{
+//     box-shadow:none;
+// }
+// .mat-calendar-body-cell-content{
+//     color: $fbx-primary;
+// }
+
+
+// //Select desplegable
+
+// .mat-select-panel{
+//     padding: 10px !important;
+// }
+// .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple){
+//     background-color: $fbx-primary;
+//     color:white;
+// }
+
+// // Flecha del select
+// .mat-select-arrow{
+//     color: $fbx-secondary;
+// }
+
+
+// // Btn-radius
+
+// .mat-checkbox-frame{
+//     border-width: 1px !important;
+// }
+
+
+
+// -----NUEVO-----
 @import '_default-theme.scss';
 @import 'font.scss';
 
@@ -5,26 +711,43 @@
 // Input de Firbex
 $color-gris-border: #EEEEEE;
 $color-gris-input: #A7A9AC;
-$label-float: 14px;
+$label-float: 12px;
 $label-normal: 16px;
-$padding-label-input: 12px 10px 2px 20px;
-$padding-placeholder-input: 14px 10px 2px 20px;
-$height-input: 64px;
+$padding-label-input: 12px 10px 0px 13px;
+$padding-placeholder-input: 14px 10px 2px 13px;
+$height-input: 56px;
+$border-radius: 0px;
 
 //Ocultando el asterisco
 .mat-placeholder-required{
     display: none !important;
 }
 
+input{
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+        -moz-appearance:textfield;
+    }
+}
 
 
 .fbx-input {
     height: 84px;
+    margin-bottom: -11px;
+    .print-number-dollar{
+        z-index:1;
+    }
     &.mat-form-field-appearance-legacy {
         .mat-form-field-underline {
             height: $height-input !important;
             background-color: transparent;
-            border-radius: 7px;
+            border-radius:$border-radius;
             border: 1px solid $color-gris-border;
         }
         &.mat-form-field-invalid {
@@ -32,7 +755,7 @@ $height-input: 64px;
                 .mat-form-field-ripple {
                     height: $height-input !important;
                     background-color: transparent !important;
-                    border-radius: 7px;
+                    border-radius:$border-radius;
                     border: 1px solid $fbx-warm;
                 }
                 .mat-form-field-underline {
@@ -47,7 +770,7 @@ $height-input: 64px;
         .mat-form-field-ripple {
             height: $height-input !important;
             background-color: transparent !important;
-            border-radius: 7px;
+            border-radius:$border-radius;
             border: 1px solid $fbx-warm;
             margin: -1px 0px 0 -1px;
             width: calc(100% + 2px);
@@ -73,19 +796,23 @@ $height-input: 64px;
                     }
                 }
                 .mat-form-field-label {
-                    padding: 1px 0 0 20px;
+                    padding: 3.5px 0 0 13px;
+                    // padding: 12px 0 0 13px;
+                    // padding: 10px 0 0 13px;
                     transform: translateY(-1.25em) scale(1) perspective(100px) translateZ(0.001px) !important;
                     z-index: 2;
                     color: $fbx-accent;
                     span {
-                        font-family: $font-Roboto;
+                        font-family: $font-DMSans;
                         font-weight: 400;
                         font-size: $label-float;
                         line-height: 27px;
-                        background-color: rgba(255, 255, 255, 1);
-                        padding: 0 5px 0 5px;
+                        // background-color: rgba(255, 255, 255, 1);
+                        padding: 0 0 0 0;
                         color: $color-gris-input;
                         position: relative;
+                        // @include respondto(minxs) {font-size: 12px;}
+                        // @include respondto(maxxs) {font-size: 12px;}
                         &:before{
                             content: '';
                             position: absolute;
@@ -104,30 +831,34 @@ $height-input: 64px;
             }
         }
         .mat-form-field-label {
-            padding: $padding-placeholder-input;
-            top: 1.5em;
+            //INPUT SIN RELLENAR BODY
+            padding: 5px 0px 0px 10px;
+            // padding: $padding-placeholder-input;
+            top : 0.5em;
+            // top: 1.5em;
             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             span {
-                font-family: $font-Roboto;
+                font-family: $font-DMSans;
                 font-weight: 400;
                 font-size: $label-normal;
-                color:$color-gris-input;
+                color:$fbx-primary;
                 background-color: rgba(255, 255, 255, 0);
                 transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             }
+        }
+        .mat-hint{
+            color: $fbx-primary;
         }
     }
     &.mat-form-field {
         &.mat-focused {
             .mat-form-field-ripple {
                 background-color: transparent;
-                border: 1px solid $llight-primary-text;
-                // border: 1px solid $fbx-secondary;
+                border: 1px solid $fbx-primary;
             }
             .mat-form-field-label{
                 span{
-                    color: $llight-primary-text !important;
-                    // color: $fbx-secondary !important;
+                    color: $fbx-gristwo !important;
                 }
             }
             .mat-form-field-underline {
@@ -147,27 +878,40 @@ $height-input: 64px;
             }
         }
     }
+
     .mat-form-field-wrapper{
-        padding-bottom: 22.5px;
+        padding-bottom: 20.5px;
         .mat-form-field-flex{
             .mat-form-field-infix{
-                padding: 0.810937em 0 1.348437em 0;;
+                padding: 3px 0 0.848437em 0;
+
                 .mat-input-element{
-                    font-size: $label-normal;
-                    padding: $padding-label-input;
-                    color: $llight-primary-text;
-                    // color: $fbx-primary-text;
+                    padding:  $padding-label-input;
+                    font-family: $font-Roboto;
                 }
+                // .mat-input-element{
+                //     font-size: $label-normal;
+                //     padding: $padding-label-input;
+                //     color: $fbx-primary-text;
+                //     position: relative;
+                //     bottom: -3px;
+                // }
+
                 .mat-form-field-label-wrapper{
-                    top: -0.74375em;
+                    // top: -0.74375em;
+                    // top: -0.15em;
+                    top : 0em;
+                    // overflow: unset;
                     .mat-form-field-label{
                         color: $color-gris-input;
                         span{}
                     }
                 }
+
                 .content-icon-pass{
                     position: absolute;
-                    top: 28px;
+                    // top: 26px;
+                    top: 15px;
                     right: 20px;
                     height: 16px;
                     width: 20px;
@@ -177,18 +921,17 @@ $height-input: 64px;
                     .icon-pass{
                         max-width: 100%;
                         cursor: pointer;
-                        color: $llight-primary-text;
-                        filter: invert(0%) sepia(96%) saturate(9%) hue-rotate(184deg) brightness(90%) contrast(101%);
+                        color: $fbx-primary;
                         width: 18px;
                         &.visibility{
-                            color: $llight-primary-text;
-                            filter: invert(0%) sepia(96%) saturate(9%) hue-rotate(184deg) brightness(90%) contrast(101%);
+                            color: $color-gris-border;
                             // height: 16px;
                             width: 18px;
                         }
                     }
                 }
             }
+
             .mat-form-field-suffix{
                 top: 2px;
                 right: 20px;
@@ -196,7 +939,7 @@ $height-input: 64px;
                     top: 0px;
                     height: 15px;
                     cursor: pointer;
-                    color: $fbx-secondary;
+                    color: $fbx-primary;
                     &.visibility{
                         color: $color-gris-border;
                     }
@@ -208,12 +951,21 @@ $height-input: 64px;
             margin-top: 0.2em;
         }
     }
+
     mat-error {
-        font-family: $font-Roboto;
+        font-family: $font-DMSans;
         font-weight: 400;
         @include fontsizeheight(10.5px, 1.1, 10.5px, 1.1, 10.5px, 1.1);
         color: $fbx-warm;
-        padding-left: 15px;
+        padding-left: 10px;
+    }
+
+    mat-hint {
+        font-family: $font-DMSans;
+        font-weight: 400;
+        @include fontsizeheight(10.5px, 1.1, 10.5px, 1.1, 10.5px, 1.1);
+        color: $fbx-primary;
+        padding-left: 10px;
     }
 }
 
@@ -221,6 +973,9 @@ $height-input: 64px;
 .fbx-button{
     &.mat-accent{
         color: $fbx-btn-text;
+        background-color: $fbx-secondary;
+        height: 40px;
+        box-shadow: 0px 9px 10px rgba(39, 44, 60, 0.24);
         &:hover,
         &:active{
             transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -228,11 +983,27 @@ $height-input: 64px;
         }
         .mat-flat-button{
             color: $fbx-btn-text;
+
         }
+    }
+    &.mat-flat-button{
+        border-radius: 2px;
+        font-family: "DM Sans", sans-serif;
     }
     &.mat-flat-button[disabled][disabled]{
         background-color: $fbx-btn-disable;
         color: $fbx-background-white;
+    }
+}
+
+// Spinner de Firbex
+.fbx-spinner{
+    &.mat-flat-button[disabled][disabled]{
+        background-color: $fbx-secondary;
+        color: $fbx-background-white;
+    }
+    span {
+      opacity: 0;
     }
 }
 
@@ -242,10 +1013,6 @@ $height-input: 64px;
         .mat-tab-header{
             border-bottom: 0;
             .mat-tab-label-container{
-
-                @media(min-width: 440px){
-                    
-                }
                 .mat-tab-list{   
                     .mat-tab-labels{
                         .mat-tab-label{
@@ -259,7 +1026,7 @@ $height-input: 64px;
                                 }
                             }
                             .mat-tab-label-content{
-                                font-family: $font-Roboto;
+                                font-family: $font-DMSans;
                                 font-weight: 400;
                                 font-size: 14px;
                                 color: $fbx-input-text;
@@ -268,7 +1035,7 @@ $height-input: 64px;
                     }
                     .mat-ink-bar{
                         // height: 100%;
-                        background-color: $fbx-secondary;
+                        background-color: $fbx-primary;
                     }
                 }
             }
@@ -278,18 +1045,36 @@ $height-input: 64px;
 
 // Select de Firbex
 .fbx-select{
+    margin-bottom: -11px;
     height: 84px;
+    .flag-icon-pe{
+        border-radius:50%;
+        width: 0.9em;
+        margin-left: 11px;
+    }
+    .mat-icon-arrow{
+        width: 0.5em !important;
+        right: 14px;         
+        position: relative;        
+        top: 7px;
+    }
     &.mat-form-field-type-mat-select{
+
+        .mat-select-arrow-wrapper{
+            opacity: 0;
+        }
         &.fbx-not-arrow{
             .mat-form-field-wrapper{
                 .mat-form-field-flex{
                     .mat-form-field-infix{
+                        padding: 7.5px 0;
                         .mat-select{
                             .mat-select-trigger{
+                                height: 1.50em;
                                 .mat-select-value-text{
                                     display: flex;
-                                    justify-content: center;
-                                    padding: 0 !important;
+                                    justify-content: left;
+                                    padding: 10px 0px 0 0 !important;
                                 }
                                 .mat-select-arrow-wrapper{
                                     .mat-select-arrow{
@@ -324,24 +1109,27 @@ $height-input: 64px;
                 }
                 &:not(.mat-focused) {
                     .mat-form-field-label {
+                        
                         color: $fbx-warm;
-                        top: 1.1em !important;
+                        // top: 1.6em !important;
                         span{}
                     }
                 }
                 .mat-form-field-label {
-                    top: 0.9em !important;
-                    padding: 0 0 0 20px;
+                    // SELECT CON DATA SIN SELECCIONAR
+                    padding-left: 10px;
+                    // padding: 3px 0 0 13px;
+                    // padding: 0 0 0 20px;
                     transform: translateY(-1.25em) scale(1) perspective(100px) translateZ(0.001px);
                     z-index: 2;
                     color: $fbx-accent;
                     span {
-                        font-family: $font-Roboto;
+                        font-family: $font-DMSans;
                         font-weight: 400;
                         font-size: $label-float !important;
                         background-color: transparent !important;
                         color: $color-gris-input !important;
-                        padding: 0 2px 0 5px;
+                        padding: 0;
                         position: relative;
                         &:before{
                             content: '';
@@ -368,24 +1156,25 @@ $height-input: 64px;
                     border: 1px solid transparent;
                     .mat-form-field-ripple {
                         background-color: transparent;
-                        border: 1px solid $fbx-secondary !important;
+                        border: 1px solid $fbx-primary !important;
                     }
                 }
                 .mat-select-arrow-wrapper{
                     .mat-select-arrow{
-                        color: $fbx-secondary;
+                        color: $fbx-primary;
                     }
                 }
 
                 .mat-form-field-label{
-                    padding: 0 10px 0 20px;
-                    top: 1.6em;
+                    // SELECT CON DATA SELECCIONADO CABEZERA
+                    padding-left: 10px;
+                    // top: 1.6em;
                     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                     span {
-                        font-family: $font-Roboto;
+                        font-family: $font-DMSans;
                         font-weight: 400;
                         font-size: $label-normal;
-                        color:$fbx-secondary !important;
+                        color:$fbx-primary !important;
                         background-color: rgba(255, 255, 255, 0);
                         transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                     }
@@ -398,13 +1187,13 @@ $height-input: 64px;
                 }
                 .mat-select-arrow-wrapper{
                     .mat-select-arrow{
-                        color: $fbx-secondary;
+                        color: $fbx-primary;
                     }
                 }
                 &:not(.mat-focused) {
                     .mat-form-field-ripple {
                         background-color: transparent;
-                        border-radius: 7px;
+                        border-radius:$border-radius;
                         border: 1px solid $fbx-warm;
                     }
                     .mat-form-field-underline {
@@ -412,19 +1201,20 @@ $height-input: 64px;
                         border: 1px solid transparent;
                     }
                     .mat-form-field-label {
+                        padding-left: 15px;
                         color: $fbx-warm;
                     }
                     .mat-select-arrow{
-                        color: $fbx-secondary;
+                        color: $fbx-primary;
                     }
                 }
             }
         }
         .mat-form-field-wrapper{
-            padding-bottom: 22.5px;
+            // padding-bottom: 18.7px;
             .mat-form-field-flex{
                 .mat-form-field-infix{
-                    padding: 0.810937em 0 1.348437em 0;
+                    // padding: 0.810937em 0 0.848437em 0;
                     .mat-select{
                         display: flex;
                         flex-wrap: wrap;
@@ -432,15 +1222,20 @@ $height-input: 64px;
                         justify-content: flex-end;
                         height: 31px;
                         .mat-select-trigger{
+                            //SELECT SELECCIONADO SUBIR CUERPO MAS ARRIBA
+                            margin-bottom: 6px;
                             .mat-select-value{
                                 .mat-select-placeholder{}
                                 .mat-select-value-text{
-                                    padding: 0 10px 0 20px;
+                                    // SELECT SELECCIONADO CON DATA CUERPO
+                                    padding-left: 10px;
+                                    // padding: 0 10px 0 12px;
                                     >span{
-                                        font-family: $font-Roboto;
+                                        font-family: $font-DMSans;
                                         font-weight: 400;
                                         color: $fbx-primary;
-                                        font-size: 14px;
+                                        // font-size: 14px;
+                                        font-size: 16px;
                                     }
                                     mat-select-trigger{
                                         flag-icon{
@@ -450,16 +1245,16 @@ $height-input: 64px;
                                             display: inline-block;
                                             position: relative;
                                             height: 10px;
-                                            width: 32px;
+                                            width: 22px;
                                             img{
-                                                max-width: 32px;
-                                                max-height: 32px;
+                                                max-width: 20px;
+                                                max-height: 25px;
                                                 position: absolute;
-                                                bottom: -10px;
+                                                bottom: -3px;
                                             }
                                         }
                                         >span{
-                                            font-family: $font-Roboto;
+                                            font-family: $font-DMSans;
                                             font-weight: 400;
                                             font-size: 14px;
                                             padding-left: 5px;
@@ -475,16 +1270,20 @@ $height-input: 64px;
                         }
                     }
                     .mat-form-field-label-wrapper{
-                        top:-0.94375em;
-                        .mat-form-field-label{
-                            padding: 14px 10px 0 20px;
-                            top: 1.6em;
+                        
+                        .mat-form-field-label{ 
+                            // SELECT SIN DATA SIN SELECCIONAR
+                            padding-left: 10px;
+                            padding-top: 6px;
+                            // padding: $padding-placeholder-input;
+                            // top: 1.6em;
                             transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                             span {
-                                font-family: $font-Roboto;
+                                font-family: $font-DMSans;
                                 font-weight: 400;
                                 font-size: $label-normal;
-                                color:$color-gris-input;
+                                // color:$color-gris-input;
+                                color : $fbx-primary-dark;
                                 background-color: rgba(255, 255, 255, 0);
                                 transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),font-size 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
                             }
@@ -495,12 +1294,12 @@ $height-input: 64px;
             .mat-form-field-underline{
                 height: $height-input !important;
                 background-color: transparent;
-                border-radius: 7px;
+                border-radius:$border-radius;
                 border: 1px solid $color-gris-border;
                 .mat-form-field-ripple{
                     height: $height-input !important;
                     background-color: transparent !important;
-                    border-radius: 7px;
+                    border-radius:$border-radius;
                     border: 1px solid $fbx-warm;
                     margin: -1px 0px 0 -1px;
                     width: calc(100% + 2px);
@@ -510,7 +1309,7 @@ $height-input: 64px;
                 margin-top: 0.2em;
                 .ng-trigger{
                     .mat-error{
-                        font-family: $font-Roboto;
+                        font-family: $font-DMSans;
                         font-weight: 400;
                         @include fontsizeheight(10.5px, 1.1, 10.5px, 1.1, 10.5px, 1.1);
                         color: $fbx-warm;
@@ -521,7 +1320,9 @@ $height-input: 64px;
             }
         }
     }
+
     &.fbx-overflow-visible{
+        // background-color: red;
         .mat-form-field-wrapper{
             .mat-form-field-flex{
                 .mat-form-field-infix{
@@ -531,37 +1332,39 @@ $height-input: 64px;
                                 overflow: visible;
                                 .mat-select-placeholder{}
                                 .mat-select-value-text{
-                                    padding: 0 10px 0 20px;
+                                    // padding: 0 10px 0 10px;
+                                    >span{
+                                        // font-family: $font-DMSans;
+                                        // font-weight: 400;
+                                        // color: $fbx-primary;
+                                        // font-size: 14px;
+                                    }
+                                    .flag-icon{
+                                        
+                                    }
+                                    .content-img{
+                                        display: inline-block;
+                                        position: relative;
+                                        height: 10px;
+                                        width: 20px;
+                                        img{
+                                            max-width: 20px;
+                                            max-height: 20px;
+                                            position: absolute;
+                                            bottom: -2px;
+                                        }
+                                    }
                                     >span{
                                         font-family: $font-Roboto;
                                         font-weight: 400;
+                                        font-size: 16px;
+                                        padding-left: 0px;
                                         color: $fbx-primary;
-                                        font-size: 14px;
+                                        position:relative;
+                                        top:1px;
+                                        padding:0 !important;
                                     }
-                                    mat-select-trigger{
-                                        flag-icon{
-                                            .flag-icon{}
-                                        }
-                                        .content-img{
-                                            display: inline-block;
-                                            position: relative;
-                                            height: 10px;
-                                            width: 32px;
-                                            img{
-                                                max-width: 32px;
-                                                max-height: 32px;
-                                                position: absolute;
-                                                bottom: -10px;
-                                            }
-                                        }
-                                        >span{
-                                            font-family: $font-Roboto;
-                                            font-weight: 400;
-                                            font-size: 16px;
-                                            padding-left: 5px;
-                                            color: $fbx-primary;
-                                        }
-                                    }
+                                    
                                 }
                             }
                             .mat-select-arrow-wrapper{
@@ -575,6 +1378,28 @@ $height-input: 64px;
         }
     }
 }
+
+
+
+.fbx-mat-slide{
+    &.mat-checked{
+        .mat-slide-toggle-bar{
+
+        }
+        .mat-slide-toggle-thumb{
+            background-color: $fbx-secondary-dark;
+        }
+    }
+}
+
+.fbx-mat-radio{
+    mat-radio-button{
+      label{
+         font-family: $font-Roboto;
+      }  
+    }
+}
+
 .mat-select-panel-wrap{
     .mat-option{
         &.mat-selected{
@@ -592,6 +1417,9 @@ $height-input: 64px;
                     color: $fbx-title-text;
                 }
             }
+        }
+        .mat-option-text{
+            font-family: $font-Roboto;
         }
         .fbx-select-item{
             flag-icon{
@@ -621,7 +1449,7 @@ $height-input: 64px;
                 font-size: 16px;
                 color: $fbx-primary;
                 padding: 0 0 0 10px;
-                text-transform: capitalize;
+                // text-transform: capitalize;
             }
         }
     }
@@ -637,15 +1465,17 @@ $height-input: 64px;
             .mat-checkbox-label{
                 line-height: 16px;
                 span{
-                    font-family: $font-Roboto;
+                    font-family: $font-DMSans;
                     font-weight: 400;
-                    font-size: 16px;
+                    // font-size: 16px;
+                    font-size: 12px;
                     color: $fbx-subtitle-text;
                 }
                 a{
-                    font-family: $font-Roboto;
+                    font-family: $font-DMSans;
                     font-weight: 400;
-                    font-size: 16px;
+                    // font-size: 16px;
+                    font-size: 12px;
                     color: $fbx-accent;
                 }
             }
@@ -656,73 +1486,27 @@ $height-input: 64px;
                 text-align: justify;
                 .mat-checkbox-inner-container{
                     .mat-checkbox-frame{
-                        border-color: $fbx-secondary;
+                        border-color: $fbx-primary;
                     }
                 }
             }
         }
     }
 }
-// .fbx-checkbox{
-//     &.mat-checkbox{
-
-//         .mat-checkbox-layout{
-//             white-space: normal !important;
-//             .mat-checkbox-inner-container{
-//                 height: 22px;
-//                 width: 22px;
-//                 .mat-checkbox-frame{
-//                     border-radius: 50%;
-//                 }
-//                 .mat-checkbox-background{
-//                     border-radius: 50%;    
-//                     width: 12px;
-//                     height: 12px;
-//                     top: 5px;
-//                     left: 5px;
-//                     .mat-checkbox-checkmark{
-//                         display: none;
-//                     }
-//                 }
-//             }
-//             .mat-checkbox-label{
-//                 line-height: 16px;
-//                 span{
-//                     font-family: $font-Roboto;
-//                     font-weight: 400;
-//                     font-size: 13px;
-//                     color: $fbx-subtitle-text;
-//                 }
-//                 a{
-//                     font-family: $font-Roboto;
-//                     font-weight: 400;
-//                     font-size: 13px;
-//                     color: $fbx-accent;
-//                 }
-//             }
-//         }
-//         &.mat-checkbox-checked{
-//             .mat-checkbox-layout{
-//                 white-space: normal !important;
-//                 .mat-checkbox-inner-container{
-//                     .mat-checkbox-frame{
-//                         border-color: $fbx-secondary;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-// .mat-radio-outer-circle{
-//     border-width: 1px !important;
-// }
 
 
 
 //Data picker desplegable
-.mat-datepicker-content .mat-calendar{
-    border: 2px solid $fbx-secondary;
+.mat-datepicker-content{
+    box-shadow:1px 0px 14px 0px rgba(0, 0, 0, 0.11);
+    .mat-calendar{
+        border: 0px solid transparent;
+    }
 }
+.mat-calendar-body-cell-content.mat-calendar-body-selected{
+    color: white;
+}
+
 .mat-calendar-body-selected{
     background-color: $fbx-secondary;
 }
@@ -746,7 +1530,7 @@ $height-input: 64px;
 
 // Flecha del select
 .mat-select-arrow{
-    color: $fbx-secondary;
+    color: $fbx-primary;
 }
 
 
@@ -757,9 +1541,18 @@ $height-input: 64px;
 }
 
 //Modal Firbix
-// mat-dialog-container{
-//     &.mat-dialog-container{
-//         padding: unset;
-//         border-radius: 2px;
-//     }
-// }
+.cdk-overlay-dark-backdrop{
+    // background: rgb(31, 25, 51, 0.69) 0% 0% no-repeat padding-box;
+    background: $fbx-background-modal;
+}
+.mat-dialog-container{
+    &.mat-dialog-container{
+        .cdk-global-overlay{
+            position: fixed;
+            z-index: 1000;
+            background-color: rgb(22, 49, 100,0.69);
+        }
+        padding: unset;
+        border-radius:$border-radius;
+    }
+}

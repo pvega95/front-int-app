@@ -1,295 +1,187 @@
-@import '_default-theme.scss';
-.btn-custom{
-    max-width: 60%;
-    margin: 20px auto 0px auto;
-    text-align: end;
-    button{
-        background-color: #d32f2f;
-        font-size: 15px;
-        &:focus{
-        }
-    }
-}
-.container-login{
+@import "_default-theme.scss";
+
+.container-person {
     display: flex;
     width: 100%;
-    .content-center{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 800px;
-      max-width: 90%;
-      margin: 20px auto;
-      background: white;
-      form{
-          display: flex;
-          flex-wrap: wrap;
-          width: 700px;
-          max-width: 95%;
-          margin: 30px auto 0px auto;
-          .input-group{
-              width: 100%;
-              &.contratista{
-                  width: calc(70%);
-                  margin-right: 5px;
-              }
-              // form persona
-              &.select-pdocForm{
-                  width: calc(30% - 5px);
-                //   margin-right: 5px;
-                //   width: calc((100% - 5px)/2);
-              }
-              &.tipo-procedimiento{
-                width: calc((100% - 10px)/3);
-                margin-right: 5px;
-              }
-              &.num-procedimiento{
-                width: calc((100% - 10px)/3);
-                margin-right: 5px;
-                // width: calc((70% - 5px));
-                input[type=number]::-webkit-inner-spin-button, 
-                input[type=number]::-webkit-outer-spin-button { 
-                -webkit-appearance: none; 
-                // margin: 0; 
-                }
-
-                input[type=number] { -moz-appearance:textfield; }
-              }
-              &.año-proceso{
-                width: calc((100% - 10px)/3);
-              }
-              &.recepcion{
-                width: calc((100% - 5px)/2);
-                margin-right: 5px;
-              }
-              &.items-fiscalizados{
-                width: calc((100% - 5px)/2);
-            }
-              &.input-pnumberForm{
-                width: calc((100% - 5px)/2);
-                  input[type=number]::-webkit-inner-spin-button, 
-                  input[type=number]::-webkit-outer-spin-button { 
-                  -webkit-appearance: none; 
-                  margin: 0; 
-                  }
-
-                  input[type=number] { -moz-appearance:textfield; }
-              }
-              &.select-pcountryForm{
-                  margin-right: 5px;
-                  width: 90px;
-                  .mat-select-arrow-wrapper{
-                      display: none !important;
-                  }
-                  .fbx-select{
-                      color: red;
-                      .mat-form-field-wrapper{
-                          color: red;
-                      }
-                      .mat-select-value-text{
-                          padding: 0;
-                          display: flex;
-                          justify-content: center;
-                      }
-                  }
-              }
-              &.surname{
-                  margin-right: 5px;
-                  width: calc((100% - 5px)/2);
-              }
-              &.lastname{
-                  width: calc((100% - 5px)/2);
-              }
-              &.input-pphoneForm{
-                  width: calc(100% - 95px);
-                  input[type=number]::-webkit-inner-spin-button, 
-                  input[type=number]::-webkit-outer-spin-button { 
-                  -webkit-appearance: none; 
-                  margin: 0; 
-                  }
-
-                  input[type=number] { -moz-appearance:textfield; }
-                  
-              }
-              &.input-valid-phone{
-                  display: none;
-              }
-              &.input-pcodeForm{
-                  display: none;
-              }
-              &.input-ptermForm{
-                  margin-bottom: 10px;
-              }
-
-              // form empresa
-              &.input-cnumberForm{
-                  width: 100%;
-              }
-              &.select-ccountryForm{
-                  margin-right: 5px;
-                  width: 90px;
-              }
-              &.input-cphoneForm{
-                  width: calc(100% - 95px);
-              }
-              &.input-ccodeForm{
-                  display: none;
-              }
-              &.input-ctermForm{
-                  margin-bottom: 10px;
-              }
-
-              .fbx-select{
-                  width: 100%;
-              }
-              .fbx-input{
-                  width: 100%;
-              }
-              &.input-ptermForm{
-                  padding: 23.3px 12px;
-                  a{
-                      color: $fbx-secondary;
-                  }
-              }
-              .fbx-checkbox{
-                  .mat-checkbox-label{
-                      white-space: normal;
-                      text-align: justify; 
-                      line-height: 18px;
-                  }
-              }
-          }
-          .btn-enter{
-              width: 100%;
-              margin: 30px 0px;
-              button{
-                  width: 100%;
-                  background-color: #d32f2f;
-                  height: 47px;
-                  font-size: 18px;
-                  &:focus{
-                  }
-              }
-          }
-          
-      }
-      .content-login{
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              max-width: 100%;
-              margin-bottom: 50px;
-              .aux-login{
-                  display: flex;
-                  flex-direction: row;
-                  flex-wrap: wrap;
-                  width: 350px;
-                  max-width: 95%;
-                  p{
-                      font-family: $font-Roboto;
-                      font-weight: 400;
-                      font-size: 14px;
-                      color: $fbx-primary-text;
-                  }
-                  a{
-                      font-family: $font-Roboto;
-                      font-weight: 400;
-                      font-size: 14px;
-                      color: $fbx-secondary;
-                      padding-left: 8px;
-                      &:hover,
-                      &:active{
-                          color: $fbx-secondary-dark;
-                      }
-                  }
-              }
-      }
-      
-  }
-  
-}
-.confirm-copy{
-    margin: auto;
-    margin-bottom: 13px;
-    width: 800px;
-    @media(min-width:768px){
-        // width: 90%;
+    height: calc(100vh - 90px);
+    justify-content: center;
+    @include respondto(minxs) {
     }
-    .confirm-copy-body{
-        border: 1px solid $fbx-gristwo-light;
-        display: flex;
-        .copy-info-1{
-            padding: 9px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 80%;
-            margin: 0 10px;
-            img{
-                height: 33px;
-                margin-right: 10px;
-            }
-            h4{
-                font-size: 16px;
-                font-weight: 400;
-                span{
-                    font-weight: 600;
-                }
-            }
-        }
-        .copy-info-2{
-            background-color: #d32f2f;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 20%;
-            margin: 0 10px;
-            img{
-                height: 32px;
-                z-index: 2;
-            }
-            button{
-                z-index: 5;
-                width: 100%;
-                height: 100%;
-                color:white;
-                border: 0;
-                background-color: transparent;
-                font-size: 14px;
-                font-weight: 600;
-                cursor: pointer;
-            }
-        }
-        
-        input{
-            display: none;
-        }
+    @include respondto(maxxs) {
     }
-    .content-loading{
-        max-width: 100%;
-        // max-width: 80%;
-        // width: 230px;
-        height: 6px;
-        .loading-image{
-            .loading-empty{
+    @include respondto(sm) {
+    }
+    @include respondto(md) {
+    }
+    @include respondto(lg) {
+    }
+    .data-person-content {
+        width: 100%;
+        max-width: 1000px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 60px;
+        @include respondto(minxs) {
+        }
+        @include respondto(maxxs) {
+        }
+        @include respondto(sm) {
+        }
+        @include respondto(md) {
+        }
+        @include respondto(lg) {
+        }
+        .content-top {
+            padding: 25px 0px;
+            .mat-icon-rtl-mirror {
+                color: #21cdfc;
                 position: relative;
-                max-width: 100%;
-                height: 6px;
-                border-radius: 6px;
-                background: rgba($fbx-gris-light, 0.3);
-                .loading-progress{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 6px;
-                    border-radius: 6px;
-                    background: $fbx-primary;
-                    z-index: 1;
-                    transition-property: all;
-                    transition-timing-function: ease;
+                top: 5px;
+                @include respondto(xs) {
+                    margin-right: 15px;
                 }
+                @include respondto(minxs) {
+                    margin-right: 15px;
+                }
+                @include respondto(md) {
+                    margin-right: 27px;
+                }
+                @include respondto(lg) {
+                    margin-right: 27px;
+                }
+            }
+            span {
+                color: #122955;
+                font-weight: bold;
+                letter-spacing: 1.37px;
+
+                @include respondto(xs) {
+                    text-align: center;
+                }
+                @include respondto(minxs) {
+                }
+            }
+            h3 {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 7px;
+                padding-bottom: 7.5px;
+                text-align: center;
+                font: 16px/18px Roboto;
+                font-weight: 400;
+                letter-spacing: 1.22px;
+                color: $fbx-primary;
+                @include respondto(xs) {
+                    font-size: 12px;
+                }
+                @include respondto(minxs) {
+                    font-size: 12px;
+                }
+            }
+        }
+        .content-center {
+            background: $fbx-background-white;
+            padding: 25px 45px;
+            box-shadow: 0px 10px 24px #1f193329;
+            // max-width: 426px;
+            margin: auto;
+            @include respondto(minxs) {
+            }
+            @include respondto(maxxs) {
+            }
+            @include respondto(sm) {
+            }
+            @include respondto(md) {
+            }
+            @include respondto(lg) {
+            }
+            form {
+                display: flex;
+                flex-wrap: wrap;
+                // width: 700px;
+                // max-width: 95%;
+                margin: 30px auto 0px auto;
+                .input-group {
+                    width: 100%;
+                    &.contratista {
+                        width: calc(70%);
+                        margin-right: 5px;
+                    }
+                    // form persona
+                    &.select-pdocForm {
+                        width: calc(30% - 5px);
+                    }
+                    &.tipo-procedimiento {
+                        width: calc((100% - 10px) / 3);
+                        margin-right: 5px;
+                    }
+                    &.num-procedimiento {
+                        width: calc((100% - 10px) / 3);
+                        margin-right: 5px;
+                        // width: calc((70% - 5px));
+                        input[type="number"]::-webkit-inner-spin-button,
+                        input[type="number"]::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                            // margin: 0;
+                        }
+                        input[type="number"] {
+                            -moz-appearance: textfield;
+                        }
+                    }
+                    &.año-proceso {
+                        width: calc((100% - 10px) / 3);
+                    }
+                    &.recepcion {
+                        width: calc((100% - 5px) / 2);
+                        margin-right: 5px;
+                    }
+                    &.items-fiscalizados {
+                        width: calc((100% - 5px) / 2);
+                    }
+                    &.input-pnumberForm {
+                        width: calc((100% - 5px) / 2);
+                        input[type="number"]::-webkit-inner-spin-button,
+                        input[type="number"]::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        input[type="number"] {
+                            -moz-appearance: textfield;
+                        }
+                    }
+                    &.select-pcountryForm {
+                        margin-right: 5px;
+                        width: 90px;
+                        .mat-select-arrow-wrapper {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+            .fbx-select {
+                width: 100%;
+            }
+            .fbx-input {
+                width: 100%;
+            }
+            .btn-enter {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .content-aux {
+            @include respondto(minxs) {
+                padding-bottom: 100px;
+            }
+            @include respondto(maxxs) {
+                padding-bottom: 100px;
+            }
+            @include respondto(sm) {
+            }
+            @include respondto(md) {
+            }
+            @include respondto(lg) {
             }
         }
     }

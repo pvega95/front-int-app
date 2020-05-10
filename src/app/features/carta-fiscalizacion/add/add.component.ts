@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -22,7 +23,10 @@ export class AddComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private _location: Location,
-  ) { }
+    private _svgRegisterService:SvgRegisterService,
+  ) {
+    this._svgRegisterService.init();
+   }
 
   ngOnInit() {
     this.cartaForm = this.formB.group({

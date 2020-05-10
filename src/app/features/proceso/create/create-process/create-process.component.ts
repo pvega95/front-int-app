@@ -51,9 +51,12 @@ public uploader: FileUploader;
     private cloudinary: Cloudinary,
     private renderer: Renderer,
     private _processService : ProcesosService,
-  ) { }
+  ) {
+    this._svgRegisterService.init();
+   }
 
   ngOnInit() {
+    
     this.cargarlistas();
 
     this.registerPersonForm = this.formB.group({

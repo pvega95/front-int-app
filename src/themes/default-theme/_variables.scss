@@ -61,27 +61,35 @@ $llight-icon-inactive: rgba(255, 255, 255, 0.50);
 
 /********* Variables de fuente ***********/
 
-$font-Roboto: 'Roboto',
-'Helvetica Neue',
-sans-serif;
+// $font-DMSans: 'DM Sans', sans-serif;
+
+
+// $font-Roboto:'DM Sans', sans-serif;
+$font-DMSans: 'DM Sans', sans-serif;
+
+
+$font-Roboto: 'DM Sans', sans-serif;
 /********* /Variables de fuente ***********/
 
 
 /********* palette colors ***********/
-$fbx-primary           : #163164; // #0039a6;
-$fbx-primary-light     : #1D3C76; // #5363d7;
-$fbx-primary-dark      : #00204F; // #001575
-$fbx-secondary         : #00CDFF;
-$fbx-secondary-light   : #2AD5FF; // #6bffff;
-$fbx-secondary-dark    : #13BBE4; // #009ccc;
+$fbx-primary           : #1F1933;
+$fbx-primary-light     : #55458C;
+$fbx-primary-dark      : #272C3C;
+// $fbx-secondary         : #9768FF;
+// $fbx-secondary-light   : #9768FF;
+// $fbx-secondary-dark    : #6228E4;
+$fbx-secondary         : #f44336;
+$fbx-secondary-light   : #d32f2f;
+$fbx-secondary-dark    : #b71c1c;
 $fbx-secundary-opacity : rgb(0, 205, 255, 0.15);
 $fbx-accent            : #00CDFF;
-$fbx-gris              : #99ABBF;
-$fbx-gris-light        : #A9BED5;
-$fbx-gris-dark         : #7B8998;
-$fbx-gristwo           : #A7A9AC;
-$fbx-gristwo-light     : #EEEEEE;
-$fbx-gristwo-dark      : #9B9B9B;
+$fbx-gris              : #F8F9FD;
+$fbx-gris-light        : #F8F9FD;
+$fbx-gris-dark         : #DCE3EC;
+$fbx-gristwo           : #9F9FAF;
+$fbx-gristwo-light     : #C5C5D9;
+$fbx-gristwo-dark      : #747480;
 $fbx-green             : #04BF7B;
 $fbx-green-light       : #05D88B;
 $fbx-green-dark        : #06AC6F;
@@ -94,10 +102,11 @@ $fbx-wait              : #ea7125;
 $fbx-rejected          : #ff0000;
 $fbx-disabled          : $llight-disabled-text; // naranja decolorado
 
-$fbx-primary-text      : $fbx-primary; // negro
+$fbx-gray-menu         : #838495;
+$fbx-primary-text      : $fbx-primary-dark; // negro
 $fbx-secundary-text    : $llight-secundary-text; // gris
 $fbx-title-text        : $ldark-primary-text; // blanco
-$fbx-subtitle-text     : #a7a9ac; // subtitulos - texto caja
+$fbx-subtitle-text     : #9F9FAF; // subtitulos - texto caja
 $fbx-input-text        : #99abbf; // inputs - Textos menu
 $fbx-btn-disable       : #99abbf;
 $fbx-btn-text          : #ffffff;
@@ -112,3 +121,6 @@ $fbx-background-cliente: #F0F4F8;
 
 $fbx-sombra-bottom     : 0 2px 5px rgba(0,0,0,.26);
 /********* /palette colors ***********/
+
+/********* /modal colors ***********/
+$fbx-background-modal : rgb(31, 25, 51, 0.69) 0% 0% no-repeat padding-box;

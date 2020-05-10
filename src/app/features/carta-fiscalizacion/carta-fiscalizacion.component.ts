@@ -16,7 +16,7 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
 })
 export class CartaFiscalizacionComponent implements OnInit {
   cartaForm: FormGroup;
-  displayedColumns: string[] = ['id', 'descripcion','proceso','fecha','analista','empresa','generar','edit','delete'];
+  displayedColumns: string[] = ['proceso','fecha','analista','empresa','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   message:{};
 

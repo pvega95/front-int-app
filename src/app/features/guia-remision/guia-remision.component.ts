@@ -23,7 +23,11 @@ export class GuiaRemisionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   this._remisionService.getGuiaRemision().pipe(take(1))
+   this.getGuia();
+  }
+
+  getGuia(){
+    this._remisionService.getGuiaRemision().pipe(take(1))
     .subscribe(
       res =>{
         console.log('res',res)
@@ -57,11 +61,26 @@ export class GuiaRemisionComponent implements OnInit {
       (data: boolean) => {
         if (data) {
           console.log("Dialog output:", data)
-          // this.deleteProcess(id);
+          this.deleteGuiaRemision(id);
         }
         
       }
     );
+  }
+
+  deleteGuiaRemision(id:string){
+    this._remisionService.setDeleteById(id).pipe(take(1))
+      .subscribe(
+        res => {
+          if (res) {
+            console.log(res)
+            this.getGuia();
+          }
+          
+        },(err:HttpErrorResponse) =>{
+          console.log('err',err)
+        }
+      )
   }
 
 }
