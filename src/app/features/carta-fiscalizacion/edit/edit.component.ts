@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-edit',
@@ -21,8 +22,11 @@ export class EditComponent implements OnInit {
     public formB: FormBuilder,
     public dialog: MatDialog,
     private _location: Location,
-    private _cartaService : CartaService
-  ) { }
+    private _cartaService : CartaService,
+    private _svgRegisterService:SvgRegisterService,
+  ) { 
+    this._svgRegisterService.init();
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

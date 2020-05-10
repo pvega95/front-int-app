@@ -7,6 +7,7 @@ import { ModalCartaComponent } from '../../carta-fiscalizacion/modal-carta/modal
 import { Location } from '@angular/common';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-edit',
@@ -24,7 +25,10 @@ export class EditComponent implements OnInit {
     private _location: Location,
     private router: Router,
     private route: ActivatedRoute,
-  ) { }
+    private _svgRegisterService:SvgRegisterService,
+  ) { 
+    this._svgRegisterService.init();
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

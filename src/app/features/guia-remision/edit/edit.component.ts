@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { ModalGuiaComponent } from '../modal-guia/modal-guia.component';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-edit',
@@ -24,7 +25,10 @@ export class EditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-  ) { }
+    private _svgRegisterService:SvgRegisterService
+  ) { 
+    this._svgRegisterService.init();
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -75,7 +79,7 @@ export class EditComponent implements OnInit {
   }
 
   setFormModal(result) {
-    this.guiaForm.controls['descProForm'].setValue(result.descProcForm);
+    this.guiaForm.controls['descProForm'].setValue(result.procesoForm);
     this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
     this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
     this.guiaForm.controls['descDocForm'].setValue(result.docForm);

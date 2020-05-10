@@ -9,9 +9,10 @@ import { CreateProcessComponent } from './create/create-process/create-process.c
 import { EditProcessComponent } from './create/edit-process/edit-process.component';
 import { ProcesoModalComponent } from './proceso-modal/proceso-modal.component';
 import { ModalsModule } from '@shared/modals/modals.module';
+import { GaleryComponent } from './create/galery/galery.component';
 
 @NgModule({
-  declarations: [ProcesoComponent, CreateProcessComponent, EditProcessComponent],
+  declarations: [ProcesoComponent, CreateProcessComponent, EditProcessComponent, GaleryComponent],
   imports: [
     CommonModule,
     SharedModule,

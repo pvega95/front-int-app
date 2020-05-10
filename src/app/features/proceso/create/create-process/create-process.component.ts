@@ -28,7 +28,7 @@ export class CreateProcessComponent implements OnInit {
   country: any;
   listCountry = [];
 
-  //uploader cloudinary
+//uploader cloudinary
 @ViewChild('fbxFileInput', { static: false }) fileInputElement: ElementRef;
 URL_UPLOAD_CLOUDINARY = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`;
 URL_DELETE_CLOUDINARY = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/delete_by_token`;

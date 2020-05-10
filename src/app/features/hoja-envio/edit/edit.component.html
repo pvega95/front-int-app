@@ -1,4 +1,62 @@
-<section class="form-header">
+<section class="container-person">
+  <div class="data-person-content">
+      <div class="content-top">
+          <h1>
+              <a (click)="goback()">
+                  <mat-icon class="mat-icon-rtl-mirror" svgIcon="icon-fbx-arrow"></mat-icon>
+              </a>
+              <span class="text-1">Editar Hoja de Envio</span>
+          </h1>
+          <button class="fbx-button" mat-flat-button color="accent" (click)="openDialog()">Añadir</button>
+      </div>
+      <div class="content-center">
+        <form [formGroup]="hojaEnvioForm" (ngSubmit)="onSubmitHoja(hojaEnvioForm)">
+          <div class="input-group registro">
+            <mat-form-field class="fbx-input">
+              <input matInput formControlName="numRegForm" placeholder="N° Registro" [type]="'text'" required>
+            </mat-form-field>
+          </div>
+          <div class="input-group proceso">
+            <mat-form-field class="fbx-input">
+              <input matInput formControlName="procesoForm" placeholder="Proceso" [type]="'text'" required>
+            </mat-form-field>
+          </div>
+          <div class="input-group fecha">
+            <mat-form-field class="fbx-input">
+              <input matInput formControlName="fechaForm" placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker color="#163164"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="input-group hoja">
+            <mat-form-field class="fbx-input">
+              <input matInput formControlName="numHojaForm" placeholder="N° Hoja Envio" [type]="'text'" required>
+            </mat-form-field>
+          </div>
+          <div class="input-group doc">
+            <mat-form-field class="fbx-input">
+              <input matInput formControlName="docRemForm" placeholder="Doc a remitir" [type]="'text'" required>
+            </mat-form-field>
+          </div>
+    
+          <div class="input-group tipo-doc">
+            <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+              <mat-select formControlName="tipDocForm" placeholder="Tipo Documento">
+                <mat-option [value]="'1'">CARGO</mat-option>
+                <mat-option [value]="'2'">RESPUESTA</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="btn-enter">
+            <button class="fbx-button" mat-flat-button color="accent" type="submit">Actualizar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</section>
+
+
+<!-- <section class="form-header">
   <h1>Editar Hoja de envio</h1>
   <div class="btn-enter">
   <button class="fbx-button" mat-flat-button color="accent" (click)="goback()">Retroceder</button>
@@ -37,11 +95,7 @@
           <input matInput formControlName="docRemForm" placeholder="Doc a remitir" [type]="'text'" required>
         </mat-form-field>
       </div>
-      <!-- <div class="input-group contratista">
-        <mat-form-field class="fbx-input">
-          <input matInput formControlName="tipDocForm" placeholder="Tipo de documento" [type]="'text'" required>
-        </mat-form-field>
-      </div> -->
+
       <div class="input-group tipo-doc">
         <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
           <mat-select formControlName="tipDocForm" placeholder="Tipo Documento">
@@ -55,4 +109,4 @@
       </div>
     </form>
   </div>
-</section>
+</section> -->

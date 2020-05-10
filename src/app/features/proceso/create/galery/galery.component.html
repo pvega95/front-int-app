@@ -1,0 +1,53 @@
+<div class="container-image-new">
+    <div class="body-image-new">
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader" (click)="onImageClicked()" class="card-image-new">
+            <div class="my-drop-zone-new">
+                <div class="content-icono">
+                    <img [src]="existImage?'assets/img/nube_hover.svg':'assets/img/nube_sin_hover.svg'" alt="documento">
+                </div>
+                <div class="content-text">
+                    <span *ngIf="!existImage" class="text-detail">Subir Archivo</span>
+                    <span *ngIf="existImage" class="text-image">{{ imagen.nombre }}</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-check">
+            <img *ngIf="!existImage" src="" alt="">
+            <img *ngIf="existImage" src="assets/img/check.svg" alt="">
+        </div>
+        <input type="file" #fbxFileInput ng2FileSelect [uploader]="uploader" class="fbx-input-file" />
+    </div>
+    <div class="content-loading">
+        <div *ngIf="uploader?.queue?.length == 1" class="loading-image">
+            <div class="loading-empty">
+                <div class="loading-progress" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="confirm-copy">
+    <div class="confirm-copy-body">
+        <div class="copy-info-1">
+            <p *ngIf="!existImage" class="text-detail">Adjunta tu <span> Proceso </span> </p>
+            <p *ngIf="existImage" class="text-image">{{ imagen.nombre }}</p>
+        </div>
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+            [uploader]="uploader" (click)="onImageClicked()" class="copy-info-2">
+            <button type="button">
+                <img src="assets/img/clip.png" alt="">
+            </button>
+        </div>
+        <input type="file" #fbxFileInput ng2FileSelect [uploader]="uploader" class="fbx-input-file" />
+    </div>
+  
+    <div class="content-loading">
+        <div *ngIf="uploader?.queue?.length == 1" class="loading-image">
+            <div class="loading-empty">
+                <div class="loading-progress" [ngStyle]="{ 'width': uploader.progress + '%' }">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

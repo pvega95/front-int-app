@@ -21,7 +21,7 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+
 })
 export class ProcesoComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name','type','edit','delete'];
+  displayedColumns: string[] = ['id', 'name','type','edit','delete','view'];
   dataSource = new MatTableDataSource;
   totalPosts = 10;
   postsPerPage = 5;
