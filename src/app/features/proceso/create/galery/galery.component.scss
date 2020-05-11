@@ -1,76 +1,227 @@
 @import '_default-theme.scss';
 
-.container-image-new{
-    max-width: 300px;
-    // height: 40px;
-    margin: 10px auto;
-    .body-image-new{
-        display: flex;
-        justify-content: space-between;
-        height: 40px;
-        .card-image-new{
-            border: 1px solid $fbx-secondary;
-            background: $fbx-gris;
-            padding: 10px 16px;
-            max-width: 264px;
-            width: 100%;
-            opacity: 0.8;
-            box-shadow: 0px 9px 10px #272C3C3D;
-            &.nv-file-over{
-                opacity: 1;
-                p{
-                    color: $fbx-secondary-dark;
+@import "_default-theme.scss";
+
+.container-person {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 90px);
+    justify-content: center;
+    @include respondto(minxs) {
+    }
+    @include respondto(maxxs) {
+    }
+    @include respondto(sm) {
+    }
+    @include respondto(md) {
+    }
+    @include respondto(lg) {
+    }
+    .data-person-content {
+        width: 100%;
+        max-width: 1000px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 60px;
+        @include respondto(minxs) {
+        }
+        @include respondto(maxxs) {
+        }
+        @include respondto(sm) {
+        }
+        @include respondto(md) {
+        }
+        @include respondto(lg) {
+        }
+        .content-top {
+            padding: 25px 0px;
+            display: flex;
+            justify-content: space-between;
+            .mat-icon-rtl-mirror {
+                color: #21cdfc;
+                position: relative;
+                top: 5px;
+                @include respondto(xs) {
+                    margin-right: 15px;
+                }
+                @include respondto(minxs) {
+                    margin-right: 15px;
+                }
+                @include respondto(md) {
+                    margin-right: 27px;
+                }
+                @include respondto(lg) {
+                    margin-right: 27px;
                 }
             }
-            .my-drop-zone-new{
-                display: flex;
-                flex-direction: row;
-                .content-icono{
-                    display: flex;
-                    padding-right: 25px;
+            span {
+                color: #122955;
+                font-weight: bold;
+                letter-spacing: 1.37px;
+
+                @include respondto(xs) {
+                    text-align: center;
                 }
-                .content-text{
-                    span{
-                        font-weight: 500;
-                        color: $fbx-secondary;
-                        font-size: 15px;
-                        font-family: $font-Roboto;
-                    } 
+                @include respondto(minxs) {
+                }
+            }
+            h3 {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 7px;
+                padding-bottom: 7.5px;
+                text-align: center;
+                font: 16px/18px Roboto;
+                font-weight: 400;
+                letter-spacing: 1.22px;
+                color: $fbx-primary;
+                @include respondto(xs) {
+                    font-size: 12px;
+                }
+                @include respondto(minxs) {
+                    font-size: 12px;
+                }
+            }
+        }
+        .content-center {
+            background: $fbx-background-white;
+            padding: 25px 45px;
+            box-shadow: 0px 10px 24px #1f193329;
+            // max-width: 426px;
+            margin: auto;
+            @include respondto(minxs) {
+            }
+            @include respondto(maxxs) {
+            }
+            @include respondto(sm) {
+            }
+            @include respondto(md) {
+            }
+            @include respondto(lg) {
+            }
+
+            .container-image-new{
+                max-width: 300px;
+               
+                // height: 40px;
+                margin: 10px auto;
+                .body-image-new{
+                    display: flex;
+                    justify-content: space-between;
+                    height: 40px;
+                    .card-image-new{
+                        cursor: pointer;
+                        border: 1px solid $fbx-secondary;
+                        background: $fbx-gris;
+                        padding: 10px 16px;
+                        max-width: 264px;
+                        width: 100%;
+                        opacity: 0.8;
+                        box-shadow: 0px 9px 10px #272C3C3D;
+                        &.nv-file-over{
+                            opacity: 1;
+                            p{
+                                color: $fbx-secondary-dark;
+                            }
+                        }
+                        .my-drop-zone-new{
+                            display: flex;
+                            flex-direction: row;
+                            .content-icono{
+                                display: flex;
+                                padding-right: 25px;
+                            }
+                            .content-text{
+                                span{
+                                    font-weight: 500;
+                                    color: $fbx-secondary;
+                                    font-size: 15px;
+                                    font-family: $font-Roboto;
+                                    @include ajustacontrespuntos;
+                                } 
+                            }
+                            
+                        }
+                    }
+                    .card-check{
+                        display: flex;
+                    }
+                    input{
+                        display: none;
+                    }
                 }
                 
-            }
-        }
-        .card-check{
-            display: flex;
-        }
-        input{
-            display: none;
-        }
-    }
-    
-    .content-loading{
-        max-width: 80%;
-        width: 230px;
-        height: 3px;
-        .loading-image{
-            .loading-empty{
-                position: relative;
-                max-width: 100%;
-                height: 3px;
-                border-radius: 3px;
-                background: rgba($fbx-gris-light, 0.3);
-                .loading-progress{
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+                .content-loading{
+                    max-width: 80%;
+                    width: 230px;
                     height: 3px;
-                    border-radius: 3px;
-                    background: $fbx-secondary;
-                    z-index: 1;
-                    transition-property: all;
-                    transition-timing-function: ease;
+                    .loading-image{
+                        .loading-empty{
+                            position: relative;
+                            max-width: 100%;
+                            height: 3px;
+                            border-radius: 3px;
+                            background: rgba($fbx-gris-light, 0.3);
+                            .loading-progress{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 3px;
+                                border-radius: 3px;
+                                background: $fbx-secondary;
+                                z-index: 1;
+                                transition-property: all;
+                                transition-timing-function: ease;
+                            }
+                        }
+                    }
                 }
             }
+
+            .container-img{
+                display: flex;
+                flex-wrap: wrap;
+                .img-card-body{
+                    padding: 20px 0px;
+                    margin: 10px;
+                    width: 250px;
+                    // height: 150px;
+                    background: #e4cfcf;
+                    cursor: pointer;
+                    transition: 0.4s;
+                    &:hover{
+                        box-shadow: 0px 10px 24px #1f193329;
+                    }
+                    .drop-zone-image{
+                        display: flex;
+                        flex-direction: column;
+                        .content-icono{
+                            width: 150px;
+                            height: 150px;
+                            margin: auto;
+                            border-radius: 50%;
+                            background: rebeccapurple;
+                        }
+                        .content-text{
+                            margin: 0px 10px;
+                            text-align: center;
+                            p{
+                                @include ajustacontrespuntos;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .no-results{
+                width: 50%;
+                display: flex;
+                margin: auto;
+            }
         }
+
     }
 }
+
+

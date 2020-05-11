@@ -4,6 +4,11 @@ import { Image } from '@core/interfaces/image-interface';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { MatSnackBar } from '@angular/material';
+import { Location } from '@angular/common';
+import { SvgRegisterService } from '@core/material/svg-register.service';
+import { CloudService } from '@core/services/cloud/cloud.service';
+import { take } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-galery',
@@ -13,6 +18,7 @@ import { MatSnackBar } from '@angular/material';
 export class GaleryComponent implements OnInit {
 
   idProcess: string;
+  images: any = [];
 
   //uploader cloudinary
   @ViewChild('fbxFileInput', { static: false }) fileInputElement: ElementRef;
@@ -32,7 +38,12 @@ export class GaleryComponent implements OnInit {
     private cloudinary: Cloudinary,
     private renderer: Renderer,
     public snackBar: MatSnackBar,
-  ) { }
+    private _location: Location,
+    private _svgRegisterService:SvgRegisterService,
+    private _cloudService : CloudService
+  ) { 
+    this._svgRegisterService.init();
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -41,6 +52,8 @@ export class GaleryComponent implements OnInit {
         this.idProcess = params.id;
       }
     });
+
+    this.getDocumentos();
 
     //CLOUDINARY CONFIG
     const uploaderOptions: FileUploaderOptions = {
@@ -158,11 +171,55 @@ export class GaleryComponent implements OnInit {
 
   saveFileTemp(urlFile: string, nameFile: string, tokenDelete: string) {
     const data = {
-      rucTemporal: urlFile,
-      rucOriginalName: nameFile,
+      docTemporal: urlFile,
+      docOriginalName: nameFile,
       tokenDeleteCloud: tokenDelete
     };
     console.log("DATA: ", data);
+
+    this.subirDocumentos(data)
+  }
+
+  goback(){
+    this._location.back();
+  }
+
+  subirDocumentos(fileTemp : any){
+    let data = {
+      name : fileTemp.docOriginalName,
+      url : fileTemp.docTemporal,
+      ref : this.idProcess
+    }
+    console.log('data a enviar', data);
+
+    this._cloudService.setCloudDocument(data).pipe(take(1)).subscribe(
+      val=>{
+        console.log('val',val);
+        this.getDocumentos();
+      },
+      (err:HttpErrorResponse)=>{
+        console.log('err',err);
+      }
+    )
+    
+  }
+
+  getDocumentos(){
+    this._cloudService.getCloudDocumentById(this.idProcess).pipe(take(1)).subscribe(
+      val=>{
+
+        this.images = val;
+        console.log('this.images',this.images);
+        
+      },
+      (err:HttpErrorResponse)=>{
+        console.log('err',err);
+      }
+    )
+  }
+  
+  verImagen(url)  {
+    window.open(url)
   }
 
 }
