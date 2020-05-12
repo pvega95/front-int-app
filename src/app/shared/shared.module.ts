@@ -33,6 +33,11 @@ import { environment } from '@env/environment';
 import { ModalCartaComponent } from '../features/carta-fiscalizacion/modal-carta/modal-carta.component';
 import { ModalGuiaComponent } from '../features/guia-remision/modal-guia/modal-guia.component';
 
+//NG2-CHARTS
+import { ChartsModule } from 'ng2-charts';
+import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
+
+
 registerLocaleData(localeEspE, 'es-PE');
 
 const MODULES = [
@@ -46,12 +51,14 @@ const MODULES = [
   NgxFlagIconCssModule,
   CloudinaryModule,
   FileUploadModule,
+  ChartsModule
 ];
 
 const COMPONENTS = [
   LoadingfullComponent,
   ModalCartaComponent,
-  ModalGuiaComponent
+  ModalGuiaComponent,
+  GraficaDonaComponent
 ];
 
 @NgModule({

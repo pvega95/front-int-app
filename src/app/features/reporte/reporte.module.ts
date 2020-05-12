@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { ReporteRoutingModule } from './reporte-routing.module';
 import { ReporteComponent } from './reporte.component';
+import { GraficaDonaComponent } from '@shared/grafica-dona/grafica-dona.component';
 
 
 

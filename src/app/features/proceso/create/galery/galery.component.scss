@@ -1,7 +1,5 @@
 @import '_default-theme.scss';
 
-@import "_default-theme.scss";
-
 .container-person {
     display: flex;
     width: 100%;
@@ -132,12 +130,13 @@
                                 padding-right: 25px;
                             }
                             .content-text{
+                                @include ajustacontrespuntos;
                                 span{
                                     font-weight: 500;
                                     color: $fbx-secondary;
                                     font-size: 15px;
                                     font-family: $font-Roboto;
-                                    @include ajustacontrespuntos;
+                                   
                                 } 
                             }
                             
