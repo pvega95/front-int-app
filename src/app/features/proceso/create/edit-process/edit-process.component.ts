@@ -64,7 +64,7 @@ export class EditProcessComponent implements OnInit {
     this.cargarlistas();
   }
 
-  onSubmitPerson(miForm: NgForm) {
+  onSubmitPerson(miForm) {
     // console.log('miForm', miForm.value)
     let data = {
       _id: this.idProcess,

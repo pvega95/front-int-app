@@ -90,7 +90,7 @@ export class AddComponent implements OnInit {
     });
   }
 
-  onSubmitCarta(miForm : NgForm){
+  onSubmitCarta(miForm){
     console.log('miForm',miForm.value)
     let data = miForm.value
     console.log('data a enviar',data);

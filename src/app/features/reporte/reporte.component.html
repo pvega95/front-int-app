@@ -1,11 +1,11 @@
 <div class="container">
     <div class="col-6">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-tittle">{{graficos.grafico1.leyenda}}</h4>
+        <div class="card-body" *ngIf="reporteOne">
+          <h4 class="card-tittle">{{reporteOne.leyenda}}</h4>
           <app-grafica-dona
-          [chartLabels]="graficos.grafico1.labels"
-          [chartData]="graficos.grafico1.data"
+          [chartLabels]="reporteOne.labels"
+          [chartData]="reporteOne.data"
           chartType="doughnut"
           ></app-grafica-dona>
         </div>
@@ -14,24 +14,24 @@
   
     <div class="col-6">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-tittle">{{graficos.grafico2.leyenda}}</h4>
+        <div class="card-body" *ngIf="reporteTwo">
+          <h4 class="card-tittle">{{reporteTwo.leyenda}}</h4>
           <app-grafica-dona
-          [chartLabels]="graficos.grafico2.labels"
-          [chartData]="graficos.grafico2.data"
+          [chartLabels]="reporteTwo.labels"
+          [chartData]="reporteTwo.data"
           chartType="doughnut"
-          ></app-grafica-dona>  
+          ></app-grafica-dona>
         </div>
       </div>
     </div>
 
     <div class="col-6">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-tittle">{{graficos.grafico3.leyenda}}</h4>
+        <div class="card-body" *ngIf="reporteThree">
+          <h4 class="card-tittle">{{reporteThree.leyenda}}</h4>
           <app-grafica-dona
-          [chartLabels]="graficos.grafico3.labels"
-          [chartData]="graficos.grafico3.data"
+          [chartLabels]="reporteThree.labels"
+          [chartData]="reporteThree.data"
           chartType="doughnut"
           ></app-grafica-dona>
         </div>
@@ -40,14 +40,45 @@
   
     <div class="col-6">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-tittle">{{graficos.grafico4.leyenda}}</h4>
+        <div class="card-body" *ngIf="reporteFour">
+          <h4 class="card-tittle">{{reporteFour.leyenda}}</h4>
           <app-grafica-dona
-          [chartLabels]="graficos.grafico4.labels"
-          [chartData]="graficos.grafico4.data"
+          [chartLabels]="reporteFour.labels"
+          [chartData]="reporteFour.data"
           chartType="doughnut"
           ></app-grafica-dona>
         </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body" *ngIf="reporteFifth">
+          <h4 class="card-tittle">{{reporteFifth.leyenda}}</h4>
+          <app-grafica-dona
+          [chartLabels]="reporteFifth.labels"
+          [chartData]="reporteFifth.data"
+          chartType="doughnut"
+          ></app-grafica-dona>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      
+    </div>
+
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body" *ngIf="reporteSix">
+        <h4 class="card-tittle">Reporte Seis</h4>
+        <app-grafica-barra
+        [chartLabels]="reporteSix.labels"
+        [chartData]="reporteSix.data"
+        chartType="bar"
+        ></app-grafica-barra>
       </div>
     </div>
   </div>

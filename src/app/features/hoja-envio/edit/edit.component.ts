@@ -104,7 +104,7 @@ export class EditComponent implements OnInit {
     this.hojaEnvioForm.controls['tipDocForm'].setValue(data.TypeDocument);
   }
 
-  onSubmitHoja(miForm: NgForm) {
+  onSubmitHoja(miForm) {
     // console.log('miForm', miForm.value)
     let data = {
       _id: this.idProcess,

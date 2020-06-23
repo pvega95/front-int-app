@@ -193,7 +193,7 @@ public uploader: FileUploader;
     this.registerPersonForm.controls['pnumberForm'].updateValueAndValidity();
   }
 
-  onSubmitPerson(miForm : NgForm){
+  onSubmitPerson(miForm ){
     // miForm = this.registerPersonForm.value
     console.log('miForm',miForm.value)
     let data = {

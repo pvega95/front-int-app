@@ -160,7 +160,7 @@ export class EditComponent implements OnInit {
     this.cartaForm.controls['diasPasadosForm'].setValue(data.diasPasadosForm);
   }
 
-  onSubmitCarta(miForm: NgForm) {
+  onSubmitCarta(miForm) {
     // console.log('miForm', miForm.value)
     let data = {
       _id: this.idProcess,

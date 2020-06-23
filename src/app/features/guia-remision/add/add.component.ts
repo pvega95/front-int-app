@@ -84,7 +84,7 @@ export class AddComponent implements OnInit {
     // this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
-  onSubmitGuia(miForm : NgForm){
+  onSubmitGuia(miForm ){
     // console.log('miForm',miForm.value)
     let data = {
       'process' : miForm.value.descProForm,

@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmitLogin(miForm: NgForm) {
+  onSubmitLogin(miForm) {
     let data = {
       email: miForm.value.emailForm,
       password: miForm.value.passForm

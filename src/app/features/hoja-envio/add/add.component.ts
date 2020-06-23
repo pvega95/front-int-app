@@ -71,7 +71,7 @@ export class AddComponent implements OnInit {
     this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 
-  onSubmitHoja(miForm : NgForm) {
+  onSubmitHoja(miForm ) {
     console.log('miform',miForm.value);
     let data = {
       NumRegister : miForm.value.numRegForm,

@@ -20,6 +20,9 @@ export class GaleryComponent implements OnInit {
   idProcess: string;
   images: any = [];
 
+  // interfaz
+  activeloadingfull = false;
+
   //uploader cloudinary
   @ViewChild('fbxFileInput', { static: false }) fileInputElement: ElementRef;
   URL_UPLOAD_CLOUDINARY = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`;
@@ -31,7 +34,7 @@ export class GaleryComponent implements OnInit {
     imagen: '',
   };
   public uploader: FileUploader;
-  private hasBaseDropZoneOver: boolean = false;
+  public hasBaseDropZoneOver: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -205,14 +208,16 @@ export class GaleryComponent implements OnInit {
   }
 
   getDocumentos(){
+    this.activeloadingfull = true;
     this._cloudService.getCloudDocumentById(this.idProcess).pipe(take(1)).subscribe(
       val=>{
-
+        this.activeloadingfull = false;
         this.images = val;
         console.log('this.images',this.images);
         
       },
       (err:HttpErrorResponse)=>{
+        this.activeloadingfull = false;
         console.log('err',err);
       }
     )

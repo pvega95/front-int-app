@@ -16,6 +16,8 @@ export class ModelOneComponent implements OnInit {
   message: {};
   messageService : Subscription;
   modelOneForm : FormGroup;
+  // interfaz
+  activeloadingfull = false;
   constructor(
     private route: ActivatedRoute,
     private _cartaService : CartaService,
@@ -94,6 +96,7 @@ export class ModelOneComponent implements OnInit {
         // console.log('this.message',this.message)
       })
   }
+  
   setForm(data){
     console.log('data',data)
     this.modelOneForm.controls['personaConsForm'].setValue(data.personaConsForm);
@@ -127,10 +130,13 @@ export class ModelOneComponent implements OnInit {
   }
 
   generatePDF(id){
-    console.log('generando pdf con ID',id)
+    console.log('generando pdf con ID',id);
+    this.activeloadingfull = true;
+   
     this._cartaService.getPDFTwo(id).pipe(take(1))
       .subscribe(
         val=>{
+          this.activeloadingfull = false;
           console.log('val',val)
           var fileURL = URL.createObjectURL(val);
           window.open(fileURL)

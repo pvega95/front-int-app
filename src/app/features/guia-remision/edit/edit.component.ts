@@ -114,7 +114,7 @@ export class EditComponent implements OnInit {
     this.guiaForm.controls['direccionForm'].setValue(data.adress);
   }
 
-  onSubmitGuia(miForm: NgForm) {
+  onSubmitGuia(miForm) {
     // console.log('miForm', miForm.value)
     let data = {
       _id: this.idProcess,

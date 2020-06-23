@@ -18,6 +18,8 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+
 export class LoginComponent implements OnInit {
   loginform: FormGroup;
   passHide : boolean = true;
+  // interfaz
+  activeloadingfull = false;
   constructor(
     public formB: FormBuilder,
     private _svgRegisterService: SvgRegisterService,
@@ -41,23 +43,33 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmitLogin(miForm : NgForm){
-    console.log('miForm',miForm.value)
+  onSubmitLogin(miForm){
+    console.log('miForm',miForm.value);
     // this._router.navigate(['/main/proceso']);
-    let data = {
-      email : miForm.value.emailForm,
-      password : miForm.value.passForm
+    if (miForm.value){
+      this.activeloadingfull = true;
+
+      let data = {
+        email : miForm.value.emailForm,
+        password : miForm.value.passForm
+      }
+      this._authService.signIn(data).pipe(take(1))
+        .subscribe(val =>{
+          this.activeloadingfull = false;
+          if (val){
+            console.log('val',val)
+            this.openSnackBar('Bienvenido: ' + val.userInfo.email , 'Gracias 😊')
+            this._router.navigate(['/main/proceso']);
+          }
+          
+        },
+        (err:HttpErrorResponse)=>{
+          this.activeloadingfull = false;
+          console.log('err',err)
+          this.openSnackBar(err.error,'Intentar de nuevo 🥺')
+        });
     }
-    this._authService.signIn(data).pipe(take(1))
-      .subscribe(val =>{
-        console.log('val',val)
-        this.openSnackBar('Bienvenido: ' + val.userInfo.email , 'Gracias 😊')
-        this._router.navigate(['/main/proceso']);
-      },
-      (err:HttpErrorResponse)=>{
-        console.log('err',err)
-        this.openSnackBar(err.error,'Intentar de nuevo 🥺')
-      })
+    
   }
 
   // signUp(miForm : NgForm){

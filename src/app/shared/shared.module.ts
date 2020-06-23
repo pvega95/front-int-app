@@ -37,6 +37,12 @@ import { ModalGuiaComponent } from '../features/guia-remision/modal-guia/modal-g
 import { ChartsModule } from 'ng2-charts';
 import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
 
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+import { GraficaBarraComponent } from './grafica-barra/grafica-barra.component';
+
+export const cloudinary = {
+  Cloudinary: CloudinaryCore
+};
 
 registerLocaleData(localeEspE, 'es-PE');
 
@@ -58,17 +64,19 @@ const COMPONENTS = [
   LoadingfullComponent,
   ModalCartaComponent,
   ModalGuiaComponent,
-  GraficaDonaComponent
+  GraficaDonaComponent,
+  GraficaBarraComponent
 ];
 
 @NgModule({
-  imports: [...MODULES],
+  imports: [...MODULES,
+    CloudinaryModule.forRoot(cloudinary, environment.cloudinarySettings as CloudinaryConfiguration)],
   exports: [...MODULES, ...COMPONENTS],
   providers: [
-    provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
+    // provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
     { provide: LOCALE_ID, useValue: 'es-PE' },
     DatePipe
   ],
-  declarations: [...COMPONENTS]
+  declarations: [...COMPONENTS, GraficaBarraComponent]
 })
 export class SharedModule {}
