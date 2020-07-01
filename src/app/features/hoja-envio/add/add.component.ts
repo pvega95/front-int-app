@@ -59,7 +59,7 @@ export class AddComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        console.log('result',result);
+       
         this.setForm(result);
       }
     });
@@ -72,7 +72,7 @@ export class AddComponent implements OnInit {
   }
 
   onSubmitHoja(miForm ) {
-    console.log('miform',miForm.value);
+    
     let data = {
       NumRegister : miForm.value.numRegForm,
       Process : miForm.value.procesoForm,
@@ -81,16 +81,16 @@ export class AddComponent implements OnInit {
       DocToRemit : miForm.value.docRemForm,
       TypeDocument : miForm.value.tipDocForm
     }
-    console.log('data',data);
+   
 
     this._hojaEnvioService.setHojaEnvio(data).pipe(take(1))
       .subscribe(
         val=>{
-          console.log('val',val)
+        
           this.router.navigate(['/main/hoja-envio']) 
         },
         (err:HttpErrorResponse)=>{
-          console.log('err',err)
+         
         }
       )
   }

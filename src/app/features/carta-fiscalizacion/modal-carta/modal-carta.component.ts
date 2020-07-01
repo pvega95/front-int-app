@@ -56,18 +56,18 @@ export class ModalCartaComponent implements OnInit {
     this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
-        console.log('val',val)
+       
         this.dataSource = val.posts;
         this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{
-        console.log('err',err)
+   
       }
     )
   }
 
   add(data){
-    // console.log(data)
+   
     this.dialogRef.close(data);
   }
 
@@ -80,7 +80,6 @@ export class ModalCartaComponent implements OnInit {
   }
 
   onChangedPage(pageData: PageEvent){
-    // console.log(pageData)
     // this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;

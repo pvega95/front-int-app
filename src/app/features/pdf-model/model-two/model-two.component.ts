@@ -80,12 +80,12 @@ export class ModelTwoComponent implements OnInit {
     this.messageService = this._hojaEnvioService.currentMessage.subscribe(message => {
       this.message = message;
       this.setForm(this.message);
-      // console.log('this.message',this.message)
+    
     });
   }
 
   setForm(data) {
-    console.log('data', data)
+    
     this.modelOneForm.controls['personaConsForm'].setValue('ALCIDES MALDONADO CORTEZ');
     this.modelOneForm.controls['cargoForm'].setValue('JEFE DE SEC.  EJECUCIÓN Y SEGUIMIENTO DE CONTRATOS ');
     this.modelOneForm.controls['personaConsForm2'].setValue('MARCO ANTONIO LEÓN ARANGUREN');
@@ -105,35 +105,35 @@ export class ModelTwoComponent implements OnInit {
   }
 
   generate() {
-    // console.log('modelOneForm',this.modelOneForm.value)
+   
     let data = this.modelOneForm.value
-    console.log('data a enviar', data);
+  
     this._hojaEnvioService.setHojaEnvioTwo(data).pipe(take(1))
       .subscribe(
         val => {
-          console.log('val', val)
+     
           this.generatePDF(val.postId)
         },
         (err: HttpErrorResponse) => {
-          console.log('err', err)
+        
         }
       )
   }
 
   generatePDF(id) {
-    console.log('generando pdf con ID', id);
+    
     this.activeloadingfull = true;
 
     this._hojaEnvioService.getPDF(id).pipe(take(1))
       .subscribe(
         val => {
           this.activeloadingfull = false;
-          console.log('val', val)
+        
           var fileURL = URL.createObjectURL(val);
           window.open(fileURL)
         },
         (err: HttpErrorResponse) => {
-          console.log('err', err)
+       
         }
       )
   }

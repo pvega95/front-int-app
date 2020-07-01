@@ -110,16 +110,13 @@ public uploader: FileUploader;
     };
 
     const upsertResponse = fileItem => {
-      console.log('fileItem', fileItem)
+      
       // Check if HTTP request was successful
       if (fileItem.status !== 200) {
-        console.log('Upload to cloudinary Failed');
-        // console.log(fileItem);
+       
         return false;
       }
-      console.log('Upload to cloudinary');
-      console.log(fileItem);
-      console.log(fileItem.data.url);
+     
       this.imagen.nombre = fileItem.file.name;
       this.imagen.imagen = fileItem.data.url;
       if (this.existImage) {
@@ -172,7 +169,7 @@ public uploader: FileUploader;
     }
 
     this.uploader.onAfterAddingFile = f => {
-      console.log("onAfterAddingFile");
+     
       if (this.uploader.queue.length > 1) {
         this.uploader.removeFromQueue(this.uploader.queue[0]);
       }
@@ -195,7 +192,7 @@ public uploader: FileUploader;
 
   onSubmitPerson(miForm ){
     // miForm = this.registerPersonForm.value
-    console.log('miForm',miForm.value)
+   
     let data = {
       contract: miForm.value.contratistaForm,
       type_contract: miForm.value.tipoContratistaForm,
@@ -206,14 +203,14 @@ public uploader: FileUploader;
       date: miForm.value.fechaRecepcionForm,
       items: miForm.value.itemsForm
   }
-  console.log('data a enviar',data)
+
   
     this._processService.setProcess(data).pipe(take(1))
       .subscribe(res=>{
-        console.log('res',res)
+        
         this.router.navigate(['/main/proceso']);
       },(err : HttpErrorResponse)=>{
-        console.log('err',err)
+       
       })
   }
 
@@ -223,11 +220,11 @@ public uploader: FileUploader;
   }
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
-    // console.log('drogOver: ',this.hasBaseDropZoneOver);
+    
   }
 
   deleteImage = function (data: any) {
-    console.log(data)
+  
     const url = this.URL_DELETE_CLOUDINARY;
     const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
     const options = { headers: headers };
@@ -235,7 +232,7 @@ public uploader: FileUploader;
       token: data.delete_token
     };
     this._http.post(url, body, options).subscribe(response => {
-      // console.log(`Deleted image - ${data.public_id} ${response.result}`);
+      
       // Remove deleted item for responses
       // this.responses.splice(index, 1);
     });
@@ -247,7 +244,7 @@ public uploader: FileUploader;
       rucOriginalName: nameFile,
       tokenDeleteCloud: tokenDelete
     };
-    console.log("DATA: ", data);
+ 
   }
 
   cargarlistas(){
@@ -255,10 +252,10 @@ public uploader: FileUploader;
       .subscribe(
         val=>{
           this.procedureList = val;
-          console.log('procedureList',this.procedureList);
+         
         },
         (err:HttpErrorResponse)=>{
-          console.log('err',err)
+      
         }
       )
   }

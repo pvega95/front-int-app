@@ -22,17 +22,18 @@ export class EditComponent implements OnInit {
     public snackBar: MatSnackBar,
     private _location: Location,
     private _remisionService: GuiaRemisionService,
-    private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private _svgRegisterService:SvgRegisterService
+    private _svgRegisterService:SvgRegisterService,
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { 
     this._svgRegisterService.init();
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+
       if (params) {
         this.idProcess = params.id;
         this.getGuiaRemision(this.idProcess);
@@ -72,7 +73,7 @@ export class EditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('result', result);
+        
         this.setFormModal(result);
       }
     });
@@ -95,11 +96,11 @@ export class EditComponent implements OnInit {
   getGuiaRemision(id: string) {
     this._remisionService.getByID(id).pipe(take(1)).subscribe(
       val => {
-        console.log('val', val)
+   
         this.setForm(val);
       },
       (err: HttpErrorResponse) => {
-        console.log('err', err)
+      
       }
     )
   }
@@ -115,7 +116,7 @@ export class EditComponent implements OnInit {
   }
 
   onSubmitGuia(miForm) {
-    // console.log('miForm', miForm.value)
+  
     let data = {
       _id: this.idProcess,
       process: miForm.value.descProForm,
@@ -126,14 +127,22 @@ export class EditComponent implements OnInit {
       position: miForm.value.cargoForm,
       adress: miForm.value.direccionForm
     }
-    console.log('data a enviar', data);
+   
     this._remisionService.setUpdateGuia(data,this.idProcess).pipe(take(1)).subscribe(
       val=>{
-        console.log('val',val)
+      
+        this.openSnackBar('Se actualizo correctamente', 'Ok')
+        this.router.navigate(['/main/guia-remision']);
       },(err:HttpErrorResponse)=>{
-        console.log('err',err)
+       
       }
     )
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
 }

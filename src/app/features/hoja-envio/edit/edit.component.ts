@@ -23,16 +23,17 @@ export class EditComponent implements OnInit {
     public dialog: MatDialog,
     private _hojaEnvioService: HojaEnvioService,
     private _location: Location,
-    private router: Router,
     private route: ActivatedRoute,
     private _svgRegisterService:SvgRegisterService,
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { 
     this._svgRegisterService.init();
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+      
       if (params) {
         this.idProcess = params.id;
         this.getHojaEnvio(this.idProcess);
@@ -67,7 +68,7 @@ export class EditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('result', result);
+       
         this.setFormModal(result);
       }
     });
@@ -86,11 +87,11 @@ export class EditComponent implements OnInit {
   getHojaEnvio(id: string) {
     this._hojaEnvioService.getByID(id).pipe(take(1)).subscribe(
       val => {
-        console.log('val', val)
+        
         this.setForm(val);
       },
       (err: HttpErrorResponse) => {
-        console.log('err', err)
+       
       }
     )
   }
@@ -105,7 +106,7 @@ export class EditComponent implements OnInit {
   }
 
   onSubmitHoja(miForm) {
-    // console.log('miForm', miForm.value)
+ 
     let data = {
       _id: this.idProcess,
       NumRegister: miForm.value.numRegForm,
@@ -115,13 +116,21 @@ export class EditComponent implements OnInit {
       DocToRemit: miForm.value.docRemForm,
       TypeDocument: miForm.value.tipDocForm,
     }
-    console.log('data a enviar', data);
+  
     this._hojaEnvioService.setUpdateHoja(data,this.idProcess).pipe(take(1)).subscribe(
       val=>{
-        console.log('val',val)
+      
+        this.openSnackBar('Se actualizo correctamente', 'Ok')
+        this.router.navigate(['/main/hoja-envio']);
       },(err:HttpErrorResponse)=>{
-        console.log('err',err)
+       
       }
     )
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 }

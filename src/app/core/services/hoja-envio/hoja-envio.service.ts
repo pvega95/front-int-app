@@ -20,7 +20,6 @@ export class HojaEnvioService {
   ) { }
 
   setHojaEnvio(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/hoja-envio/create`;
     const data = obj
     return this._http.post(query, data);
@@ -48,7 +47,6 @@ export class HojaEnvioService {
   }
 
   setHojaEnvioTwo(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/hoja-envio/createtwo`;
     const data = obj
     return this._http.post(query, data);
@@ -61,7 +59,6 @@ export class HojaEnvioService {
   getPDF(id:number) {
     return this._http.getPDF(`${this.url}/api/hoja-envio/get-pdf/${id}`)
       .pipe(map(data => { 
-        console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }

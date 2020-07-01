@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //SERVICIO PARA IMPORTAR SVG
 import { SvgRegisterService } from './material/svg-register.service';
 import { AuthService } from './services/auth/auth.service';
+import { AnalistaPipe } from './pipe/analista.pipe';
 
 // import { AppErrorHandler } from './error-handler/app-error-handler.service';
 

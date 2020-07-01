@@ -74,20 +74,18 @@ export class ReporteComponent implements OnInit {
     this.source$ = forkJoin([reporteUno, reporteDos, reporteTres, reporteCuatro, reporteCinco,reporteSeis])  
       .pipe(
         catchError(err => {
-          // console.log('err -- ', err)
+         
           throw (err)
         }),
         map(val => {
-          // console.log('val -- ', val)
+       
           return val
         })
       );
 
-      // console.log(this.source$)
       this.source$.subscribe(
         val => {
           if (val){
-            console.log(val)
             this.firstReport(val[0]);
             this.secondReport(val[1]);
             this.thirdReport(val[2]);
@@ -154,6 +152,7 @@ export class ReporteComponent implements OnInit {
               ], label: 'Año 2020' },
       // { data: [28, 48, 40, 19, 86, 27, 90], label: 'Año 2021' }
     ];
+    reporte.leyenda = 'Procesos por meses';
     this.reporteSix = reporte;
   }
 

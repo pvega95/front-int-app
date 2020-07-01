@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Location } from '@angular/common';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
@@ -24,13 +24,14 @@ export class EditComponent implements OnInit {
     private _location: Location,
     private _cartaService : CartaService,
     private _svgRegisterService:SvgRegisterService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
   ) { 
     this._svgRegisterService.init();
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       if (params) {
         this.idProcess = params.id;
         this.getCartaFis(this.idProcess);
@@ -106,7 +107,6 @@ export class EditComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        console.log('result',result);
         this.setFormModal(result);
       }
 
@@ -129,11 +129,9 @@ export class EditComponent implements OnInit {
   getCartaFis(id: string) {
     this._cartaService.getByID(id).pipe(take(1)).subscribe(
       val => {
-        console.log('val', val)
         this.setForm(val);
       },
       (err: HttpErrorResponse) => {
-        console.log('err', err)
       }
     )
   }
@@ -161,7 +159,6 @@ export class EditComponent implements OnInit {
   }
 
   onSubmitCarta(miForm) {
-    // console.log('miForm', miForm.value)
     let data = {
       _id: this.idProcess,
       descProcForm: miForm.value.descProcForm,
@@ -183,13 +180,20 @@ export class EditComponent implements OnInit {
       conclusionForm: miForm.value.conclusionForm,
       diasPasadosForm: miForm.value.diasPasadosForm,
     }
-    console.log('data a enviar',data);
     this._cartaService.setUpdateCarta(data,this.idProcess).pipe(take(1)).subscribe(
       val=>{
-        console.log('val',val)
+        this.openSnackBar('Se actualizo correctamente', 'Ok')
+        this.router.navigate(['/main/carta-fiscalizacion']);
       },(err:HttpErrorResponse)=>{
-        console.log('err',err)
+      
       }
     )
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
 }

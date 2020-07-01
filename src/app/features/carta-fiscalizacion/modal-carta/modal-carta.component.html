@@ -42,8 +42,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" ></mat-paginator>
-  <div >
+  <!-- <div >
       <button class="fbx-button close" mat-flat-button (click)="onNoClick()">Cancelar</button>
       <button class="fbx-button accept" mat-flat-button color="accent" >Aceptar</button>
-  </div>
+  </div> -->
 </div>

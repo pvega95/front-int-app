@@ -15,7 +15,7 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
 })
 export class HojaEnvioComponent implements OnInit {
   
-  displayedColumns: string[] = ['id' , 'proceso','fecha','num-hoja','documento','tipo-documento','generar','edit','delete'];
+  displayedColumns: string[] = [ 'proceso','fecha','num-hoja','documento','tipo-documento','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   constructor(
     public _dashboardService: DashboardService,
@@ -34,17 +34,17 @@ export class HojaEnvioComponent implements OnInit {
     this._hojaEnvioService.getHojaEnvio().pipe(take(1))
     .subscribe(
       val =>{
-        console.log('val',val)
+        
         this.dataSource = val;
       },
       (err:HttpErrorResponse)=>{
-        console.log('err',err)
+       
       }
     )
   }
 
   generate(element){
-    console.log('element',element);
+    
     this.newMessage(element);
     this.router.navigate(['model-two']);
   }
@@ -54,7 +54,7 @@ export class HojaEnvioComponent implements OnInit {
   }
 
   delete(id:string){
-    // console.log('id',id);
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -64,7 +64,7 @@ export class HojaEnvioComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
         if (data) {
-          console.log("Dialog output:", data)
+        
           this.deleteHojaEnvio(id);
         }
         
@@ -79,7 +79,7 @@ export class HojaEnvioComponent implements OnInit {
         this.getHojasEnvio();
       }
     }, (err: HttpErrorResponse) => {
-      console.log(err)
+   
     });
   }
 

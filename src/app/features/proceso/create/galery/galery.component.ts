@@ -50,7 +50,7 @@ export class GaleryComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+     
       if (params) {
         this.idProcess = params.id;
       }
@@ -75,16 +75,14 @@ export class GaleryComponent implements OnInit {
     };
 
     const upsertResponse = fileItem => {
-      console.log('fileItem', fileItem)
+      
       // Check if HTTP request was successful
       if (fileItem.status !== 200) {
-        console.log('Upload to cloudinary Failed');
-        // console.log(fileItem);
+        
+       
         return false;
       }
-      console.log('Upload to cloudinary');
-      console.log(fileItem);
-      console.log(fileItem.data.url);
+      
       this.imagen.nombre = fileItem.file.name;
       this.imagen.imagen = fileItem.data.url;
       if (this.existImage) {
@@ -137,7 +135,7 @@ export class GaleryComponent implements OnInit {
     }
 
     this.uploader.onAfterAddingFile = f => {
-      console.log("onAfterAddingFile");
+     
       if (this.uploader.queue.length > 1) {
         this.uploader.removeFromQueue(this.uploader.queue[0]);
       }
@@ -154,11 +152,11 @@ export class GaleryComponent implements OnInit {
   }
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
-    // console.log('drogOver: ',this.hasBaseDropZoneOver);
+    
   }
 
   deleteImage = function (data: any) {
-    console.log(data)
+   
     const url = this.URL_DELETE_CLOUDINARY;
     const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
     const options = { headers: headers };
@@ -166,7 +164,6 @@ export class GaleryComponent implements OnInit {
       token: data.delete_token
     };
     // this._http.post(url, body, options).subscribe(response => {
-    //   // console.log(`Deleted image - ${data.public_id} ${response.result}`);
     //   // Remove deleted item for responses
     //   // this.responses.splice(index, 1);
     // });
@@ -178,7 +175,7 @@ export class GaleryComponent implements OnInit {
       docOriginalName: nameFile,
       tokenDeleteCloud: tokenDelete
     };
-    console.log("DATA: ", data);
+ 
 
     this.subirDocumentos(data)
   }
@@ -193,15 +190,14 @@ export class GaleryComponent implements OnInit {
       url : fileTemp.docTemporal,
       ref : this.idProcess
     }
-    console.log('data a enviar', data);
-
+    
     this._cloudService.setCloudDocument(data).pipe(take(1)).subscribe(
       val=>{
-        console.log('val',val);
+       
         this.getDocumentos();
       },
       (err:HttpErrorResponse)=>{
-        console.log('err',err);
+        
       }
     )
     
@@ -213,12 +209,11 @@ export class GaleryComponent implements OnInit {
       val=>{
         this.activeloadingfull = false;
         this.images = val;
-        console.log('this.images',this.images);
         
       },
       (err:HttpErrorResponse)=>{
         this.activeloadingfull = false;
-        console.log('err',err);
+        
       }
     )
   }

@@ -34,7 +34,6 @@ export class CartaFiscalizacionComponent implements OnInit {
     this._cartaService.currentMessage.subscribe(message => 
       {
         this.message = message
-        // console.log('this.message',this.message)
       });
 
     this.getCarts();
@@ -44,17 +43,14 @@ export class CartaFiscalizacionComponent implements OnInit {
     this._cartaService.getCart().pipe(take(1))  
     .subscribe(
       val=>{
-        console.log('val',val);
         this.dataSource = val;
       },
       (err:HttpErrorResponse)=>{
-        console.log('err',err)
       }
     );
   }
 
   generate(element){
-    console.log('element',element)
     this.newMessage(element);
     this.router.navigate(['model-one']);
   }
@@ -64,7 +60,6 @@ export class CartaFiscalizacionComponent implements OnInit {
   }
 
   delete(id:string){
-    // console.log('id',id);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -74,7 +69,6 @@ export class CartaFiscalizacionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
         if (data) {
-          console.log("Dialog output:", data)
           this.deleteCarta(id);
         }
         
@@ -89,7 +83,6 @@ export class CartaFiscalizacionComponent implements OnInit {
         this.getCarts();
       }
     }, (err: HttpErrorResponse) => {
-      console.log(err)
     });
   }
 

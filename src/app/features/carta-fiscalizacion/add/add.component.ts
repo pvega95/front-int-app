@@ -91,17 +91,13 @@ export class AddComponent implements OnInit {
   }
 
   onSubmitCarta(miForm){
-    console.log('miForm',miForm.value)
     let data = miForm.value
-    console.log('data a enviar',data);
     this._cartaService.setCart(data).pipe(take(1))
       .subscribe(
         val=>{
-          console.log('val',val)
           this.router.navigate(['/main/carta-fiscalizacion']);
         },
         (err : HttpErrorResponse)=>{
-          console.log('err',err)
         }
       )
   }
@@ -114,7 +110,6 @@ export class AddComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        console.log('result',result);
         this.setForm(result);
       }
 

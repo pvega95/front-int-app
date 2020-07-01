@@ -62,7 +62,7 @@ export class AddComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        console.log('result',result);
+ 
         this.setForm(result);
       }
     });
@@ -85,7 +85,7 @@ export class AddComponent implements OnInit {
   }
 
   onSubmitGuia(miForm ){
-    // console.log('miForm',miForm.value)
+    
     let data = {
       'process' : miForm.value.descProForm,
       'numCarta':miForm.value.numCartaForm,
@@ -95,15 +95,15 @@ export class AddComponent implements OnInit {
       'position': miForm.value.cargoForm,
       'adress': miForm.value.direccionForm,
     }
-    console.log('data a enviar',data);
+   
     this._remisionService.setGuiaRemision(data).pipe(take(1))
       .subscribe(
         val=>{
-          console.log('val',val)
+         
           this.router.navigate(['/main/guia-remision'])
         },
         (err:HttpErrorResponse)=>{
-          console.log('err',err)
+         
         }
       )
   }

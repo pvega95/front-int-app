@@ -29,17 +29,17 @@ export class ModalGuiaComponent implements OnInit {
     this._cartaService.getCart().pipe(take(1))  
       .subscribe(
         val=>{
-          console.log('val',val);
+         
           this.dataSource = val;
         },
         (err:HttpErrorResponse)=>{
-          console.log('err',err)
+         
         }
       )
   }
 
   add(data){
-    // console.log(data)
+ 
     this.dialogRef.close(data);
   }
 

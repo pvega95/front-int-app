@@ -14,7 +14,7 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
 })
 
 export class GuiaRemisionComponent implements OnInit {
-  displayedColumns: string[] = ['id' , 'proceso','num-carta','empresa','documento','persona','cargo','direccion','generar','edit','delete'];
+  displayedColumns: string[] = ['proceso','num-carta','empresa','documento','persona','cargo','direccion','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   constructor(
     private _remisionService : GuiaRemisionService,
@@ -30,17 +30,17 @@ export class GuiaRemisionComponent implements OnInit {
     this._remisionService.getGuiaRemision().pipe(take(1))
     .subscribe(
       res =>{
-        console.log('res',res)
+       
         this.dataSource = res;
       },
       (err:HttpErrorResponse) =>{
-        console.log('err',err)
+        
       }
     )
   }
 
   generate(element){
-    console.log('element',element);
+
     this.newMessage(element);
     this.router.navigate(['model-three']);
   }
@@ -50,7 +50,7 @@ export class GuiaRemisionComponent implements OnInit {
   }
 
   delete(id:string){
-    // console.log('id',id);
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -60,7 +60,7 @@ export class GuiaRemisionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
         if (data) {
-          console.log("Dialog output:", data)
+       
           this.deleteGuiaRemision(id);
         }
         
@@ -73,12 +73,12 @@ export class GuiaRemisionComponent implements OnInit {
       .subscribe(
         res => {
           if (res) {
-            console.log(res)
+          
             this.getGuia();
           }
           
         },(err:HttpErrorResponse) =>{
-          console.log('err',err)
+        
         }
       )
   }

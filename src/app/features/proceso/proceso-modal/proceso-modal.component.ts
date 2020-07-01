@@ -17,7 +17,7 @@ export class ProcesoModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.dataRecieved = data;
-    console.log(this.dataRecieved)
+   
    }
 
   ngOnInit() {
@@ -34,11 +34,9 @@ export class ProcesoModalComponent implements OnInit {
     //   .subscribe((res: any) => {
     //     if (res) {
     //       // this.status = res.status;
-    //       // console.log('status',this.status)
     //       this.dialogRef.close(res);
     //     }
     //   }, (err: HttpErrorResponse) => {
-    //     console.log(err)
     //   });
 
   }

@@ -73,7 +73,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body" *ngIf="reporteSix">
-        <h4 class="card-tittle">Reporte Seis</h4>
+        <h4 class="card-tittle">{{reporteSix.leyenda}}</h4>
         <app-grafica-barra
         [chartLabels]="reporteSix.labels"
         [chartData]="reporteSix.data"

@@ -93,12 +93,12 @@ export class ModelOneComponent implements OnInit {
       {
         this.message = message;
         this.setForm(this.message);
-        // console.log('this.message',this.message)
+        
       })
   }
   
   setForm(data){
-    console.log('data',data)
+   
     this.modelOneForm.controls['personaConsForm'].setValue(data.personaConsForm);
     this.modelOneForm.controls['cargoForm'].setValue(data.cargoForm);
     this.modelOneForm.controls['empresaForm'].setValue(data.empresaForm);
@@ -114,35 +114,35 @@ export class ModelOneComponent implements OnInit {
   }
 
   generate(){
-    // console.log('modelOneForm',this.modelOneForm.value)
+   
     let data = this.modelOneForm.value
-    console.log('data a enviar',data);
+
     this._cartaService.setCartTwo(data).pipe(take(1))
       .subscribe(
         val=>{
-          console.log('val',val)
+       
           this.generatePDF(val.postId)
         },
         (err : HttpErrorResponse)=>{
-          console.log('err',err)
+         
         }
       )
   }
 
   generatePDF(id){
-    console.log('generando pdf con ID',id);
+    
     this.activeloadingfull = true;
    
     this._cartaService.getPDFTwo(id).pipe(take(1))
       .subscribe(
         val=>{
           this.activeloadingfull = false;
-          console.log('val',val)
+          
           var fileURL = URL.createObjectURL(val);
           window.open(fileURL)
         },
         (err : HttpErrorResponse)=>{
-          console.log('err',err)
+    
         }
       )
   }

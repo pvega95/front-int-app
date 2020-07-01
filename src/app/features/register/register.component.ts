@@ -44,12 +44,12 @@ export class RegisterComponent implements OnInit {
     }
     this._authService.login(data).pipe(take(1))
       .subscribe(val => {
-        console.log('val', val)
+    
         this.openSnackBar(val.message,'ok')
         this._router.navigate(['/login']);
       },
         (err: HttpErrorResponse) => {
-          console.log('err', err)
+        
           this.openSnackBar(err.error.message,'ok')
           
         })

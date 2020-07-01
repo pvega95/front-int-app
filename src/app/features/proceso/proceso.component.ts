@@ -49,34 +49,34 @@ export class ProcesoComponent implements OnInit {
     this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
-        console.log('val',val)
+      
         this.dataSource = val.posts;
         this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{
-        console.log('err',err)
+       
       }
     )
   }
 
   generar(){
-    console.log('generate pdf running')
+    
     this._processService.getPDF().pipe(take(1))
       .subscribe(
         val =>{
-          console.log('val',val)
+          
           var fileURL = URL.createObjectURL(val);
           window.open(fileURL)
           
         },
         (err : HttpErrorResponse)=>{
-          console.log('err',err)
+         
         }
       )
   }
 
   delete(id:string){
-    // console.log('id',id);
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -86,7 +86,7 @@ export class ProcesoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
         if (data) {
-          console.log("Dialog output:", data)
+         
           this.deleteProcess(id);
         }
         
@@ -101,12 +101,12 @@ export class ProcesoComponent implements OnInit {
         this.getProcess();
       }
     }, (err: HttpErrorResponse) => {
-      console.log(err)
+      
     });
   }
 
   onChangedPage(pageData: PageEvent){
-    // console.log(pageData)
+    
     // this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;

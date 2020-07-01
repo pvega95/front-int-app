@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin(miForm){
-    console.log('miForm',miForm.value);
-    // this._router.navigate(['/main/proceso']);
+   
     if (miForm.value){
       this.activeloadingfull = true;
 
@@ -57,7 +56,7 @@ export class LoginComponent implements OnInit {
         .subscribe(val =>{
           this.activeloadingfull = false;
           if (val){
-            console.log('val',val)
+        
             this.openSnackBar('Bienvenido: ' + val.userInfo.email , 'Gracias 😊')
             this._router.navigate(['/main/proceso']);
           }
@@ -65,27 +64,13 @@ export class LoginComponent implements OnInit {
         },
         (err:HttpErrorResponse)=>{
           this.activeloadingfull = false;
-          console.log('err',err)
+         
           this.openSnackBar(err.error,'Intentar de nuevo 🥺')
         });
     }
     
   }
 
-  // signUp(miForm : NgForm){
-  //     console.log('miForm',miForm.value)   
-  //     let data = {
-  //       email : miForm.value.emailForm,
-  //       password : miForm.value.passForm
-  //     }
-  //     this._authService.login(data).pipe(take(1))
-  //       .subscribe(val =>{
-  //         console.log('val',val)
-  //       },
-  //       (err:HttpErrorResponse)=>{
-  //         console.log('err',err)
-  //       })
-  // }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

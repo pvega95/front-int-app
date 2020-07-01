@@ -20,12 +20,12 @@ export class DashboardComponent implements OnInit {
   }
 
   dropdownShow() {
-    console.log(this.menuSubBlock);
+  
     this.menuSubBlock = !this.menuSubBlock;
   }
 
   logout(){
-    console.log('logout')
+
     this.router.navigate(['/login']);
   }
 

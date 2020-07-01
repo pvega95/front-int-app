@@ -20,14 +20,12 @@ export class CartaService {
   ) { }
 
   setCart(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/letter-fiscal/create`;
     const data = obj
     return this._http.post(query, data);
   }
 
   setCartTwo(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/letter-fiscal/createtwo`;
     const data = obj
     return this._http.post(query, data);
@@ -57,7 +55,6 @@ export class CartaService {
   getPDF(id:number) {
     return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf/${id}`)
       .pipe(map(data => { 
-        console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }
@@ -65,7 +62,6 @@ export class CartaService {
   getPDFTwo(id:number) {
     return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf-two/${id}`)
       .pipe(map(data => { 
-        console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }

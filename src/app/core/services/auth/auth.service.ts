@@ -17,7 +17,6 @@ export class AuthService {
   ) { }
 
   login(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/users/signUp`;
     const data = obj
     return this._http.post(query, data);
@@ -30,7 +29,6 @@ export class AuthService {
   }
 
   signIn(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/users/signIn`;
     const data = obj
     return this._http.post(query, data);

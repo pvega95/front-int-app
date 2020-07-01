@@ -35,7 +35,7 @@
 
     <ng-container matColumnDef="analista">
       <th mat-header-cell *matHeaderCellDef> Analista Responsable </th>
-      <td mat-cell *matCellDef="let element"> {{element.analistaForm}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.analistaForm | analista }} </td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">

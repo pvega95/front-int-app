@@ -17,7 +17,6 @@ export class ProcesosService {
   ) { }
 
   setProcess(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/process/create`;
     const data = obj
     return this._http.post(query, data);
@@ -53,7 +52,6 @@ export class ProcesosService {
   getPDF() {
     return this._http.getPDF(`${this.url}/api/process/get-new-pdf`)
       .pipe(map(data => { 
-        console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }

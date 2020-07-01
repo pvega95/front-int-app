@@ -39,6 +39,8 @@ import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
 
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { GraficaBarraComponent } from './grafica-barra/grafica-barra.component';
+import { AnalistaPipe } from '@core/pipe/analista.pipe';
+import { DocumentoPipe } from '@core/pipe/documento.pipe';
 
 export const cloudinary = {
   Cloudinary: CloudinaryCore
@@ -65,18 +67,24 @@ const COMPONENTS = [
   ModalCartaComponent,
   ModalGuiaComponent,
   GraficaDonaComponent,
-  GraficaBarraComponent
+  GraficaBarraComponent,
+  
+];
+
+const PIPES = [
+  AnalistaPipe,
+  DocumentoPipe
 ];
 
 @NgModule({
   imports: [...MODULES,
     CloudinaryModule.forRoot(cloudinary, environment.cloudinarySettings as CloudinaryConfiguration)],
-  exports: [...MODULES, ...COMPONENTS],
+  exports: [...MODULES, ...COMPONENTS,...PIPES],
   providers: [
     // provideCloudinary(Cloudinary, environment.cloudinarySettings as CloudinaryConfiguration),
     { provide: LOCALE_ID, useValue: 'es-PE' },
     DatePipe
   ],
-  declarations: [...COMPONENTS, GraficaBarraComponent]
+  declarations: [...COMPONENTS,...PIPES, GraficaBarraComponent]
 })
 export class SharedModule {}

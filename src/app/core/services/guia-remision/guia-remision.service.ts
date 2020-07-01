@@ -19,7 +19,6 @@ export class GuiaRemisionService {
   ) { }
 
   setGuiaRemision(obj): Observable<any>  {
-    console.log('obj',obj)
     const query = `${this.url}/api/guia-remision/create`;
     const data = obj
     return this._http.post(query, data);
@@ -55,7 +54,6 @@ export class GuiaRemisionService {
   getPDF(id:number) {
     return this._http.getPDF(`${this.url}/api/guia-remision/get-pdf/${id}`)
       .pipe(map(data => { 
-        console.log('databuffer',data)
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
   }
