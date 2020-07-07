@@ -72,27 +72,36 @@ export class AddComponent implements OnInit {
   }
 
   onSubmitHoja(miForm ) {
-    
-    let data = {
-      NumRegister : miForm.value.numRegForm,
-      Process : miForm.value.procesoForm,
-      DateRemision : miForm.value.fechaForm,
-      ShipNumber : miForm.value.numHojaForm,
-      DocToRemit : miForm.value.docRemForm,
-      TypeDocument : miForm.value.tipDocForm
+    if (!miForm.valid) {
+      this.snackBar.open('Verificar formulario', 'error', {
+        duration: 2000,
+      });
+    } else {
+      let data = {
+        NumRegister : miForm.value.numRegForm,
+        Process : miForm.value.procesoForm,
+        DateRemision : miForm.value.fechaForm,
+        ShipNumber : miForm.value.numHojaForm,
+        DocToRemit : miForm.value.docRemForm,
+        TypeDocument : miForm.value.tipDocForm
+      };
+     
+      this._hojaEnvioService.setHojaEnvio(data).pipe(take(1))
+        .subscribe(
+          val=>{
+            this.snackBar.open('Registro existoso', 'ok', {
+              duration: 2000,
+            });
+            this.router.navigate(['/main/hoja-envio']) 
+          },
+          (err:HttpErrorResponse)=>{
+            this.snackBar.open('ha ocurrido un error', 'error', {
+              duration: 2000,
+            });
+          }
+        );
     }
-   
-
-    this._hojaEnvioService.setHojaEnvio(data).pipe(take(1))
-      .subscribe(
-        val=>{
-        
-          this.router.navigate(['/main/hoja-envio']) 
-        },
-        (err:HttpErrorResponse)=>{
-         
-        }
-      )
+    
   }
 
   goback(){

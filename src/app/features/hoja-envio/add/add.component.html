@@ -14,11 +14,19 @@
           <div class="input-group registro">
             <mat-form-field class="fbx-input">
               <input matInput formControlName="numRegForm" placeholder="N° Registro" [type]="'text'" required>
+              <mat-error *ngIf="hojaEnvioForm.controls['numRegForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
           <div class="input-group proceso">
             <mat-form-field class="fbx-input">
               <input matInput formControlName="procesoForm" placeholder="Proceso" [type]="'text'" required>
+              <mat-error *ngIf="hojaEnvioForm.controls['procesoForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
           <div class="input-group fecha">
@@ -26,16 +34,28 @@
               <input matInput formControlName="fechaForm" placeholder="Fecha Remision" name="dateBorn" [matDatepicker]="picker" required>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker color="#163164"></mat-datepicker>
+              <mat-error *ngIf="hojaEnvioForm.controls['fechaForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
           <div class="input-group hoja">
             <mat-form-field class="fbx-input">
               <input matInput formControlName="numHojaForm" placeholder="N° Hoja Envio" [type]="'text'" required>
+              <mat-error *ngIf="hojaEnvioForm.controls['numHojaForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
           <div class="input-group doc">
             <mat-form-field class="fbx-input">
               <input matInput formControlName="docRemForm" placeholder="Doc a remitir" [type]="'text'" required>
+              <mat-error *ngIf="hojaEnvioForm.controls['docRemForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
     
@@ -45,10 +65,16 @@
                 <mat-option [value]="1">CARGO</mat-option>
                 <mat-option [value]="2">RESPUESTA</mat-option>
               </mat-select>
+              <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow">
+              </mat-icon>
+              <mat-error *ngIf="hojaEnvioForm.controls['tipDocForm'].hasError('required')">
+                Por favor completa el
+                <strong>campo.</strong>
+            </mat-error>
             </mat-form-field>
           </div>
           <div class="btn-enter">
-            <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+            <button class="fbx-button" mat-flat-button color="accent" type="submit" [disabled]="!hojaEnvioForm.valid">Registrar</button>
           </div>
         </form>
       </div>

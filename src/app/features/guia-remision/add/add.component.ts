@@ -15,18 +15,18 @@ import { SvgRegisterService } from '@core/material/svg-register.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  guiaForm : FormGroup
+  guiaForm: FormGroup
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
-    private _location:Location,
-    private _remisionService : GuiaRemisionService,
-    private router : Router,
+    private _location: Location,
+    private _remisionService: GuiaRemisionService,
+    private router: Router,
     public dialog: MatDialog,
-    private _svgRegisterService:SvgRegisterService,
+    private _svgRegisterService: SvgRegisterService,
   ) {
     this._svgRegisterService.init();
-   }
+  }
 
   ngOnInit() {
     this.guiaForm = this.formB.group({
@@ -61,14 +61,14 @@ export class AddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
- 
+      if (result) {
+
         this.setForm(result);
       }
     });
   }
 
-  setForm(result){
+  setForm(result) {
     this.guiaForm.controls['descProForm'].setValue(result.procesoForm);
     this.guiaForm.controls['numCartaForm'].setValue(result.cartaForm);
     this.guiaForm.controls['empConsForm'].setValue(result.empresaForm);
@@ -76,39 +76,43 @@ export class AddComponent implements OnInit {
     this.guiaForm.controls['personaForm'].setValue(result.personaConsForm);
     this.guiaForm.controls['cargoForm'].setValue(result.cargoForm);
     this.guiaForm.controls['direccionForm'].setValue(result.direccionForm);
-    // this.cartaForm.controls['descProcForm'].setValue(result.description);
-    // this.cartaForm.controls['itemForm'].setValue(result.items);
-    // let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
-    // this.cartaForm.controls['procesoForm'].setValue(proceso);
-    // this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
-    // this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
-  onSubmitGuia(miForm ){
-    
-    let data = {
-      'process' : miForm.value.descProForm,
-      'numCarta':miForm.value.numCartaForm,
-      'toConsult':miForm.value.empConsForm,
-      'description':miForm.value.descDocForm,
-      'person': miForm.value.personaForm,
-      'position': miForm.value.cargoForm,
-      'adress': miForm.value.direccionForm,
+  onSubmitGuia(miForm) {
+    if (!miForm.valid) {
+      this.snackBar.open('Verificar formulario', 'error', {
+        duration: 2000,
+      });
+    } else {
+      let data = {
+        'process': miForm.value.descProForm,
+        'numCarta': miForm.value.numCartaForm,
+        'toConsult': miForm.value.empConsForm,
+        'description': miForm.value.descDocForm,
+        'person': miForm.value.personaForm,
+        'position': miForm.value.cargoForm,
+        'adress': miForm.value.direccionForm,
+      }
+
+      this._remisionService.setGuiaRemision(data).pipe(take(1))
+        .subscribe(
+          val => {
+            this.snackBar.open('Registro existoso', 'ok', {
+              duration: 2000,
+            });
+            this.router.navigate(['/main/guia-remision'])
+          },
+          (err: HttpErrorResponse) => {
+            this.snackBar.open('ha ocurrido un error', 'error', {
+              duration: 2000,
+            });
+          }
+        );
     }
-   
-    this._remisionService.setGuiaRemision(data).pipe(take(1))
-      .subscribe(
-        val=>{
-         
-          this.router.navigate(['/main/guia-remision'])
-        },
-        (err:HttpErrorResponse)=>{
-         
-        }
-      )
+
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 

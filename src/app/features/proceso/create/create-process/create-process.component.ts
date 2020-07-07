@@ -192,26 +192,35 @@ public uploader: FileUploader;
 
   onSubmitPerson(miForm ){
     // miForm = this.registerPersonForm.value
-   
-    let data = {
-      contract: miForm.value.contratistaForm,
-      type_contract: miForm.value.tipoContratistaForm,
-      typeProcedure: miForm.value.tipoProcedimientoForm,
-      number: miForm.value.numProcedimientoForm,
-      year: miForm.value.añoProcesoForm,
-      description: miForm.value.descripcionForm,
-      date: miForm.value.fechaRecepcionForm,
-      items: miForm.value.itemsForm
-  }
-
+    if (!miForm.valid) {
+      this.snackBar.open('Verificar formulario', 'error', {
+        duration: 2000,
+      });
+    }else {
+      let data = {
+        contract: miForm.value.contratistaForm,
+        type_contract: miForm.value.tipoContratistaForm,
+        typeProcedure: miForm.value.tipoProcedimientoForm,
+        number: miForm.value.numProcedimientoForm,
+        year: miForm.value.añoProcesoForm,
+        description: miForm.value.descripcionForm,
+        date: miForm.value.fechaRecepcionForm,
+        items: miForm.value.itemsForm
+    }
   
-    this._processService.setProcess(data).pipe(take(1))
-      .subscribe(res=>{
-        
-        this.router.navigate(['/main/proceso']);
-      },(err : HttpErrorResponse)=>{
-       
-      })
+      this._processService.setProcess(data).pipe(take(1))
+        .subscribe(res=>{
+          this.snackBar.open('Registro existoso', 'ok', {
+            duration: 2000,
+          });
+          this.router.navigate(['/main/proceso']);
+        },(err : HttpErrorResponse)=>{
+          this.snackBar.open('ha ocurrido un error', 'error', {
+            duration: 2000,
+          });
+        });
+    }
+    
   }
 
   //cloudinary

@@ -14,19 +14,19 @@ import { SvgRegisterService } from '@core/material/svg-register.service';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  
+
   cartaForm: FormGroup;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
-    private _cartaService : CartaService,
+    private _cartaService: CartaService,
     public dialog: MatDialog,
     private router: Router,
     private _location: Location,
-    private _svgRegisterService:SvgRegisterService,
+    private _svgRegisterService: SvgRegisterService,
   ) {
     this._svgRegisterService.init();
-   }
+  }
 
   ngOnInit() {
     this.cartaForm = this.formB.group({
@@ -90,16 +90,29 @@ export class AddComponent implements OnInit {
     });
   }
 
-  onSubmitCarta(miForm){
-    let data = miForm.value
-    this._cartaService.setCart(data).pipe(take(1))
-      .subscribe(
-        val=>{
-          this.router.navigate(['/main/carta-fiscalizacion']);
-        },
-        (err : HttpErrorResponse)=>{
-        }
-      )
+  onSubmitCarta(miForm) {
+    if (!miForm.valid) {
+      this.snackBar.open('Verificar formulario', 'error', {
+        duration: 2000,
+      });
+    } else {
+      let data = miForm.value
+      this._cartaService.setCart(data).pipe(take(1))
+        .subscribe(
+          val => {
+            this.snackBar.open('Registro existoso', 'ok', {
+              duration: 2000,
+            });
+            this.router.navigate(['/main/carta-fiscalizacion']);
+          },
+          (err: HttpErrorResponse) => {
+            this.snackBar.open('ha ocurrido un error', 'error', {
+              duration: 2000,
+            });
+          }
+        );
+    }
+
   }
 
   openDialog(): void {
@@ -109,14 +122,14 @@ export class AddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
+      if (result) {
         this.setForm(result);
       }
 
     });
   }
 
-  setForm(result){
+  setForm(result) {
     this.cartaForm.controls['descProcForm'].setValue(result.description);
     this.cartaForm.controls['itemForm'].setValue(result.items);
     let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
@@ -125,7 +138,7 @@ export class AddComponent implements OnInit {
     this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 }

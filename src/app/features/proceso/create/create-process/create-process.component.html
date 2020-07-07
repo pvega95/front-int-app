@@ -14,6 +14,10 @@
                     <mat-form-field class="fbx-input">
                         <input matInput placeholder="Contratista" [type]="'text'" formControlName="contratistaForm"
                             required>
+                        <mat-error *ngIf="registerPersonForm.controls['contratistaForm'].hasError('required')">
+                            Por favor completa el
+                            <strong>campo.</strong>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="input-group select-pdocForm">
@@ -27,62 +31,93 @@
                             <mat-option [value]="6">NOTARIOS</mat-option>
                             <mat-option [value]="7">OTROS</mat-option>
                         </mat-select>
-                        <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow"></mat-icon>
+                        <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow">
+                        </mat-icon>
+                        <mat-error *ngIf="registerPersonForm.controls['tipoContratistaForm'].hasError('required')">
+                            Por favor completa el
+                            <strong>campo.</strong>
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="input-group tipo-procedimiento">
                     <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
                         <mat-select placeholder="Tipo Procedimiento" formControlName="tipoProcedimientoForm">
-                            <mat-option [value]="procedure._id" *ngFor="let procedure of procedureList">{{procedure.name}}</mat-option>
+                            <mat-option [value]="procedure._id" *ngFor="let procedure of procedureList">
+                                {{procedure.name}}</mat-option>
                         </mat-select>
+                        <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow">
+                        </mat-icon>
+                        <mat-error *ngIf="registerPersonForm.controls['tipoProcedimientoForm'].hasError('required')">
+                            Por favor completa el
+                            <strong>campo.</strong>
+                        </mat-error>
                     </mat-form-field>
                 </div>
-    
+
                 <div class="input-group num-procedimiento">
                     <mat-form-field class="fbx-input">
                         <input matInput placeholder="N° Procedimiento" [type]="'number'"
                             formControlName="numProcedimientoForm" required>
+                        <mat-error *ngIf="registerPersonForm.controls['numProcedimientoForm'].hasError('required')">
+                            Por favor completa el
+                            <strong>campo.</strong>
+                        </mat-error>
                     </mat-form-field>
                 </div>
-    
+
                 <div class="input-group año-proceso">
                     <mat-form-field class="fbx-input">
                         <input matInput placeholder="Año de Proceso" [type]="'text'" formControlName="añoProcesoForm"
                             required>
+                            <mat-error *ngIf="registerPersonForm.controls['añoProcesoForm'].hasError('required')">
+                                Por favor completa el
+                                <strong>campo.</strong>
+                            </mat-error> 
                     </mat-form-field>
                 </div>
-    
+
                 <div class="input-group">
                     <mat-form-field class="fbx-input">
-                        <input matInput placeholder="Descripcion Proceso" [type]="'text'" formControlName="descripcionForm"
-                            required>
-                    </mat-form-field>
+                        <input matInput placeholder="Descripcion Proceso" [type]="'text'"
+                            formControlName="descripcionForm" required>
+                            <mat-error *ngIf="registerPersonForm.controls['descripcionForm'].hasError('required')">
+                                Por favor completa el
+                                <strong>campo.</strong>
+                            </mat-error> 
+                    </mat-form-field>  
                 </div>
-    
+
                 <div class="input-group recepcion">
                     <mat-form-field class="fbx-input">
                         <input matInput placeholder="Fecha Recepción" name="dateBorn" [matDatepicker]="picker"
                             formControlName="fechaRecepcionForm" required>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker color="#163164"></mat-datepicker>
+                        <mat-error *ngIf="registerPersonForm.controls['fechaRecepcionForm'].hasError('required')">
+                            Por favor completa el
+                            <strong>campo.</strong>
+                        </mat-error>
                     </mat-form-field>
                 </div>
-    
+
                 <div class="input-group items-fiscalizados">
                     <mat-form-field class="fbx-input">
                         <input matInput placeholder="Items Fiscalizados" [type]="'text'" formControlName="itemsForm"
                             required>
+                            <mat-error *ngIf="registerPersonForm.controls['itemsForm'].hasError('required')">
+                                Por favor completa el
+                                <strong>campo.</strong>
+                            </mat-error>
                     </mat-form-field>
                 </div>
-    
+
                 <div class="btn-enter">
-                    <button class="fbx-button" mat-flat-button color="accent" type="submit">Registrar</button>
+                    <button class="fbx-button" mat-flat-button color="accent" type="submit"
+                        [disabled]="!registerPersonForm.valid">Registrar</button>
                 </div>
             </form>
         </div>
         <div class="content-aux"></div>
-        
+
     </div>
 </section>
-
-
