@@ -91,6 +91,7 @@ export class ModelOneComponent implements OnInit {
       descProcTwoForm: new FormControl('', [
         Validators.required
       ]),
+      descProcThreeForm: new FormControl(''),
       nombEmpForm: new FormControl(''),
       // descProcForm : new FormControl('', [
       //   Validators.required
@@ -117,11 +118,14 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['fechaActualForm'].setValue(data.fechaActualForm);
     this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
     this.modelOneForm.controls['descProcTwoForm'].setValue('En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
-                                                            'Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +
-                                                            'Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior,' +
-                                                            'agradeciéndole nos indique expresamente la veracidad de la(s) ' + this.modelOneForm.controls['docForm'].value + ' presentada(s) por el contratista en' +
-                                                            'mención. Para lo cual se adjuntan las respectivas copias.' + '\n' + 'Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
-                                                            ' de recibida la presentecomunicación.');
+                                                            ' Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +
+                                                            'Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior, ' +
+                                                            'agradeciéndole nos indique expresamente la veracidad de los documentos señalados en el cuadro precedente presentada(s) por el contratista ' +
+                                                            this.nombreEmpresa + ' ' +
+                                                            'en mención. Adjuntandose las respectivas copias.');
+    this.modelOneForm.controls['descProcThreeForm'].setValue('Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
+                                                              'de recibida la presente comunicación.');
+    
     // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
     let tipoProcedimiento = '';
     switch (data.procesoDepend.typeProcedure) {
@@ -156,7 +160,7 @@ export class ModelOneComponent implements OnInit {
   generate() {
 
     let data = this.modelOneForm.value
-
+    console.log('data a enviar' , data)
     this._cartaService.setCartTwo(data).pipe(take(1))
       .subscribe(
         val => {
