@@ -124,6 +124,7 @@ export class AddComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.setForm(result);
+        this.cartaForm.updateValueAndValidity();
       }
 
     });

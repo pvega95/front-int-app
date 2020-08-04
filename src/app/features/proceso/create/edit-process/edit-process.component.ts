@@ -81,7 +81,7 @@ export class EditProcessComponent implements OnInit {
       items: miForm.value.itemsForm,
       // cod_seg: miForm.value.cod_seg,
     }
-    
+    console.log(data);
     this._processService.setUpdateProcess(data,this.idProcess).pipe(take(1)).subscribe(
       val=>{
         

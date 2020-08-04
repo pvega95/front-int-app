@@ -11,8 +11,10 @@
       </p>
     </header>
     <section class="section-one">
-      <p>San Borja, 09 de octubre del 2019</p>
-      <p>Carta Nº 1 - 2019 - BN / 2604</p>
+      <p>San Borja, <input matInput  formControlName="fechaActualForm"></p>
+      <p>Carta N° 
+        <input matInput  formControlName="cartaForm">
+      </p>
       <p>Señor(a):</p>
       <div class="persona">
         <mat-form-field class="example-full-width ">
@@ -43,7 +45,7 @@
     <section class="section-two">
       <p>Presente.-</p>
       <p>Asunto: Fiscalización Posterior</p>
-      <p>Referencia: Adjudicación Simplificada N° 34 - 2019 - BN</p>
+      <p>Referencia: {{modelOneForm.controls['procesoForm'].value}}</p>
       <p>De mi consideración: </p>
       <p>Me dirijo a usted, para manifestarle que nuestra Entidad en aplicación del principio y potestad de controles
         posteriores, procede a realizar la fiscalización posterior de:
@@ -79,11 +81,8 @@
       </div>
     </section>
     <section class="section-three">
-      <p>Al respecto, la empresa DICOMTECH S.A.C. ha presentado copia de dichos documentos en el
-        procedimiento de selección Adjudicación Simplificada <span>
-          <!-- N° 34 -2019 -BN “ADQUISICION DE SOFTWARE BASADO EN PLATAFORMA
-          WEB PARA AUDITORIA DE DIRECTORIO
-          ACTIVO Ms EXCHANGE Y SERVIDORES WINDOWS” 1 .  -->
+      <p>Al respecto, la empresa {{nombreEmpresa}} ha presentado copia de dichos documentos en el
+        procedimiento de selección <span>
           <div  class="desc-proceso">
             <mat-form-field class="example-full-width">
               <mat-label>Descripcion Proceso</mat-label>
@@ -95,17 +94,18 @@
         </span> </p>
     </section>
     <section class="section-four">
-      <p>En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento
+      <textarea matInput formControlName="descProcTwoForm"></textarea>
+      <!-- <p>En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento
         Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de
         Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior,
         agradeciéndole nos indique expresamente la veracidad de la(s) ACREDITACION presentada(s) por el contratista en
         mención. Para lo cual se adjuntan las respectivas copias.
-      </p>
+      </p> -->
     </section>
     <section class="section-five">
-      <p>Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles de recibida la presente
+      <!-- <p>Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles de recibida la presente
         comunicación.
-      </p>
+      </p> -->
       <p>Atentamente,</p>
     </section>
   

@@ -14,15 +14,16 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ModelOneComponent implements OnInit {
   message: {};
-  messageService : Subscription;
-  modelOneForm : FormGroup;
+  messageService: Subscription;
+  modelOneForm: FormGroup;
+  public nombreEmpresa : string;
   // interfaz
   activeloadingfull = false;
   constructor(
     private route: ActivatedRoute,
-    private _cartaService : CartaService,
+    private _cartaService: CartaService,
     public formB: FormBuilder,
-    private _location:Location,
+    private _location: Location,
   ) { }
 
   ngOnInit() {
@@ -84,65 +85,104 @@ export class ModelOneComponent implements OnInit {
       procesoDepend: new FormControl('', [
         Validators.required
       ]),
+      fechaActualForm: new FormControl('', [
+        Validators.required
+      ]),
+      descProcTwoForm: new FormControl('', [
+        Validators.required
+      ]),
+      nombEmpForm: new FormControl(''),
       // descProcForm : new FormControl('', [
       //   Validators.required
       // ])
     });
 
-    this.messageService = this._cartaService.currentMessage.subscribe(message => 
-      {
-        this.message = message;
-        this.setForm(this.message);
-        
-      })
+    this.messageService = this._cartaService.currentMessage.subscribe(message => {
+      this.message = message;
+      this.setForm(this.message);
+    })
   }
-  
-  setForm(data){
-   
+
+  setForm(data) {
+    console.log(data)
+    this.nombreEmpresa = data.procesoDepend.contract;
+    this.modelOneForm.controls['nombEmpForm'].setValue(data.procesoDepend.contract);
     this.modelOneForm.controls['personaConsForm'].setValue(data.personaConsForm);
+    this.modelOneForm.controls['cartaForm'].setValue(data.cartaForm);
     this.modelOneForm.controls['cargoForm'].setValue(data.cargoForm);
     this.modelOneForm.controls['empresaForm'].setValue(data.empresaForm);
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
-    // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description);  
-    this.modelOneForm.controls['descProcForm'].setValue('N°' +data.procesoDepend.number + '-' + data.procesoDepend.year + ' ' + data.procesoDepend.description); 
+    this.modelOneForm.controls['fechaActualForm'].setValue(data.fechaActualForm);
+    this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
+    this.modelOneForm.controls['descProcTwoForm'].setValue('En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
+                                                            'Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +
+                                                            'Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior,' +
+                                                            'agradeciéndole nos indique expresamente la veracidad de la(s) ' + this.modelOneForm.controls['docForm'].value + ' presentada(s) por el contratista en' +
+                                                            'mención. Para lo cual se adjuntan las respectivas copias.' + '\n' + 'Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
+                                                            ' de recibida la presentecomunicación.');
+    // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
+    let tipoProcedimiento = '';
+    switch (data.procesoDepend.typeProcedure) {
+      case '5e373cac542ea639ac488835':
+        tipoProcedimiento = 'Concurso de Méritos'
+        break;
+      case '5e373c8a542ea639ac488832':
+        tipoProcedimiento = 'Adjudicación Simplificada'
+        break;
+      case '5e373ca1542ea639ac488834':
+        tipoProcedimiento = 'Licitación Pública'
+        break;
+      case '5e373c96542ea639ac488833':
+        tipoProcedimiento = 'Concurso Público'
+        break;
+      case '5e373cb5542ea639ac488836':
+        tipoProcedimiento = 'Adjudicación de Menor Cuantia'
+        break;
+      case '5e373cbc542ea639ac488837':
+        tipoProcedimiento = 'Contratación de Servicio Financiero'
+        break;
+      default:
+        break;
+    }
+    this.modelOneForm.controls['descProcForm'].setValue(tipoProcedimiento + ' N°' + data.procesoDepend.number + '-' + data.procesoDepend.year + ' ' + data.procesoDepend.description);
   }
 
-  goback(){
+  goback() {
     this._location.back();
   }
 
-  generate(){
-   
+  generate() {
+
     let data = this.modelOneForm.value
 
     this._cartaService.setCartTwo(data).pipe(take(1))
       .subscribe(
-        val=>{
-       
+        val => {
+
           this.generatePDF(val.postId)
         },
-        (err : HttpErrorResponse)=>{
-         
+        (err: HttpErrorResponse) => {
+
         }
       )
   }
 
-  generatePDF(id){
-    
+  generatePDF(id) {
+
     this.activeloadingfull = true;
-   
+
     this._cartaService.getPDFTwo(id).pipe(take(1))
       .subscribe(
-        val=>{
+        val => {
           this.activeloadingfull = false;
-          
+
           var fileURL = URL.createObjectURL(val);
           window.open(fileURL)
         },
-        (err : HttpErrorResponse)=>{
-    
+        (err: HttpErrorResponse) => {
+
         }
       )
   }
