@@ -117,7 +117,7 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
-    this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate'));
+    this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate').replace(",", ""));
     this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
     this.modelOneForm.controls['descProcTwoForm'].setValue('En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
                                                             ' Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +

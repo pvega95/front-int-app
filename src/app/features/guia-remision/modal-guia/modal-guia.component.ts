@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '@core/services/resources/dashboard.service';
-import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogRef } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogRef, MatPaginator } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -13,8 +13,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ModalGuiaComponent implements OnInit {
   displayedColumns: string[] = ['id', 'descripcion','proceso','fecha','analista','empresa','add'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   dataSource : any;
+  totalPosts = 10;
+  postsPerPage = 5;
+  currentPage = 1;
+  pageSizeOptions = [1,2,5,10];
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor(
     public _dashboardService: DashboardService,
     public snackBar: MatSnackBar,
@@ -30,7 +36,8 @@ export class ModalGuiaComponent implements OnInit {
       .subscribe(
         val=>{
          
-          this.dataSource = val;
+          this.dataSource = new MatTableDataSource<Element>(val);
+          this.dataSource.paginator = this.paginator;
         },
         (err:HttpErrorResponse)=>{
          
