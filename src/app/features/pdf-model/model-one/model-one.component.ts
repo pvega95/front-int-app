@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
+import { Location, DatePipe } from '@angular/common';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -12,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './model-one.component.html',
   styleUrls: ['./model-one.component.scss']
 })
+
 export class ModelOneComponent implements OnInit {
   message: {};
   messageService: Subscription;
@@ -24,6 +25,7 @@ export class ModelOneComponent implements OnInit {
     private _cartaService: CartaService,
     public formB: FormBuilder,
     private _location: Location,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -115,7 +117,7 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
-    this.modelOneForm.controls['fechaActualForm'].setValue(data.fechaActualForm);
+    this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate'));
     this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
     this.modelOneForm.controls['descProcTwoForm'].setValue('En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
                                                             ' Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +
@@ -127,6 +129,7 @@ export class ModelOneComponent implements OnInit {
                                                               'de recibida la presente comunicación.');
     
     // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
+
     let tipoProcedimiento = '';
     switch (data.procesoDepend.typeProcedure) {
       case '5e373cac542ea639ac488835':
