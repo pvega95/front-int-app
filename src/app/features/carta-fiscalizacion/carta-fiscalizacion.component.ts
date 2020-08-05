@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogConfig } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogConfig, MatPaginator } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,6 +18,11 @@ export class CartaFiscalizacionComponent implements OnInit {
   cartaForm: FormGroup;
   displayedColumns: string[] = ['proceso','fecha','analista','empresa','generar','edit','delete'];
   dataSource = new MatTableDataSource;
+  totalPosts = 10;
+  postsPerPage = 5;
+  currentPage = 1;
+  pageSizeOptions = [1,2,5,10];
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   message:{};
 
   constructor(
@@ -43,7 +48,9 @@ export class CartaFiscalizacionComponent implements OnInit {
     this._cartaService.getCart().pipe(take(1))  
     .subscribe(
       val=>{
-        this.dataSource = val;
+        // this.dataSource = val;
+        this.dataSource = new MatTableDataSource<Element>(val);
+        this.dataSource.paginator = this.paginator;
       },
       (err:HttpErrorResponse)=>{
       }
