@@ -49,7 +49,6 @@ export class ProcesoComponent implements OnInit {
     this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
-      
         this.dataSource = val.posts;
         this.totalPosts = val.maxPosts;
       },

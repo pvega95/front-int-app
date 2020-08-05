@@ -119,10 +119,10 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
     this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate').replace(",", ""));
     this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
-    this.modelOneForm.controls['descProcTwoForm'].setValue('En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
+    this.modelOneForm.controls['descProcTwoForm'].setValue('Sobre el particular, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +
                                                             ' Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de ' +
                                                             'Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior, ' +
-                                                            'agradeciéndole nos indique expresamente la veracidad de los documentos señalados en el cuadro precedente presentada(s) por el contratista ' +
+                                                            'agradeciéndole nos indique expresamente la veracidad de los documentos señalados en el cuadro precedente presentada por el contratista ' +
                                                             this.nombreEmpresa + ' ' +
                                                             'en mención. Adjuntandose las respectivas copias.');
     this.modelOneForm.controls['descProcThreeForm'].setValue('Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
