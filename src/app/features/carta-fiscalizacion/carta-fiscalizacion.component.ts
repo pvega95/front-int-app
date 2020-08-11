@@ -16,7 +16,7 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
 })
 export class CartaFiscalizacionComponent implements OnInit {
   cartaForm: FormGroup;
-  displayedColumns: string[] = ['proceso','fecha','analista','empresa','generar','edit','delete'];
+  displayedColumns: string[] = ['proceso','carta','fecha','analista','empresa','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   totalPosts = 10;
   postsPerPage = 5;
@@ -48,7 +48,6 @@ export class CartaFiscalizacionComponent implements OnInit {
     this._cartaService.getCart().pipe(take(1))  
     .subscribe(
       val=>{
-        // this.dataSource = val;
         this.dataSource = new MatTableDataSource<Element>(val);
         this.dataSource.paginator = this.paginator;
       },
