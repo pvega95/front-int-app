@@ -49,5 +49,19 @@ export class ReporteService {
     return this._http.get(query);
   }
 
+  cartaReport(): Observable<any> {
+    const query = `${this.url}/api/report/get-carta`
+    return this._http.get(query);
+  }
+
+  hojaReport(): Observable<any> {
+    const query = `${this.url}/api/report/get-hoja`
+    return this._http.get(query);
+  }
+
+  guiaReport(): Observable<any> {
+    const query = `${this.url}/api/report/get-guia`
+    return this._http.get(query);
+  }
 
 }

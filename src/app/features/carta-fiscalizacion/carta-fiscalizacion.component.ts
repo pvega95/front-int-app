@@ -8,6 +8,8 @@ import { ModalCartaComponent } from './modal-carta/modal-carta.component';
 import { DashboardService } from '@core/services/resources/dashboard.service';
 import { Router } from '@angular/router';
 import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
+import { ReporteService } from '@core/services/reportes/reporte.service';
+import { ExcelService } from '@core/services/excel/excel.service';
 
 @Component({
   selector: 'app-carta-fiscalizacion',
@@ -31,7 +33,9 @@ export class CartaFiscalizacionComponent implements OnInit {
     public snackBar: MatSnackBar,
     private _cartaService: CartaService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private _reporteService: ReporteService,
+    private _excelService: ExcelService,
   ) {
     this._dashboardService.setDashboardStatus(true);
   }
@@ -101,6 +105,50 @@ export class CartaFiscalizacionComponent implements OnInit {
         link.click();
       }, (err: HttpErrorResponse) => {
       });
+  }
+
+  reporteCarta(res) {
+    const header = ["Descripcion Proceso", "Item", "Proceso", "Fecha Fiscalizacion", "N.Analista", 
+                  "N.Carta", "Empresa a consultar", "Direccion", "Persona Consultar","Cargo Persona", "Descripcion Doc Fiscalizar", 
+                  "Tipo Documento", "Observaciones", "Documento Respuesta", "Fecha Respuesta", "Doc. Remision",
+                  "Conclusion","Dias Pasados"];
+    const TITLE = "Reporte Carta"
+    const REPORTE = res.map(data => {
+      switch (data.conclusionForm) {
+        case '1':
+          data = { ...data, conclusionForm: 'POSITIVO' };
+          break;
+        case '2':
+          data = { ...data, conclusionForm: 'NEGATIVO' };
+          break;
+        case '3':
+          data = { ...data, conclusionForm: 'DEVUELTO' };
+          break;
+        case '4':
+          data = { ...data, conclusionForm: 'PLAZO EXTENDIDO' };
+          break;
+        case '5':
+          data = { ...data, conclusionForm: 'OTROS' };
+          break;
+        default:
+          break;
+      }
+      return [
+              data.descProcForm,data.itemForm,data.procesoForm,data.fechaFiscForm,data.analistaForm,
+              data.cartaForm,data.empresaForm,data.direccionForm,data.personaConsForm,data.cargoForm,data.docForm,
+              data.tipoForm,data.observacionesForm,data.docResForm,data.fechaResForm,data.docRemisionForm,
+              data.conclusionForm,data.diasPasadosForm
+            ];
+    });
+    this._excelService.addWorksheet(REPORTE, header, TITLE);
+  }
+
+  getProcessReport() {
+    this._reporteService.cartaReport().subscribe((res) => {
+      if (res) {
+        this.reporteCarta(res);
+      }
+    })
   }
 
 }

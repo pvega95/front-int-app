@@ -138,7 +138,7 @@ export class ProcesoComponent implements OnInit {
         case '6':
           data = { ...data, type_contract: 'NOTARIOS' };
           break;
-        case '5':
+        case '7':
           data = { ...data, type_contract: 'OTROS' };
           break;
         default:

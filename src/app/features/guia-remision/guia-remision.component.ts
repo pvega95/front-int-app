@@ -6,6 +6,8 @@ import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
+import { ReporteService } from '@core/services/reportes/reporte.service';
+import { ExcelService } from '@core/services/excel/excel.service';
 
 @Component({
   selector: 'app-guia-remision',
@@ -25,6 +27,8 @@ export class GuiaRemisionComponent implements OnInit {
     private _remisionService : GuiaRemisionService,
     private router : Router,
     public dialog: MatDialog,
+    private _reporteService: ReporteService,
+    private _excelService: ExcelService,
   ) { }
 
   ngOnInit() {
@@ -87,6 +91,26 @@ export class GuiaRemisionComponent implements OnInit {
         
         }
       )
+  }
+
+  reporteGuia(res) {
+    const header = ["Proceso", "N.Carta", "A consultar", "Descripcion", "Persona", "Cargo", "Direccion"];
+    const TITLE = "Reporte Guia"
+    const REPORTE = res.map(data => {
+      return [
+              data.process,data.numCarta,data.toConsult,data.description,data.person,
+              data.position,data.adress
+            ];
+    });
+    this._excelService.addWorksheet(REPORTE, header, TITLE);
+  }
+
+  getGuiaReport() {
+    this._reporteService.guiaReport().subscribe((res) => {
+      if (res) {
+        this.reporteGuia(res);
+      }
+    })
   }
 
 }
