@@ -37,4 +37,8 @@ export class HttpClienteService {
     return this.http.get(`${url}`, { responseType: 'arraybuffer' });
   }
 
+  getDOCX(url:string, data:any): Observable<any> {
+    return this.http.post(`${url}`, data, { responseType: 'arraybuffer' });
+  }
+
 }

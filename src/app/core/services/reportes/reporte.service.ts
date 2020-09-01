@@ -44,5 +44,10 @@ export class ReporteService {
     return this._http.get(query);
   }
 
+  processReport(): Observable<any> {
+    const query = `${this.url}/api/report/get-process/`
+    return this._http.get(query);
+  }
+
 
 }

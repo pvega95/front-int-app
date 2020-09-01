@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SvgRegisterService } from './material/svg-register.service';
 import { AuthService } from './services/auth/auth.service';
 import { AnalistaPipe } from './pipe/analista.pipe';
+import { HeaderInterceptor } from './interceptors/header.interceptor';
 
 // import { AppErrorHandler } from './error-handler/app-error-handler.service';
 
@@ -32,8 +33,7 @@ const SERVICES = [
 const COMPONENTS = [];
 
 const INTERCEPTORS = [
-  // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-  // { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
+  { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
 ];
 
 @NgModule({
@@ -52,6 +52,8 @@ const INTERCEPTORS = [
     // { provide: ErrorHandler, useClass: AppErrorHandler },
   ],
 })
+
+
 export class CoreModule {
   constructor(
     @Optional()

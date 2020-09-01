@@ -16,6 +16,9 @@ export class AnalistaPipe implements PipeTransform {
       case '3':
         analista = 'CARLOS PALOMINO'
         break;
+      case '4':
+        analista = 'YOLANDA CISNEROS'
+        break;
       default:
         break;
     }

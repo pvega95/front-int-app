@@ -95,6 +95,7 @@ export class ModelOneComponent implements OnInit {
       ]),
       descProcThreeForm: new FormControl(''),
       nombEmpForm: new FormControl(''),
+      pronomForm: new FormControl(''),
       // descProcForm : new FormControl('', [
       //   Validators.required
       // ])
@@ -117,6 +118,7 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
+    this.modelOneForm.controls['pronomForm'].setValue('del documento');
     this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate').replace(",", ""));
     this.modelOneForm.controls['procesoForm'].setValue(data.procesoForm);
     this.modelOneForm.controls['descProcTwoForm'].setValue('Sobre el particular, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento' +

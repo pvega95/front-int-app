@@ -29,7 +29,7 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element"> 
                 <mat-icon aria-hidden="false" aria-label="close icon" [routerLink] = "['/main/proceso/edit']" [queryParams]='{id: element._id }'>create</mat-icon>
             </td>
@@ -37,7 +37,7 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element"> 
                 <mat-icon aria-hidden="false" aria-label="close icon" (click)="delete(element._id)">delete</mat-icon>
             </td>
@@ -45,7 +45,11 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="view">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef> 
+                <button mat-icon-button aria-label="Example" (click)="getProcessReport()">
+                    <mat-icon>verified</mat-icon>
+                  </button>
+            </th>
             <td mat-cell *matCellDef="let element"> 
                 <mat-icon aria-hidden="false" aria-label="close icon" [routerLink] = "['/main/proceso/view']" [queryParams]='{id: element._id }'>visibility</mat-icon>
             </td>
