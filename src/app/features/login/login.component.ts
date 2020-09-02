@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.activeloadingfull = false;
           if (val){
             this._authService.setToken(val.token);
-            this.openSnackBar('Bienvenido: ' + val.userInfo.email , 'Gracias 😊')
+            this.openSnackBar('Bienvenido' , 'Gracias 😊')
             this._router.navigate(['/main/proceso']);
           }
           

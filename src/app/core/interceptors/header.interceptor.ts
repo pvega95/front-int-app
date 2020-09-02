@@ -31,7 +31,8 @@ export class HeaderInterceptor implements HttpInterceptor {
                 const dupReq = req.clone({
                     headers: req.headers
                         .set('Content-Type', 'application/json; charset=utf-8')
-                        .set('Authorization', `Bearer ${authHeader}`)
+                        // .set('Authorization', `Bearer ${authHeader}`)
+                        .set('Authorization', `${authHeader}`)
                 });
                 return next.handle(dupReq);
             }else{
