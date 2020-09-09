@@ -7,6 +7,7 @@ import { ModalCartaComponent } from './modal-carta/modal-carta.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
+import { AnalistaPipe } from '@core/pipe/analista.pipe';
 
 
 
@@ -21,6 +22,9 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
     CommonModule,
     SharedModule,
     CartaRoutingModule
+  ],
+  providers: [
+    AnalistaPipe
   ],
   entryComponents: [ModalCartaComponent]
 })

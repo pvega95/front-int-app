@@ -25,11 +25,11 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+
 export class ProcesoComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name','type','edit','delete','view'];
-  dataSource = new MatTableDataSource;
+  dataSource = new MatTableDataSource([]);
   totalPosts = 10;
   postsPerPage = 5;
   currentPage = 1;
-  pageSizeOptions = [1,2,5,10];
+  pageSizeOptions = [5,10,20];
   constructor(
     public _dashboardService: DashboardService,
     public formB: FormBuilder,
@@ -51,7 +51,7 @@ export class ProcesoComponent implements OnInit {
     this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
-        this.dataSource = val.posts;
+        this.dataSource = new MatTableDataSource(val.posts);
         this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{
@@ -60,20 +60,8 @@ export class ProcesoComponent implements OnInit {
     )
   }
 
-  generar(){
-    
-    this._processService.getPDF().pipe(take(1))
-      .subscribe(
-        val =>{
-          
-          var fileURL = URL.createObjectURL(val);
-          window.open(fileURL)
-          
-        },
-        (err : HttpErrorResponse)=>{
-         
-        }
-      )
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   delete(id:string){
@@ -107,11 +95,8 @@ export class ProcesoComponent implements OnInit {
   }
 
   onChangedPage(pageData: PageEvent){
-    
-    // this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;
-    // this.postsService.getPosts(this.postsPerPage,this.currentPage);
     this.getProcess();
   }
 

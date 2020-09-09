@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.component';
 import { ReporteService } from '@core/services/reportes/reporte.service';
 import { ExcelService } from '@core/services/excel/excel.service';
+import { AnalistaPipe } from '@core/pipe/analista.pipe';
 
 @Component({
   selector: 'app-carta-fiscalizacion',
@@ -36,6 +37,7 @@ export class CartaFiscalizacionComponent implements OnInit {
     private router: Router,
     private _reporteService: ReporteService,
     private _excelService: ExcelService,
+    private analistaPipe: AnalistaPipe
   ) {
     this._dashboardService.setDashboardStatus(true);
   }
@@ -133,6 +135,7 @@ export class CartaFiscalizacionComponent implements OnInit {
         default:
           break;
       }
+
       return [
               data.descProcForm,data.itemForm,data.procesoForm,data.fechaFiscForm,data.analistaForm,
               data.cartaForm,data.empresaForm,data.direccionForm,data.personaConsForm,data.cargoForm,data.docForm,
@@ -140,6 +143,7 @@ export class CartaFiscalizacionComponent implements OnInit {
               data.conclusionForm,data.diasPasadosForm
             ];
     });
+    // console.log(REPORTE);
     this._excelService.addWorksheet(REPORTE, header, TITLE);
   }
 

@@ -7,16 +7,16 @@ export class AnalistaPipe implements PipeTransform {
   transform(value: any): any {
     let analista: string;
     switch (value) {
-      case '1':
+      case 1:
         analista = 'ALIS LAGUNA'
         break;
-      case '2':
+      case 2:
         analista = 'MARLENE YUPANQUI'
         break;
-      case '3':
+      case 3:
         analista = 'CARLOS PALOMINO'
         break;
-      case '4':
+      case 4:
         analista = 'YOLANDA CISNEROS'
         break;
       default:

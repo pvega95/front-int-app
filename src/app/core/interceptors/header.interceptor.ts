@@ -52,8 +52,7 @@ export class HeaderInterceptor implements HttpInterceptor {
     ignoreUrl(url){
         let respuesta:boolean= false;
         let urlsIgnore = [
-            "https://api.cloudinary.com/v1_1/firbix/delete_by_token",
-            "https://qa-back-admin.firbid.com/cpf/user-answer/"
+            //URL QUE DESEAS HACER LA PETICION SIN EL HEADER BEARER
         ];
 
         urlsIgnore.forEach(el => {

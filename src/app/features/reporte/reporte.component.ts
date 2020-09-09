@@ -107,8 +107,8 @@ export class ReporteComponent implements OnInit {
 
   secondReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['Adj Simplificada', 'Adj Menor Cuantia', 'Concurso Meritos', 'Licitacion Publica', 'Otros'];
-    reporte.data = [data.AdjSimplificada.length, data.AdjudMenorCuantia.length, data.ConcursoMeritos.length, data.ConcursoPublico.length, data.LicitacionPublica.length, data.Otros.length];
+    reporte.labels = this.obtenerLabels(data);
+    reporte.data = this.obtenerValores(data);
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por tipo procedimiento';
     this.reporteTwo = reporte;
@@ -134,8 +134,8 @@ export class ReporteComponent implements OnInit {
 
   fifthReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['ALIS LAGUNA', 'MARLENE YUPANQUI', 'CARLOS PALOMINO'];
-    reporte.data = [data.analista1.length, data.analista2.length, data.analista3.length];
+    reporte.labels = ['ALIS LAGUNA', 'MARLENE YUPANQUI', 'CARLOS PALOMINO','YOLANDA CISNEROS','LUIS REYNA','GERALDINE LARA'];
+    reporte.data = [data.analista1.length, data.analista2.length, data.analista3.length, data.analista4.length, data.analista5.length, data.analista6.length];
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por analista';
     this.reporteFifth = reporte;
@@ -156,5 +156,11 @@ export class ReporteComponent implements OnInit {
     this.reporteSix = reporte;
   }
 
+  obtenerLabels(data) {
+    return (data.posts).map(a => a._id);
+  }
 
+  obtenerValores(data) {
+    return (data.posts).map(a => a.total);
+  }
 }
