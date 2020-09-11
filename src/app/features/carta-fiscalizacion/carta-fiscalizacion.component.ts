@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogConfig, MatPaginator } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogConfig, MatPaginator, PageEvent } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -25,7 +25,7 @@ export class CartaFiscalizacionComponent implements OnInit {
   totalPosts = 10;
   postsPerPage = 5;
   currentPage = 1;
-  pageSizeOptions = [1, 2, 5, 10];
+  pageSizeOptions = [5,10,20];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   message: {};
 
@@ -51,15 +51,25 @@ export class CartaFiscalizacionComponent implements OnInit {
   }
 
   getCarts() {
-    this._cartaService.getCart().pipe(take(1))
+    this._cartaService.getCart(this.postsPerPage,this.currentPage).pipe(take(1))
       .subscribe(
         val => {
-          this.dataSource = new MatTableDataSource<Element>(val);
-          this.dataSource.paginator = this.paginator;
+          this.dataSource = new MatTableDataSource(val.carta);
+          this.totalPosts = val.maxPosts;
         },
         (err: HttpErrorResponse) => {
         }
       );
+  }
+
+  onChangedPage(pageData: PageEvent){
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    this.getCarts();
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   generate(element) {

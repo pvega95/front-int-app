@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog, MatPaginator } from '@angular/material';
+import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog, MatPaginator, PageEvent } from '@angular/material';
 import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,7 +21,7 @@ export class GuiaRemisionComponent implements OnInit {
   totalPosts = 10;
   postsPerPage = 5;
   currentPage = 1;
-  pageSizeOptions = [1,2,5,10];
+  pageSizeOptions = [5,10,20];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(
     private _remisionService : GuiaRemisionService,
@@ -36,17 +36,26 @@ export class GuiaRemisionComponent implements OnInit {
   }
 
   getGuia(){
-    this._remisionService.getGuiaRemision().pipe(take(1))
+    this._remisionService.getGuiaRemision(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val =>{
-        // this.dataSource = res;
-        this.dataSource = new MatTableDataSource<Element>(val);
-        this.dataSource.paginator = this.paginator;
+        this.dataSource = new MatTableDataSource(val.guia);
+        this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse) =>{
         
       }
     )
+  }
+
+  onChangedPage(pageData: PageEvent){
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    this.getGuia();
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   generate(element){

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '@core/services/resources/dashboard.service';
-import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogRef, MatPaginator } from '@angular/material';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogRef, MatPaginator, PageEvent } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class ModalGuiaComponent implements OnInit {
   totalPosts = 10;
   postsPerPage = 5;
   currentPage = 1;
-  pageSizeOptions = [1,2,5,10];
+  pageSizeOptions = [5,10,20];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
@@ -31,22 +31,33 @@ export class ModalGuiaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadCard();
+  }
 
-    this._cartaService.getCart().pipe(take(1))  
-      .subscribe(
-        val=>{
-         
-          this.dataSource = new MatTableDataSource<Element>(val);
-          this.dataSource.paginator = this.paginator;
-        },
-        (err:HttpErrorResponse)=>{
-         
-        }
-      )
+  loadCard(){
+    this._cartaService.getCart(this.postsPerPage,this.currentPage).pipe(take(1))  
+    .subscribe(
+      val=>{
+        this.dataSource = new MatTableDataSource(val.carta);
+        this.totalPosts = val.maxPosts;
+      },
+      (err:HttpErrorResponse)=>{
+       
+      }
+    )
+  }
+
+  onChangedPage(pageData: PageEvent){
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    this.loadCard();
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   add(data){
- 
     this.dialogRef.close(data);
   }
 
@@ -54,8 +65,5 @@ export class ModalGuiaComponent implements OnInit {
     this.dialogRef.close(false);
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 
 }

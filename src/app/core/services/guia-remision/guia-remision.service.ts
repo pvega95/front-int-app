@@ -24,8 +24,9 @@ export class GuiaRemisionService {
     return this._http.post(query, data);
   }
 
-  getGuiaRemision(): Observable<any>{
-    const query = `${this.url}/api/guia-remision/get-all`
+  getGuiaRemision(postPerPage: number, currentPage: number): Observable<any>{
+    const queryParams = `?pagesize=${postPerPage}&page=${currentPage}`
+    const query = `${this.url}/api/guia-remision/get-all` + queryParams;
     return this._http.get(query);
   }
 

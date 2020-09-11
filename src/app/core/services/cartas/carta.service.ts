@@ -31,8 +31,9 @@ export class CartaService {
     return this._http.post(query, data);
   }
 
-  getCart(): Observable<any> {
-    const query = `${this.url}/api/letter-fiscal/getCarta`;
+  getCart(postPerPage: number, currentPage: number): Observable<any> {
+    const queryParams = `?pagesize=${postPerPage}&page=${currentPage}`
+    const query = `${this.url}/api/letter-fiscal/getCarta` + queryParams;
     return this._http.get(query);
   }
 

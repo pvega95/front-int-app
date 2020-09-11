@@ -2,9 +2,12 @@
 .table-material{
     width: 80%;
     margin: 30px auto;
+    .filter{
+        display: block;
+    }
     .btn-enter{
         margin: 25px 0px;
-        float: right;
+        text-align: right;
         button{
             background-color: #d32f2f;
             font-size: 15px;
