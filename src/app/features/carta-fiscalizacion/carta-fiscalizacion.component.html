@@ -4,8 +4,12 @@
     <button mat-flat-button color="accent" class="fbx-button animation" routerLink="create">Agregar Nuevo</button>
   </div>
 
-  <mat-form-field class="filter">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Carta" autocomplete="off">
+  <mat-form-field class="fbx-input filter">
+    <input matInput 
+      (keyup)="applyFilter($event.target.value)"
+        placeholder="Buscar" 
+        name="email"
+        [type]="'text'" required>
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

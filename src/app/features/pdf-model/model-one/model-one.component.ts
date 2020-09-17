@@ -128,7 +128,7 @@ export class ModelOneComponent implements OnInit {
                                                             this.nombreEmpresa + ' ' +
                                                             'en mención. Adjuntandose las respectivas copias.');
     this.modelOneForm.controls['descProcThreeForm'].setValue('Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
-                                                              'de recibida la presente comunicación.');
+                                                              ' de recibida la presente comunicación.');
     
     // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
 
@@ -152,6 +152,8 @@ export class ModelOneComponent implements OnInit {
       case '5e373cbc542ea639ac488837':
         tipoProcedimiento = 'Contratación de Servicio Financiero'
         break;
+      case '5f433c62eac1be745c537b3c':
+        tipoProcedimiento = 'Compra Directa'
       default:
         break;
     }

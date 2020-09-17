@@ -19,20 +19,24 @@
         @include respondto(md) {}
         @include respondto(lg) {}
         .img-left{
-            // position: fixed;
             width: 100%;
             right: 50%;
             top: 0;
             bottom: 0;
             background-image: url('../../../assets/img/bn_guia.jpg');
-            // background-repeat: no-repeat;
-            // background-position: top right;
-            // background-size: cover;
-
             height: 100%;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
+            & .container-timer{
+                padding: 20px;
+                color: $fbx-btn-text;
+                display: flex;
+                align-items: center;
+                p {
+                    margin-left: 10px;
+                }
+            }
         }
     }
     .container-right{
