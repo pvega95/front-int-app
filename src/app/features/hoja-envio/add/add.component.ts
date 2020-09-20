@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SvgRegisterService } from '@core/material/svg-register.service';
+import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 
 @Component({
   selector: 'app-add',
@@ -18,6 +19,7 @@ import { SvgRegisterService } from '@core/material/svg-register.service';
 export class AddComponent implements OnInit {
   
   hojaEnvioForm: FormGroup;
+  documentoList: any;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
@@ -26,11 +28,13 @@ export class AddComponent implements OnInit {
     private _location: Location,
     private router : Router,
     private _svgRegisterService:SvgRegisterService,
+    private _mantenimientoService: MantenimientoService
   ) { 
     this._svgRegisterService.init();
   }
 
   ngOnInit() {
+    this.cargarTipoDoc();
     this.hojaEnvioForm = this.formB.group({
       numRegForm: new FormControl('', [
         Validators.required
@@ -106,5 +110,11 @@ export class AddComponent implements OnInit {
 
   goback(){
     this._location.back();
+  }
+
+  cargarTipoDoc() {
+    this._mantenimientoService.getTipoDocumento().subscribe(val=>{
+      this.documentoList = val.tipoDoc;
+    });
   }
 }

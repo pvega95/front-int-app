@@ -8,13 +8,15 @@ import { ModalCartaComponent } from '../modal-carta/modal-carta.component';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SvgRegisterService } from '@core/material/svg-register.service';
+import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
+  analistaList:any;
+  conclusionList:any;
   cartaForm: FormGroup;
   constructor(
     public formB: FormBuilder,
@@ -24,11 +26,14 @@ export class AddComponent implements OnInit {
     private router: Router,
     private _location: Location,
     private _svgRegisterService: SvgRegisterService,
+    private _mantenimientoService: MantenimientoService
   ) {
     this._svgRegisterService.init();
   }
 
   ngOnInit() {
+    this.cargarAnalista();
+    this.cargarConclusion();
     this.cartaForm = this.formB.group({
       descProcForm: new FormControl('', [
         Validators.required
@@ -141,5 +146,17 @@ export class AddComponent implements OnInit {
 
   goback() {
     this._location.back();
+  }
+
+  cargarAnalista() {
+    this._mantenimientoService.getAnalista().subscribe(val=>{
+      this.analistaList = val.analistas
+    })
+  }
+
+  cargarConclusion(){
+    this._mantenimientoService.getConclusion().subscribe(val=>{
+      this.conclusionList = val.conclusion
+    })
   }
 }

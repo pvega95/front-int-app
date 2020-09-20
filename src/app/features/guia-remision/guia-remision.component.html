@@ -18,37 +18,51 @@
     <!-- Name Column -->
     <ng-container matColumnDef="proceso">
       <th mat-header-cell *matHeaderCellDef> Proceso </th>
-      <td mat-cell *matCellDef="let element"> {{element.process}} </td>
+      <td mat-cell *matCellDef="let element">
+         <p>{{ element.process }}</p>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="num-carta">
       <th mat-header-cell *matHeaderCellDef> N° de carta </th>
-      <td mat-cell *matCellDef="let element"> {{element.numCarta  }} </td>
+      <td mat-cell *matCellDef="let element">
+         <p>{{ element.numCarta }}</p> 
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef> Empresa a consultar </th>
-      <td mat-cell *matCellDef="let element"> {{element.toConsult}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <p>{{element.toConsult}}</p> 
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="documento">
       <th mat-header-cell *matHeaderCellDef> Descripcion de documento </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <p class="ajuste-puntos">{{element.description}} </p>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="persona">
       <th mat-header-cell *matHeaderCellDef> Persona a consultar </th>
-      <td mat-cell *matCellDef="let element"> {{element.person}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <p>{{element.person}}</p>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="cargo">
       <th mat-header-cell *matHeaderCellDef> Cargo </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <p>{{element.position}}</p>  
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="direccion">
       <th mat-header-cell *matHeaderCellDef> Direccion </th>
-      <td mat-cell *matCellDef="let element"> {{element.adress}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        <p>{{element.adress}}</p>  
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="generar">

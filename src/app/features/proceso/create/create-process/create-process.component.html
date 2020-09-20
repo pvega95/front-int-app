@@ -23,13 +23,8 @@
                 <div class="input-group select-pdocForm">
                     <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
                         <mat-select placeholder="Tipo Contratista" formControlName="tipoContratistaForm">
-                            <mat-option [value]="1">PERSONA</mat-option>
-                            <mat-option [value]="2">EMPRESA</mat-option>
-                            <mat-option [value]="3">CONSORCIO</mat-option>
-                            <mat-option [value]="4">COLEGIO</mat-option>
-                            <mat-option [value]="5">MINISTERIO</mat-option>
-                            <mat-option [value]="6">NOTARIOS</mat-option>
-                            <mat-option [value]="7">OTROS</mat-option>
+                            <mat-option [value]="tipoContratista._id" *ngFor="let tipoContratista of tipoContratistaList">
+                                {{ tipoContratista.name }}</mat-option>
                         </mat-select>
                         <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow">
                         </mat-icon>

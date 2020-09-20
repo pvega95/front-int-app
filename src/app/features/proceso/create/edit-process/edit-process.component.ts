@@ -6,6 +6,7 @@ import { ProcesosService } from '@core/services/procesos/procesos.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
+import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 
 @Component({
   selector: 'app-edit-process',
@@ -14,6 +15,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class EditProcessComponent implements OnInit {
   registerPersonForm: FormGroup;
+  tipoContratistaList: any;
   idProcess: string;
   procedureList: any;
   // campo numberForm de los formularios registerPersonForm y registerCompanyForm
@@ -25,17 +27,21 @@ export class EditProcessComponent implements OnInit {
     public formB: FormBuilder,
     private _processService: ProcesosService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _mantenimientoService: MantenimientoService
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      
+      this.cargarlistas();
+      this.cargarTipoContratista();
       if (params) {
         this.idProcess = params.id;
         this.getProcess(this.idProcess)
       }
     });
+
+    
 
 
     this.registerPersonForm = this.formB.group({
@@ -64,7 +70,7 @@ export class EditProcessComponent implements OnInit {
 
     });
 
-    this.cargarlistas();
+    
   }
 
   onSubmitPerson(miForm) {
@@ -121,7 +127,7 @@ export class EditProcessComponent implements OnInit {
   setForm(data) {
     this.registerPersonForm.controls['contratistaForm'].setValue(data.contract)
     this.registerPersonForm.controls['tipoContratistaForm'].setValue(data.type_contract)
-    this.registerPersonForm.controls['tipoProcedimientoForm'].setValue(data.typeProcedure._id)
+    this.registerPersonForm.controls['tipoProcedimientoForm'].setValue(data.typeProcedure)
     this.registerPersonForm.controls['numProcedimientoForm'].setValue(data.number)
     this.registerPersonForm.controls['añoProcesoForm'].setValue(data.year)
     this.registerPersonForm.controls['descripcionForm'].setValue(data.description)
@@ -133,6 +139,18 @@ export class EditProcessComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 3000,
     });
+  }
+
+  cargarTipoContratista(){
+    this._mantenimientoService.getTipoContratista().pipe(take(1))
+      .subscribe(
+        val=>{
+          this.tipoContratistaList = val.tipoConstratistas;
+        },
+        (err:HttpErrorResponse)=>{
+      
+        }
+      )
   }
 
 }

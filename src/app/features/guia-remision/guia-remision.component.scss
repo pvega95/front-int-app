@@ -17,6 +17,10 @@
     }
     table{
         width: 100%;
+        & p.ajuste-puntos{
+            width: 300px;
+            @include ajustacontrespuntos;
+        }
     }
 }
 

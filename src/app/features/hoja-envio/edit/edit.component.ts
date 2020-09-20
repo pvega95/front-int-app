@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SvgRegisterService } from '@core/material/svg-register.service';
+import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 
 @Component({
   selector: 'app-edit',
@@ -17,6 +18,7 @@ import { SvgRegisterService } from '@core/material/svg-register.service';
 export class EditComponent implements OnInit {
   hojaEnvioForm: FormGroup;
   idProcess: string;
+  documentoList: any;
   constructor(
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
@@ -26,7 +28,8 @@ export class EditComponent implements OnInit {
     private route: ActivatedRoute,
     private _svgRegisterService:SvgRegisterService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _mantenimientoService: MantenimientoService
   ) { 
     this._svgRegisterService.init();
   }
@@ -39,6 +42,8 @@ export class EditComponent implements OnInit {
         this.getHojaEnvio(this.idProcess);
       }
     });
+
+    this.cargarTipoDoc();
 
     this.hojaEnvioForm = this.formB.group({
       numRegForm: new FormControl('', [
@@ -131,6 +136,12 @@ export class EditComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 3000,
+    });
+  }
+
+  cargarTipoDoc() {
+    this._mantenimientoService.getTipoDocumento().subscribe(val=>{
+      this.documentoList = val.tipoDoc;
     });
   }
 }

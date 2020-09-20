@@ -8,6 +8,7 @@ import { CartaService } from '@core/services/cartas/carta.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SvgRegisterService } from '@core/material/svg-register.service';
+import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 
 @Component({
   selector: 'app-edit',
@@ -17,6 +18,8 @@ import { SvgRegisterService } from '@core/material/svg-register.service';
 export class EditComponent implements OnInit {
   idProcess: string;
   cartaForm: FormGroup;
+  analistaList: any;
+  conclusionList: any;
   constructor(
     private route: ActivatedRoute,
     public formB: FormBuilder,
@@ -26,6 +29,7 @@ export class EditComponent implements OnInit {
     private _svgRegisterService:SvgRegisterService,
     private _snackBar: MatSnackBar,
     private router: Router,
+    private _mantenimientoService: MantenimientoService
   ) { 
     this._svgRegisterService.init();
   }
@@ -37,6 +41,9 @@ export class EditComponent implements OnInit {
         this.getCartaFis(this.idProcess);
       }
     });
+
+    this.cargarAnalista();
+    this.cargarConclusion();
 
     this.cartaForm = this.formB.group({
       descProcForm: new FormControl('', [
@@ -194,6 +201,18 @@ export class EditComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 3000,
     });
+  }
+
+  cargarAnalista() {
+    this._mantenimientoService.getAnalista().subscribe(val=>{
+      this.analistaList = val.analistas
+    })
+  }
+
+  cargarConclusion(){
+    this._mantenimientoService.getConclusion().subscribe(val=>{
+      this.conclusionList = val.conclusion
+    })
   }
 
 }

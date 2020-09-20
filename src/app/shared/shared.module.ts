@@ -41,6 +41,7 @@ import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { GraficaBarraComponent } from './grafica-barra/grafica-barra.component';
 import { AnalistaPipe } from '@core/pipe/analista.pipe';
 import { DocumentoPipe } from '@core/pipe/documento.pipe';
+import { ConstratistaPipe } from '@core/pipe/contratista.pipe';
 
 export const cloudinary = {
   Cloudinary: CloudinaryCore
@@ -73,7 +74,8 @@ const COMPONENTS = [
 
 const PIPES = [
   AnalistaPipe,
-  DocumentoPipe
+  DocumentoPipe,
+  ConstratistaPipe
 ];
 
 @NgModule({
