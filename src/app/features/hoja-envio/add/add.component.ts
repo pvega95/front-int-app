@@ -82,12 +82,12 @@ export class AddComponent implements OnInit {
       });
     } else {
       let data = {
-        NumRegister : miForm.value.numRegForm,
-        Process : miForm.value.procesoForm,
-        DateRemision : miForm.value.fechaForm,
-        ShipNumber : miForm.value.numHojaForm,
-        DocToRemit : miForm.value.docRemForm,
-        TypeDocument : miForm.value.tipDocForm
+        numRegister : miForm.value.numRegForm,
+        process : miForm.value.procesoForm,
+        dateRemision : miForm.value.fechaForm,
+        shipNumber : miForm.value.numHojaForm,
+        docToRemit : miForm.value.docRemForm,
+        typeDocument : miForm.value.tipDocForm
       };
      
       this._hojaEnvioService.setHojaEnvio(data).pipe(take(1))

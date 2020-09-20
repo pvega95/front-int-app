@@ -2,39 +2,50 @@
 <section class="table-material">
 
   <div class="btn-enter">
-    <button mat-flat-button color="accent" class="fbx-button animation" routerLink="hoja-envio-nuevo">Agregar
-      Nuevo</button>
+    <button mat-flat-button color="accent" class="fbx-button animation" routerLink="hoja-envio-nuevo">Agregar Nuevo</button>
   </div>
+
+  <mat-form-field class="fbx-input filter">
+    <input matInput 
+      (keyup)="applyFilter($event.target.value)"
+        placeholder="Buscar" 
+        name="email"
+        [type]="'text'" required>
+  </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Codigo. </th>
+      <td mat-cell *matCellDef="let element"> {{element.cod_seg}} </td>
+    </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="proceso">
       <th mat-header-cell *matHeaderCellDef> Proceso </th>
-      <td mat-cell *matCellDef="let element"> {{element.Process}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.process}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef> Fecha de Remision </th>
-      <td mat-cell *matCellDef="let element"> {{element.DateRemision | date }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateRemision | date }} </td>
     </ng-container>
 
     <ng-container matColumnDef="num-hoja">
       <th mat-header-cell *matHeaderCellDef> N° de H. de Envio </th>
-      <td mat-cell *matCellDef="let element"> {{element.ShipNumber}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.shipNumber}} </td>
     </ng-container>
 
     <ng-container matColumnDef="documento">
       <th mat-header-cell *matHeaderCellDef> Documento a remitir </th>
-      <td mat-cell *matCellDef="let element"> {{element.DocToRemit}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.docToRemit}} </td>
     </ng-container>
 
     <ng-container matColumnDef="tipo-documento">
       <th mat-header-cell *matHeaderCellDef> Tipo documento </th>
-      <td mat-cell *matCellDef="let element"> {{element.TypeDocument | documento }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.typeDocument.name }} </td>
     </ng-container>
 
     <ng-container matColumnDef="generar">
@@ -57,7 +68,11 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> </th>
+      <th mat-header-cell *matHeaderCellDef> 
+        <button mat-icon-button aria-label="Example" (click)="getHojaReport()">
+          <mat-icon>verified</mat-icon>
+        </button>
+      </th>
       <td mat-cell *matCellDef="let element">
         <mat-icon aria-hidden="false" aria-label="close icon" (click)="delete(element._id)">delete</mat-icon>
       </td>
@@ -67,4 +82,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+  <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+        (page)="onChangedPage($event)"></mat-paginator>
+        
 </section>

@@ -14,6 +14,12 @@
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Codigo. </th>
+      <td mat-cell *matCellDef="let element"> {{element.cod_seg}} </td>
+  </ng-container>
+
     <!-- Name Column -->
     <ng-container matColumnDef="proceso">
       <th mat-header-cell *matHeaderCellDef> Proceso </th>
@@ -25,14 +31,14 @@
       <td mat-cell *matCellDef="let element"> {{element.cartaForm}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="fecha">
+    <!-- <ng-container matColumnDef="fecha">
       <th mat-header-cell *matHeaderCellDef> Fecha Fiscalizacion </th>
       <td mat-cell *matCellDef="let element"> {{element.fechaFiscForm | date }} </td>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="analista">
       <th mat-header-cell *matHeaderCellDef> Analista Responsable </th>
-      <td mat-cell *matCellDef="let element"> {{element.analistaForm | analista }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.analistaForm.name }} </td>
     </ng-container>
 
     <ng-container matColumnDef="empresa">

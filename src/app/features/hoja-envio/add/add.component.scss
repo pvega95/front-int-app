@@ -103,20 +103,16 @@
                 margin: 30px auto 0px auto;
                 .input-group {
                     width: 100%;
-                    &.registro {
-                        width: calc((100% - 10px) / 3);
-                        margin-right: 5px;
-                    }
                     &.proceso {
                         width: calc((100% - 10px) / 3);
                         margin-right: 5px;
                     }
                     &.fecha {
                         width: calc((100% - 10px) / 3);
+                        margin-right: 5px;
                     }
                     &.hoja {
                         width: calc((100% - 10px) / 3);
-                        margin-right: 5px;
                     }
                     &.doc {
                         width: calc((100% - 10px) / 3);

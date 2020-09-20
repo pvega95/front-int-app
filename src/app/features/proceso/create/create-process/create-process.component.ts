@@ -108,7 +108,7 @@ public uploader: FileUploader;
           this.snackBar.open('Registro existoso', 'ok', {
             duration: 2000,
           });
-          // this.router.navigate(['/main/proceso']);
+          this.router.navigate(['/main/proceso']);
         },(err : HttpErrorResponse)=>{
           this.snackBar.open('ha ocurrido un error', 'error', {
             duration: 2000,

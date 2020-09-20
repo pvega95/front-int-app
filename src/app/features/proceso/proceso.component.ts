@@ -104,32 +104,7 @@ export class ProcesoComponent implements OnInit {
     const header = ["Nro", "Contratista", "T.Contratista", "T.Procedimiento", "N.Procedimiento", "Año", "Descripcion", "F.Recepcion", "Items"];
     const TITLE = "Reporte Procesos"
     const REPORTE = res.map(data => {
-      switch (data.type_contract) {
-        case '1':
-          data = { ...data, type_contract: 'PERSONA' };
-          break;
-        case '2':
-          data = { ...data, type_contract: 'EMPRESA' };
-          break;
-        case '3':
-          data = { ...data, type_contract: 'CONSORCIO' };
-          break;
-        case '4':
-          data = { ...data, type_contract: 'COLEGIO' };
-          break;
-        case '5':
-          data = { ...data, type_contract: 'MINISTERIO' };
-          break;
-        case '6':
-          data = { ...data, type_contract: 'NOTARIOS' };
-          break;
-        case '7':
-          data = { ...data, type_contract: 'OTROS' };
-          break;
-        default:
-          break;
-      }
-      return [data.cod_seg, data.contract, data.type_contract, data.name, data.number, data.year, data.description, this.datePipe.transform(data.date, 'shortDate'), data.items];
+      return [data.cod_seg, data.contract, data.type_contract.name, data.typeProcedure.name, data.number, data.year, data.description, this.datePipe.transform(data.date, 'shortDate'), data.items];
     });
     this._excelService.addWorksheet(REPORTE, header, TITLE);
   }
@@ -137,7 +112,7 @@ export class ProcesoComponent implements OnInit {
   getProcessReport() {
     this._reporteService.processReport().subscribe((res) => {
       if (res) {
-        this.reporteProcesos(res);
+        this.reporteProcesos(res.result);
       }
     })
   }

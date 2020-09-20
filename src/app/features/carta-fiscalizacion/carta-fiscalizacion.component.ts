@@ -11,6 +11,7 @@ import { ProcesoModalComponent } from '../proceso/proceso-modal/proceso-modal.co
 import { ReporteService } from '@core/services/reportes/reporte.service';
 import { ExcelService } from '@core/services/excel/excel.service';
 import { AnalistaPipe } from '@core/pipe/analista.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-carta-fiscalizacion',
@@ -19,8 +20,8 @@ import { AnalistaPipe } from '@core/pipe/analista.pipe';
 })
 export class CartaFiscalizacionComponent implements OnInit {
   cartaForm: FormGroup;
-  // displayedColumns: string[] = ['proceso', 'carta', 'fecha', 'analista', 'empresa', 'docx', 'generar', 'edit', 'delete'];
-  displayedColumns: string[] = ['proceso', 'carta', 'fecha', 'analista', 'empresa', 'generar', 'edit', 'delete'];
+  // displayedColumns: string[] = ['id','proceso', 'carta', 'analista', 'empresa', 'docx', 'generar', 'edit', 'delete'];
+  displayedColumns: string[] = ['id','proceso', 'carta', 'analista', 'empresa', 'generar', 'edit', 'delete'];
   dataSource = new MatTableDataSource;
   totalPosts = 10;
   postsPerPage = 5;
@@ -37,7 +38,8 @@ export class CartaFiscalizacionComponent implements OnInit {
     private router: Router,
     private _reporteService: ReporteService,
     private _excelService: ExcelService,
-    private analistaPipe: AnalistaPipe
+    private analistaPipe: AnalistaPipe,
+    private datePipe: DatePipe
   ) {
     this._dashboardService.setDashboardStatus(true);
   }
@@ -126,31 +128,11 @@ export class CartaFiscalizacionComponent implements OnInit {
                   "Conclusion","Dias Pasados"];
     const TITLE = "Reporte Carta"
     const REPORTE = res.map(data => {
-      switch (data.conclusionForm) {
-        case '1':
-          data = { ...data, conclusionForm: 'POSITIVO' };
-          break;
-        case '2':
-          data = { ...data, conclusionForm: 'NEGATIVO' };
-          break;
-        case '3':
-          data = { ...data, conclusionForm: 'DEVUELTO' };
-          break;
-        case '4':
-          data = { ...data, conclusionForm: 'PLAZO EXTENDIDO' };
-          break;
-        case '5':
-          data = { ...data, conclusionForm: 'OTROS' };
-          break;
-        default:
-          break;
-      }
-
       return [
-              data.descProcForm,data.itemForm,data.procesoForm,data.fechaFiscForm,data.analistaForm,
+              data.descProcForm,data.itemForm,data.procesoForm,this.datePipe.transform(data.fechaFiscForm, 'shortDate'),data.analistaForm.name,
               data.cartaForm,data.empresaForm,data.direccionForm,data.personaConsForm,data.cargoForm,data.docForm,
               data.tipoForm,data.observacionesForm,data.docResForm,data.fechaResForm,data.docRemisionForm,
-              data.conclusionForm,data.diasPasadosForm
+              data.conclusionForm.name,data.diasPasadosForm
             ];
     });
     // console.log(REPORTE);
@@ -160,7 +142,7 @@ export class CartaFiscalizacionComponent implements OnInit {
   getProcessReport() {
     this._reporteService.cartaReport().subscribe((res) => {
       if (res) {
-        this.reporteCarta(res);
+        this.reporteCarta(res.result);
       }
     })
   }

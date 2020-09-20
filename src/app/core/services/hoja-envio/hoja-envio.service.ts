@@ -25,8 +25,11 @@ export class HojaEnvioService {
     return this._http.post(query, data);
   }
 
-  getHojaEnvio(): Observable<any>{
-    const query = `${this.url}/api/hoja-envio/get-all`
+  getHojaEnvio(postPerPage: number, currentPage: number): Observable<any>{
+    // const query = `${this.url}/api/hoja-envio/get-all`
+    // return this._http.get(query);
+    const queryParams = `?pagesize=${postPerPage}&page=${currentPage}`
+    const query = `${this.url}/api/hoja-envio/get-all` + queryParams
     return this._http.get(query);
   }
 

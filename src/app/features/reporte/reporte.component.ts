@@ -89,8 +89,8 @@ export class ReporteComponent implements OnInit {
           this.secondReport(val[1]);
           this.thirdReport(val[2]);
           this.fourthReport(val[3]);
-          this.fifthReport(val[4])
-          this.sixReport(val[5])
+          this.fifthReport(val[4]);
+          this.sixReport(val[5]);
         }
       }
     )
@@ -116,8 +116,8 @@ export class ReporteComponent implements OnInit {
 
   thirdReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['Positivo', 'Negativo', 'Devuelto', 'Plazo Ext', 'Otros'];
-    reporte.data = [data.positivo.length, data.negativo.length, data.devuelto.length, data.plazoExt.length, data.otros.length];
+    reporte.labels = this.obtenerLabels(data);
+    reporte.data = this.obtenerValores(data);
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por conclusion';
     this.reporteThree = reporte;
@@ -125,8 +125,8 @@ export class ReporteComponent implements OnInit {
 
   fourthReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['PERSONA', 'EMPRESA', 'CONSORCIO', 'COLEGIO', 'MINISTERIO', 'NOTARIOS', 'OTROS'];
-    reporte.data = [data.persona.length, data.empresa.length, data.consorcio.length, data.colegio.length, data.ministerio.length, data.notarios.length, data.otros.length];
+    reporte.labels = this.obtenerLabels(data);
+    reporte.data = this.obtenerValores(data);
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por contratista';
     this.reporteFour = reporte;
@@ -134,8 +134,8 @@ export class ReporteComponent implements OnInit {
 
   fifthReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['ALIS LAGUNA', 'MARLENE YUPANQUI', 'CARLOS PALOMINO','YOLANDA CISNEROS','LUIS REYNA','GERALDINE LARA'];
-    reporte.data = [data.analista1.length, data.analista2.length, data.analista3.length, data.analista4.length, data.analista5.length, data.analista6.length];
+    reporte.labels = this.obtenerLabels(data);
+    reporte.data = this.obtenerValores(data);
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por analista';
     this.reporteFifth = reporte;
@@ -157,10 +157,10 @@ export class ReporteComponent implements OnInit {
   }
 
   obtenerLabels(data) {
-    return (data.posts).map(a => a._id);
+    return (data.result).map(a => a._id);
   }
 
   obtenerValores(data) {
-    return (data.posts).map(a => a.total);
+    return (data.result).map(a => a.total);
   }
 }

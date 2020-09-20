@@ -16,7 +16,7 @@ import { ExcelService } from '@core/services/excel/excel.service';
 })
 
 export class GuiaRemisionComponent implements OnInit {
-  displayedColumns: string[] = ['proceso','num-carta','empresa','documento','persona','cargo','direccion','generar','edit','delete'];
+  displayedColumns: string[] = ['id','proceso','num-carta','empresa','documento','persona','generar','edit','delete'];
   dataSource = new MatTableDataSource;
   totalPosts = 10;
   postsPerPage = 5;
@@ -117,7 +117,7 @@ export class GuiaRemisionComponent implements OnInit {
   getGuiaReport() {
     this._reporteService.guiaReport().subscribe((res) => {
       if (res) {
-        this.reporteGuia(res);
+        this.reporteGuia(res.result);
       }
     })
   }

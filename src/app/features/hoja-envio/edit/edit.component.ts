@@ -102,24 +102,24 @@ export class EditComponent implements OnInit {
   }
 
   setForm(data) {
-    this.hojaEnvioForm.controls['numRegForm'].setValue(data.NumRegister);
-    this.hojaEnvioForm.controls['procesoForm'].setValue(data.Process);
-    this.hojaEnvioForm.controls['fechaForm'].setValue(data.DateRemision);
-    this.hojaEnvioForm.controls['numHojaForm'].setValue(data.ShipNumber);
-    this.hojaEnvioForm.controls['docRemForm'].setValue(data.DocToRemit);
-    this.hojaEnvioForm.controls['tipDocForm'].setValue(data.TypeDocument);
+    this.hojaEnvioForm.controls['numRegForm'].setValue(data.numRegister);
+    this.hojaEnvioForm.controls['procesoForm'].setValue(data.process);
+    this.hojaEnvioForm.controls['fechaForm'].setValue(data.dateRemision);
+    this.hojaEnvioForm.controls['numHojaForm'].setValue(data.shipNumber);
+    this.hojaEnvioForm.controls['docRemForm'].setValue(data.docToRemit);
+    this.hojaEnvioForm.controls['tipDocForm'].setValue(data.typeDocument);
   }
 
   onSubmitHoja(miForm) {
  
     let data = {
       _id: this.idProcess,
-      NumRegister: miForm.value.numRegForm,
-      Process: miForm.value.procesoForm,
-      DateRemision: miForm.value.fechaForm,
-      ShipNumber: miForm.value.numHojaForm,
-      DocToRemit: miForm.value.docRemForm,
-      TypeDocument: miForm.value.tipDocForm,
+      numRegister: miForm.value.numRegForm,
+      process: miForm.value.procesoForm,
+      dateRemision: miForm.value.fechaForm,
+      shipNumber: miForm.value.numHojaForm,
+      docToRemit: miForm.value.docRemForm,
+      typeDocument: miForm.value.tipDocForm,
     }
   
     this._hojaEnvioService.setUpdateHoja(data,this.idProcess).pipe(take(1)).subscribe(
