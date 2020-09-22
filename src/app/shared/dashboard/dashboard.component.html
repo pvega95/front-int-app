@@ -1,14 +1,11 @@
 <ng-container>
-  <!-- <section class="container-fbx-total" [ngClass]="{'dashboard-visible': _dashboardService.dashboardStatus}"> -->
 <section class="container-fbx-total dashboard-visible" [ngClass]="{'dashboard-no-visible': !_dashboardService.dashboardStatus}">
   <div class="dashboard-sidenav-web">
       <div class="dashboard-sidenav-web-logo">
-          <!-- <img src="assets/img/logofirbidwhite.svg" alt=""> -->
       </div>
       <ul class="dashboard-sidenav-web-lista">
           <li><a [routerLink]="'proceso'">
               <p routerLinkActive="active">
-                  <!-- <mat-icon svgIcon="icon-fbx-subastas" class="icon-fbx-subastas mat-icon-rtl-mirror"></mat-icon> -->
                   <i class="material-icons">
                     filter_1
                     </i>
@@ -17,7 +14,6 @@
           </a></li>
           <li><a [routerLink]="'carta-fiscalizacion'">
               <p routerLinkActive="active">
-                  <!-- <mat-icon svgIcon="icon-fbx-operaciones" class="mat-icon-rtl-mirror"></mat-icon> -->
                   <i class="material-icons">
                     filter_2
                     </i>
@@ -26,7 +22,6 @@
           </a></li>
           <li><a [routerLink]="'hoja-envio'">
               <p routerLinkActive="active">
-                  <!-- <mat-icon svgIcon="icon-fbx-cuentas-de-banco" class="mat-icon-rtl-mirror"></mat-icon> -->
                   <i class="material-icons">
                     filter_3
                     </i>
@@ -35,7 +30,6 @@
           </a></li>
           <li><a [routerLink]="'guia-remision'">
               <p routerLinkActive="active">
-                  <!-- <mat-icon svgIcon="icon-fbx-fideicomiso" class="mat-icon-rtl-mirror"></mat-icon> -->
                   <i class="material-icons">
                     filter_4
                     </i>
@@ -44,7 +38,6 @@
           </a></li>
           <li><a [routerLink]="'reporte'">
             <p routerLinkActive="active">
-                <!-- <mat-icon svgIcon="icon-fbx-fideicomiso" class="mat-icon-rtl-mirror"></mat-icon> -->
                 <i class="material-icons">
                     filter_5
                     </i>
@@ -78,19 +71,18 @@
                   
                   <div [routerLink]="'profileUrl'" class="sub-menu-item sub-menu-item-1">
                       <p>
-                          <!-- <mat-icon svgIcon="icon-fbx-person" class="mat-icon-rtl-mirror icon-person"></mat-icon> -->
                           Perfil
                       </p>
                   </div>
                   <div [routerLink]="'ajustes'" class="sub-menu-item sub-menu-item-2">
                       <p>
-                          <!-- <mat-icon svgIcon="icon-fbx-ajustes" class="mat-icon-rtl-mirror icon-person"></mat-icon> -->
+                          
                           Ajustes
                       </p>
                   </div>
                   <div (click)="logout()" class="sub-menu-item sub-menu-item-2">
                       <p>
-                          <!-- <mat-icon svgIcon="icon-fbx-cerrarsesion" class="mat-icon-rtl-mirror icon-person"></mat-icon> -->
+                         
                           Cerrar sesión
                       </p>
                   </div>
@@ -105,13 +97,11 @@
           <div class="circle"></div>
           <div class="favicon-menu-responsive" href="">
               <a [routerLink]="'/main/subasta/configurar'">
-                  <!-- <img src="assets/img/responsive/favicon.svg" alt=""> -->
               </a>
           </div>
           <ul>
               <li routerLinkActive="active">
-                  <a [routerLink]="'operaciones'">
-                      <!-- <mat-icon  svgIcon="icon-fbx-res-operacion" class="icon-fbx-subastas mat-icon-rtl-mirror"></mat-icon> -->
+                  <a [routerLink]="'operaciones'"> 
                       <i class="material-icons">
                         filter_1
                         </i>
@@ -122,7 +112,6 @@
               </li>
               <li routerLinkActive="active">
                   <a [routerLink]="'cuentas'">
-                      <!-- <mat-icon  svgIcon="icon-fbx-res-mis-cuentas" class="icon-fbx-bancos mat-icon-rtl-mirror"></mat-icon> -->
                       <i class="material-icons">
                         filter_2
                         </i>
@@ -134,13 +123,11 @@
               <li routerLinkActive="active" class="mid-menu-responsive">
                   <a [routerLink]="'subasta'">
                       <p>
-                          <!-- Iniciar subasta -->
                       </p>
                   </a>
               </li>
               <li routerLinkActive="active">
                   <a [routerLink]="'fideicomiso'">
-                      <!-- <mat-icon  svgIcon="icon-fbx-res-fideicomiso" class="icon-fbx-res-fideicomiso mat-icon-rtl-mirror"></mat-icon> -->
                       <i class="material-icons">
                         filter_3
                         </i>
@@ -151,7 +138,6 @@
               </li>
               <li routerLinkActive="active">
                   <a [routerLink]="'perfil'">
-                      <!-- <mat-icon  svgIcon="icon-fbx-res-perfil" class="icon-fbx-res-perfil mat-icon-rtl-mirror"></mat-icon> -->
                       <i class="material-icons">
                         filter_4
                         </i>

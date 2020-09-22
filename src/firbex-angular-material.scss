@@ -246,6 +246,20 @@ input{
     }
 }
 
+.fbx-table {
+    thead {
+        & th {
+            font-family: $font-DMSans;
+            font-weight: bolder;
+        }
+    }
+    tbody {
+        & td {
+            font-family: $font-DMSans;
+        } 
+    }
+}
+
 // Button de Firbex
 .fbx-button{
     &.mat-accent{
@@ -265,7 +279,7 @@ input{
     }
     &.mat-flat-button{
         border-radius: 2px;
-        font-family: "DM Sans", sans-serif;
+        font-family: $font-DMSans;
     }
     &.mat-flat-button[disabled][disabled]{
         background-color: $fbx-btn-disable;

@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./modal-guia.component.scss']
 })
 export class ModalGuiaComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'descripcion','proceso','fecha','analista','empresa','add'];
+  displayedColumns: string[] = ['cod_seg', 'proceso', 'descripcion','fecha','analista','add'];
 
   dataSource : any;
   totalPosts = 10;

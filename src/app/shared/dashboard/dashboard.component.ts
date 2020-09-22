@@ -12,7 +12,6 @@ export class DashboardComponent implements OnInit {
   menuSubBlock = false;
   constructor(
     public _dashboardService: DashboardService,
-    private router : Router,
     private _authService : AuthService
   ) {
     this._dashboardService.setDashboardStatus(true);
@@ -22,7 +21,6 @@ export class DashboardComponent implements OnInit {
   }
 
   dropdownShow() {
-  
     this.menuSubBlock = !this.menuSubBlock;
   }
 

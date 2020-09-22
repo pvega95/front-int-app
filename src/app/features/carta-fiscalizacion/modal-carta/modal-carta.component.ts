@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./modal-carta.component.scss']
 })
 export class ModalCartaComponent implements OnInit {
-  displayedColumns: string[] = ['descripcion', 'item', 'proceso', 'fiscalizacion','add'];
+  displayedColumns: string[] = ['cod_seg','contract', 'descripcion','add'];
   dataSource = new MatTableDataSource([]);
 
   totalPosts = 10;

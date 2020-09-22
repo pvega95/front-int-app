@@ -1,6 +1,14 @@
 <div class="container-modal">
-  <mat-form-field>
+  <!-- <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field> -->
+
+  <mat-form-field class="fbx-input filter">
+    <input matInput 
+      (keyup)="applyFilter($event.target.value)"
+        placeholder="Buscar" 
+        name="buscar"
+        [type]="'text'" required>
   </mat-form-field>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -9,21 +17,21 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id.</th>
-        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="descripcion">
-        <th mat-header-cell *matHeaderCellDef> Descripcion Proceso </th>
-        <td mat-cell *matCellDef="let element"> {{element.procesoDepend.description}} </td>
+    <ng-container matColumnDef="cod_seg">
+        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+        <td mat-cell *matCellDef="let element"> {{ element.cod_seg}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="proceso">
-        <th mat-header-cell *matHeaderCellDef> Proceso </th>
-        <td mat-cell *matCellDef="let element"> {{element.procesoDepend.type}} N° {{element.procesoDepend.number}}-{{element.procesoDepend.year}}  </td>
+      <th mat-header-cell *matHeaderCellDef> Proceso </th>
+      <td mat-cell *matCellDef="let element"> {{ element.procesoForm }} </td>
+  </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion Proceso </th>
+        <td mat-cell *matCellDef="let element"> {{ element.descProcForm }} </td>
     </ng-container>
 
     <ng-container matColumnDef="fecha">
@@ -33,19 +41,19 @@
 
   <ng-container matColumnDef="analista">
     <th mat-header-cell *matHeaderCellDef> Analista Responsable </th>
-    <td mat-cell *matCellDef="let element"> {{element.analistaForm}} </td>
-</ng-container>
-
-<ng-container matColumnDef="empresa">
-  <th mat-header-cell *matHeaderCellDef> Empresa a consultar </th>
-  <td mat-cell *matCellDef="let element"> {{element.empresaForm}} </td>
+    <td mat-cell *matCellDef="let element"> {{ element.analistaForm.name }} </td>
 </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="add">
     <th mat-header-cell *matHeaderCellDef> Añadir </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary"(click)="add(element)" >Añadir</button>
+      <!-- <button mat-raised-button color="primary"(click)="add(element)" >Añadir</button> -->
+      <div class="example-button-container">
+        <button mat-icon-button color="warn" aria-label="agregar" (click)="add(element)">
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
     </td>
   </ng-container>
 

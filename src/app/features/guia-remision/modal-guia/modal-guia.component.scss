@@ -1,0 +1,14 @@
+.container-modal{
+    width: 800px;
+    margin: 20px 40px;
+    .filter{
+        display: block;
+    }
+    table{
+        width: 100%;
+    }
+}
+
+mat-paginator{
+    margin-top: 1rem;
+}

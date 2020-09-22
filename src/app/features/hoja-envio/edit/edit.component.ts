@@ -84,9 +84,6 @@ export class EditComponent implements OnInit {
     console.log(result)
     this.hojaEnvioForm.controls['procesoForm'].setValue(result.procesoForm);
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
-    // this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
-    // let proceso = result.typeProcedure.name + 'N°' + result.number + result.year
-    // this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 
   goback() {

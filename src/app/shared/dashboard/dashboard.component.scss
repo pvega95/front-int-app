@@ -1,18 +1,14 @@
 @import '_default-theme.scss';
 .container-fbx-total{
-    // position: fixed;
     width: 100%;
     display: flex;
     position: fixed;
     &.dashboard-visible{
-        // display: flex;
         background-color: white;
         @media(min-width: 768px){
-            // background-color: $fbx-background-cliente;
         }
         
         .dashboard-sidenav-web{
-            // position: fixed;
             height: 100vh;
             min-width: 250px;
             background: #9a0007;
@@ -54,22 +50,14 @@
                             }
                             &.active{
                                 background-color: white;
-                                // background-color: $fbx-primary-dark  ;
                             }
                             &:hover,
                             &.active{
                                 color: #000000;
-                                // color: $fbx-secondary;
                                 .mat-icon{
                                     margin-right: 7.7px;
                                     fill: $fbx-secondary;
                                     stroke: $fbx-secondary;
-                                    &.icon-fbx-subastas{
-                                        // content: url('../../../assets/img/missubastashover.svg');
-                                    }
-                                    &.icon-fbx-fideicomiso{
-                                        // content: url('../../../assets/img/fideicomisohover.svg');
-                                    }
                                 }
                             }
                         }
@@ -92,7 +80,6 @@
             }
         }
         .dashboard-sidenav-content-web{
-            // flex: 1;
             width: 100%;
             .dashboard-header-web{
                 @media(min-width:320px){
@@ -106,16 +93,6 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    // display: block;
-                    // position: fixed;
-                    // height: 80px;
-                    // width: 100%;
-                    // padding: 20px 120px;
-                    // background: white;
-                    // border-bottom: 1px solid #EBEBEB;
-                    // display: flex;
-                    // align-items: center;
-                    // justify-content: flex-end;
                 }
                 .title{
                     color: $fbx-primary;
@@ -171,7 +148,6 @@
                         height: 7.36px;
                         margin-left: 10px;
                         display: flex;
-                        // background-image: url('../../../assets/img/perfilon.svg');
                         img{
                             opacity:1;
                             height: 7.36px;
@@ -296,12 +272,6 @@
                                     color: $fbx-secondary;
                                     fill: $fbx-secondary;
                                     stroke: $fbx-secondary;
-                                    &.icon-fbx-res-fideicomiso{
-                                        // content: url('../../../assets/img/responsive/fideicomisohover.svg');
-                                    }
-                                    &.icon-fbx-res-perfil{
-                                        // content: url('../../../assets/img/responsive/perfilhover.svg');
-                                    }
                                 }
                                 p{
                                     color: $fbx-secondary
