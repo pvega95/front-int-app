@@ -45,9 +45,6 @@ export class CartaFiscalizacionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._cartaService.currentMessage.subscribe(message => {
-      this.message = message
-    });
 
     this.getCarts();
   }
@@ -75,12 +72,7 @@ export class CartaFiscalizacionComponent implements OnInit {
   }
 
   generate(element) {
-    this.newMessage(element);
-    this.router.navigate(['model-one']);
-  }
-
-  newMessage(e) {
-    this._cartaService.changeMessage(e)
+    this.router.navigate(['model-one'], { queryParams: { id: element._id } });
   }
 
   delete(id: string) {

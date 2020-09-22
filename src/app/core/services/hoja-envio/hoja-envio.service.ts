@@ -11,8 +11,6 @@ import { map } from 'rxjs/operators';
 export class HojaEnvioService {
 
   private url = environment.url_API
-  private messageSource = new BehaviorSubject({});
-  currentMessage = this.messageSource.asObservable();
   
   constructor(
     public router: Router,
@@ -53,10 +51,6 @@ export class HojaEnvioService {
     const query = `${this.url}/api/hoja-envio/createtwo`;
     const data = obj
     return this._http.post(query, data);
-  }
-
-  changeMessage(message: any) {
-    this.messageSource.next(message)
   }
 
   getPDF(id:number) {

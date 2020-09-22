@@ -63,13 +63,7 @@ export class HojaEnvioComponent implements OnInit {
   }
 
   generate(element){
-    
-    this.newMessage(element);
-    this.router.navigate(['model-two']);
-  }
-
-  newMessage(e) {
-    this._hojaEnvioService.changeMessage(e)
+    this.router.navigate(['model-two'], { queryParams: { id: element._id } });
   }
 
   delete(id:string){

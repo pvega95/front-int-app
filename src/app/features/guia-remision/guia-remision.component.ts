@@ -59,14 +59,9 @@ export class GuiaRemisionComponent implements OnInit {
   }
 
   generate(element){
-
-    this.newMessage(element);
-    this.router.navigate(['model-three']);
+    this.router.navigate(['model-three'], { queryParams: { id: element._id } });
   }
 
-  newMessage(e) {
-    this._remisionService.changeMessage(e)
-  }
 
   delete(id:string){
     

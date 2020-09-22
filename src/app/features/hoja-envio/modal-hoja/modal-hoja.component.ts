@@ -3,6 +3,7 @@ import { MatDialogRef, MatTableDataSource, PageEvent } from '@angular/material';
 import { ProcesosService } from '@core/services/procesos/procesos.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CartaService } from '@core/services/cartas/carta.service';
 
 export interface PeriodicElement {
   name: string;
@@ -26,12 +27,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  selector: 'app-modal-carta',
-  templateUrl: './modal-carta.component.html',
-  styleUrls: ['./modal-carta.component.scss']
+  selector: 'app-modal-hoja',
+  templateUrl: './modal-hoja.component.html',
+  styleUrls: ['./modal-hoja.component.scss']
 })
-export class ModalCartaComponent implements OnInit {
-  displayedColumns: string[] = ['descripcion', 'item', 'proceso', 'fiscalizacion','add'];
+export class ModalHojaComponent implements OnInit {
+  displayedColumns: string[] = ['cod_seg', 'proceso', 'carta','add'];
   dataSource = new MatTableDataSource([]);
 
   totalPosts = 10;
@@ -40,7 +41,7 @@ export class ModalCartaComponent implements OnInit {
   pageSizeOptions = [1,2,5,10];
   constructor(
     public dialogRef: MatDialogRef<any>,
-    private _processService : ProcesosService
+    private _cartaService : CartaService
   ) { }
 
   ngOnInit() {
@@ -52,10 +53,11 @@ export class ModalCartaComponent implements OnInit {
   }
 
   getProcess(){
-    this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
+    this._cartaService.getCart(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
-      val =>{
-        this.dataSource = new MatTableDataSource(val.posts);
+      val => {
+        console.log(val)
+        this.dataSource = new MatTableDataSource(val.carta);
         this.totalPosts = val.maxPosts;
       },
       (err:HttpErrorResponse)=>{

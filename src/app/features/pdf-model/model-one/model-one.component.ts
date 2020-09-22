@@ -15,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class ModelOneComponent implements OnInit {
   message: {};
+  idRecieved: string;
   messageService: Subscription;
   modelOneForm: FormGroup;
   public nombreEmpresa : string;
@@ -29,6 +30,15 @@ export class ModelOneComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+      if (params) {
+        this.idRecieved = params.id;
+        this.getCartaFis(this.idRecieved);
+      }
+    });
+
+
     this.modelOneForm = this.formB.group({
       descProcForm: new FormControl('', [
         Validators.required
@@ -101,14 +111,19 @@ export class ModelOneComponent implements OnInit {
       // ])
     });
 
-    this.messageService = this._cartaService.currentMessage.subscribe(message => {
-      this.message = message;
-      this.setForm(this.message);
-    })
+  }
+
+  getCartaFis(id: string) {
+    this._cartaService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+      }
+    )
   }
 
   setForm(data) {
-    console.log(data)
     this.nombreEmpresa = data.procesoDepend.contract;
     this.modelOneForm.controls['nombEmpForm'].setValue(data.procesoDepend.contract);
     this.modelOneForm.controls['personaConsForm'].setValue(data.personaConsForm);
@@ -132,32 +147,7 @@ export class ModelOneComponent implements OnInit {
     
     // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
 
-    let tipoProcedimiento = '';
-    switch (data.procesoDepend.typeProcedure) {
-      case '5e373cac542ea639ac488835':
-        tipoProcedimiento = 'Concurso de Méritos'
-        break;
-      case '5e373c8a542ea639ac488832':
-        tipoProcedimiento = 'Adjudicación Simplificada'
-        break;
-      case '5e373ca1542ea639ac488834':
-        tipoProcedimiento = 'Licitación Pública'
-        break;
-      case '5e373c96542ea639ac488833':
-        tipoProcedimiento = 'Concurso Público'
-        break;
-      case '5e373cb5542ea639ac488836':
-        tipoProcedimiento = 'Adjudicación de Menor Cuantia'
-        break;
-      case '5e373cbc542ea639ac488837':
-        tipoProcedimiento = 'Contratación de Servicio Financiero'
-        break;
-      case '5f433c62eac1be745c537b3c':
-        tipoProcedimiento = 'Compra Directa'
-      default:
-        break;
-    }
-    this.modelOneForm.controls['descProcForm'].setValue(tipoProcedimiento + ' N°' + data.procesoDepend.number + '-' + data.procesoDepend.year + ' ' + data.procesoDepend.description);
+    this.modelOneForm.controls['descProcForm'].setValue(data.procesoForm + ' ' + data.descProcForm);
   }
 
   goback() {
@@ -184,7 +174,7 @@ export class ModelOneComponent implements OnInit {
 
     this.activeloadingfull = true;
 
-    this._cartaService.getPDFTwo(id).pipe(take(1))
+    this._cartaService.getPDF(id).pipe(take(1))
       .subscribe(
         val => {
           this.activeloadingfull = false;
@@ -198,10 +188,5 @@ export class ModelOneComponent implements OnInit {
       )
   }
 
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.messageService.unsubscribe();
-  }
 
 }

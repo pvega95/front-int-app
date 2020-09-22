@@ -6,6 +6,7 @@ import { CartaService } from '@core/services/cartas/carta.service';
 import { HojaEnvioService } from '@core/services/hoja-envio/hoja-envio.service';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-model-two',
@@ -14,21 +15,28 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ModelTwoComponent implements OnInit {
   message: {};
-  messageService: Subscription;
   modelOneForm: FormGroup;
-
+  idRecieved: string;
   // interfaz
   activeloadingfull = false;
 
   constructor(
     public formB: FormBuilder,
     private _location: Location,
-    // private _cartaService : CartaService,
     private _hojaEnvioService: HojaEnvioService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+      if (params) {
+        this.idRecieved = params.id;
+        this.getHojaEnvio(this.idRecieved);
+      }
+    });
+
     this.modelOneForm = this.formB.group({
       personaConsForm: new FormControl('', [
         Validators.required
@@ -77,31 +85,31 @@ export class ModelTwoComponent implements OnInit {
       ]),
     });
 
-    this.messageService = this._hojaEnvioService.currentMessage.subscribe(message => {
-      this.message = message;
-      this.setForm(this.message);
-    
-    });
+  }
+
+  getHojaEnvio(id: string) {
+    this._hojaEnvioService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+        
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+       
+      }
+    )
   }
 
   setForm(data) {
-    
-    this.modelOneForm.controls['personaConsForm'].setValue('ALCIDES MALDONADO CORTEZ');
-    this.modelOneForm.controls['cargoForm'].setValue('JEFE DE SEC.  EJECUCIÓN Y SEGUIMIENTO DE CONTRATOS ');
+    this.modelOneForm.controls['personaConsForm'].setValue(data.numRegister.personaConsForm);
+    this.modelOneForm.controls['cargoForm'].setValue(data.numRegister.cargoForm);
     this.modelOneForm.controls['personaConsForm2'].setValue('MARCO ANTONIO LEÓN ARANGUREN');
     this.modelOneForm.controls['cargoForm2'].setValue('JEFE DE SEC. PROGRAMACIÓN Y EVALUACIÓN');
-    this.modelOneForm.controls['referenciaForm'].setValue(data.DocToRemit);
-    this.modelOneForm.controls['observacionForm'].setValue('Remito a su despacho original de la referencia, en respuesta de la carta N° , para su archivo en el expediente y seguimiento de  fiscalización posterior realizada al proceso ' + data.Process);
+    this.modelOneForm.controls['referenciaForm'].setValue(data.process);
+    this.modelOneForm.controls['observacionForm'].setValue('Remito a su despacho original de la referencia, en respuesta de la carta N°' + data.numRegister.cartaForm + ', para su archivo en el expediente y seguimiento de  fiscalización posterior realizada al proceso ' + data.process);
   }
 
   goback() {
     this._location.back();
-  }
-
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.messageService.unsubscribe();
   }
 
   generate() {

@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SvgRegisterService } from '@core/material/svg-register.service';
 import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
+import { ModalHojaComponent } from '../modal-hoja/modal-hoja.component';
 
 @Component({
   selector: 'app-add',
@@ -58,7 +59,7 @@ export class AddComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ModalCartaComponent, {
+    const dialogRef = this.dialog.open(ModalHojaComponent, {
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -70,9 +71,9 @@ export class AddComponent implements OnInit {
   }
 
   setForm(result) {
+    console.log(result)
+    this.hojaEnvioForm.controls['procesoForm'].setValue(result.procesoForm);
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
-    let proceso = result.typeProcedure.name + ' N° ' + result.number + ' - ' + result.year
-    this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 
   onSubmitHoja(miForm ) {

@@ -5,6 +5,7 @@ import { GuiaRemisionService } from '@core/services/guia-remision/guia-remision.
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-model-three',
@@ -14,11 +15,13 @@ import { take } from 'rxjs/operators';
 export class ModelThreeComponent implements OnInit {
 
   message: {};
+  idRecieved: string;
   messageService : Subscription;
   modelOneForm : FormGroup;
   // interfaz
   activeloadingfull = false;
   constructor(
+    private route: ActivatedRoute,
     public formB: FormBuilder,
     private _location:Location,
     private _remisionService : GuiaRemisionService,
@@ -26,6 +29,14 @@ export class ModelThreeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(params => {
+      if (params) {
+        this.idRecieved = params.id;
+        this.getGuiaRemision(this.idRecieved);
+      }
+    });
+
     this.modelOneForm = this.formB.group({
       // descProcForm: new FormControl('', [
       //   Validators.required
@@ -53,8 +64,6 @@ export class ModelThreeComponent implements OnInit {
       fechaForm: new FormControl(this.datePipe.transform(new Date(),'fullDate'),[
         Validators.required
       ]),
-
-
       // procesoForm: new FormControl('', [
       //   Validators.required
       // ]),
@@ -63,13 +72,18 @@ export class ModelThreeComponent implements OnInit {
       // ]),
     });
 
-    this.messageService = this._remisionService.currentMessage.subscribe(message => 
-      {
-        this.message = message;
-        this.setForm(this.message);
-        
-      });
+  }
 
+  getGuiaRemision(id: string) {
+    this._remisionService.getByID(id).pipe(take(1)).subscribe(
+      val => {
+   
+        this.setForm(val);
+      },
+      (err: HttpErrorResponse) => {
+      
+      }
+    )
   }
 
   
@@ -118,12 +132,6 @@ export class ModelThreeComponent implements OnInit {
 
   goback(){
     this._location.back();
-  }
-
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.messageService.unsubscribe();
   }
 
 }

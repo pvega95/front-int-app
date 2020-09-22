@@ -10,9 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class GuiaRemisionService {
   private url = environment.url_API;
-  private messageSource = new BehaviorSubject({});
-  currentMessage = this.messageSource.asObservable();
-  
+
   constructor(
     public router: Router,
     private _http: HttpClienteService,
@@ -57,10 +55,6 @@ export class GuiaRemisionService {
       .pipe(map(data => { 
         return new Blob([data], { type: 'application/pdf'  }) 
       }))
-  }
-
-  changeMessage(message: any) {
-    this.messageSource.next(message)
   }
   
 }

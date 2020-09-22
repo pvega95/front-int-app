@@ -9,6 +9,7 @@ import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SvgRegisterService } from '@core/material/svg-register.service';
 import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
+import { ModalHojaComponent } from '../modal-hoja/modal-hoja.component';
 
 @Component({
   selector: 'app-edit',
@@ -68,7 +69,7 @@ export class EditComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ModalCartaComponent, {
+    const dialogRef = this.dialog.open(ModalHojaComponent, {
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -80,9 +81,12 @@ export class EditComponent implements OnInit {
   }
 
   setFormModal(result) {
+    console.log(result)
+    this.hojaEnvioForm.controls['procesoForm'].setValue(result.procesoForm);
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
-    let proceso = result.typeProcedure.name + 'N°' + result.number + result.year
-    this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
+    // this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
+    // let proceso = result.typeProcedure.name + 'N°' + result.number + result.year
+    // this.hojaEnvioForm.controls['procesoForm'].setValue(proceso);
   }
 
   goback() {

@@ -42,6 +42,7 @@ import { GraficaBarraComponent } from './grafica-barra/grafica-barra.component';
 import { AnalistaPipe } from '@core/pipe/analista.pipe';
 import { DocumentoPipe } from '@core/pipe/documento.pipe';
 import { ConstratistaPipe } from '@core/pipe/contratista.pipe';
+import { ModalHojaComponent } from '../features/hoja-envio/modal-hoja/modal-hoja.component';
 
 export const cloudinary = {
   Cloudinary: CloudinaryCore
@@ -66,6 +67,7 @@ const MODULES = [
 const COMPONENTS = [
   LoadingfullComponent,
   ModalCartaComponent,
+  ModalHojaComponent,
   ModalGuiaComponent,
   GraficaDonaComponent,
   GraficaBarraComponent,

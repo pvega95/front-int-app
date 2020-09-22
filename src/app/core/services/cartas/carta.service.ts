@@ -11,9 +11,6 @@ import { map } from 'rxjs/operators';
 export class CartaService {
   private url = environment.url_API;
 
-  private messageSource = new BehaviorSubject({});
-  currentMessage = this.messageSource.asObservable();
-
   constructor(
     public router: Router,
     private _http: HttpClienteService,
@@ -58,18 +55,6 @@ export class CartaService {
       .pipe(map(data => {
         return new Blob([data], { type: 'application/pdf' })
       }))
-  }
-
-  getPDFTwo(id: number) {
-    return this._http.getPDF(`${this.url}/api/letter-fiscal/get-pdf-two/${id}`)
-      .pipe(map(data => {
-        return new Blob([data], { type: 'application/pdf' })
-      }))
-  }
-
-
-  changeMessage(message: any) {
-    this.messageSource.next(message)
   }
 
   /**
