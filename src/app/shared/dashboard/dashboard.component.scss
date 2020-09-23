@@ -1,342 +1,117 @@
 @import '_default-theme.scss';
-.container-fbx-total{
-    width: 100%;
-    display: flex;
-    position: fixed;
-    &.dashboard-visible{
-        background-color: white;
-        @media(min-width: 768px){
-        }
-        
-        .dashboard-sidenav-web{
-            height: 100vh;
-            min-width: 250px;
-            background: #9a0007;
-            z-index: 10;
-            @media(min-width:320px){
-                display: none;
-            }
-            @media(min-width:768px){
-                display: block;
-            }
-            .dashboard-sidenav-web-logo{
-                padding-top: 29px;
-                padding-left: 58px;
-                padding-bottom: 20px;
-                img{
-                    height: 29px;
-                }
-            }
-            .dashboard-sidenav-web-lista{
-                li{
-                    a{
-                        p{
-                            color: white;
-                            padding-top: 14px;
-                            padding-bottom: 14px;
-                            width: 100%;
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            padding-left: 58px;
-                            font-size: 12px;
-                            font-family: $font-DMSans;
-                            transition: 0.5s;
-                            .mat-icon{
-                                margin-right: 7.7px;
-                                fill: white;
-                                stroke: white;
-                                transition: 0.5s;
-                            }
-                            &.active{
-                                background-color: white;
-                            }
-                            &:hover,
-                            &.active{
-                                color: #000000;
-                                .mat-icon{
-                                    margin-right: 7.7px;
-                                    fill: $fbx-secondary;
-                                    stroke: $fbx-secondary;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .dashboard-sidenav-web-logo-footer{
-                width:95px;
-                position: fixed;
-                bottom: 65px;
-                left: 62px;
-                p{
-                    color:white;
-                    font-size: 12px;
-                    a{
-                        font-size: 11px;
-                        color:white;
-                    }
-                }
-            }
-        }
-        .dashboard-sidenav-content-web{
-            width: 100%;
-            .dashboard-header-web{
-                @media(min-width:320px){
-                    display: none;
-                }
-                @media(min-width:768px){
-                    height: 80px;
-                    padding: 20px 60px;
-                    background: #d32f2f;
-                    border-bottom: 1px solid #EBEBEB;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                }
-                .title{
-                    color: $fbx-primary;
-                    font-size: 23px;
-                }
-                .menu-title{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    position: relative;
-                    cursor: pointer;
-                    .sub-name{
-                        border: 1px solid transparent;
-                        transition: 0.5s;
-                    }
-                    &.active{
-                        .sub-name{
-                            border: 1px solid $fbx-secondary;
-                            color: $fbx-secondary;
-                        }
-                        .arrow{
-                            img{
-                                opacity:0;
-                            }
-                        }
-                    }
-                    @media(min-width:992px){
-                        &:hover, &.active{
-                            .sub-name{
-                                border: 1px solid $fbx-secondary;
-                                color: $fbx-secondary;
-                            }
-                            .arrow{
-                                img{
-                                    opacity:0;
-                                }
-                                
-                            }
-                        }    
-                    }
-                    
-                    p{
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        background-color: #F2F4F7;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .arrow{
-                        width: 12.09px;
-                        height: 7.36px;
-                        margin-left: 10px;
-                        display: flex;
-                        img{
-                            opacity:1;
-                            height: 7.36px;
-                            transition: 0.5s;
-                        }
-                    }
-                    .menu-sub{
-                        display: none;
-                        z-index: 9999;
-                        position: absolute;
-                        top: 30px;
-                        right: 0;
-                        background-image: url('../../../assets/img/bgperfil.png');
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        width: 238px;
-                        padding-top: 42px;
-                        padding-bottom: 41px;
-                        padding-left: 15px;
-                        padding-right: 15px;
-                        &.menu-sub-block{
-                            display: block;
-                        }
-                        h1{
-                            color: #163164;
-                            font-size: 16px;
-                            font-family: $font-DMSans;
-                            font-weight: 400;
-                            padding-top: 13px;
-                            padding-bottom: 13px;
-                            padding-left: 30px;
-                            padding-right: 30px;
-                        }
-                        .sub-menu-item{
-                            .mat-icon {
-                                height: 13.49px;
-                                width: 14px;
-                                margin-right: 13.52px;
-                            }
-                            p{
-                                width: auto;
-                                height: auto;
-                                border-radius: 0%;
-                                padding-left: 33px;
-                                padding-right: 33px;
-                                display: block;
-                                background-color: white;
-                                color: #99ABBF;
-                                font-family: $font-DMSans;
-                                font-weight: 400;
-                                padding-top: 7px;
-                                padding-bottom: 4px;
-                                transition: 0.5s;
-                            }
-                            &:hover{
-                                p{
-                                    color: $fbx-primary;
-                                    background-color: rgb(235, 235, 235);
-                                }
-                            }
-                            &.sub-menu-item-1{
-                                border-bottom: 1px solid #F1F1F1;
-                                margin-bottom: 13px;
-                            }
-                            &.sub-menu-item-2{
-                                &:hover{
-                                    p{
-                                        stroke: $fbx-primary;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            .dashboard-body-web{
-                overflow: auto;
-                max-height: calc(100vh - 80px);
-            }
-            .dashboard-mobile{
-                position: relative;
-                height: 90px;
-                width: 100%;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                border-top: 1px solid #EEEEEE;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                align-content: center;
-                background: $fbx-background-white;
-                @media(min-width:320px){
-                    display: flex;
-                }
-                @media(min-width:768px){
-                    display: none;
-                }
-                ul{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    align-content: center;
-                    width: 100%;
-                    li{
-                        flex: 1;
-                        justify-content: center;
-                        display: flex;
-                        flex-wrap: wrap;
-                        a{
-                            justify-content: center;
-                            display: flex;
-                            flex-wrap: wrap;
-                            color: $fbx-primary-dark;
-                        }
-                        &:hover,:focus, &.active{
-                            a{
-                                color: $fbx-secondary;
-                                .mat-icon{
-                                    color: $fbx-secondary;
-                                    fill: $fbx-secondary;
-                                    stroke: $fbx-secondary;
-                                }
-                                p{
-                                    color: $fbx-secondary
-                                }
-                            }
-                        }
-                        p{
-                            color: $fbx-primary-dark;
-                            font-size: 11px;
-                            width: 100%;
-                            text-align: center;
-                        }
-                    }
-                }
-                .favicon-menu-responsive{
-                    img{
-                        height: 52px;
-                        width: 52px;
-                        position: absolute;
-                        top: -26px;
-                        left: calc(50% - 26px);
-                        transition: 0.5s;
-                        &:hover{
-                            transform: rotate(30deg);
-                        }
-                    }
-                }
-                .circle{
-                    position: absolute;
-                    top: -36px;
-                    left: calc(50% - 36px);
-                    height: 36px;
-                    width: 72px;
-                    border-top-left-radius: 72px;
-                    border-top-right-radius: 72px;
-                    border-top: 1px solid #EEEEEE;
-                    border-left: 1px solid #EEEEEE;
-                    border-right: 1px solid #EEEEEE;
-                    border-bottom: 1px solid transparent;
-                    background-color: white;
-                    .mat-icon{
-                        background-color: transparent;
-                    }
-                }
-            }
-        }
-    }
-    &.dashboard-no-visible{
-        background: white;
-        .dashboard-sidenav-web{
-            display: none;
-        }
-        .dashboard-sidenav-content-web{
-            .dashboard-header-web{
-                display: none;
-            }
-            .dashboard-body-web{
-                max-height: 100vh;
-                // overflow: unset;
-            }
-            .dashboard-mobile{
-                display: none;
-            }
-        }
-    }
 
+
+mat-drawer-container {
+    height: 100%;
 }
 
+mat-drawer,
+mat-drawer-content {
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(.25, .8, .25, 1);
+}
+
+mat-drawer {
+    width: 250px;
+    background-color: #f7fafc;
+    transition-property: width;
+    &.sidenav-collapsed {
+        width: 100px;
+    }
+    .sidenav-header {
+        background-color: #9f7aea;
+        height: 64px;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        span {
+            font-size: 2em;
+            color: #ffffff;
+        }
+    }
+    & .sidenav-line {
+        border-color: #e2e8f091;
+        margin: 10px 10px 10px 0px;
+    }
+    & .option-list {
+        transition: all 0.15s ease-out;
+        text-transform: uppercase;
+        font-size: .875rem;
+        color: #718096;
+        padding-left: 2rem;
+        padding: .75rem;
+        margin-right: .75rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        border-top-right-radius: 9999px;
+        border-bottom-right-radius: 9999px;
+        background-color: #e2e8f0;
+        display: flex;
+        img {
+            margin-right: 0.5rem;
+        }
+        &:hover {
+            color: #FFF;
+            background-color: #2d3748;
+            img {
+                filter: invert(1);
+            }
+        }
+    }
+    ul {
+        padding: 0;
+        padding: 0;
+        li {
+            a {
+                font-size: .75rem;
+                color: #2d3748;
+                padding-left: 2rem;
+                padding-right: 0;
+                padding: .75rem;
+                margin-right: 2.3rem;
+                margin-top: .5rem;
+                display: block;
+                border-top-right-radius: 9999px;
+                border-bottom-right-radius: 9999px;
+                transition: .2s;
+                &:hover, &.active {
+                    color: #FFF;
+                    background-color: #9f7aea;
+                }
+                img {
+                    margin-right: .5rem;
+                    margin-top: .25rem;
+                    float: left;
+                    max-width: 100%;
+                    height: auto;
+                    display: block;
+                    // vertical-align: middle;
+                }
+                span {
+                    margin-right: .25rem;
+                    font-weight: 700;
+                }
+            }
+        }
+        
+    }
+}
+
+mat-drawer-content {
+    transition-property: transform, margin-left, margin-right;
+    &.sidenav-collapsed {
+        margin-left: 100px !important;
+    }
+}
+
+mat-card {
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    mat-toolbar {
+        flex-direction: row-reverse !important;
+    }
+}

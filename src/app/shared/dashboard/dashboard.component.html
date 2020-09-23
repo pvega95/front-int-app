@@ -1,153 +1,41 @@
-<ng-container>
-<section class="container-fbx-total dashboard-visible" [ngClass]="{'dashboard-no-visible': !_dashboardService.dashboardStatus}">
-  <div class="dashboard-sidenav-web">
-      <div class="dashboard-sidenav-web-logo">
-      </div>
-      <ul class="dashboard-sidenav-web-lista">
-          <li><a [routerLink]="'proceso'">
-              <p routerLinkActive="active">
-                  <i class="material-icons">
-                    filter_1
-                    </i>
-                  Procesos
-              </p>
-          </a></li>
-          <li><a [routerLink]="'carta-fiscalizacion'">
-              <p routerLinkActive="active">
-                  <i class="material-icons">
-                    filter_2
-                    </i>
-                  Carta de fiscalizacion
-              </p>
-          </a></li>
-          <li><a [routerLink]="'hoja-envio'">
-              <p routerLinkActive="active">
-                  <i class="material-icons">
-                    filter_3
-                    </i>
-                  Hoja de envio
-              </p>
-          </a></li>
-          <li><a [routerLink]="'guia-remision'">
-              <p routerLinkActive="active">
-                  <i class="material-icons">
-                    filter_4
-                    </i>
-                  Guia de remision
-              </p>
-          </a></li>
-          <li><a [routerLink]="'reporte'">
-            <p routerLinkActive="active">
-                <i class="material-icons">
-                    filter_5
-                    </i>
-                Reportes
-            </p>
-        </a></li>
-      </ul>
-      <div class="dashboard-sidenav-web-logo-footer">
-          <p>
-              © <b>Area Adm</b>
-              <br>
-              <a href="">Sección de Ayuda</a> |
-              <a href="">Legal</a> | 
-              <a href="">Privacidad</a>
-          </p>
-      </div>
-  </div>
-  <div class="dashboard-sidenav-content-web">
-      <div class="dashboard-header-web">
-      <div>
-          <h1 class="title">{{_dashboardService.dashboardTitle}}</h1> 
-      </div>
-          <div class="menu-title"  [ngClass]="{'active': menuSubBlock}">
-              <p class="sub-name" (click)="dropdownShow()">BN</p>
-              <div  class="arrow" >
-                  <img (click)="dropdownShow()" src="" alt="">
-              </div>
-              
-              <div class="menu-sub" [ngClass]="{'menu-sub-block': menuSubBlock}">
-                  <h1>Banco Nacion</h1>
-                  
-                  <div [routerLink]="'profileUrl'" class="sub-menu-item sub-menu-item-1">
-                      <p>
-                          Perfil
-                      </p>
-                  </div>
-                  <div [routerLink]="'ajustes'" class="sub-menu-item sub-menu-item-2">
-                      <p>
-                          
-                          Ajustes
-                      </p>
-                  </div>
-                  <div (click)="logout()" class="sub-menu-item sub-menu-item-2">
-                      <p>
-                         
-                          Cerrar sesión
-                      </p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="dashboard-body-web">
-              <router-outlet></router-outlet>
-      </div>
-      
-      <div class="dashboard-mobile">
-          <div class="circle"></div>
-          <div class="favicon-menu-responsive" href="">
-              <a [routerLink]="'/main/subasta/configurar'">
-              </a>
-          </div>
-          <ul>
-              <li routerLinkActive="active">
-                  <a [routerLink]="'operaciones'"> 
-                      <i class="material-icons">
-                        filter_1
-                        </i>
-                      <p>
-                          Operaciones
-                      </p>
-                  </a>
-              </li>
-              <li routerLinkActive="active">
-                  <a [routerLink]="'cuentas'">
-                      <i class="material-icons">
-                        filter_2
-                        </i>
-                      <p>
-                          Bancos
-                      </p>
-                  </a>
-              </li>
-              <li routerLinkActive="active" class="mid-menu-responsive">
-                  <a [routerLink]="'subasta'">
-                      <p>
-                      </p>
-                  </a>
-              </li>
-              <li routerLinkActive="active">
-                  <a [routerLink]="'fideicomiso'">
-                      <i class="material-icons">
-                        filter_3
-                        </i>
-                      <p>
-                          Fideicomiso
-                      </p>
-                  </a>
-              </li>
-              <li routerLinkActive="active">
-                  <a [routerLink]="'perfil'">
-                      <i class="material-icons">
-                        filter_4
-                        </i>
-                      <p>
-                          Perfil
-                      </p>
-                  </a>
-              </li>
-          </ul>
-      </div>
-  </div>
-</section>
-</ng-container>
+<mat-drawer-container>
+    <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches"
+        [ngClass]="{'sidenav-collapsed': collapsedNav && !mobileQuery.matches}">
+        <div class="sidenav-header">
+            <span>{{collapsedNav && !mobileQuery.matches ? 'I' : 'IntApp'}}</span>
+        </div>
+        <div class="navegation" *ngFor="let menu of menus;let i = index">
+            <div class="option-list" (click)="showSubItem(i)">
+                <img [src]="visibleIndex === i ? 'https://saasadventure.io/img/svgs/arrow-down.svg' : 'https://saasadventure.io/img/svgs/arrow-right.svg'" alt="down arrow"> 
+                {{collapsedNav && !mobileQuery.matches ? menu.titlesm : menu.title }}
+            </div>
+            <ul *ngIf="visibleIndex === i" [@inOutAnimation]>
+                <li *ngFor="let children of menu.children">
+                    <a [routerLink]="children.router" routerLinkActive="active" class="text-xs">
+                        <img src="https://saasadventure.io/img/svgs/dot.svg" alt="lock" class="float-left mt-1 mr-2 invert-me">
+                        <span class="font-bold mr-1">{{collapsedNav && !mobileQuery.matches ? children.namesm : children.name}}</span> 
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr class="sidenav-line">
+        <div>
+            <ul>
+                <li>
+                    <a [routerLink]="'logout'" routerLinkActive="active" class="text-xs">
+                        <img src="https://saasadventure.io/img/svgs/dot.svg" alt="lock" class="float-left mt-1 mr-2 invert-me">
+                        <span class="font-bold mr-1">SALIR</span> 
+                    </a>
+                </li>
+            </ul> 
+        </div>
+    </mat-drawer>
+    <mat-drawer-content [ngClass]="{'sidenav-collapsed': collapsedNav && !mobileQuery.matches}">
+        <mat-toolbar>
+            <button mat-icon-button (click)="mobileQuery.matches ? snav.toggle() : collapsedNav = !collapsedNav">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -25,7 +25,9 @@ import {
   MatChipsModule,
   MatIconModule,
   MatToolbarModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSidenavModule
+
 } from '@angular/material';
 // ---
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -58,7 +60,8 @@ const MODULES = [
   MatChipsModule,
   MatIconModule,
   MatToolbarModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSidenavModule
 ];
 
 @NgModule({
