@@ -22,7 +22,7 @@
         <div>
             <ul>
                 <li>
-                    <a [routerLink]="'logout'" routerLinkActive="active" class="text-xs">
+                    <a (click)="logout()" routerLinkActive="active" class="text-xs" style="cursor: pointer;">
                         <img src="https://saasadventure.io/img/svgs/dot.svg" alt="lock" class="float-left mt-1 mr-2 invert-me">
                         <span class="font-bold mr-1">SALIR</span> 
                     </a>

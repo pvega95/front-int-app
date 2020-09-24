@@ -7,6 +7,7 @@ import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
+import { SvgRegisterService } from '@core/material/svg-register.service';
 
 @Component({
   selector: 'app-edit-process',
@@ -28,8 +29,11 @@ export class EditProcessComponent implements OnInit {
     private _processService: ProcesosService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private _mantenimientoService: MantenimientoService
-  ) { }
+    private _mantenimientoService: MantenimientoService,
+    private _svgRegisterService: SvgRegisterService,
+  ) {
+    this._svgRegisterService.init();
+   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -131,7 +135,7 @@ export class EditProcessComponent implements OnInit {
     this.registerPersonForm.controls['numProcedimientoForm'].setValue(data.number)
     this.registerPersonForm.controls['añoProcesoForm'].setValue(data.year)
     this.registerPersonForm.controls['descripcionForm'].setValue(data.description)
-    this.registerPersonForm.controls['fechaRecepcionForm'].setValue(data.date)
+    this.registerPersonForm.controls['fechaRecepcionForm'].setValue(new Date(data.date))
     this.registerPersonForm.controls['itemsForm'].setValue(data.items)
   }
 

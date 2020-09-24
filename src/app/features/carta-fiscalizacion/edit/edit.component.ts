@@ -125,7 +125,7 @@ export class EditComponent implements OnInit {
     this.cartaForm.controls['itemForm'].setValue(result.items);
     let proceso = result.typeProcedure.name + ' N°' + result.number + ' - ' + result.year
     this.cartaForm.controls['procesoForm'].setValue(proceso);
-    this.cartaForm.controls['fechaFiscForm'].setValue(result.date);
+    this.cartaForm.controls['fechaFiscForm'].setValue(new Date(result.date));
     this.cartaForm.controls['procesoDepend'].setValue(result._id);
   }
 
@@ -147,7 +147,7 @@ export class EditComponent implements OnInit {
     this.cartaForm.controls['descProcForm'].setValue(data.descProcForm);
     this.cartaForm.controls['itemForm'].setValue(data.itemForm);
     this.cartaForm.controls['procesoForm'].setValue(data.procesoForm);
-    this.cartaForm.controls['fechaFiscForm'].setValue(data.fechaFiscForm);
+    this.cartaForm.controls['fechaFiscForm'].setValue(new Date(data.fechaFiscForm));
     this.cartaForm.controls['procesoDepend'].setValue(data.procesoDepend);
     this.cartaForm.controls['analistaForm'].setValue(data.analistaForm);   
     this.cartaForm.controls['cartaForm'].setValue(data.cartaForm);

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@core/guards/auth.guard';
 
 // Components
 import { DashboardComponent } from './dashboard.component';
@@ -7,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 const routes: Routes = [
   {
     path: '', component: DashboardComponent,
+    canActivate: [ AuthGuard ],
     children: [
       { path: 'proceso', loadChildren: () => import('../../features/proceso/proceso.module').then(m => m.ProcesoModule) },
       { path: 'carta-fiscalizacion', loadChildren: () => import('../../features/carta-fiscalizacion/carta-fiscalizacion.module').then(m => m.CartaFiscalizacionModule) },
@@ -14,9 +16,7 @@ const routes: Routes = [
       { path: 'guia-remision', loadChildren: () => import('../../features/guia-remision/guia-remision.module').then(m => m.GuiaRemisionModule) },
       { path: 'reporte', loadChildren: () => import('../../features/reporte/reporte.module').then(m => m.ReporteModule) },
     ]
-  },
-  // { path: '**', pathMatch: 'full', redirectTo: '/main/proceso' }
-
+  }
 ];
 
 @NgModule({

@@ -33,6 +33,10 @@ mat-drawer {
         border-color: #e2e8f091;
         margin: 10px 10px 10px 0px;
     }
+    & .navegation{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
     & .option-list {
         transition: all 0.15s ease-out;
         text-transform: uppercase;
@@ -41,8 +45,6 @@ mat-drawer {
         padding-left: 2rem;
         padding: .75rem;
         margin-right: .75rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
         font-weight: 500;
         cursor: pointer;
         border-top-right-radius: 9999px;
