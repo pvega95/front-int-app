@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', component: DashboardComponent,
     canActivate: [ AuthGuard ],
-    children: [
+    children: [ 
       { path: 'proceso', loadChildren: () => import('../../features/proceso/proceso.module').then(m => m.ProcesoModule) },
       { path: 'carta-fiscalizacion', loadChildren: () => import('../../features/carta-fiscalizacion/carta-fiscalizacion.module').then(m => m.CartaFiscalizacionModule) },
       { path: 'hoja-envio', loadChildren: () => import('../../features/hoja-envio/hoja-envio.module').then(m => m.HojaEnvioModule) },

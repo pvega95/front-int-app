@@ -19,7 +19,7 @@ mat-drawer {
         width: 100px;
     }
     .sidenav-header {
-        background-color: #9f7aea;
+        background-color: #f44336;
         height: 64px;
         display: grid;
         justify-content: center;
@@ -80,7 +80,7 @@ mat-drawer {
                 transition: .2s;
                 &:hover, &.active {
                     color: #FFF;
-                    background-color: #9f7aea;
+                    background-color: #2d3748;
                 }
                 img {
                     margin-right: .5rem;

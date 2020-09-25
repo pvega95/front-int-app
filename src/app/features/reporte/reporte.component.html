@@ -1,85 +1,41 @@
-<div class="container">
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body" *ngIf="reporteOne">
-          <h4 class="card-tittle">{{reporteOne.leyenda}}</h4>
-          <app-grafica-dona
-          [chartLabels]="reporteOne.labels"
-          [chartData]="reporteOne.data"
-          chartType="doughnut"
-          ></app-grafica-dona>
-        </div>
-      </div>
+<div class="container-text">
+  <h1>Listado de Reportes </h1>
+</div>
+<section class="container-report">
+    <div class="card-body" *ngIf="reporteOne">
+      <h4 class="card-tittle">{{reporteOne.leyenda}}</h4>
+      <app-grafica-dona [chartLabels]="reporteOne.labels" [chartData]="reporteOne.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteTwo">
+      <h4 class="card-tittle">{{reporteTwo.leyenda}}</h4>
+      <app-grafica-dona [chartLabels]="reporteTwo.labels" [chartData]="reporteTwo.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteThree">
+      <h4 class="card-tittle">{{reporteThree.leyenda}}</h4>
+      <app-grafica-dona [chartLabels]="reporteThree.labels" [chartData]="reporteThree.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteFour">
+      <h4 class="card-tittle">{{reporteFour.leyenda}}</h4>
+      <app-grafica-dona [chartLabels]="reporteFour.labels" [chartData]="reporteFour.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteFifth">
+      <h4 class="card-tittle">{{reporteFifth.leyenda}}</h4>
+      <app-grafica-dona [chartLabels]="reporteFifth.labels" [chartData]="reporteFifth.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteSix">
+      <h4 class="card-tittle">{{reporteSix.leyenda}}</h4>
+      <app-grafica-barra [chartLabels]="reporteSix.labels" [chartData]="reporteSix.data" chartType="bar">
+      </app-grafica-barra>
     </div>
   
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body" *ngIf="reporteTwo">
-          <h4 class="card-tittle">{{reporteTwo.leyenda}}</h4>
-          <app-grafica-dona
-          [chartLabels]="reporteTwo.labels"
-          [chartData]="reporteTwo.data"
-          chartType="doughnut"
-          ></app-grafica-dona>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body" *ngIf="reporteThree">
-          <h4 class="card-tittle">{{reporteThree.leyenda}}</h4>
-          <app-grafica-dona
-          [chartLabels]="reporteThree.labels"
-          [chartData]="reporteThree.data"
-          chartType="doughnut"
-          ></app-grafica-dona>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body" *ngIf="reporteFour">
-          <h4 class="card-tittle">{{reporteFour.leyenda}}</h4>
-          <app-grafica-dona
-          [chartLabels]="reporteFour.labels"
-          [chartData]="reporteFour.data"
-          chartType="doughnut"
-          ></app-grafica-dona>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body" *ngIf="reporteFifth">
-          <h4 class="card-tittle">{{reporteFifth.leyenda}}</h4>
-          <app-grafica-dona
-          [chartLabels]="reporteFifth.labels"
-          [chartData]="reporteFifth.data"
-          chartType="doughnut"
-          ></app-grafica-dona>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      
-    </div>
-
-  </div>
-
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body" *ngIf="reporteSix">
-        <h4 class="card-tittle">{{reporteSix.leyenda}}</h4>
-        <app-grafica-barra
-        [chartLabels]="reporteSix.labels"
-        [chartData]="reporteSix.data"
-        chartType="bar"
-        ></app-grafica-barra>
-      </div>
-    </div>
-  </div>
-  
+</section>

@@ -83,7 +83,6 @@
             background: $fbx-background-white;
             padding: 25px 45px;
             box-shadow: 0px 10px 24px #1f193329;
-            // max-width: 426px;
             margin: auto;
             @include respondto(minxs) {
             }
@@ -98,8 +97,6 @@
             form {
                 display: flex;
                 flex-wrap: wrap;
-                // width: 700px;
-                // max-width: 95%;
                 margin: 30px auto 0px auto;
                 .input-group {
                     width: 100%;

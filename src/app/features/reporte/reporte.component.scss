@@ -1,18 +1,24 @@
-@import '_default-theme.scss';
-
-.container{
+@import "_default-theme.scss";
+.container-text{
+    text-align: center;
+    margin: 20px;
+}
+.container-report {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    .col-6  {
-        width: calc((100% - 10px) / 2);
-        margin: 2px;
-        transition: 0.4s;
+    justify-content: space-between;
+    margin: 0px 3%;
+    .card-body {
+        width: calc(50% - 30px);
+        min-height: 50px;
+        padding: 25px;
+        box-shadow: 0px 10px 24px #1f193329;
+        background: #ffffff;
+        margin: 10px auto;
+        transition: .3s;
+        &:hover {
+            box-shadow: 0px 10px 24px #1f193369;
+            cursor: pointer;
+        }
     }
-    
-}
-
-.col-12  {
-    width: 70%;
-    margin: auto;
 }
