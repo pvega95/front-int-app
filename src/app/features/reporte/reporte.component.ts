@@ -98,8 +98,8 @@ export class ReporteComponent implements OnInit {
 
   firstReport(data) {
     let reporte = Object.assign({});
-    reporte.labels = ['2018', '2019', '2020'];
-    reporte.data = [data.Y018.length, data.Y019.length, data.Y020.length];
+    reporte.labels = ['2017','2018', '2019', '2020'];
+    reporte.data = [data.Y017.length,data.Y018.length, data.Y019.length, data.Y020.length];
     reporte.type = 'doughnut';
     reporte.leyenda = 'Procesos por año';
     this.reporteOne = reporte;

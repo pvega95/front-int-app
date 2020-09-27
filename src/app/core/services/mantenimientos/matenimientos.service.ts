@@ -36,5 +36,10 @@ export class MantenimientoService {
     return this._http.get(query);
   }
 
+  getTipoEmpresa(): Observable<any>{
+    const query = `${this.url}/api/tipo-empresa/listar`;
+    return this._http.get(query);
+  }
+
   
 }

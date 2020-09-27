@@ -74,7 +74,8 @@ export class DashboardComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.menus = MENU
+    this.menus = MENU;
+    this.showSubItem(0);
   }
 
   showSubItem(ind) {

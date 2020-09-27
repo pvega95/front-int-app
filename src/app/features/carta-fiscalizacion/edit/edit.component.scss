@@ -124,6 +124,10 @@
                         width: calc((100% - 10px) / 3);
                         margin-right: 5px;
                     }
+                    &.tipo-empresa-consultar{
+                        width: calc((100% - 10px) / 3);
+                        margin-right: 5px;
+                    }
                     &.empresa-consultar{
                         width: calc((100% - 10px) / 3);
                     }
@@ -133,17 +137,17 @@
                     }
                     &.persona-consultar{
                         width: calc((100% - 10px) / 3);
-                        margin-right: 5px;
                     }
                     &.cargo-persona{
                         width: calc((100% - 10px) / 3);
+                        margin-right: 5px;
                     }
                     &.descripcion-doc{
-                        width: calc((100% - 5px) / 2);
+                        width: calc((100% - 10px) / 3);
                         margin-right: 5px;
                     }
                     &.tipo-doc{
-                        width: calc((100% - 5px) / 2);
+                        width: calc((100% - 10px) / 3);
                     }
                     &.observaciones{
 

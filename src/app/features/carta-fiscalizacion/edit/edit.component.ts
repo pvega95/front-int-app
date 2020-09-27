@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
   idProcess: string;
   cartaForm: FormGroup;
   analistaList: any;
+  tipoEmpresaList:any;
   conclusionList: any;
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +45,7 @@ export class EditComponent implements OnInit {
 
     this.cargarAnalista();
     this.cargarConclusion();
+    this.cargarTipoEmpresa();
 
     this.cartaForm = this.formB.group({
       descProcForm: new FormControl('', [
@@ -65,6 +67,9 @@ export class EditComponent implements OnInit {
         Validators.required
       ]),
       empresaForm: new FormControl('', [
+        Validators.required
+      ]),
+      tipoEmpresaForm: new FormControl('', [
         Validators.required
       ]),
       direccionForm: new FormControl('', [
@@ -152,6 +157,7 @@ export class EditComponent implements OnInit {
     this.cartaForm.controls['analistaForm'].setValue(data.analistaForm);   
     this.cartaForm.controls['cartaForm'].setValue(data.cartaForm);
     this.cartaForm.controls['empresaForm'].setValue(data.empresaForm);
+    this.cartaForm.controls['tipoEmpresaForm'].setValue(data.tipoEmpresaForm);
     this.cartaForm.controls['direccionForm'].setValue(data.direccionForm);
     this.cartaForm.controls['personaConsForm'].setValue(data.personaConsForm);
     this.cartaForm.controls['cargoForm'].setValue(data.cargoForm);
@@ -175,6 +181,7 @@ export class EditComponent implements OnInit {
       analistaForm: miForm.value.analistaForm,
       cartaForm: miForm.value.cartaForm,
       empresaForm: miForm.value.empresaForm,
+      tipoEmpresaForm: miForm.value.tipoEmpresaForm,
       direccionForm: miForm.value.direccionForm,
       personaConsForm: miForm.value.personaConsForm,
       cargoForm: miForm.value.cargoForm,
@@ -212,6 +219,12 @@ export class EditComponent implements OnInit {
   cargarConclusion(){
     this._mantenimientoService.getConclusion().subscribe(val=>{
       this.conclusionList = val.conclusion
+    })
+  }
+
+  cargarTipoEmpresa(){
+    this._mantenimientoService.getTipoEmpresa().subscribe(val=>{
+      this.tipoEmpresaList = val.tipoEmpresa
     })
   }
 

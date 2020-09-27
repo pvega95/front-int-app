@@ -90,6 +90,22 @@
           </mat-form-field>
         </div>
 
+        <div class="input-group tipo-empresa-consultar">
+          <mat-form-field class="fbx-select" [hideRequiredMarker]="true" [floatLabel]="'auto'">
+            <mat-select formControlName="tipoEmpresaForm" placeholder="Tipo de empresa">
+              <mat-option [value]="empresa._id" *ngFor="let empresa of tipoEmpresaList" >
+                {{empresa.name}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix svgIcon="icon-fbx-arrow-p" class="mat-icon-rtl-mirror mat-icon-arrow">
+            </mat-icon>
+            <mat-error *ngIf="cartaForm.controls['analistaForm'].hasError('required')">
+              Por favor completa el
+              <strong>campo.</strong>
+          </mat-error>
+          </mat-form-field>
+        </div>
+
         <div class="input-group direccion">
           <mat-form-field class="fbx-input">
             <input matInput formControlName="direccionForm" placeholder="Direccion" [type]="'text'" required>

@@ -89,7 +89,7 @@ export class ModelThreeComponent implements OnInit {
   
   setForm(data){
    
-    this.modelOneForm.controls['cartaForm'].setValue('CARTA N° ' +  data.numCarta +'-2019-BN/2604' );
+    this.modelOneForm.controls['cartaForm'].setValue('CARTA N° ' +  data.numCarta +'-2020-BN/2604' );
     this.modelOneForm.controls['contratoForm'].setValue(data.description);
     this.modelOneForm.controls['empleadoForm'].setValue(data.person);
     this.modelOneForm.controls['cargoForm2'].setValue(data.position + '-' + data.toConsult);

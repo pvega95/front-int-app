@@ -17,6 +17,7 @@ import { MantenimientoService } from '@core/services/mantenimientos/matenimiento
 export class AddComponent implements OnInit {
   analistaList:any;
   conclusionList:any;
+  tipoEmpresaList:any;
   cartaForm: FormGroup;
   constructor(
     public formB: FormBuilder,
@@ -34,6 +35,8 @@ export class AddComponent implements OnInit {
   ngOnInit() {
     this.cargarAnalista();
     this.cargarConclusion();
+    this.cargarTipoEmpresa();
+    
     this.cartaForm = this.formB.group({
       descProcForm: new FormControl('', [
         Validators.required
@@ -54,6 +57,9 @@ export class AddComponent implements OnInit {
         Validators.required
       ]),
       empresaForm: new FormControl('', [
+        Validators.required
+      ]),
+      tipoEmpresaForm: new FormControl('', [
         Validators.required
       ]),
       direccionForm: new FormControl('', [
@@ -157,6 +163,12 @@ export class AddComponent implements OnInit {
   cargarConclusion(){
     this._mantenimientoService.getConclusion().subscribe(val=>{
       this.conclusionList = val.conclusion
+    })
+  }
+
+  cargarTipoEmpresa(){
+    this._mantenimientoService.getTipoEmpresa().subscribe(val=>{
+      this.tipoEmpresaList = val.tipoEmpresa
     })
   }
 }

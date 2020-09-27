@@ -15,6 +15,7 @@ mat-drawer {
     width: 250px;
     background-color: #f7fafc;
     transition-property: width;
+    box-shadow: 0px 9px 10px rgba(39, 44, 60, 0.24);
     &.sidenav-collapsed {
         width: 100px;
     }
