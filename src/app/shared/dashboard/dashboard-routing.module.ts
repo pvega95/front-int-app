@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'carta-fiscalizacion', loadChildren: () => import('../../features/carta-fiscalizacion/carta-fiscalizacion.module').then(m => m.CartaFiscalizacionModule) },
       { path: 'hoja-envio', loadChildren: () => import('../../features/hoja-envio/hoja-envio.module').then(m => m.HojaEnvioModule) },
       { path: 'guia-remision', loadChildren: () => import('../../features/guia-remision/guia-remision.module').then(m => m.GuiaRemisionModule) },
+      { path: 'mantenimiento', loadChildren: () => import('../../features/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) },
       { path: 'reporte', loadChildren: () => import('../../features/reporte/reporte.module').then(m => m.ReporteModule) },
     ]
   }

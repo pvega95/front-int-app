@@ -34,7 +34,13 @@
 
     <div class="card-body" *ngIf="reporteSix">
       <h4 class="card-tittle">{{reporteSix.leyenda}}</h4>
-      <app-grafica-barra [chartLabels]="reporteSix.labels" [chartData]="reporteSix.data" chartType="bar">
+      <app-grafica-dona [chartLabels]="reporteSix.labels" [chartData]="reporteSix.data" chartType="doughnut">
+      </app-grafica-dona>
+    </div>
+
+    <div class="card-body" *ngIf="reporteSeven">
+      <h4 class="card-tittle">{{reporteSeven.leyenda}}</h4>
+      <app-grafica-barra [chartLabels]="reporteSeven.labels" [chartData]="reporteSeven.data" chartType="bar">
       </app-grafica-barra>
     </div>
   

@@ -1,0 +1,51 @@
+<section class="table-material">
+  <h1 class="text-center">
+    Mantenimiento de Entidades
+  </h1>
+
+  <div class="btn-enter">
+    <button mat-flat-button color="accent" class="fbx-button animation" routerLink="crear">Agregar Nuevo</button>
+  </div>
+
+  <mat-form-field class="fbx-input filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar" name="email" [type]="'text'"
+      required>
+  </mat-form-field>
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 fbx-table">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element">
+        <p>{{ element.name }}</p>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon aria-hidden="false" aria-label="close icon" [routerLink]="['/main/guia-remision/edit']"
+          [queryParams]='{id: element._id }'>create</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon aria-hidden="false" aria-label="close icon" (click)="delete(element._id)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+
+  <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangedPage($event)"></mat-paginator>
+
+</section>

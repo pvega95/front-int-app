@@ -21,7 +21,7 @@ import { NopagefoundComponent } from './features/nopagefound/nopagefound.compone
     ModelOneComponent,
     ModelTwoComponent,
     ModelThreeComponent,
-    NopagefoundComponent
+    NopagefoundComponent,
   ],
   imports: [
     BrowserModule,

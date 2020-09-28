@@ -3,13 +3,15 @@ import { DashboardService } from '@core/services/resources/dashboard.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { animate, AUTO_STYLE, style, transition, trigger } from '@angular/animations';
+import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 const MENU = [
   {
     title: "OPCIONES",
     titlesm: "OPC",
-    children:[
-      { name: "Proceso" , router: "proceso", namesm: "Pr"},
+    children: [
+      { name: "Proceso", router: "proceso", namesm: "Pr" },
       { name: "Carta Fiscalizacion", router: "carta-fiscalizacion", namesm: "Cf" },
       { name: "Hoja de Envio", router: "hoja-envio", namesm: "He" },
       { name: "Guia remision", router: "guia-remision", namesm: "Gr" },
@@ -19,10 +21,10 @@ const MENU = [
   {
     title: "MANTENIMIENTO",
     titlesm: "MNT",
-    children:[
+    children: [
       { name: "Analista", router: "analista", namesm: "An" },
       { name: "Tipo Procedimiento", router: "tipo-procedimiento", namesm: "Tp" },
-
+      { name: "Tipo Entidades", router: "mantenimiento/tipo-empresa", namesm: "Te" }
     ]
   }
 ]
@@ -32,29 +34,29 @@ const MENU = [
   styleUrls: ['./dashboard.component.scss'],
   animations: [
     trigger(
-      'inOutAnimation', 
+      'inOutAnimation',
       [
         transition(
-          ':enter', 
+          ':enter',
           [
-            style({ height: 0, overflow : 'hidden' }),
-            animate('1s ease-out', 
-                    style({ height: AUTO_STYLE }))
+            style({ height: 0, overflow: 'hidden' }),
+            animate('1s ease-out',
+              style({ height: AUTO_STYLE }))
           ]
         ),
         transition(
-          ':leave', 
+          ':leave',
           [
-            style({ height: AUTO_STYLE, overflow : 'hidden' }),
-            animate('1s ease-in', 
-                    style({ height: 0 }))
+            style({ height: AUTO_STYLE, overflow: 'hidden' }),
+            animate('1s ease-in',
+              style({ height: 0 }))
           ]
         )
       ]
     )
   ]
 })
-export class DashboardComponent implements OnInit,OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy {
   menus: Array<any>
   collapseMenu: boolean;
   collapsedNav: boolean;
@@ -64,10 +66,11 @@ export class DashboardComponent implements OnInit,OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(
-    changeDetectorRef: ChangeDetectorRef, 
+    changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private _authService: AuthService
-    ) {
+    private _authService: AuthService,
+    private router: Router
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
@@ -78,6 +81,11 @@ export class DashboardComponent implements OnInit,OnDestroy {
     this.showSubItem(0);
   }
 
+  findLastword(words) {
+    var n = words.trim().split("/");
+    return n[n.length - 1];
+  }
+
   showSubItem(ind) {
     if (this.visibleIndex === ind) {
       this.visibleIndex = -1;
@@ -86,11 +94,21 @@ export class DashboardComponent implements OnInit,OnDestroy {
     }
   }
 
+  getArgumentosRuta() {
+
+    return this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map((event: NavigationEnd) => event)
+      );
+
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
 
-  logout(){
+  logout() {
     this._authService.logout();
   }
 

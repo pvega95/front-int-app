@@ -1,0 +1,31 @@
+
+<section class="container-person">
+    <div class="data-person-content">
+        <div class="content-top">
+            <h1>
+                <a (click)="goback()">
+                    <mat-icon class="mat-icon-rtl-mirror" svgIcon="icon-fbx-arrow"></mat-icon>
+                </a>
+                <span class="text-1">Agregar Tipo empresa</span>
+            </h1>
+        </div>
+        <div class="content-center">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+            <div class="input-group descripcion-form">
+              <mat-form-field class="fbx-input">
+                <input matInput formControlName="nameForm" placeholder="Nombre" [type]="'text'" required>
+                <mat-error *ngIf="myForm.controls['nameForm'].hasError('required')">
+                  Por favor completa el
+                  <strong>campo.</strong>
+              </mat-error>
+              </mat-form-field>
+            </div>
+      
+            <div class="btn-enter">
+              <button class="fbx-button" mat-flat-button color="accent" type="submit" [disabled]="!myForm.valid">Registrar</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </section>
+  

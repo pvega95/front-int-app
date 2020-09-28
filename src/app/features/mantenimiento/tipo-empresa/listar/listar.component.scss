@@ -1,0 +1,26 @@
+@import '_default-theme.scss';
+.table-material{
+    width: 35%;
+    margin: 30px auto;
+    .text-center{
+        text-align: center;
+    }
+    .filter{
+        display: block;
+    }
+    .btn-enter{
+        margin: 25px 0px;
+        text-align: right;
+    }
+    table{
+        width: 100%;
+        & p.ajuste-puntos{
+            width: 300px;
+            @include ajustacontrespuntos;
+        }
+    }
+}
+
+mat-paginator{
+    margin-top: 1rem;
+}

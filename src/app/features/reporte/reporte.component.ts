@@ -23,6 +23,7 @@ export class ReporteComponent implements OnInit {
   reporteFour: any;
   reporteFifth: any;
   reporteSix: any;
+  reporteSeven: any;
 
   source$: Observable<any>;
   private subsForkJoin: Subscription;
@@ -68,16 +69,15 @@ export class ReporteComponent implements OnInit {
     let reporteTres = this._reporteService.processPerConclusion();
     let reporteCuatro = this._reporteService.processPerContratista();
     let reporteCinco = this._reporteService.processPerAnalist();
-    let reporteSeis = this._reporteService.processPerMonth();
+    let reporteSeis = this._reporteService.processPerEntitys();
+    let reporteSiete = this._reporteService.processPerMonth();
 
-    this.source$ = forkJoin([reporteUno, reporteDos, reporteTres, reporteCuatro, reporteCinco, reporteSeis])
+    this.source$ = forkJoin([reporteUno, reporteDos, reporteTres, reporteCuatro, reporteCinco, reporteSeis, reporteSiete])
       .pipe(
         catchError(err => {
-
           throw (err)
         }),
         map(val => {
-
           return val
         })
       );
@@ -91,6 +91,7 @@ export class ReporteComponent implements OnInit {
           this.fourthReport(val[3]);
           this.fifthReport(val[4]);
           this.sixReport(val[5]);
+          this.sevenReport(val[6]);
         }
       }
     )
@@ -143,6 +144,15 @@ export class ReporteComponent implements OnInit {
 
   sixReport(data) {
     let reporte = Object.assign({});
+    reporte.labels = this.obtenerLabels(data);
+    reporte.data = this.obtenerValores(data);
+    reporte.type = 'doughnut';
+    reporte.leyenda = 'Procesos por entidades';
+    this.reporteSix = reporte;
+  }
+
+  sevenReport(data) {
+    let reporte = Object.assign({});
     reporte.labels = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SETIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
     reporte.data = [
       {
@@ -153,7 +163,7 @@ export class ReporteComponent implements OnInit {
       },
     ];
     reporte.leyenda = 'Procesos por meses';
-    this.reporteSix = reporte;
+    this.reporteSeven = reporte;
   }
 
   obtenerLabels(data) {
