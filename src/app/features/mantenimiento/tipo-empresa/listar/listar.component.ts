@@ -50,4 +50,8 @@ export class ListarComponent implements OnInit {
     )
   }
 
+  delete(){
+    return
+  }
+
 }

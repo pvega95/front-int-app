@@ -10,7 +10,7 @@
             </h1>
         </div>
         <div class="content-center">
-          <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <div class="input-group descripcion-form">
               <mat-form-field class="fbx-input">
                 <input matInput formControlName="nameForm" placeholder="Nombre" [type]="'text'" required>

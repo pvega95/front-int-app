@@ -71,7 +71,6 @@ export class AddComponent implements OnInit {
   }
 
   setForm(result) {
-    console.log(result)
     this.hojaEnvioForm.controls['procesoForm'].setValue(result.procesoForm);
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
   }

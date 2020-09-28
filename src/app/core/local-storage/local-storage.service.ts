@@ -9,7 +9,6 @@ export class LocalStorageService {
   constructor() {}
 
   static loadInitialState() {
-    console.log('loadInitialState')
 
     return Object.keys(localStorage).reduce((state: any, storageKey) => {
       if (storageKey.includes(APP_PREFIX)) {

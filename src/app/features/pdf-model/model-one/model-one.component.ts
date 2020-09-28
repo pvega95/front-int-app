@@ -157,7 +157,6 @@ export class ModelOneComponent implements OnInit {
   generate() {
 
     let data = this.modelOneForm.value
-    console.log('data a enviar' , data)
     this._cartaService.setCartTwo(data).pipe(take(1))
       .subscribe(
         val => {

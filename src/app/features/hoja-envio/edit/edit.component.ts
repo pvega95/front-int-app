@@ -81,7 +81,6 @@ export class EditComponent implements OnInit {
   }
 
   setFormModal(result) {
-    console.log(result)
     this.hojaEnvioForm.controls['procesoForm'].setValue(result.procesoForm);
     this.hojaEnvioForm.controls['numRegForm'].setValue(result._id);
   }

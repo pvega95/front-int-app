@@ -105,7 +105,6 @@ export class CartaFiscalizacionComponent implements OnInit {
   docx(element) {
     this._cartaService.generateDocx(element).pipe(take(1))
       .subscribe((res: any) => {
-        console.log();
         var link = document.createElement('a');
         link.href = window.URL.createObjectURL(res);;
         link.click();
@@ -127,7 +126,6 @@ export class CartaFiscalizacionComponent implements OnInit {
               data.conclusionForm.name,data.diasPasadosForm
             ];
     });
-    // console.log(REPORTE);
     this._excelService.addWorksheet(REPORTE, header, TITLE);
   }
 

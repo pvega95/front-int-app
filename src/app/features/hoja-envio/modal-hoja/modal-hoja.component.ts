@@ -36,7 +36,6 @@ export class ModalHojaComponent implements OnInit {
     this._cartaService.getCart(this.postsPerPage,this.currentPage).pipe(take(1))
     .subscribe(
       val => {
-        console.log(val)
         this.dataSource = new MatTableDataSource(val.carta);
         this.totalPosts = val.maxPosts;
       },
