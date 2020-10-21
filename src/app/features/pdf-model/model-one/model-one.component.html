@@ -41,7 +41,6 @@
           <input matInput formControlName="direccionForm">
         </mat-form-field>
       </div>
-      <!-- <p> Av. Salaverry N° 655 Jesus Maria</p> -->
     </section>
     <section class="section-two">
       <p>Presente.-</p>
@@ -65,7 +64,6 @@
                   <input matInput formControlName="tipoForm">
                 </mat-form-field>
               </div>
-              <!-- ACREDITACION -->
             </td>
             <td>
               <div class="desc-doc">
@@ -74,40 +72,40 @@
                   <input matInput formControlName="docForm">
                 </mat-form-field>
               </div>
-              <!-- ACREDITACION  REMYPE  -->
             </td>
           </tr>
 
         </table>
       </div>
     </section>
+    <section class="section-optional-one">
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Parrafo opcional" formControlName="optionalOneForm"></textarea>
+      </mat-form-field>
+    </section>
     <section class="section-three">
-      <p>Al respecto, la empresa {{nombreEmpresa}} ha presentado copia <input class="pronomForm" matInput formControlName="pronomForm"> señalado en el cuadro precedente en el
-        procedimiento de selección <span>
+      <textarea matInput formControlName="pronomForm"></textarea>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion Proceso</mat-label>
+        <textarea matInput formControlName="descProcForm"></textarea>
+      </mat-form-field>
+      <!-- <p>Al respecto, la empresa {{ nombreEmpresa }} ha presentado copia <input class="pronomForm" matInput formControlName="pronomForm"> señalado en el cuadro precedente en el
+        procedimiento de selección 
+        <span>
           <div  class="desc-proceso">
             <mat-form-field class="example-full-width">
               <mat-label>Descripcion Proceso</mat-label>
               <textarea matInput formControlName="descProcForm"></textarea>
             </mat-form-field>
           </div>
-          
-
-        </span> </p>
+        </span> 
+      </p> -->
     </section>
     <section class="section-four">
       <textarea matInput formControlName="descProcTwoForm"></textarea>
-      <!-- <p>En tal sentido, de conformidad con lo dispuesto en el artículo 33° de la Ley N° 27444 de Procedimiento
-        Administrativo General y, en concordancia con el numeral 64.6 del artículo 64° del Reglamento de la Ley de
-        Contrataciones del Estado, normas aplicables al presente caso; se realiza la acción de fiscalización posterior,
-        agradeciéndole nos indique expresamente la veracidad de la(s) ACREDITACION presentada(s) por el contratista en
-        mención. Para lo cual se adjuntan las respectivas copias.
-      </p> -->
     </section>
     <section class="section-five">
       <textarea matInput formControlName="descProcThreeForm"></textarea>
-      <!-- <p>Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles de recibida la presente
-        comunicación.
-      </p> -->
       <p>Atentamente,</p>
     </section>
   
