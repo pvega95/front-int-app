@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatPaginator, MatSnackBar, MatTableDataSource, PageEvent } from '@angular/material';
 import { MantenimientoService } from '@core/services/mantenimientos/matenimientos.service';
 import { take } from 'rxjs/operators';
+import { ProcesoModalComponent } from 'src/app/features/proceso/proceso-modal/proceso-modal.component';
 
 @Component({
   selector: 'app-listar',
@@ -20,7 +21,9 @@ export class ListarComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
-    private _mantenimientoService: MantenimientoService
+    private _mantenimientoService: MantenimientoService,
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class ListarComponent implements OnInit {
     .subscribe(
       val =>{
         this.dataSource = new MatTableDataSource(val.tipoEmpresa);
-        this.totalPosts = val.tipoEmpresa.length;
+        this.dataSource.paginator = this.paginator;
       },
       (err:HttpErrorResponse) =>{
         
@@ -50,8 +53,41 @@ export class ListarComponent implements OnInit {
     )
   }
 
-  delete(id){
-    return;
+  delete(id: string) {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = id;
+    const dialogRef = this.dialog.open(ProcesoModalComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      (data: boolean) => {
+        if (data) {
+
+          this.deleteTipoEmpresa(id);
+        }
+
+      }
+    );
+  }
+
+  deleteTipoEmpresa(id: string) {
+    this._mantenimientoService.eliminarTipoEmpresa(id).pipe(take(1))
+      .subscribe((res: any) => {
+        if (res) {
+          this.openSnackBar('Se elimino correctamente', 'Ok');
+          this.getEntidades();
+        }
+      }, (err: HttpErrorResponse) => {
+
+      });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
 }

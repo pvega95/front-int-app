@@ -8,12 +8,14 @@ import { Cloudinary } from '@cloudinary/angular-5.x';
 
 import * as _moment from 'moment';
 import { ProcesosService } from '@core/services/procesos/procesos.service';
-import { take } from 'rxjs/operators';
+import { debounceTime, delay, distinctUntilChanged, take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProcesoModalComponent } from './proceso-modal/proceso-modal.component';
 import { ReporteService } from '@core/services/reportes/reporte.service';
 import { ExcelService } from '@core/services/excel/excel.service';
 import { DatePipe } from '@angular/common';
+import { BusquedaService } from '@core/services/busqueda/busqueda.service';
+import { Observable, of } from 'rxjs';
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -24,48 +26,66 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+
 })
 export class ProcesoComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name','type','edit','delete','view'];
+  displayedColumns: string[] = ['id', 'name', 'type', 'edit', 'delete', 'view'];
   dataSource = new MatTableDataSource([]);
   totalPosts = 10;
   postsPerPage = 5;
   currentPage = 1;
-  pageSizeOptions = [5,10,20];
+  pageSizeOptions = [5, 10, 20];
+  busqueda$: Observable<any> = new Observable()
+  inputControlSearch = new FormControl('');
   constructor(
     public _dashboardService: DashboardService,
     public formB: FormBuilder,
     public snackBar: MatSnackBar,
-    private _processService : ProcesosService,
+    private _processService: ProcesosService,
     private dialog: MatDialog,
     private _reporteService: ReporteService,
     private _excelService: ExcelService,
-    private datePipe: DatePipe
-  ) { 
+    private datePipe: DatePipe,
+    private _busquedaService: BusquedaService
+  ) {
     this._dashboardService.setDashboardStatus(true);
   }
 
   ngOnInit() {
     this.getProcess();
+    this.inputControlSearch.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(val => {
+      if (val) {
+        console.log(val);
+        this.applyFilter(val);
+      } else {
+        this.getProcess();
+      }
+    });
   }
 
-  getProcess(){
-    this._processService.getProcess(this.postsPerPage,this.currentPage).pipe(take(1))
-    .subscribe(
-      val =>{
-        this.dataSource = new MatTableDataSource(val.posts);
-        this.totalPosts = val.maxPosts;
-      },
-      (err:HttpErrorResponse)=>{
-       
-      }
-    )
+  getProcess() {
+    this._processService.getProcess(this.postsPerPage, this.currentPage).pipe(take(1))
+      .subscribe(
+        val => {
+          this.dataSource = new MatTableDataSource(val.posts);
+          this.totalPosts = val.maxPosts;
+        },
+        (err: HttpErrorResponse) => {
+
+        }
+      )
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this._busquedaService.findByRegex('proceso', filterValue, this.postsPerPage, this.currentPage)
+      .subscribe(val => {
+        this.dataSource = new MatTableDataSource(val.resultados);
+        this.totalPosts = val.total;
+      })
   }
 
-  delete(id:string){
-    
+  delete(id: string) {
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -75,26 +95,26 @@ export class ProcesoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       (data: boolean) => {
         if (data) {
-         
+
           this.deleteProcess(id);
         }
-        
+
       }
     );
   }
 
-  deleteProcess(id:string){
+  deleteProcess(id: string) {
     this._processService.setDeleteById(id).pipe(take(1))
-    .subscribe((res: any) => {
-      if (res) {
-        this.getProcess();
-      }
-    }, (err: HttpErrorResponse) => {
-      
-    });
+      .subscribe((res: any) => {
+        if (res) {
+          this.getProcess();
+        }
+      }, (err: HttpErrorResponse) => {
+
+      });
   }
 
-  onChangedPage(pageData: PageEvent){
+  onChangedPage(pageData: PageEvent) {
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;
     this.getProcess();

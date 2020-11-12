@@ -6,7 +6,7 @@
 
     <mat-form-field class="fbx-input filter">
         <input matInput 
-          (keyup)="applyFilter($event.target.value)"
+        [formControl]="inputControlSearch"
             placeholder="Buscar" 
             name="email"
             [type]="'text'" required>

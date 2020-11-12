@@ -129,14 +129,14 @@ export class EditComponent implements OnInit {
     }
    
     this._remisionService.setUpdateGuia(data,this.idProcess).pipe(take(1)).subscribe(
-      val=>{
+      val=> {
       
         this.openSnackBar('Se actualizo correctamente', 'Ok')
         this.router.navigate(['/main/guia-remision']);
       },(err:HttpErrorResponse)=>{
        
       }
-    )
+    );
   }
 
   openSnackBar(message: string, action: string) {

@@ -6,8 +6,11 @@
   </div>
 
   <mat-form-field class="fbx-input filter">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar" name="email" [type]="'text'"
-      required>
+    <input matInput 
+    [formControl]="inputControlSearch"
+        placeholder="Buscar" 
+        name="email"
+        [type]="'text'" required>
   </mat-form-field>
 
 

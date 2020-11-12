@@ -10,20 +10,10 @@ const routes: Routes = [
     children: [
       { path: '', component: ListarComponent},
       { path: 'crear', component: CrearEmpresaComponent },
+      { path: 'editar', component: CrearEmpresaComponent },
     ]
   }
 ];
-
-// const routes: Routes = [
-//   { path: '', redirectTo: 'tipo-empresa' },
-//   {
-//     path: 'tipo-empresa', component: TipoEmpresaComponent,
-//     children: [
-//       { path: 'crear', component: CrearEmpresaComponent },
-//     ]
-//   },
-
-// ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

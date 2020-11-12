@@ -3,8 +3,11 @@ import { DashboardService } from '@core/services/resources/dashboard.service';
 import { MatSnackBar, MatDialog, MatTableDataSource, MatDialogRef, MatPaginator, PageEvent } from '@angular/material';
 import { CartaService } from '@core/services/cartas/carta.service';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { BusquedaService } from '@core/services/busqueda/busqueda.service';
 
 @Component({
   selector: 'app-modal-guia',
@@ -20,18 +23,31 @@ export class ModalGuiaComponent implements OnInit {
   currentPage = 1;
   pageSizeOptions = [5,10,20];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+  busqueda$: Observable<any> = new Observable()
+  inputControlSearch = new FormControl('');
+  
   constructor(
     public _dashboardService: DashboardService,
     public snackBar: MatSnackBar,
     private _cartaService : CartaService,
     public dialog: MatDialog,
-    private router : Router,
     public dialogRef: MatDialogRef<any>,
+    private _busquedaService: BusquedaService
   ) { }
 
   ngOnInit() {
     this.loadCard();
+    this.inputControlSearch.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(val => {
+      if (val) {
+        console.log(val);
+        this.applyFilter(val);
+      } else {
+        this.loadCard();
+      }
+    });
   }
 
   loadCard(){
@@ -53,8 +69,15 @@ export class ModalGuiaComponent implements OnInit {
     this.loadCard();
   }
 
+  // applyFilter(filterValue: string) {
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this._busquedaService.findByRegex('carta', filterValue, this.postsPerPage, this.currentPage)
+      .subscribe(val => {
+        this.dataSource = new MatTableDataSource(val.resultados);
+        this.totalPosts = val.total;
+      })
   }
 
   add(data){

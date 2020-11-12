@@ -134,7 +134,6 @@ export class ModelOneComponent implements OnInit {
     this.modelOneForm.controls['direccionForm'].setValue(data.direccionForm);
     this.modelOneForm.controls['tipoForm'].setValue(data.tipoForm);
     this.modelOneForm.controls['docForm'].setValue(data.docForm);
-    // this.modelOneForm.controls['pronomForm'].setValue('del documento');
     this.modelOneForm.controls['pronomForm'].setValue('Al respecto, la empresa ' + this.nombreEmpresa +
                                                       ' ha presentado copia del documento señalado en el cuadro precedente en el procedimiento de selección ');
     this.modelOneForm.controls['fechaActualForm'].setValue(this.datePipe.transform(new Date(), 'fullDate').replace(",", ""));
@@ -147,8 +146,6 @@ export class ModelOneComponent implements OnInit {
                                                             'en mención. Adjuntandose las respectivas copias.');
     this.modelOneForm.controls['descProcThreeForm'].setValue('Por lo expuesto, apreciaré su pronunciamiento dentro del plazo de cinco (5) días hábiles' +
                                                               ' de recibida la presente comunicación.');
-    
-    // this.modelOneForm.controls['descProcForm'].setValue(data.procesoDepend.description); 
 
     this.modelOneForm.controls['descProcForm'].setValue(data.procesoForm + ' ' + data.descProcForm);
   }

@@ -16,30 +16,51 @@ export class MantenimientoService {
     private _http: HttpClienteService,
   ) { }
 
-  getAnalista(): Observable<any>  {
+  getAnalista(): Observable<any> {
     const query = `${this.url}/api/analista/listar`;
     return this._http.get(query);
   }
 
-  getConclusion(): Observable<any>  {
+  getConclusion(): Observable<any> {
     const query = `${this.url}/api/conclusion/listar`;
     return this._http.get(query);
   }
 
-  getTipoDocumento(): Observable<any>{
+  getTipoDocumento(): Observable<any> {
     const query = `${this.url}/api/tipo-documento/listar`;
     return this._http.get(query);
   }
 
-  getTipoContratista(): Observable<any>{
+  getTipoContratista(): Observable<any> {
     const query = `${this.url}/api/tipo-contratista/listar`;
     return this._http.get(query);
   }
 
-  getTipoEmpresa(): Observable<any>{
+  getTipoEmpresa(): Observable<any> {
     const query = `${this.url}/api/tipo-empresa/listar`;
     return this._http.get(query);
   }
 
-  
+  crearTipoEmpresa(obj: any): Observable<any> {
+    const query = `${this.url}/api/tipo-empresa/crear`;
+    const data = obj
+    return this._http.post(query, data);
+  }
+
+  getTipoEmpresaById(id: string): Observable<any> {
+    const query = `${this.url}/api/tipo-empresa/${id}`;
+    return this._http.get(query);
+  }
+
+  eliminarTipoEmpresa(id: string) {
+    const query = `${this.url}/api/tipo-empresa/${id}`
+    return this._http.delete(query);
+  }
+
+  actualizarTipoEmpresa(obj: any, id: string): Observable<any> {
+    const query = `${this.url}/api/tipo-empresa/${id}`;
+    const data = obj;
+    return this._http.put(query, data);
+  }
+
 }
