@@ -1,21 +1,18 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '@core/services/resources/dashboard.service';
-import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar, MatTableDataSource, MatDialogConfig, MatDialog, PageEvent } from '@angular/material';
-import { SvgRegisterService } from '@core/material/svg-register.service';
-import { Cloudinary } from '@cloudinary/angular-5.x';
 
 import * as _moment from 'moment';
 import { ProcesosService } from '@core/services/procesos/procesos.service';
-import { debounceTime, delay, distinctUntilChanged, take } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProcesoModalComponent } from './proceso-modal/proceso-modal.component';
 import { ReporteService } from '@core/services/reportes/reporte.service';
 import { ExcelService } from '@core/services/excel/excel.service';
 import { DatePipe } from '@angular/common';
 import { BusquedaService } from '@core/services/busqueda/busqueda.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 

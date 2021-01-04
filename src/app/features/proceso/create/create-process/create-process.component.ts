@@ -136,7 +136,7 @@ public uploader: FileUploader;
     this._processService.getTypeProcedure().pipe(take(1))
       .subscribe(
         val=>{
-          this.procedureList = val;
+          this.procedureList = val.procedures;
          
         },
         (err:HttpErrorResponse)=>{

@@ -64,7 +64,7 @@ export class GaleryComponent implements OnInit {
       autoUpload: true, // Cargar archivos automáticamente al agregarlos a la cola de carga
       isHTML5: true, // Use xhrTransport a favor de iframeTransport
       allowedMimeType: ['application/pdf', 'image/jpeg', 'image/png'],
-      maxFileSize: 5 * 1024 * 1024, // 5 MB
+      maxFileSize: 15 * 1024 * 1024, // 15 MB
       removeAfterUpload: true, // Calcule el progreso de forma independiente para cada archivo cargado
       headers: [ // XHR request headers
         {
